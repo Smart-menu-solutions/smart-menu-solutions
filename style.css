@@ -693,3 +693,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
     min-height: auto;
   }
 }
+*{
+    outline: 1px solid red;
+}
+``*
