@@ -682,4 +682,15 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
     display: block;
     overflow-x: auto;
   }
+     .hero-inner{
+    padding: 30px 15px;
+  }
+
+  .hero-banner img{
+    height: 350px;
+  }
+
+  .two-col img{
+    min-height: auto;
+  }
 }
