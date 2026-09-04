@@ -48,20 +48,30 @@
     <div class="container">
       <div class="order-layout">
 
-        <div class="order-card">
-          <h2>Start your order</h2>
-          <form id="orderForm"
-      action="https://formsubmit.co/smartmenusolutions@outlook.com"
-      method="POST"
-      enctype="multipart/form-data">
+       <div class="order-card">
+  <h2>Start your order</h2>
 
-    
+  <form id="orderForm"
+        action="https://formsubmit.co/smartmenusolutions@outlook.com"
+        method="POST"
+        enctype="multipart/form-data">
 
-    <input type="hidden" name="_subject" value="New Smart Menu order request">
+    <input type="hidden"
+           name="_subject"
+           value="New Smart Menu Order Request">
 
-    <input type="hidden" name="_template" value="table">
-<input type="hidden" name="_next"
-       value="https://smart-menu-solutions.github.io/smart-menu-sulotions/index.html">
+    <input type="hidden"
+           name="_template"
+           value="table">
+
+    <input type="hidden"
+           name="_captcha"
+           value="false">
+
+    <input type="hidden"
+           name="_next"
+           value="https://smart-menu-solutions.github.io/smart-menu-sulotions/index.html">
+
     <input type="text"
            name="_honey"
            class="hp-field"
@@ -69,6 +79,10 @@
            autocomplete="off"
            aria-hidden="true">
 
+    <!-- weitere Formularfelder -->
+
+  </form>
+</div>
             <div class="order-section">
               <div class="order-step-label">01 / Contact information</div>
               <div class="order-form-grid">
