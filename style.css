@@ -684,8 +684,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 
   .hero-inner{
     justify-content:center;
-    padding:120px 20px 80px;
-  }
+    padding:120px 20px 140px;
+}
 
   .hero-lede{
     font-size:1rem;
