@@ -697,3 +697,33 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
     outline: 1px solid red;
 }
 ``*
+@media (max-width: 768px) {
+
+  .hero-inner{
+    justify-content: center;
+    padding: 120px 20px 80px;
+  }
+
+}
+@media (max-width: 768px) {
+
+  .hero h1{
+    font-size: 2rem;
+  }
+
+  .hero-lede{
+    font-size: 1rem;
+  }
+
+}
+@media (max-width: 768px) {
+
+  .brand img{
+    height: 34px;
+  }
+
+  .brand-text{
+    font-size: 0.95rem;
+  }
+
+}
