@@ -725,5 +725,24 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   .brand-text{
     font-size: 0.95rem;
   }
+  .hero-inner{
+    justify-content: center;
+    padding: 120px 20px 80px;
+  }
 
+  .hero h1{
+    font-size: 2rem;
+  }
+
+  .hero-lede{
+    font-size: 1rem;
+  }
+
+  .brand img{
+    height: 34px;
+  }
+
+  .brand-text{
+    font-size: 0.95rem;
+  }
 }
