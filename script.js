@@ -82,7 +82,7 @@ var translations = {
     'plan_premium_title': 'Smart Premium',
     'plan_premium_desc': 'Designed for busy restaurants, hotel restaurants, chains, and businesses seeking a fully professional solution.',
     
-    'vat_incl': ' VAT incl.',
+    'vat_incl': 'VAT incl.',
     'badge_popular': 'Most popular',
     
     'feat_qr': 'Digital QR code menu',
@@ -125,7 +125,7 @@ var translations = {
     'faq_beyond_desc': "Get to know our business and how we're committed to quality and great service. We're glad you're here to be part of our story.",
     'faq_beyond_btn': "Let's get started",
 
-    // --- Order Seite ---
+    // --- Order / Order Info Seite ---
     'order_overview_title': 'Your order at a glance',
     'order_overview_desc': 'Follow these simple steps to get your modern, digital menu up and running.',
     'order_steps_heading': 'How to order your <span class="accent">digital menu</span>',
@@ -145,6 +145,29 @@ var translations = {
     'step7_title': 'Go live',
     'step7_desc': 'Display your QR code on tables, counters, menus, flyers, or takeaway packaging and start serving customers instantly.',
     'order_cta_btn': 'Start your order',
+
+    // order-info.html spezifische Übersetzungen
+    'order_info_hero_title': 'Start your <span class="accent">order</span>',
+    'order_info_hero_desc': 'Fill in your details, choose a plan, and upload your menu — we\'ll take it from there.',
+    'form_main_title': 'Start your order',
+    'step_contact_label': '01 / CONTACT INFORMATION',
+    'step_plan_label': '02 / SELECT YOUR PLAN',
+    'step_upload_label': '03 / UPLOAD YOUR MENU',
+    'label_firstname': 'First name',
+    'placeholder_firstname': 'First name',
+    'label_lastname': 'Last name',
+    'placeholder_lastname': 'Last name',
+    'label_email': 'Email address',
+    'placeholder_email': 'you@business.com',
+    'label_upload_title': 'Upload your menu PDF',
+    'label_upload_sub': 'Click here or drag a PDF file to upload',
+    'submit_order_btn': 'Submit order request',
+    'summary_header': 'ORDER SUMMARY',
+    'summary_updates_label': 'Menu updates',
+    'total_due': 'TOTAL DUE',
+    'included': 'Included',
+    'what_happens_next': 'What happens next?',
+    'what_happens_next_desc': 'Submit your order request and we\'ll contact you with the next steps.',
 
     // --- Contact Seite ---
     'contact_hero_title': 'Get in touch to start your digital menu journey',
@@ -209,7 +232,7 @@ var translations = {
     'plan_premium_title': 'Smart Premium',
     'plan_premium_desc': 'Entwickelt für viel besuchte Restaurants, Hotelrestaurants, Ketten und Unternehmen mit höchsten Ansprüchen.',
     
-    'vat_incl': ' inkl. MwSt.',
+    'vat_incl': 'inkl. MwSt.',
     'badge_popular': 'Am beliebtesten',
     
     'feat_qr': 'Digitale QR-Code-Speisekarte',
@@ -222,7 +245,7 @@ var translations = {
     'feat_pro_lang': '1 zusätzliche Sprache',
     'feat_premium_items': 'Bis zu 450 Menüpunkte',
     'feat_premium_updates': '6 monatliche Menü-Aktualisierungen',
-    'feat_premium_lang': '2 zusätzliche Sprachen',
+    'feat_premium_lang': '2 zusätzliche Sprache',
     'feat_billing_year': 'Abrechnungszeitraum: 1-Jahres-Abo',
 
     'btn_choose_start': 'Smart Start wählen',
@@ -252,7 +275,7 @@ var translations = {
     'faq_beyond_desc': 'Lerne unser Unternehmen kennen und erfahre, wie wir uns für Qualität und exzellenten Service einsetzen.',
     'faq_beyond_btn': 'Jetzt starten',
 
-    // --- Order Seite ---
+    // --- Order / Order Info Seite ---
     'order_overview_title': 'Deine Bestellung auf einen Blick',
     'order_overview_desc': 'Folge diesen einfachen Schritten, um deine moderne digitale Speisekarte einzurichten.',
     'order_steps_heading': 'So bestellst du dein <span class="accent">digitales Menü</span>',
@@ -273,6 +296,29 @@ var translations = {
     'step7_desc': 'Platziere deinen QR-Code auf Tischen, Theken, Karten, Flyern oder Verpackungen und bediene Gäste sofort.',
     'order_cta_btn': 'Bestellung starten',
 
+    // order-info.html spezifische Übersetzungen
+    'order_info_hero_title': 'Starten Sie Ihre <span class="accent">Bestellung</span>',
+    'order_info_hero_desc': 'Geben Sie Ihre Daten ein, wählen Sie einen Tarif und laden Sie Ihre Speisekarte hoch – wir kümmern uns um den Rest.',
+    'form_main_title': 'Bestellvorgang starten',
+    'step_contact_label': '01 / KONTAKTINFORMATIONEN',
+    'step_plan_label': '02 / TARIF AUSWÄHLEN',
+    'step_upload_label': '03 / SPEISEKARTE HOCHLADEN',
+    'label_firstname': 'Vorname',
+    'placeholder_firstname': 'Vorname',
+    'label_lastname': 'Nachname',
+    'placeholder_lastname': 'Nachname',
+    'label_email': 'E-Mail-Adresse',
+    'placeholder_email': 'ihre@firma.de',
+    'label_upload_title': 'Menü-PDF hochladen',
+    'label_upload_sub': 'Hier klicken oder PDF-Datei hierher ziehen',
+    'submit_order_btn': 'Bestellantrag absenden',
+    'summary_header': 'BESTELLÜBERSICHT',
+    'summary_updates_label': 'Menü-Aktualisierungen',
+    'total_due': 'GESAMTBETRAG',
+    'included': 'Inklusive',
+    'what_happens_next': 'Was passiert als Nächstes?',
+    'what_happens_next_desc': 'Senden Sie Ihre Bestellanfrage ab und wir kontaktieren Sie mit den nächsten Schritten.',
+
     // --- Contact Seite ---
     'contact_hero_title': 'Kontaktiere uns und starte deine Reise zur digitalen Speisekarte',
     'contact_hero_desc': 'Egal, ob du bereit bist, deine erste digitale Speisekarte einzuführen oder mehr über unsere Lösungen erfahren möchtest – wir sind für dich da.'
@@ -290,6 +336,15 @@ function switchLanguage(lang) {
       } else {
         el.textContent = translations[lang][key];
       }
+    }
+  });
+
+  // Placeholder-Attribute übersetzen
+  var placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+  placeholderElements.forEach(function (el) {
+    var pKey = el.getAttribute('data-i18n-placeholder');
+    if (translations[lang] && translations[lang][pKey]) {
+      el.setAttribute('placeholder', translations[lang][pKey]);
     }
   });
 }
