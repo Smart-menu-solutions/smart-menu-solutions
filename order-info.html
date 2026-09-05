@@ -49,8 +49,8 @@
 
   <section class="page-hero">
     <div class="container">
-      <h1>Start your <span class="accent">order</span></h1>
-      <p>Fill in your details, choose a plan, and upload your menu — we'll take it from there.</p>
+      <h1 data-i18n="order_page_title">Start your <span class="accent">order</span></h1>
+      <p data-i18n="order_page_desc">Fill in your details, choose a plan, and upload your menu — we'll take it from there.</p>
     </div>
   </section>
 
@@ -58,72 +58,56 @@
     <div class="container">
       <div class="order-layout">
 
-       <div class="order-card">
-  <h2>Start your order</h2>
+        <div class="order-card">
+          <h2 data-i18n="order_form_heading">Start your order</h2>
 
-<form id="orderForm"
-      action="https://formsubmit.co/smartmenusolutions@outlook.com"
-      method="POST"
-      enctype="multipart/form-data">
+          <form id="orderForm"
+                action="https://formsubmit.co/smartmenusolutions@outlook.com"
+                method="POST"
+                enctype="multipart/form-data">
 
-    <input type="hidden"
-           name="_subject"
-           value="New Smart Menu Order Request"> 
+            <input type="hidden" name="_subject" value="New Smart Menu Order Request"> 
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://smart-menu-solutions.github.io/smart-menu-sulotions/thank-you.html">
 
-    <input type="hidden"
-           name="_template"
-           value="table">
-
-    <input type="hidden"
-           name="_captcha"
-           value="false">
-
-    <input type="hidden"
-           name="_next"
-           value="https://smart-menu-solutions.github.io/smart-menu-sulotions/thank-you.html">
-
-    <input type="text"
-           name="_honey"
-           class="hp-field"
-           tabindex="-1"
-           autocomplete="off"
-           aria-hidden="true">
+            <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 
             <div class="order-section">
-              <div class="order-step-label">01 / Contact information</div>
+              <div class="order-step-label" data-i18n="order_step1_label">01 / Contact information</div>
               <div class="order-form-grid">
                 <div class="order-field">
-                  <label for="firstName">First name</label>
-                  <input type="text" id="firstName" name="First Name" required placeholder="First name">
+                  <label for="firstName" data-i18n="order_label_firstname">First name</label>
+                  <input type="text" id="firstName" name="First Name" required placeholder="First name" data-i18n-placeholder="order_ph_firstname">
                 </div>
                 <div class="order-field">
-                  <label for="lastName">Last name</label>
-                  <input type="text" id="lastName" name="Last Name" required placeholder="Last name">
+                  <label for="lastName" data-i18n="order_label_lastname">Last name</label>
+                  <input type="text" id="lastName" name="Last Name" required placeholder="Last name" data-i18n-placeholder="order_ph_lastname">
                 </div>
               </div>
               <div class="order-field" style="margin-top:.9rem">
-                <label for="email">Email address</label>
-                <input type="email" id="email" name="Customer Email" required placeholder="you@business.com">
+                <label for="email" data-i18n="order_label_email">Email address</label>
+                <input type="email" id="email" name="Customer Email" required placeholder="you@business.com" data-i18n-placeholder="order_ph_email">
               </div>
             </div>
 
             <div class="order-section">
-              <div class="order-step-label">02 / Select your plan</div>
+              <div class="order-step-label" data-i18n="order_step2_label">02 / Select your plan</div>
               <div class="plan-grid">
                 <div class="plan-option">
                   <input type="radio" id="planStart" name="Selected Plan" value="Smart Start (EUR 119, VAT incl. 1-Year Subscription)"
                     data-name="Smart Start" data-price="119" data-updates="1">
-                  <label for="planStart"><span class="p-name">Smart Start</span><span class="p-price">€119</span></label>
+                  <label for="planStart"><span class="p-name" data-i18n="plan_start_name">Smart Start</span><span class="p-price">€119</span></label>
                 </div>
                 <div class="plan-option">
                   <input type="radio" id="planPro" name="Selected Plan" value="Smart Pro (EUR 129, VAT incl. 1-Year Subscription)"
                     data-name="Smart Pro" data-price="129" data-updates="3" checked>
-                  <label for="planPro"><span class="p-name">Smart Pro</span><span class="p-price">€129</span></label>
+                  <label for="planPro"><span class="p-name" data-i18n="plan_pro_name">Smart Pro</span><span class="p-price">€129</span></label>
                 </div>
                 <div class="plan-option">
                   <input type="radio" id="planPremium" name="Selected Plan" value="Smart Premium (EUR 169, VAT incl. 1-Year Subscription)"
                     data-name="Smart Premium" data-price="169" data-updates="6">
-                  <label for="planPremium"><span class="p-name">Smart Premium</span><span class="p-price">€169</span></label>
+                  <label for="planPremium"><span class="p-name" data-i18n="plan_premium_name">Smart Premium</span><span class="p-price">€169</span></label>
                 </div>
               </div>
             </div>
@@ -132,38 +116,37 @@
             <input type="hidden" id="hiddenPlanName" name="Plan Name" value="">
 
             <div class="order-section">
-              <div class="order-step-label">03 / Upload your menu</div>
+              <div class="order-step-label" data-i18n="order_step3_label">03 / Upload your menu</div>
               <div class="dropzone" id="dropzone">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
-                <p class="dz-title" id="fileLabel">Upload your menu PDF</p>
-                <p class="dz-sub">Click here or drag a PDF file to upload</p>
+                <p class="dz-title" id="fileLabel" data-i18n="order_dropzone_title">Upload your menu PDF</p>
+                <p class="dz-sub" data-i18n="order_dropzone_sub">Click here or drag a PDF file to upload</p>
                 <input type="file" id="pdfUpload" name="Attachment" accept=".pdf" style="display:none" required>
               </div>
             </div>
 
             <button type="submit" class="order-submit" id="payButton">
-              Submit order request
+              <span data-i18n="order_submit_btn">Submit order request</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </button>
           </form>
         </div>
 
         <aside class="order-summary">
-          <div class="os-label">Order summary</div>
+          <div class="os-label" data-i18n="summary_label">Order summary</div>
           <h3 id="sumPlanName">Smart Pro</h3>
 
-          <div class="os-line"><span>Digital QR menu</span><span>Included</span></div>
-
-          <div class="os-line"><span>Menu updates</span><span id="sumUpdates">3 / month</span></div>
-          <div class="os-line"><span>Billing Cycle 1-Year Subscription</span><span>Included</span></div>
+          <div class="os-line"><span data-i18n="summary_item_menu">Digital QR menu</span><span data-i18n="summary_included">Included</span></div>
+          <div class="os-line"><span data-i18n="summary_item_updates">Menu updates</span><span id="sumUpdates">3 / month</span></div>
+          <div class="os-line"><span data-i18n="summary_item_billing">Billing Cycle 1-Year Subscription</span><span data-i18n="summary_included">Included</span></div>
           <div class="os-total">
-            <span class="os-total-label">Total due<br><span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:.82em">VAT incl.</span></span>
+            <span class="os-total-label"><span data-i18n="summary_total_due">Total due</span><br><span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:.82em" data-i18n="summary_vat_incl">VAT incl.</span></span>
             <span class="os-total-value" id="sumTotal">€129.00</span>
           </div>
 
           <div class="os-note">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5l-8-3Z"/></svg>
-            <p style="margin:0"><strong>What happens next?</strong> Submit your order request and we'll contact you with the next steps.</p>
+            <p style="margin:0"><strong data-i18n="summary_next_title">What happens next?</strong> <span data-i18n="summary_next_text">Submit your order request and we'll contact you with the next steps.</span></p>
           </div>
         </aside>
 
@@ -181,10 +164,10 @@
         <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
       </a>
       <ul class="footer-links">
-        <li><a href="our-services.html">Services</a></li>
-        <li><a href="pricing-plans.html">Pricing</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="our-services.html" data-i18n="services">Services</a></li>
+        <li><a href="pricing-plans.html" data-i18n="pricing">Pricing</a></li>
+        <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
+        <li><a href="contact.html" data-i18n="contact">Contact</a></li>
       </ul>
       <div class="footer-social">
         <a href="https://instagram.com/smartmenusolutions/" aria-label="Smart Menu Solutions on Instagram" target="_blank" rel="noopener">
@@ -195,9 +178,9 @@
     <div class="footer-bottom">
       <span>© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions</span>
       <ul class="footer-legal">
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="refund-policy.html">Refund Policy</a></li>
-        <li><a href="imprint.html">Imprint</a></li>
+        <li><a href="privacy-policy.html" data-i18n="privacy_policy">Privacy Policy</a></li>
+        <li><a href="refund-policy.html" data-i18n="refund_policy">Refund Policy</a></li>
+        <li><a href="imprint.html" data-i18n="imprint">Imprint</a></li>
         <li><a href="mailto:smartmenusolutions@outlook.com">smartmenusolutions@outlook.com</a></li>
       </ul>
     </div>
