@@ -59,7 +59,7 @@
     <div class="container">
       <div class="order-layout">
         
-        <!-- Linke Seite: Formular-Karte -->
+        <!-- Linke Seite: Formular -->
         <div class="order-form-wrap">
           <form class="order-form" action="#" method="POST">
             <h2 data-i18n="form_main_title">Start your order</h2>
@@ -100,19 +100,28 @@
                 </div>
               </div>
             </div>
+
+            <div class="form-section">
+              <span class="form-step-num" data-i18n="step_upload_label">03 / UPLOAD YOUR MENU</span>
+              <div class="form-group">
+                <label for="menu-file" data-i18n="label_upload">Upload menu file (PDF, Images, etc.)</label>
+                <input type="file" id="menu-file" name="menu-file">
+              </div>
+            </div>
+
           </form>
         </div>
 
-        <!-- Rechte Seite: Dunkle Bestellübersicht -->
+        <!-- Rechte Seite: Bestellübersicht -->
         <div class="order-summary-wrap">
           <div class="order-summary-card">
             <span class="summary-top-label" data-i18n="summary_header">ORDER SUMMARY</span>
             <h3 class="summary-plan-title">Smart Pro</h3>
             
             <ul class="summary-features">
-              <li><span data-i18n="feat_qr">Digital QR menu</span> <span class="val"><span data-i18n="included">Included</span></span></li>
+              <li><span data-i18n="feat_qr">Digital QR menu</span> <span class="val" data-i18n="included">Included</span></li>
               <li><span data-i18n="summary_updates_label">Menu updates</span> <span class="val">3 / month</span></li>
-              <li><span data-i18n="feat_billing_year">Billing Cycle 1-Year Subscription</span> <span class="val"><span data-i18n="included">Included</span></span></li>
+              <li><span data-i18n="feat_billing_year">Billing Cycle 1-Year Subscription</span> <span class="val" data-i18n="included">Included</span></li>
             </ul>
 
             <div class="summary-total">
