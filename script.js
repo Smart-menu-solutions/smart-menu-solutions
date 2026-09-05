@@ -38,6 +38,40 @@ var translations = {
     'imprint': 'Imprint',
     'footer_copyright': '© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions',
 
+    // --- Pricing Plans Seite ---
+    'pricing_page_title': '<span class="accent">Beyond</span> the ordinary',
+    'pricing_page_desc': "This is where our journey begins. Get to know our business and what we do, and how we're committed to quality and great service. Join us as we grow and succeed together.",
+    'pricing_section_heading': 'Choose your plan',
+    'pricing_section_sub': 'We offer a range of specialised plans tailored to meet your individual needs.',
+    
+    'plan_start_title': 'Smart Start',
+    'plan_start_desc': 'Perfect for cafés, food trucks, kiosks, and small businesses getting started with digital menus.',
+    'plan_pro_title': 'Smart Pro',
+    'plan_pro_desc': 'Ideal for growing restaurants and hospitality businesses that need greater flexibility.',
+    'plan_premium_title': 'Smart Premium',
+    'plan_premium_desc': 'Designed for busy restaurants, hotel restaurants, chains, and businesses seeking a fully professional solution.',
+    
+    'vat_incl': ' VAT incl.',
+    'badge_popular': 'Most popular',
+    
+    'feat_qr': 'Digital QR code menu',
+    'feat_mobile': 'Mobile-friendly design',
+    'feat_unique_qr': 'Unique QR code',
+    'feat_start_items': 'Up to 50 menu items',
+    'feat_start_updates': '1 monthly menu update',
+    'feat_pro_items': 'Up to 150 menu items',
+    'feat_pro_updates': '3 monthly menu updates',
+    'feat_pro_lang': '1 extra language',
+    'feat_premium_items': 'Up to 450 menu items',
+    'feat_premium_updates': '6 monthly menu updates',
+    'feat_premium_lang': '2 extra languages',
+    'feat_billing_year': 'Billing Cycle 1-Year Subscription',
+
+    'btn_choose_start': 'Choose Smart Start',
+    'btn_choose_pro': 'Choose Smart Pro',
+    'btn_choose_premium': 'Choose Smart Premium',
+    'pricing_questions': 'Questions about a plan? Email',
+
     // --- Our Services Seite ---
     'services_hero_title': '<span class="accent">Beyond</span> the ordinary',
     'services_hero_lede': "Elevate your business with digital menus. Smart Menu Solutions empowers restaurants, cafés, bars and hotels to deliver a cutting-edge menu experience that's quick, convenient, and perpetually updated.",
@@ -68,20 +102,6 @@ var translations = {
     'index_transform_title': 'Transform your business <span class="accent">today</span>',
     'index_transform_desc': 'Ready to embrace the future? Our digital menu solutions are designed to be modern, eye-catching, and incredibly easy to use. See how Smart Menu Solutions can bring a fresh, vibrant energy to your establishment and delight your customers.',
     'index_transform_btn': 'Start your order',
-
-    // --- Pricing Plans Seite ---
-    'pricing_hero_title': 'Pricing Plans',
-    'pricing_hero_desc': 'Choose the perfect plan for your business needs with clear, transparent pricing.',
-    'pricing_card1_title': 'Basic',
-    'pricing_card1_price': '€29 / month',
-    'pricing_card1_desc': 'Ideal for small cafes and bistros starting out.',
-    'pricing_card2_title': 'Pro',
-    'pricing_card2_price': '€59 / month',
-    'pricing_card2_desc': 'Perfect for busy restaurants and growing venues.',
-    'pricing_card3_title': 'Enterprise',
-    'pricing_card3_price': 'Custom',
-    'pricing_card3_desc': 'Full custom solutions for chains and large venues.',
-    'pricing_cta': 'Choose Plan',
 
     // --- Order / Order Info / Order Form Seiten ---
     'order_hero_title': 'Place Your Order',
@@ -123,6 +143,40 @@ var translations = {
     'imprint': 'Impressum',
     'footer_copyright': '© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions',
 
+    // --- Pricing Plans Seite ---
+    'pricing_page_title': '<span class="accent">Mehr als</span> gewöhnlich',
+    'pricing_page_desc': 'Hier beginnt unsere Reise. Lerne unser Unternehmen kennen, erfahre, was wir tun und wie wir uns für Qualität und hervorragenden Service einsetzen. Begleite uns auf unserem gemeinsamen Weg zum Erfolg.',
+    'pricing_section_heading': 'Wähle deinen Tarif',
+    'pricing_section_sub': 'Wir bieten eine Reihe spezieller Tarife an, die auf deine individuellen Bedürfnisse zugeschnitten sind.',
+    
+    'plan_start_title': 'Smart Start',
+    'plan_start_desc': 'Perfekt für Cafés, Food Trucks, Kioske und kleine Unternehmen, die mit digitalen Menüs starten.',
+    'plan_pro_title': 'Smart Pro',
+    'plan_pro_desc': 'Ideal für wachsende Restaurants und Gastronomiebetriebe, die mehr Flexibilität benötigen.',
+    'plan_premium_title': 'Smart Premium',
+    'plan_premium_desc': 'Entwickelt für viel besuchte Restaurants, Hotelrestaurants, Ketten und Unternehmen mit höchsten Ansprüchen.',
+    
+    'vat_incl': ' inkl. MwSt.',
+    'badge_popular': 'Am beliebtesten',
+    
+    'feat_qr': 'Digitale QR-Code-Speisekarte',
+    'feat_mobile': 'Mobilfreundliches Design',
+    'feat_unique_qr': 'Einzigartiger QR-Code',
+    'feat_start_items': 'Bis zu 50 Menüpunkte',
+    'feat_start_updates': '1 monatliche Menü-Aktualisierung',
+    'feat_pro_items': 'Bis zu 150 Menüpunkte',
+    'feat_pro_updates': '3 monatliche Menü-Aktualisierungen',
+    'feat_pro_lang': '1 zusätzliche Sprache',
+    'feat_premium_items': 'Bis zu 450 Menüpunkte',
+    'feat_premium_updates': '6 monatliche Menü-Aktualisierungen',
+    'feat_premium_lang': '2 zusätzliche Sprachen',
+    'feat_billing_year': 'Abrechnungszeitraum: 1-Jahres-Abo',
+
+    'btn_choose_start': 'Smart Start wählen',
+    'btn_choose_pro': 'Smart Pro wählen',
+    'btn_choose_premium': 'Smart Premium wählen',
+    'pricing_questions': 'Fragen zu einem Tarif? Schreibe an',
+
     // --- Our Services Seite ---
     'services_hero_title': '<span class="accent">Mehr als</span> gewöhnlich',
     'services_hero_lede': 'Bring dein Business mit digitalen Speisekarten auf das nächste Level. Smart Menu Solutions unterstützt Restaurants, Cafés, Bars und Hotels dabei, ein modernes, schnelles, bequemes und stets aktuelles Menü-Erlebnis zu bieten.',
@@ -153,20 +207,6 @@ var translations = {
     'index_transform_title': 'Verändern Sie Ihr Unternehmen <span class="accent">heute</span>',
     'index_transform_desc': 'Bereit, die Zukunft zu gestalten? Unsere digitalen Menülösungen sind modern, auffallend und unglaublich einfach zu bedienen. Erfahren Sie, wie Smart Menu Solutions frische, lebendige Energie in Ihren Betrieb bringt und Ihre Gäste begeistert.',
     'index_transform_btn': 'Bestellung starten',
-
-    // --- Pricing Plans Seite ---
-    'pricing_hero_title': 'Preise & Tarife',
-    'pricing_hero_desc': 'Wähle den perfekten Plan für deine geschäftlichen Anforderungen mit klarer, transparenter Preisgestaltung.',
-    'pricing_card1_title': 'Basic',
-    'pricing_card1_price': '€29 / Monat',
-    'pricing_card1_desc': 'Ideal für kleine Cafés und Bistros am Anfang.',
-    'pricing_card2_title': 'Pro',
-    'pricing_card2_price': '€59 / Monat',
-    'pricing_card2_desc': 'Perfekt für belebte Restaurants und wachsende Betriebe.',
-    'pricing_card3_title': 'Enterprise',
-    'pricing_card3_price': 'Individuell',
-    'pricing_card3_desc': 'Vollständige Individuallösungen für Ketten und große Standorte.',
-    'pricing_cta': 'Plan wählen',
 
     // --- Order / Order Info / Order Form Seiten ---
     'order_hero_title': 'Bestellung aufgeben',
