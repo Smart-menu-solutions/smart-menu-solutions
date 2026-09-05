@@ -864,3 +864,29 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   color: var(--orange) !important;
   margin-top: .2em !important;
 }
+/* ============================================================
+   KOMPATIBILITÄTS-FIX FÜR TARIFE & FORMULAR-GRID
+   ============================================================ */
+
+.plan-grid,
+.plan-cards-row {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 15px !important;
+}
+
+.order-form-grid,
+.form-row {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 20px !important;
+}
+
+@media (max-width: 600px) {
+  .plan-grid,
+  .plan-cards-row,
+  .order-form-grid,
+  .form-row {
+    grid-template-columns: 1fr !important;
+  }
+}
