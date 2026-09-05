@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setLanguage(savedLang);
 });
 
-// Wörterbuch für Übersetzungen
+// Erweitertes Wörterbuch für Übersetzungen
 var translations = {
   'en': {
     'home': 'Home',
@@ -32,7 +32,22 @@ var translations = {
     'faq': 'FAQ',
     'order': 'Order',
     'contact': 'Contact',
-    'get_started': 'Get started'
+    'get_started': 'Get started',
+    
+    // Allgemeine Seiteninhalte & Hero-Bereiche
+    'hero_beyond': 'Beyond',
+    'choose_plan': 'Choose your plan',
+    'plan_subtitle': 'We offer a range of specialised plans tailored to meet your individual needs.',
+    
+    // Preiskarten-Titel
+    'plan_start_title': 'Smart Start',
+    'plan_pro_title': 'Smart Pro',
+    'plan_premium_title': 'Smart Premium',
+    
+    // Buttons
+    'btn_start': 'Choose Smart Start',
+    'btn_pro': 'Choose Smart Pro',
+    'btn_premium': 'Choose Smart Premium'
   },
   'de': {
     'home': 'Startseite',
@@ -41,7 +56,22 @@ var translations = {
     'faq': 'FAQ',
     'order': 'Bestellen',
     'contact': 'Kontakt',
-    'get_started': 'Loslegen'
+    'get_started': 'Loslegen',
+    
+    // Allgemeine Seiteninhalte & Hero-Bereiche
+    'hero_beyond': 'Jenseits des',
+    'choose_plan': 'Wähle deinen Tarif',
+    'plan_subtitle': 'Wir bieten eine Reihe spezialisierter Tarife, die auf deine individuellen Bedürfnisse zugeschnitten sind.',
+    
+    // Preiskarten-Titel
+    'plan_start_title': 'Smart Start',
+    'plan_pro_title': 'Smart Pro',
+    'plan_premium_title': 'Smart Premium',
+    
+    // Buttons
+    'btn_start': 'Smart Start wählen',
+    'btn_pro': 'Smart Pro wählen',
+    'btn_premium': 'Smart Premium wählen'
   }
 };
 
@@ -57,6 +87,7 @@ function setLanguage(lang) {
 
   // Wir suchen nach Elementen mit dem Attribut data-i18n und übersetzen sie
   var elements = document.querySelectorAll('[data-i18n]');
+  elements.elements = elements || [];
   elements.forEach(function (el) {
     var key = el.getAttribute('data-i18n');
     if (translations[lang] && translations[lang][key]) {
