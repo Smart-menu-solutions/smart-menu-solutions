@@ -38,6 +38,29 @@ var translations = {
     'imprint': 'Imprint',
     'footer_copyright': '© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions',
 
+    // --- Our Services Seite ---
+    'services_hero_title': '<span class="accent">Beyond</span> the ordinary',
+    'services_hero_lede': "Elevate your business with digital menus. Smart Menu Solutions empowers restaurants, cafés, bars and hotels to deliver a cutting-edge menu experience that's quick, convenient, and perpetually updated.",
+    'services_section_heading': 'Services',
+    'services_section_sub': "Whether you're a restaurant, café, food truck, bar, or takeaway service, Smart Menu Solutions provides an affordable and professional digital menu platform designed to help small businesses grow.",
+    'plan_start_name': 'Smart Start',
+    'service_card_start_desc': 'Perfect for cafés, food trucks, kiosks, and small businesses getting started with digital menus.',
+    'plan_pro_name': 'Smart Pro',
+    'service_card_pro_desc': 'Ideal for growing restaurants and hospitality businesses that need greater flexibility.',
+    'plan_premium_name': 'Smart Premium',
+    'service_card_premium_desc': 'Designed for busy restaurants, hotel restaurants, chains, and businesses seeking a fully professional solution.',
+    'contact_us_btn': 'Contact us',
+    'testimonials_heading': 'What our customers say',
+    'testimonial_1_text': '"Smart Menu Solutions made the transition to a digital menu incredibly easy. Our customers love scanning the QR code, and updating menu items is now quick and hassle-free."',
+    'testimonial_1_author': 'Maria K., Restaurant Owner',
+    'testimonial_2_text': '"The setup was fast, professional, and exactly what we needed. We no longer worry about printing new menus every time prices or items change."',
+    'testimonial_2_author': 'Andreas P., Café Manager',
+    'testimonial_3_text': '"The digital menu looks fantastic on mobile phones, and our customers find it very easy to use. Excellent service and support from the team."',
+    'testimonial_3_author': 'Elena M., Hotel Food &amp; Beverage Manager',
+    'cta_band_title': 'Not sure which plan fits?',
+    'cta_band_sub': 'Compare features and pricing side by side.',
+    'cta_band_btn': 'View pricing plans',
+
     // --- Index / Startseite ---
     'index_hero_title': '<span class="accent">SCAN. VIEW. ENJOY.</span> Smart solutions for modern business',
     'index_hero_lede': 'Welcome to Smart Menu Solutions, where we blend digital innovation with modern branding to revolutionise the hospitality industry. Discover how our creative solutions can transform your restaurant or cafe.',
@@ -45,17 +68,6 @@ var translations = {
     'index_transform_title': 'Transform your business <span class="accent">today</span>',
     'index_transform_desc': 'Ready to embrace the future? Our digital menu solutions are designed to be modern, eye-catching, and incredibly easy to use. See how Smart Menu Solutions can bring a fresh, vibrant energy to your establishment and delight your customers.',
     'index_transform_btn': 'Start your order',
-
-    // --- Our Services Seite ---
-    'services_hero_title': 'Our Services',
-    'services_hero_desc': 'Discover how we bring your business into the digital age with custom QR menus, branding, and seamless setup.',
-    'services_heading': 'What we offer',
-    'services_item1_title': 'Digital QR Menus',
-    'services_item1_desc': 'Lightning-fast mobile menus accessible instantly via QR code scan.',
-    'services_item2_title': 'Custom Branding & Design',
-    'services_item2_desc': 'Tailored design matching your restaurant identity and atmosphere.',
-    'services_item3_title': 'Ongoing Updates',
-    'services_item3_desc': 'Change prices or dishes anytime without reprinting physical cards.',
 
     // --- Pricing Plans Seite ---
     'pricing_hero_title': 'Pricing Plans',
@@ -92,27 +104,6 @@ var translations = {
     'contact_next_text2': "Let's create a smarter dining experience for your customers.",
     'contact_tagline': 'Smart menus. Better experiences.',
 
-    // --- FAQ Seite ---
-    'faq_hero_desc': "Our journey began with a simple idea: to digitalise restaurants with a modern, eye-catching brand. Here's what people usually ask us before getting started.",
-    'faq_q1': 'Do I need technical skills?',
-    'faq_a1': 'No. We handle the entire setup for you.',
-    'faq_q2': 'How do I get started?',
-    'faq_a2': 'Choose a plan, complete your order, and send us your menu and logo.',
-    'faq_q3': 'Do customers need an app?',
-    'faq_a3': 'No. They simply scan the QR code with their phone camera.',
-    'faq_q4': 'Do you provide support?',
-    'faq_a4': "Yes. We're here to help whenever you need assistance.",
-    'faq_q5': 'Can I update my menu later?',
-    'faq_a5': 'Yes. Menu updates are available based on your plan.',
-    'faq_q6': 'Can I upgrade my plan?',
-    'faq_a6': 'Yes. You can upgrade at any time as your business grows.',
-    'faq_q7': 'What happens after I submit my order request?',
-    'faq_a7': "We'll review your details and menu, then contact you directly to confirm the next steps.",
-    'faq_beyond_accent': 'Beyond',
-    'faq_beyond_title': 'the ordinary',
-    'faq_beyond_desc': "Get to know our business and how we're committed to quality and great service. We're glad you're here to be part of our story.",
-    'faq_beyond_btn': "Let's get started",
-
     // --- Thank You Seite ---
     'thank_title': 'Thank you!',
     'thank_desc': 'Your request has been successfully submitted. We will be in touch shortly.'
@@ -132,6 +123,29 @@ var translations = {
     'imprint': 'Impressum',
     'footer_copyright': '© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions',
 
+    // --- Our Services Seite ---
+    'services_hero_title': '<span class="accent">Mehr als</span> gewöhnlich',
+    'services_hero_lede': 'Bring dein Business mit digitalen Speisekarten auf das nächste Level. Smart Menu Solutions unterstützt Restaurants, Cafés, Bars und Hotels dabei, ein modernes, schnelles, bequemes und stets aktuelles Menü-Erlebnis zu bieten.',
+    'services_section_heading': 'Unsere Leistungen',
+    'services_section_sub': 'Egal ob Restaurant, Café, Food Truck, Bar oder Imbiss – Smart Menu Solutions bietet eine günstige und professionelle digitale Menü-Plattform, die kleinen Unternehmen beim Wachsen hilft.',
+    'plan_start_name': 'Smart Start',
+    'service_card_start_desc': 'Perfekt für Cafés, Food Trucks, Kioske und kleine Unternehmen, die mit digitalen Menüs starten.',
+    'plan_pro_name': 'Smart Pro',
+    'service_card_pro_desc': 'Ideal für wachsende Restaurants und Gastronomiebetriebe, die mehr Flexibilität benötigen.',
+    'plan_premium_name': 'Smart Premium',
+    'service_card_premium_desc': 'Entwickelt für viel besuchte Restaurants, Hotelrestaurants, Ketten und Unternehmen mit höchsten Ansprüchen.',
+    'contact_us_btn': 'Kontaktiere uns',
+    'testimonials_heading': 'Was unsere Kunden sagen',
+    'testimonial_1_text': '"Smart Menu Solutions hat den Wechsel zu einer digitalen Speisekarte unglaublich einfach gemacht. Unsere Kunden lieben das Scannen des QR-Codes, und das Aktualisieren geht blitzschnell."',
+    'testimonial_1_author': 'Maria K., Restaurantbesitzerin',
+    'testimonial_2_text': '"Die Einrichtung war schnell, professionell und genau das, was wir brauchten. Wir müssen keine teuren Speisekarten mehr neu drucken, wenn sich Preise oder Gerichte ändern."',
+    'testimonial_2_author': 'Andreas P., Café-Manager',
+    'testimonial_3_text': '"Die digitale Speisekarte sieht auf dem Handy fantastisch aus, und unsere Gäste finden sie extrem benutzerfreundlich. Hervorragender Service und Support vom Team."',
+    'testimonial_3_author': 'Elena M., Hotel Food &amp; Beverage Managerin',
+    'cta_band_title': 'Unsicher, welcher Tarif passt?',
+    'cta_band_sub': 'Vergleiche Funktionen und Preise direkt miteinander.',
+    'cta_band_btn': 'Tarife ansehen',
+
     // --- Index / Startseite ---
     'index_hero_title': '<span class="accent">SCANNEN. ANSEHEN. GENIESSEN.</span> Intelligente Lösungen für moderne Unternehmen',
     'index_hero_lede': 'Willkommen bei Smart Menu Solutions, wo wir digitale Innovation mit modernem Branding verbinden, um das Gastgewerbe zu revolutionieren. Entdecken Sie, wie unsere kreativen Lösungen Ihr Restaurant oder Café verändern können.',
@@ -139,17 +153,6 @@ var translations = {
     'index_transform_title': 'Verändern Sie Ihr Unternehmen <span class="accent">heute</span>',
     'index_transform_desc': 'Bereit, die Zukunft zu gestalten? Unsere digitalen Menülösungen sind modern, auffallend und unglaublich einfach zu bedienen. Erfahren Sie, wie Smart Menu Solutions frische, lebendige Energie in Ihren Betrieb bringt und Ihre Gäste begeistert.',
     'index_transform_btn': 'Bestellung starten',
-
-    // --- Our Services Seite ---
-    'services_hero_title': 'Unsere Leistungen',
-    'services_hero_desc': 'Entdecke, wie wir dein Business mit maßgeschneiderten QR-Menüs, Branding und nahtloser Einrichtung ins digitale Zeitalter bringen.',
-    'services_heading': 'Was wir anbieten',
-    'services_item1_title': 'Digitale QR-Menüs',
-    'services_item1_desc': 'Blitzschnelle mobile Menüs, die sofort per QR-Code-Scan erreichbar sind.',
-    'services_item2_title': 'Individuelles Branding & Design',
-    'services_item2_desc': 'Maßgeschneidertes Design passend zur Identität und Atmosphäre deines Restaurants.',
-    'services_item3_title': 'Laufende Aktualisierungen',
-    'services_item3_desc': 'Ändere Preise oder Gerichte jederzeit, ohne physische Karten neu drucken zu müssen.',
 
     // --- Pricing Plans Seite ---
     'pricing_hero_title': 'Preise & Tarife',
@@ -186,27 +189,6 @@ var translations = {
     'contact_next_text2': 'Lass uns ein smarteres Esserlebnis für deine Gäste schaffen.',
     'contact_tagline': 'Smart menus. Better experiences.',
 
-    // --- FAQ Seite ---
-    'faq_hero_desc': 'Unsere Reise begann mit einer einfachen Idee: Restaurants mit einer modernen, auffälligen Marke zu digitalisieren. Hier sind die häufigsten Fragen, die uns vor dem Start gestellt werden.',
-    'faq_q1': 'Brauche ich technische Vorkenntnisse?',
-    'faq_a1': 'Nein. Wir übernehmen die komplette Einrichtung für dich.',
-    'faq_q2': 'Wie fange ich an?',
-    'faq_a2': 'Wähle einen Plan, schließe deine Bestellung ab und sende uns deine Speisekarte und dein Logo.',
-    'faq_q3': 'Müssen Kunden eine App herunterladen?',
-    'faq_a3': 'Nein. Sie scannen einfach den QR-Code mit ihrer Smartphone-Kamera.',
-    'faq_q4': 'Bietet ihr Support an?',
-    'faq_a4': 'Ja. Wir sind immer für dich da, wenn du Unterstützung brauchst.',
-    'faq_q5': 'Kann ich meine Speisekarte später aktualisieren?',
-    'faq_a5': 'Ja. Menü-Updates sind je nach deinem gewählten Plan verfügbar.',
-    'faq_q6': 'Kann ich meinen Plan upgraden?',
-    'faq_a6': 'Ja. Du kannst jederzeit upgraden, wenn dein Business wächst.',
-    'faq_q7': 'Was passiert, nachdem ich meine Bestellung abgeschickt habe?',
-    'faq_a7': 'Wir prüfen deine Daten und Speisekarte und kontaktieren dich direkt, um die nächsten Schritte zu besprechen.',
-    'faq_beyond_accent': 'Mehr als',
-    'faq_beyond_title': 'gewöhnlich',
-    'faq_beyond_desc': 'Lerne unser Unternehmen kennen und erfahre, wie wir uns für Qualität und hervorragenden Service einsetzen. Schön, dass du ein Teil unserer Geschichte bist.',
-    'faq_beyond_btn': 'Jetzt loslegen',
-
     // --- Thank You Seite ---
     'thank_title': 'Vielen Dank!',
     'thank_desc': 'Deine Anfrage wurde erfolgreich übermittelt. Wir werden uns in Kürze bei dir melden.'
@@ -219,7 +201,6 @@ function switchLanguage(lang) {
   elements.forEach(function (el) {
     var key = el.getAttribute('data-i18n');
     if (translations[lang] && translations[lang][key]) {
-      // Wenn der Text HTML-Tags enthält (wie <span class="accent">), innerHTML verwenden, sonst textContent
       if (translations[lang][key].includes('<')) {
         el.innerHTML = translations[lang][key];
       } else {
