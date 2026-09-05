@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
+<a class="skip-link" href="#main-content" data-i18n="skip_link">Skip to main content</a>
 
 <header class="site-header">
   <div class="header-inner">
@@ -35,10 +35,10 @@
       <div class="nav-lang-container">
         <div class="lang-switcher">
           <button class="flag-btn" onclick="switchLanguage('de')" title="Deutsch">
-            <span style="font-size: 1.2rem;">DE</span>
+            <span style="font-size: 1.2rem;">🇩🇪</span>
           </button>
           <button class="flag-btn" onclick="switchLanguage('en')" title="English">
-            <span style="font-size: 1.2rem;">GB</span>
+            <span style="font-size: 1.2rem;">🇬🇧</span>
           </button>
         </div>
       </div>
@@ -50,72 +50,74 @@
 
   <section class="page-hero">
     <div class="container">
-      <h1><span class="accent">Beyond</span> the ordinary</h1>
-      <p>This is where our journey begins. Get to know our business and what we do, and how we're committed to quality and great service. Join us as we grow and succeed together.</p>
+      <h1 data-i18n="pricing_page_title"><span class="accent">Beyond</span> the ordinary</h1>
+      <p data-i18n="pricing_page_desc">This is where our journey begins. Get to know our business and what we do, and how we're committed to quality and great service. Join us as we grow and succeed together.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <h2>Choose your plan</h2>
-        <p>We offer a range of specialised plans tailored to meet your individual needs.</p>
+        <h2 data-i18n="pricing_section_heading">Choose your plan</h2>
+        <p data-i18n="pricing_section_sub">We offer a range of specialised plans tailored to meet your individual needs.</p>
       </div>
 
       <div class="grid-3">
 
         <div class="panel price-card">
-          <h3>Smart Start</h3>
-          <p class="price">€119<small> VAT incl.</small></p>
-          <p>Perfect for cafés, food trucks, kiosks, and small businesses getting started with digital menus.</p>
+          <h3 data-i18n="plan_start_title">Smart Start</h3>
+          <p class="price">€119<small data-i18n="vat_incl"> VAT incl.</small></p>
+          <p data-i18n="plan_start_desc">Perfect for cafés, food trucks, kiosks, and small businesses getting started with digital menus.</p>
           <ul>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Digital QR code menu</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Up to 50 menu items</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Mobile-friendly design</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Unique QR code</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>1 monthly menu update</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Billing Cycle  1-Year Subscription</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_qr">Digital QR code menu</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_start_items">Up to 50 menu items</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_mobile">Mobile-friendly design</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_unique_qr">Unique QR code</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_start_updates">1 monthly menu update</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_billing_year">Billing Cycle 1-Year Subscription</span></li>
           </ul>
-          <a class="btn btn--outline btn--block" href="order-info.html?plan=start">Choose Smart Start</a>
+          <a class="btn btn--outline btn--block" href="order-info.html?plan=start" data-i18n="btn_choose_start">Choose Smart Start</a>
         </div>
 
         <div class="panel price-card price-card--featured">
-          <span class="badge">Most popular</span>
-          <h3>Smart Pro</h3>
-          <p class="price">€129<small> VAT incl.</small></p>
-          <p>Ideal for growing restaurants and hospitality businesses that need greater flexibility.</p>
+          <span class="badge" data-i18n="badge_popular">Most popular</span>
+          <h3 data-i18n="plan_pro_title">Smart Pro</h3>
+          <p class="price">€129<small data-i18n="vat_incl"> VAT incl.</small></p>
+          <p data-i18n="plan_pro_desc">Ideal for growing restaurants and hospitality businesses that need greater flexibility.</p>
           <ul>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Digital QR code menu</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Up to 150 menu items</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Mobile-friendly design</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Unique QR code</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>3 monthly menu updates</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>1 extra language</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Billing Cycle  1-Year Subscription</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_qr">Digital QR code menu</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_pro_items">Up to 150 menu items</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_mobile">Mobile-friendly design</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_unique_qr">Unique QR code</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_pro_updates">3 monthly menu updates</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_pro_lang">1 extra language</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_billing_year">Billing Cycle 1-Year Subscription</span></li>
           </ul>
-          <a class="btn btn--block" href="order-info.html?plan=pro">Choose Smart Pro</a>
+          <a class="btn btn--block" href="order-info.html?plan=pro" data-i18n="btn_choose_pro">Choose Smart Pro</a>
         </div>
 
         <div class="panel price-card">
-          <h3>Smart Premium</h3>
-          <p class="price">€169<small> VAT incl.</small></p>
-          <p>Designed for busy restaurants, hotel restaurants, chains, and businesses seeking a fully professional solution.</p>
+          <h3 data-i18n="plan_premium_title">Smart Premium</h3>
+          <p class="price">€169<small data-i18n="vat_incl"> VAT incl.</small></p>
+          <p data-i18n="plan_premium_desc">Designed for busy restaurants, hotel restaurants, chains, and businesses seeking a fully professional solution.</p>
           <ul>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Digital QR code menu</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Up to 450 menu items</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Digital QR code menu</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Mobile-friendly design</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Unique QR code</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>6 monthly menu updates</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>2 extra languages</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg>Billing Cycle  1-Year Subscription</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_qr">Digital QR code menu</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_premium_items">Up to 450 menu items</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_mobile">Mobile-friendly design</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_unique_qr">Unique QR code</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_premium_updates">6 monthly menu updates</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_premium_lang">2 extra languages</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="feat_billing_year">Billing Cycle 1-Year Subscription</span></li>
           </ul>
-          <a class="btn btn--outline btn--block" href="order-info.html?plan=premium">Choose Smart Premium</a>
+          <a class="btn btn--outline btn--block" href="order-info.html?plan=premium" data-i18n="btn_choose_premium">Choose Smart Premium</a>
         </div>
 
       </div>
 
-      <p style="text-align:center;margin:2.4rem auto 0">Questions about a plan? Email <a href="mailto:smartmenusolutions@outlook.com" style="text-decoration:underline;color:var(--orange)">smartmenusolutions@outlook.com</a></p>
+      <p style="text-align:center;margin:2.4rem auto 0">
+        <span data-i18n="pricing_questions">Questions about a plan? Email</span> 
+        <a href="mailto:smartmenusolutions@outlook.com" style="text-decoration:underline;color:var(--orange)">smartmenusolutions@outlook.com</a>
+      </p>
     </div>
   </section>
 
@@ -129,10 +131,10 @@
         <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
       </a>
       <ul class="footer-links">
-        <li><a href="our-services.html">Services</a></li>
-        <li><a href="pricing-plans.html">Pricing</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="our-services.html" data-i18n="services">Services</a></li>
+        <li><a href="pricing-plans.html" data-i18n="pricing">Pricing</a></li>
+        <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
+        <li><a href="contact.html" data-i18n="contact">Contact</a></li>
       </ul>
       <div class="footer-social">
         <a href="https://instagram.com/smartmenusolutions/" aria-label="Smart Menu Solutions on Instagram" target="_blank" rel="noopener">
@@ -141,11 +143,11 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions</span>
+      <span data-i18n="footer_copyright">© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions</span>
       <ul class="footer-legal">
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="refund-policy.html">Refund Policy</a></li>
-        <li><a href="imprint.html">Imprint</a></li>
+        <li><a href="privacy-policy.html" data-i18n="privacy_policy">Privacy Policy</a></li>
+        <li><a href="refund-policy.html" data-i18n="refund_policy">Refund Policy</a></li>
+        <li><a href="imprint.html" data-i18n="imprint">Imprint</a></li>
         <li><a href="mailto:smartmenusolutions@outlook.com">smartmenusolutions@outlook.com</a></li>
       </ul>
     </div>
