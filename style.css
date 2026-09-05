@@ -617,7 +617,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 }
 
 /* ============================================================
-   MOBILE OPTIMIZATION (Including Language Switcher & Contact Grid Fix)
+   MOBILE OPTIMIZATION 
    ============================================================ */
 
 @media (max-width: 768px) {
@@ -633,7 +633,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
     margin: 0 auto;
   }
 
-  /* Korrektur für das Kontaktformular auf Mobilgeräten */
+  /* Korrektur für das Kontaktformular & Boxen auf Mobilgeräten */
   .contact-grid,
   .order-layout,
   .footer-inner{
@@ -643,6 +643,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 
   .contact-grid {
     gap: 1.5rem;
+    width: 100% !important;
   }
 
   .contact-side, 
@@ -650,6 +651,18 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   .order-card,
   .order-summary{
     width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Zwingt den Submit-Button auf dem Handy zur vollen Breite */
+  .contact-grid button,
+  .contact-grid .btn,
+  .contact-grid input[type="submit"] {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    display: flex !important;
   }
 
   .order-layout{
@@ -678,7 +691,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
     gap: 1rem;
   }
 
-  .btn,
   .order-submit{
     width: 100%;
     justify-content: center;
