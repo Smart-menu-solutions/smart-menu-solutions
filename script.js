@@ -103,30 +103,33 @@ var translations = {
     'index_transform_desc': 'Ready to embrace the future? Our digital menu solutions are designed to be modern, eye-catching, and incredibly easy to use. See how Smart Menu Solutions can bring a fresh, vibrant energy to your establishment and delight your customers.',
     'index_transform_btn': 'Start your order',
 
-    // --- Order / Order Info / Order Form Seiten ---
+    // --- FAQ Seite ---
+    'faq_hero_title': '<span class="accent">FAQ</span>',
+    'faq_hero_desc': "Our journey began with a simple idea: to digitalise restaurants with a modern, eye-catching brand. Here's what people usually ask us before getting started.",
+    'faq_q1': 'Do I need technical skills?',
+    'faq_a1': 'No. We handle the entire setup for you.',
+    'faq_q2': 'How do I get started?',
+    'faq_a2': 'Choose a plan, complete your order, and send us your menu and logo.',
+    'faq_q3': 'Do customers need an app?',
+    'faq_a3': 'No. They simply scan the QR code with their phone camera.',
+    'faq_q4': 'Do you provide support?',
+    'faq_a4': "Yes. We're here to help whenever you need assistance.",
+    'faq_q5': 'Can I update my menu later?',
+    'faq_a5': 'Yes. Menu updates are available based on your plan.',
+    'faq_q6': 'Can I upgrade my plan?',
+    'faq_a6': 'Yes. You can upgrade at any time as your business grows.',
+    'faq_q7': 'What happens after I submit my order request?',
+    'faq_a7': "We'll review your details and menu, then contact you directly to confirm the next steps.",
+    'faq_beyond_accent': 'Beyond',
+    'faq_beyond_title': 'the ordinary',
+    'faq_beyond_desc': "Get to know our business and how we're committed to quality and great service. We're glad you're here to be part of our story.",
+    'faq_beyond_btn': "Let's get started",
+
+    // --- Order / Contact Seiten ---
     'order_hero_title': 'Place Your Order',
     'order_hero_desc': 'Fill out the details below to kick off your digital menu setup.',
-    'order_step1': '1. Choose your plan',
-    'order_step2': '2. Enter restaurant info',
-    'order_step3': '3. Submit and get ready',
-
-    // --- Contact Seite ---
     'contact_hero_title': 'Get in touch to start your digital menu journey',
-    'contact_hero_desc': "Whether you're ready to launch your first digital menu or want to learn more about our solutions, we're here to help. Contact Smart Menu Solutions today and discover how simple and affordable it is to modernise your restaurant, café, bar, or food business.",
-    'contact_form_heading': 'Contact us today',
-    'form_name': 'Name *',
-    'form_email': 'Email address *',
-    'form_message': 'Message *',
-    'form_submit': 'Submit form',
-    'form_hint': "Complete the form and we'll get back to you as soon as possible.",
-    'contact_next_heading': 'What happens next?',
-    'contact_next_text1': "We'll contact you within 24 hours to discuss your requirements, answer any questions, and recommend the best digital menu solution for your business. Once approved, we'll create and set up your digital menu, generate your QR code, and have everything ready for your customers as quickly as possible.",
-    'contact_next_text2': "Let's create a smarter dining experience for your customers.",
-    'contact_tagline': 'Smart menus. Better experiences.',
-
-    // --- Thank You Seite ---
-    'thank_title': 'Thank you!',
-    'thank_desc': 'Your request has been successfully submitted. We will be in touch shortly.'
+    'contact_hero_desc': "Whether you're ready to launch your first digital menu or want to learn more about our solutions, we're here to help."
   },
   'de': {
     // --- Globale Navigation & Footer ---
@@ -202,36 +205,39 @@ var translations = {
 
     // --- Index / Startseite ---
     'index_hero_title': '<span class="accent">SCANNEN. ANSEHEN. GENIESSEN.</span> Intelligente Lösungen für moderne Unternehmen',
-    'index_hero_lede': 'Willkommen bei Smart Menu Solutions, wo wir digitale Innovation mit modernem Branding verbinden, um das Gastgewerbe zu revolutionieren. Entdecken Sie, wie unsere kreativen Lösungen Ihr Restaurant oder Café verändern können.',
+    'index_hero_lede': 'Willkommen bei Smart Menu Solutions, wo wir digitale Innovation mit modernem Branding verbinden, um das Gastgewerbe zu revolutionieren.',
     'index_hero_btn': 'Unsere Dienste erkunden',
     'index_transform_title': 'Verändern Sie Ihr Unternehmen <span class="accent">heute</span>',
-    'index_transform_desc': 'Bereit, die Zukunft zu gestalten? Unsere digitalen Menülösungen sind modern, auffallend und unglaublich einfach zu bedienen. Erfahren Sie, wie Smart Menu Solutions frische, lebendige Energie in Ihren Betrieb bringt und Ihre Gäste begeistert.',
+    'index_transform_desc': 'Bereit, die Zukunft zu gestalten? Unsere digitalen Menülösungen sind modern, auffallend und unglaublich einfach zu bedienen.',
     'index_transform_btn': 'Bestellung starten',
 
-    // --- Order / Order Info / Order Form Seiten ---
+    // --- FAQ Seite ---
+    'faq_hero_title': '<span class="accent">FAQ</span>',
+    'faq_hero_desc': 'Unsere Reise begann mit einer einfachen Idee: Restaurants mit einer modernen, auffälligen Marke zu digitalisieren. Hier ist, was uns Kunden meistens fragen, bevor sie starten.',
+    'faq_q1': 'Brauche ich technische Vorkenntnisse?',
+    'faq_a1': 'Nein. Wir übernehmen die komplette Einrichtung für dich.',
+    'faq_q2': 'Wie fange ich an?',
+    'faq_a2': 'Wähle einen Tarif, schließe deine Bestellung ab und schicke uns deine Speisekarte sowie dein Logo.',
+    'faq_q3': 'Müssen Kunden eine App herunterladen?',
+    'faq_a3': 'Nein. Sie scannen einfach den QR-Code mit ihrer Smartphone-Kamera.',
+    'faq_q4': 'Bietet ihr Support an?',
+    'faq_a4': 'Ja. Wir sind immer für dich da, wenn du Hilfe brauchst.',
+    'faq_q5': 'Kann ich meine Speisekarte später aktualisieren?',
+    'faq_a5': 'Ja. Menü-Updates sind je nach gewähltem Tarif inklusive.',
+    'faq_q6': 'Kann ich meinen Tarif upgraden?',
+    'faq_a6': 'Ja. Du kannst jederzeit upgraden, wenn dein Geschäft wächst.',
+    'faq_q7': 'Was passiert, nachdem ich meine Bestellung abgeschickt habe?',
+    'faq_a7': 'Wir prüfen deine Details und Speisekarte und kontaktieren dich direkt, um die nächsten Schritte zu besprechen.',
+    'faq_beyond_accent': 'Mehr als',
+    'faq_beyond_title': 'gewöhnlich',
+    'faq_beyond_desc': 'Lerne unser Unternehmen kennen und erfahre, wie wir uns für Qualität und exzellenten Service einsetzen. Schön, dass du ein Teil unserer Geschichte bist.',
+    'faq_beyond_btn': 'Jetzt starten',
+
+    // --- Order / Contact Seiten ---
     'order_hero_title': 'Bestellung aufgeben',
     'order_hero_desc': 'Fülle die folgenden Details aus, um deine digitale Menü-Einrichtung zu starten.',
-    'order_step1': '1. Wähle deinen Plan',
-    'order_step2': '2. Restaurant-Infos eingeben',
-    'order_step3': '3. Absenden und bereit machen',
-
-    // --- Contact Seite ---
     'contact_hero_title': 'Kontaktiere uns und starte deine Reise zur digitalen Speisekarte',
-    'contact_hero_desc': 'Egal, ob du bereit bist, deine erste digitale Speisekarte einzuführen oder mehr über unsere Lösungen erfahren möchtest – wir sind für dich da. Kontaktiere Smart Menu Solutions noch heute und entdecke, wie einfach und günstig es ist, dein Restaurant, Café, deine Bar oder dein Gastro-Business zu modernisieren.',
-    'contact_form_heading': 'Kontaktiere uns heute',
-    'form_name': 'Name *',
-    'form_email': 'E-Mail-Adresse *',
-    'form_message': 'Nachricht *',
-    'form_submit': 'Formular absenden',
-    'form_hint': 'Fülle das Formular aus und wir melden uns schnellstmöglich bei dir.',
-    'contact_next_heading': 'Wie geht es weiter?',
-    'contact_next_text1': 'Wir melden uns innerhalb von 24 Stunden bei dir, um deine Anforderungen zu besprechen, Fragen zu beantworten und die beste digitale Menü-Lösung zu empfehlen. Nach Freigabe erstellen wir deine Speisekarte, generieren den QR-Code und machen alles so schnell wie möglich bereit.',
-    'contact_next_text2': 'Lass uns ein smarteres Esserlebnis für deine Gäste schaffen.',
-    'contact_tagline': 'Smart menus. Better experiences.',
-
-    // --- Thank You Seite ---
-    'thank_title': 'Vielen Dank!',
-    'thank_desc': 'Deine Anfrage wurde erfolgreich übermittelt. Wir werden uns in Kürze bei dir melden.'
+    'contact_hero_desc': 'Egal, ob du bereit bist, deine erste digitale Speisekarte einzuführen oder mehr über unsere Lösungen erfahren möchtest – wir sind für dich da.'
   }
 };
 
