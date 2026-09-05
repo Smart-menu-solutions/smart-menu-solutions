@@ -1,5 +1,3 @@
-console.log("SCRIPT GELADEN");
-
 document.addEventListener('DOMContentLoaded', function () {
   // Mobile Navigation Toggle
   var toggle = document.querySelector('.nav-toggle');
@@ -18,12 +16,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Beim Laden gespeicherte Sprache wiederherstellen (falls vorhanden)
+  // Sprache beim Laden wiederherstellen
   var savedLang = localStorage.getItem('selectedLang') || 'en';
-  setLanguage(savedLang);
+  switchLanguage(savedLang);
 });
 
-// Erweitertes Wörterbuch für Übersetzungen
+// Übersetzungswörterbuch
 var translations = {
   'en': {
     'home': 'Home',
@@ -33,61 +31,45 @@ var translations = {
     'order': 'Order',
     'contact': 'Contact',
     'get_started': 'Get started',
-    
-    // Allgemeine Seiteninhalte & Hero-Bereiche
-    'hero_beyond': 'Beyond',
-    'choose_plan': 'Choose your plan',
-    'plan_subtitle': 'We offer a range of specialised plans tailored to meet your individual needs.',
-    
-    // Preiskarten-Titel
-    'plan_start_title': 'Smart Start',
-    'plan_pro_title': 'Smart Pro',
-    'plan_premium_title': 'Smart Premium',
-    
-    // Buttons
-    'btn_start': 'Choose Smart Start',
-    'btn_pro': 'Choose Smart Pro',
-    'btn_premium': 'Choose Smart Premium'
+    'contact_hero_title': 'Get in touch to start your digital menu journey',
+    'contact_hero_desc': "Whether you're ready to launch your first digital menu or want to learn more about our solutions, we're here to help. Contact Smart Menu Solutions today and discover how simple and affordable it is to modernise your restaurant, café, bar, or food business.",
+    'contact_form_heading': 'Contact us today',
+    'form_name': 'Name *',
+    'form_email': 'Email address *',
+    'form_message': 'Message *',
+    'form_submit': 'Submit form',
+    'form_hint': "Complete the form and we'll get back to you as soon as possible.",
+    'contact_next_heading': 'What happens next?',
+    'contact_next_text1': "We'll contact you within 24 hours to discuss your requirements, answer any questions, and recommend the best digital menu solution for your business. Once approved, we'll create and set up your digital menu, generate your QR code, and have everything ready for your customers as quickly as possible.",
+    'contact_next_text2': "Let's create a smarter dining experience for your customers.",
+    'contact_tagline': 'Smart menus. Better experiences.'
   },
   'de': {
-    'home': 'Startseite',
-    'services': 'Unsere Leistungen',
+    'home': 'Home',
+    'services': 'Leistungen',
     'pricing': 'Preise',
     'faq': 'FAQ',
     'order': 'Bestellen',
     'contact': 'Kontakt',
     'get_started': 'Loslegen',
-    
-    // Allgemeine Seiteninhalte & Hero-Bereiche
-    'hero_beyond': 'Jenseits des',
-    'choose_plan': 'Wähle deinen Tarif',
-    'plan_subtitle': 'Wir bieten eine Reihe spezialisierter Tarife, die auf deine individuellen Bedürfnisse zugeschnitten sind.',
-    
-    // Preiskarten-Titel
-    'plan_start_title': 'Smart Start',
-    'plan_pro_title': 'Smart Pro',
-    'plan_premium_title': 'Smart Premium',
-    
-    // Buttons
-    'btn_start': 'Smart Start wählen',
-    'btn_pro': 'Smart Pro wählen',
-    'btn_premium': 'Smart Premium wählen'
+    'contact_hero_title': 'Kontaktiere uns und starte deine Reise zur digitalen Speisekarte',
+    'contact_hero_desc': 'Egal, ob du bereit bist, deine erste digitale Speisekarte einzuführen oder mehr über unsere Lösungen erfahren möchtest – wir sind für dich da. Kontaktiere Smart Menu Solutions noch heute und entdecke, wie einfach und günstig es ist, dein Restaurant, Café, deine Bar oder dein Gastro-Business zu modernisieren.',
+    'contact_form_heading': 'Kontaktiere uns heute',
+    'form_name': 'Name *',
+    'form_email': 'E-Mail-Adresse *',
+    'form_message': 'Nachricht *',
+    'form_submit': 'Formular absenden',
+    'form_hint': 'Fülle das Formular aus und wir melden uns schnellstmöglich bei dir.',
+    'contact_next_heading': 'Wie geht es weiter?',
+    'contact_next_text1': 'Wir melden uns innerhalb von 24 Stunden bei dir, um deine Anforderungen zu besprechen, Fragen zu beantworten und die beste digitale Menü-Lösung zu empfehlen. Nach Freigabe erstellen wir deine Speisekarte, generieren den QR-Code und machen alles so schnell wie möglich bereit.',
+    'contact_next_text2': 'Lass uns ein smarteres Esserlebnis für deine Gäste schaffen.',
+    'contact_tagline': 'Smart menus. Better experiences.'
   }
 };
 
-// Hauptfunktion zum Sprachwechsel
 function switchLanguage(lang) {
-  setLanguage(lang);
-  localStorage.setItem('selectedLang', lang); // Sprache für andere Seiten merken
-}
-
-function setLanguage(lang) {
-  console.log("Sprache aktiv: " + lang);
-  document.documentElement.setAttribute('lang', lang);
-
-  // Wir suchen nach Elementen mit dem Attribut data-i18n und übersetzen sie
+  localStorage.setItem('selectedLang', lang);
   var elements = document.querySelectorAll('[data-i18n]');
-  elements.elements = elements || [];
   elements.forEach(function (el) {
     var key = el.getAttribute('data-i18n');
     if (translations[lang] && translations[lang][key]) {
