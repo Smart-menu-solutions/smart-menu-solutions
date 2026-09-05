@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 var translations = {
   'en': {
     // --- Globale Navigation & Footer ---
+    'skip_link': 'Skip to main content',
     'home': 'Home',
     'services': 'Our Services',
     'pricing': 'Pricing Plans',
@@ -35,11 +36,15 @@ var translations = {
     'privacy_policy': 'Privacy Policy',
     'refund_policy': 'Refund Policy',
     'imprint': 'Imprint',
+    'footer_copyright': '© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions',
 
     // --- Index / Startseite ---
-    'index_hero_title': 'Smart menus. Better experiences.',
-    'index_hero_desc': 'Transform your restaurant, café or bar with modern digital QR code menus. Fast, elegant and easy to update.',
-    'index_hero_btn': 'Explore Plans',
+    'index_hero_title': '<span class="accent">SCAN. VIEW. ENJOY.</span> Smart solutions for modern business',
+    'index_hero_lede': 'Welcome to Smart Menu Solutions, where we blend digital innovation with modern branding to revolutionise the hospitality industry. Discover how our creative solutions can transform your restaurant or cafe.',
+    'index_hero_btn': 'Explore our services',
+    'index_transform_title': 'Transform your business <span class="accent">today</span>',
+    'index_transform_desc': 'Ready to embrace the future? Our digital menu solutions are designed to be modern, eye-catching, and incredibly easy to use. See how Smart Menu Solutions can bring a fresh, vibrant energy to your establishment and delight your customers.',
+    'index_transform_btn': 'Start your order',
 
     // --- Our Services Seite ---
     'services_hero_title': 'Our Services',
@@ -114,21 +119,26 @@ var translations = {
   },
   'de': {
     // --- Globale Navigation & Footer ---
-    'home': 'Home',
-    'services': 'Leistungen',
+    'skip_link': 'Zum Hauptinhalt springen',
+    'home': 'Startseite',
+    'services': 'Unsere Dienste',
     'pricing': 'Preise',
     'faq': 'FAQ',
     'order': 'Bestellen',
     'contact': 'Kontakt',
     'get_started': 'Loslegen',
     'privacy_policy': 'Datenschutz',
-    'refund_policy': 'Widerrufsbelehrung',
+    'refund_policy': 'Rückerstattungsrichtlinie',
     'imprint': 'Impressum',
+    'footer_copyright': '© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions',
 
     // --- Index / Startseite ---
-    'index_hero_title': 'Smarte Menüs. Bessere Erlebnisse.',
-    'index_hero_desc': 'Transformiere dein Restaurant, Café oder deine Bar mit modernen digitalen QR-Code-Menüs. Schnell, elegant und einfach zu aktualisieren.',
-    'index_hero_btn': 'Pläne ansehen',
+    'index_hero_title': '<span class="accent">SCANNEN. ANSEHEN. GENIESSEN.</span> Intelligente Lösungen für moderne Unternehmen',
+    'index_hero_lede': 'Willkommen bei Smart Menu Solutions, wo wir digitale Innovation mit modernem Branding verbinden, um das Gastgewerbe zu revolutionieren. Entdecken Sie, wie unsere kreativen Lösungen Ihr Restaurant oder Café verändern können.',
+    'index_hero_btn': 'Unsere Dienste erkunden',
+    'index_transform_title': 'Verändern Sie Ihr Unternehmen <span class="accent">heute</span>',
+    'index_transform_desc': 'Bereit, die Zukunft zu gestalten? Unsere digitalen Menülösungen sind modern, auffallend und unglaublich einfach zu bedienen. Erfahren Sie, wie Smart Menu Solutions frische, lebendige Energie in Ihren Betrieb bringt und Ihre Gäste begeistert.',
+    'index_transform_btn': 'Bestellung starten',
 
     // --- Our Services Seite ---
     'services_hero_title': 'Unsere Leistungen',
@@ -209,7 +219,12 @@ function switchLanguage(lang) {
   elements.forEach(function (el) {
     var key = el.getAttribute('data-i18n');
     if (translations[lang] && translations[lang][key]) {
-      el.textContent = translations[lang][key];
+      // Wenn der Text HTML-Tags enthält (wie <span class="accent">), innerHTML verwenden, sonst textContent
+      if (translations[lang][key].includes('<')) {
+        el.innerHTML = translations[lang][key];
+      } else {
+        el.textContent = translations[lang][key];
+      }
     }
   });
 }
