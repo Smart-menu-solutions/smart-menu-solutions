@@ -57,74 +57,76 @@
 
   <section class="section">
     <div class="container">
-      <div class="grid-2" style="align-items: start; gap: 3rem;">
+      <div class="order-layout">
         
-        <!-- Linke Spalte: Formular -->
-        <div>
+        <!-- Linke Seite: Formular-Karte -->
+        <div class="order-form-wrap">
           <form class="order-form" action="#" method="POST">
-            <h2 data-i18n="form_main_title" style="margin-bottom: 1.5rem;">Start your order</h2>
+            <h2 data-i18n="form_main_title">Start your order</h2>
             
-            <div class="form-section" style="margin-bottom: 2rem;">
-              <span class="form-step-num" data-i18n="step_contact_label" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--accent); margin-bottom: 1rem;">01 / CONTACT INFORMATION</span>
-              
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                <div>
-                  <label for="first-name" data-i18n="label_firstname" style="display: block; font-size: 0.9rem; margin-bottom: 0.4rem;">First name</label>
-                  <input type="text" id="first-name" name="first-name" placeholder="First name" data-i18n-placeholder="placeholder_firstname" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px;" required>
+            <div class="form-section">
+              <span class="form-step-num" data-i18n="step_contact_label">01 / CONTACT INFORMATION</span>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="first-name" data-i18n="label_firstname">First name</label>
+                  <input type="text" id="first-name" name="first-name" placeholder="First name" data-i18n-placeholder="placeholder_firstname" required>
                 </div>
-                <div>
-                  <label for="last-name" data-i18n="label_lastname" style="display: block; font-size: 0.9rem; margin-bottom: 0.4rem;">Last name</label>
-                  <input type="text" id="last-name" name="last-name" placeholder="Last name" data-i18n-placeholder="placeholder_lastname" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px;" required>
+                <div class="form-group">
+                  <label for="last-name" data-i18n="label_lastname">Last name</label>
+                  <input type="text" id="last-name" name="last-name" placeholder="Last name" data-i18n-placeholder="placeholder_lastname" required>
                 </div>
               </div>
-              
-              <div>
-                <label for="email" data-i18n="label_email" style="display: block; font-size: 0.9rem; margin-bottom: 0.4rem;">Email address</label>
-                <input type="email" id="email" name="email" placeholder="you@business.com" data-i18n-placeholder="placeholder_email" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 6px;" required>
+              <div class="form-group">
+                <label for="email" data-i18n="label_email">Email address</label>
+                <input type="email" id="email" name="email" placeholder="you@business.com" data-i18n-placeholder="placeholder_email" required>
               </div>
             </div>
 
             <div class="form-section">
-              <span class="form-step-num" data-i18n="step_plan_label" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--accent); margin-bottom: 1rem;">02 / SELECT YOUR PLAN</span>
+              <span class="form-step-num" data-i18n="step_plan_label">02 / SELECT YOUR PLAN</span>
+              
+              <!-- Die 3 Tarif-Auswahlboxen unten im Formular -->
+              <div class="plan-cards-row">
+                <div class="plan-card-option">
+                  <span class="plan-option-name" data-i18n="plan_start_title">Smart Start</span>
+                  <span class="plan-option-price">€119</span>
+                </div>
+                <div class="plan-card-option is-selected">
+                  <span class="plan-option-name" data-i18n="plan_pro_title">Smart Pro</span>
+                  <span class="plan-option-price">€129</span>
+                </div>
+                <div class="plan-card-option">
+                  <span class="plan-option-name" data-i18n="plan_premium_title">Smart Premium</span>
+                  <span class="plan-option-price">€169</span>
+                </div>
+              </div>
             </div>
           </form>
         </div>
 
-        <!-- Rechte Spalte: Bestellübersicht -->
-        <div>
-          <div style="background: #1e1e1e; color: #fff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-            <span style="font-size: 0.75rem; letter-spacing: 1px; color: var(--accent); font-weight: 700;" data-i18n="summary_header">ORDER SUMMARY</span>
-            <h3 style="font-size: 1.8rem; margin: 0.5rem 0 1.5rem 0; color: #fff;">Smart Pro</h3>
+        <!-- Rechte Seite: Bestellübersicht -->
+        <div class="order-summary-wrap">
+          <div class="order-summary-card">
+            <span class="summary-top-label" data-i18n="summary_header">ORDER SUMMARY</span>
+            <h3 class="summary-plan-title">Smart Pro</h3>
             
-            <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; border-top: 1px solid #333; border-bottom: 1px solid #333;">
-              <li style="display: flex; justify-content: space-between; padding: 0.9rem 0; border-bottom: 1px solid #2a2a2a; font-size: 0.95rem;">
-                <span data-i18n="feat_qr">Digital QR menu</span> 
-                <span style="color: #bbb;" data-i18n="included">Included</span>
-              </li>
-              <li style="display: flex; justify-content: space-between; padding: 0.9rem 0; border-bottom: 1px solid #2a2a2a; font-size: 0.95rem;">
-                <span data-i18n="summary_updates_label">Menu updates</span> 
-                <span style="color: #bbb;">3 / month</span>
-              </li>
-              <li style="display: flex; justify-content: space-between; padding: 0.9rem 0; font-size: 0.95rem;">
-                <span data-i18n="feat_billing_year">Billing Cycle 1-Year Subscription</span> 
-                <span style="color: #bbb;" data-i18n="included">Included</span>
-              </li>
+            <ul class="summary-features">
+              <li><span data-i18n="feat_qr">Digital QR menu</span> <span class="val" data-i18n="included">Included</span></li>
+              <li><span data-i18n="summary_updates_label">Menu updates</span> <span class="val">3 / month</span></li>
+              <li><span data-i18n="feat_billing_year">Billing Cycle 1-Year Subscription</span> <span class="val" data-i18n="included">Included</span></li>
             </ul>
 
-            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem;">
+            <div class="summary-total">
               <div>
-                <span style="display: block; font-size: 0.75rem; letter-spacing: 0.5px; color: #aaa;" data-i18n="total_due">TOTAL DUE</span>
-                <span style="font-size: 0.75rem; color: #888;" data-i18n="vat_incl">VAT incl.</span>
+                <span class="total-label" data-i18n="total_due">TOTAL DUE</span>
+                <span class="total-vat" data-i18n="vat_incl">VAT incl.</span>
               </div>
-              <span style="font-size: 2rem; font-weight: 700; color: var(--accent);">€129.00</span>
+              <span class="total-price">€129.00</span>
             </div>
 
-            <div style="background: #262626; padding: 1rem; border-radius: 8px; display: flex; gap: 0.75rem; align-items: flex-start;">
-              <span style="font-size: 1.2rem;">🛡️</span>
-              <p style="font-size: 0.85rem; margin: 0; color: #ccc; line-height: 1.4;">
-                <strong style="color: #fff; display: block; margin-bottom: 0.2rem;" data-i18n="what_happens_next">What happens next?</strong> 
-                <span data-i18n="what_happens_next_desc">Submit your order request and we'll contact you with the next steps.</span>
-              </p>
+            <div class="summary-notice">
+              <span class="notice-icon">🛡️</span>
+              <p><strong data-i18n="what_happens_next">What happens next?</strong> <span data-i18n="what_happens_next_desc">Submit your order request and we'll contact you with the next steps.</span></p>
             </div>
           </div>
         </div>
