@@ -8,6 +8,134 @@
 <meta name="description" content="Place your order for a Smart Menu Solutions digital QR menu — choose your plan and upload your menu to get started.">
 <link rel="icon" type="image/png" href="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&amp;enable=upscale&amp;height=64">
 <link rel="stylesheet" href="style.css">
+<style>
+  /* Fixierte Inline-Stile, damit das Layout garantiert wie gewünscht aussieht */
+  .order-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .order-form-wrap {
+    flex: 1.2;
+  }
+  .order-summary-wrap {
+    flex: 0.9;
+    position: sticky;
+    top: 40px;
+  }
+  .plan-cards-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .plan-card-option {
+    flex: 1;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+    cursor: pointer;
+    background: #fff;
+    transition: all 0.2s ease;
+  }
+  .plan-card-option.is-selected, .plan-card-option:hover {
+    border-color: #f97316;
+    background-color: #fffaf5;
+  }
+  .plan-option-name {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #1f2937;
+    margin-bottom: 6px;
+  }
+  .plan-option-price {
+    display: block;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #f97316;
+  }
+  .order-summary-card {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+    border-radius: 16px !important;
+    padding: 35px !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+  .order-summary-card .summary-top-label {
+    color: #9ca3af !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .order-summary-card .summary-plan-title {
+    color: #ffffff !important;
+    font-size: 1.5rem !important;
+    margin-bottom: 25px !important;
+    font-weight: 700;
+  }
+  .order-summary-card .summary-features {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 0 25px 0 !important;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .order-summary-card .summary-features li {
+    display: flex !important;
+    justify-content: space-between !important;
+    padding: 14px 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.9rem;
+    color: #d1d5db;
+  }
+  .order-summary-card .summary-features li:last-child {
+    border-bottom: none;
+  }
+  .order-summary-card .summary-features .val {
+    color: #4ade80 !important;
+    font-weight: 500;
+  }
+  .order-summary-card .summary-total {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 25px !important;
+  }
+  .order-summary-card .total-label {
+    font-size: 0.75rem !important;
+    color: #9ca3af !important;
+    display: block;
+  }
+  .order-summary-card .total-vat {
+    font-size: 0.7rem !important;
+    color: #9ca3af !important;
+  }
+  .order-summary-card .total-price {
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+  }
+  .order-summary-card .summary-notice {
+    display: flex !important;
+    gap: 12px !important;
+    background: rgba(255,255,255,0.05) !important;
+    padding: 15px !important;
+    border-radius: 10px !important;
+  }
+  .order-summary-card .summary-notice p {
+    margin: 0 !important;
+    font-size: 0.85rem !important;
+    color: #9ca3af !important;
+  }
+  .order-summary-card .summary-notice strong {
+    color: #ffffff !important;
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content" data-i18n="skip_link">Skip to main content</a>
@@ -112,7 +240,7 @@
               </div>
             </div>
 
-            <button type="submit" class="order-submit btn" id="payButton">
+            <button type="submit" class="order-submit btn" id="payButton" style="width: 100%; margin-top: 20px; border: none; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px;">
               <span data-i18n="submit_order_btn">Submit order request</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </button>
