@@ -1,49 +1,430 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bestellung - Smart Menu Solutions</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Start Your Order | Smart Menu Solutions</title>
+<meta name="description" content="Place your order for a Smart Menu Solutions digital QR menu — choose your plan and upload your menu to get started.">
+<link rel="icon" type="image/png" href="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&amp;enable=upscale&amp;height=64">
+<link rel="stylesheet" href="style.css">
+<style>
+  main#main-content .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+  }
+  .order-layout {
+    display: flex !important;
+    gap: 40px !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
+  .order-form-wrap {
+    flex: 1.3 !important;
+  }
+  .order-summary-wrap {
+    flex: 0.9 !important;
+    position: sticky !important;
+    top: 40px !important;
+  }
+  .plan-cards-row {
+    display: flex !important;
+    gap: 15px !important;
+    margin-top: 10px !important;
+  }
+  .plan-card-option {
+    flex: 1 !important;
+    border: 2px solid #e5e7eb !important;
+    border-radius: 12px !important;
+    padding: 18px 10px !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    background: #fff !important;
+    transition: all 0.2s ease !important;
+  }
+  .plan-card-option.is-selected, .plan-card-option:hover {
+    border-color: #f97316 !important;
+    background-color: #fffaf5 !important;
+  }
+  .plan-option-name {
+    display: block !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    color: #1f2937 !important;
+    margin-bottom: 6px !important;
+  }
+  .plan-option-price {
+    display: block !important.
+    font-weight: 700 !important;
+    font-size: 1.15rem !important;
+    color: #f97316 !important;
+  }
+  /* Korrigiertes Layout für First name & Last name nebeneinander */
+  .form-row {
+    display: flex !important;
+    gap: 20px !important;
+    width: 100% !important;
+  }
+  .form-row .form-group {
+    flex: 1 !important;
+  }
+  .form-group {
+    margin-bottom: 20px !important;
+  }
+  .form-group label {
+    display: block !important;
+    margin-bottom: 8px !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+    color: #374151 !important;
+  }
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="tel"] {
+    width: 100% !important;
+    padding: 12px 16px !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.2s !important;
+  }
+  .form-group input:focus {
+    border-color: #f97316 !important;
+  }
+  .form-section {
+    margin-bottom: 30px !important;
+  }
+  .form-step-num {
+    display: block !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    color: #6b7280 !important;
+    margin-bottom: 12px !important;
+  }
+  /* Order Summary Card - Orange Akzente wie im Original */
+  .order-summary-card {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+    border-radius: 16px !important;
+    padding: 35px !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+  }
+  .order-summary-card .summary-top-label {
+    color: #9ca3af !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 1.5px !important;
+    font-weight: 700 !important;
+    display: block !important;
+    margin-bottom: 8px !important;
+  }
+  .order-summary-card .summary-plan-title {
+    color: #ffffff !important;
+    font-size: 1.5rem !important;
+    margin-bottom: 25px !important;
+    font-weight: 700 !important;
+  }
+  .order-summary-card .summary-features {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 0 25px 0 !important;
+    border-top: 1px solid rgba(255,255,255,0.1) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+  }
+  .order-summary-card .summary-features li {
+    display: flex !important;
+    justify-content: space-between !important;
+    padding: 14px 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    font-size: 0.9rem !important;
+    color: #d1d5db !important;
+  }
+  .order-summary-card .summary-features li:last-child {
+    border-bottom: none !important;
+  }
+  /* Hier wieder auf ORANGE gesetzt wie im Originalfoto */
+  .order-summary-card .summary-features .val {
+    color: #f97316 !important;
+    font-weight: 600 !important;
+  }
+  .order-summary-card .summary-total {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 25px !important;
+  }
+  .order-summary-card .total-label {
+    font-size: 0.75rem !important;
+    color: #9ca3af !important;
+    display: block !important;
+  }
+  .order-summary-card .total-vat {
+    font-size: 0.7rem !important;
+    color: #9ca3af !important;
+  }
+  .order-summary-card .total-price {
+    font-size: 2rem !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+  }
+  .order-summary-card .summary-notice {
+    display: flex !important;
+    gap: 12px !important;
+    background: rgba(255,255,255,0.05) !important;
+    padding: 15px !important;
+    border-radius: 10px !important;
+  }
+  .order-summary-card .summary-notice p {
+    margin: 0 !important;
+    font-size: 0.85rem !important;
+    color: #9ca3af !important;
+  }
+  .order-summary-card .summary-notice strong {
+    color: #ffffff !important;
+  }
+</style>
 </head>
 <body>
-    <div class="order-container">
-        <h1>Digitale Speisekarte anfordern</h1>
-        <p>Fülle das Formular aus und lade deine aktuelle Speisekarte als PDF hoch.</p>
+<a class="skip-link" href="#main-content" data-i18n="skip_link">Skip to main content</a>
 
-        <form class="order-form" action="https://formsubmit.co/smartmenusolutions@outlook.com" method="POST" enctype="multipart/form-data">
-            <!-- Weiterleitung zur Thank-You-Seite nach erfolgreichem Absenden -->
-            <input type="hidden" name="_next" value="https://DEIN-GITHUB-BENUTZERNAME.github.io/DEIN-REPO-NAME/thank-you.html">
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <img src="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&amp;enable=upscale&amp;height=70" alt="">
+      <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav class="main-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html" data-i18n="home">Home</a></li>
+        <li><a href="our-services.html" data-i18n="services">Our Services</a></li>
+        <li><a href="pricing-plans.html" data-i18n="pricing">Pricing Plans</a></li>
+        <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
+        <li><a href="order.html" aria-current="page" data-i18n="order">Order</a></li>
+        <li><a href="contact.html" data-i18n="contact">Contact</a></li>
+      </ul>
+      <a class="btn nav-cta" href="order-info.html" data-i18n="get_started">Get started</a>
+
+      <div class="nav-lang-container">
+        <div class="lang-switcher">
+          <button class="flag-btn" onclick="switchLanguage('de')" title="Deutsch">
+            <span style="font-size: 1.2rem;">🇩🇪</span>
+          </button>
+          <button class="flag-btn" onclick="switchLanguage('en')" title="English">
+            <span style="font-size: 1.2rem;">🇬🇧</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <section class="page-hero">
+    <div class="container">
+      <h1 data-i18n="order_info_hero_title">Start your <span class="accent">order</span></h1>
+      <p data-i18n="order_info_hero_desc">Fill in your details, choose a plan, and upload your menu — we'll take it from there.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="order-layout">
+        
+        <div class="order-form-wrap">
+          <!-- FormSubmit-Anbindung mit Weiterleitung zur Dankeschön-Seite -->
+          <form class="order-form" action="https://formsubmit.co/smartmenusolutions@outlook.com" method="POST" enctype="multipart/form-data">
+            
+            <!-- Weiterleitung nach erfolgreichem Absenden zur Thank-You-Seite -->
+            <input type="hidden" name="_next" value="https://smart-menu-solutions.github.io/smart-menu-solutions/thank-you.html">
             <input type="hidden" name="_subject" value="Neue Bestellung eingegangen! - Smart Menu Solutions">
             <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="selected_plan" id="selectedPlanInput" value="Smart Pro">
 
-            <div class="form-group">
-                <label for="restaurant">Restaurant-Name:</label>
-                <input type="text" id="restaurant" name="Restaurant_Name" required>
+            <h2 data-i18n="form_main_title" style="display:none;">Start your order</h2>
+
+            <div class="form-section">
+              <span class="form-step-num" data-i18n="step_contact_label">01 / CONTACT INFORMATION</span>
+              
+              <!-- First name und Last name exakt nebeneinander in einer Reihe mit perfektem Autofill -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="first-name" data-i18n="label_firstname">First name</label>
+                  <input type="text" id="first-name" name="first-name" autocomplete="given-name" placeholder="First name" data-i18n-placeholder="placeholder_firstname" required>
+                </div>
+                <div class="form-group">
+                  <label for="last-name" data-i18n="label_lastname">Last name</label>
+                  <input type="text" id="last-name" name="last-name" autocomplete="family-name" placeholder="Last name" data-i18n-placeholder="placeholder_lastname" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email" data-i18n="label_email">Email address</label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="you@business.com" data-i18n-placeholder="placeholder_email" required>
+              </div>
             </div>
 
-            <div class="form-group">
-                <label for="name">Dein Name:</label>
-                <input type="text" id="name" name="Ansprechpartner" required>
+            <div class="form-section">
+              <span class="form-step-num" data-i18n="step_plan_label">02 / SELECT YOUR PLAN</span>
+              
+              <div class="plan-cards-row">
+                <div class="plan-card-option" data-plan="Smart Start" data-price="119" data-updates="1">
+                  <span class="plan-option-name">Smart Start</span>
+                  <span class="plan-option-price">€119</span>
+                </div>
+                <div class="plan-card-option is-selected" data-plan="Smart Pro" data-price="129" data-updates="3">
+                  <span class="plan-option-name">Smart Pro</span>
+                  <span class="plan-option-price">€129</span>
+                </div>
+                <div class="plan-card-option" data-plan="Smart Premium" data-price="169" data-updates="6">
+                  <span class="plan-option-name">Smart Premium</span>
+                  <span class="plan-option-price">€169</span>
+                </div>
+              </div>
             </div>
 
-            <div class="form-group">
-                <label for="email">E-Mail-Adresse:</label>
-                <input type="email" id="email" name="Kunden_Email" required>
+            <div class="form-section">
+              <span class="form-step-num" data-i18n="step_upload_label">03 / UPLOAD YOUR MENU</span>
+              <div class="form-group dropzone" id="dropzone" style="border: 2px dashed #f97316; padding: 30px; text-align: center; border-radius: 12px; cursor: pointer; background: #fffaf5;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
+                <p class="dz-title" id="fileLabel" style="font-weight: 600; margin: 10px 0 5px; color: #1f2937;">Upload your menu PDF</p>
+                <p class="dz-sub" style="font-size: 0.85rem; color: #6b7280; margin: 0;">Click here or drag a PDF file to upload</p>
+                <input type="file" id="menu-file" name="menu-file" accept=".pdf" style="display:none" required>
+              </div>
             </div>
 
-            <div class="form-group">
-                <label for="phone">Telefonnummer:</label>
-                <input type="tel" id="phone" name="Telefonnummer" required>
+            <button type="submit" class="order-submit btn" id="payButton" style="width: 100%; margin-top: 20px; border: none; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; background: #f97316; color: #fff; padding: 14px; border-radius: 8px; font-weight: 600;">
+              <span data-i18n="submit_order_btn">Submit order request</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </form>
+        </div>
+
+        <div class="order-summary-wrap">
+          <div class="order-summary-card">
+            <span class="summary-top-label" data-i18n="summary_header">ORDER SUMMARY</span>
+            <h3 class="summary-plan-title" id="sumPlanName">Smart Pro</h3>
+            
+            <ul class="summary-features">
+              <li><span>Digital QR menu</span> <span class="val">Included</span></li>
+              <li><span>Menu updates</span> <span class="val" id="sumUpdates">3 / month</span></li>
+              <li><span>Billing Cycle 1-Year Subscription</span> <span class="val">Included</span></li>
+            </ul>
+
+            <div class="summary-total">
+              <div>
+                <span class="total-label">TOTAL DUE</span>
+                <span class="total-vat">VAT incl.</span>
+              </div>
+              <span class="total-price" id="sumTotal">€129.00</span>
             </div>
 
-            <div class="form-group">
-                <label for="menu-file">Speisekarte (PDF hochladen):</label>
-                <input type="file" id="menu-file" name="Speisekarte_PDF" accept=".pdf" required>
+            <div class="summary-notice">
+              <span class="notice-icon">🛡️</span>
+              <p><strong>What happens next?</strong> Submit your order request and we'll contact you with the next steps.</p>
             </div>
+          </div>
+        </div>
 
-            <button type="submit" class="submit-btn">Bestellung absenden</button>
-        </form>
+      </div>
     </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <a class="footer-brand" href="index.html">
+        <img src="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&amp;width=157" alt="">
+        <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="our-services.html" data-i18n="services">Services</a></li>
+        <li><a href="pricing-plans.html" data-i18n="pricing">Pricing</a></li>
+        <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
+        <li><a href="contact.html" data-i18n="contact">Contact</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="https://instagram.com/smartmenusolutions/" aria-label="Smart Menu Solutions on Instagram" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions</span>
+      <ul class="footer-legal">
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="refund-policy.html">Refund Policy</a></li>
+        <li><a href="imprint.html">Imprint</a></li>
+        <li><a href="mailto:smartmenusolutions@outlook.com">smartmenusolutions@outlook.com</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const planOptions = document.querySelectorAll('.plan-card-option');
+    const sumPlanName = document.getElementById('sumPlanName');
+    const sumUpdates = document.getElementById('sumUpdates');
+    const sumTotal = document.getElementById('sumTotal');
+    const selectedPlanInput = document.getElementById('selectedPlanInput');
+
+    planOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        planOptions.forEach(opt => opt.classList.remove('is-selected'));
+        this.classList.add('is-selected');
+
+        const planName = this.getAttribute('data-plan');
+        const planPrice = this.getAttribute('data-price');
+        const planUpdates = this.getAttribute('data-updates');
+
+        if(sumPlanName) sumPlanName.textContent = planName;
+        if(sumUpdates) sumUpdates.textContent = planUpdates + ' / month';
+        if(sumTotal) sumTotal.textContent = '€' + parseFloat(planPrice).toFixed(2);
+        if(selectedPlanInput) selectedPlanInput.value = planName;
+      });
+    });
+
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('menu-file');
+    const fileLabel = document.getElementById('fileLabel');
+
+    if(dropzone && fileInput) {
+      dropzone.addEventListener('click', () => fileInput.click());
+
+      fileInput.addEventListener('change', function() {
+        if(fileInput.files.length > 0) {
+          fileLabel.textContent = "📄 " + fileInput.files[0].name;
+          dropzone.style.borderColor = "#22c55e";
+          dropzone.style.background = "#f0fdf4";
+        }
+      });
+
+      dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.style.borderColor = "#f97316";
+      });
+
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        if(e.dataTransfer.files.length > 0) {
+          fileInput.files = e.dataTransfer.files;
+          fileLabel.textContent = "📄 " + e.dataTransfer.files[0].name;
+          dropzone.style.borderColor = "#22c55e";
+          dropzone.style.background = "#f0fdf4";
+        }
+      });
+    }
+  });
+</script>
 </body>
 </html>
