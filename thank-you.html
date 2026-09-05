@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="pageTitle">Thank You | Smart Menu Solutions</title>
+<title id="pageTitle">Vielen Dank | Smart Menu Solutions</title>
 <link rel="icon" type="image/png" href="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&enable=upscale&height=64">
 <style>
   body {
@@ -19,6 +19,27 @@
   .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 1.2rem; color: #111; }
   .brand img { height: 40px; }
   .n-smart { color: #f97316; }
+
+  .lang-switcher {
+    display: flex;
+    gap: 8px;
+  }
+  .lang-btn {
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #374151;
+    transition: all 0.2s;
+  }
+  .lang-btn.active, .lang-btn:hover {
+    background: #f97316;
+    color: #fff;
+    border-color: #f97316;
+  }
 
   .container {
     max-width: 800px;
@@ -91,45 +112,61 @@
       <img src="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&enable=upscale&height=70" alt="Logo">
       <span class="brand-text"><span class="n-smart">Smart</span> Menu Solutions</span>
     </a>
+    
+    <!-- Sprachumschalter Button -->
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btnDe" onclick="setLanguage('de')">DE</button>
+      <button class="lang-btn" id="btnEn" onclick="setLanguage('en')">EN</button>
+    </div>
   </div>
 </header>
 
 <main class="container">
   <div class="thank-hero">
-    <h1 id="mainTitle">Thank <span>You!</span></h1>
-    <p id="subTitle">Your message or order has been successfully submitted.</p>
+    <h1 id="mainTitle">Vielen <span>Dank!</span></h1>
+    <p id="subTitle">Deine Nachricht oder Bestellung wurde erfolgreich übermittelt.</p>
   </div>
 
   <div class="check-icon">✓</div>
 
   <div class="message-box">
-    <h2 id="boxTitle">We've received your request</h2>
-    <p id="boxText1">Thank you for reaching out to Smart Menu Solutions. We appreciate your interest in our digital QR menu services.</p>
-    <p id="boxText2">Our team will review your submission and get back to you shortly (usually within 24 hours).</p>
+    <h2 id="boxTitle">Wir haben deine Anfrage erhalten</h2>
+    <p id="boxText1">Vielen Dank für dein Interesse an den digitalen QR-Menü-Diensten von Smart Menu Solutions.</p>
+    <p id="boxText2">Unser Team prüft deine Unterlagen und meldet sich in Kürze bei dir (in der Regel innerhalb von 24 Stunden).</p>
     
-    <a href="index.html" class="btn-home" id="homeBtn">Return to Homepage</a>
+    <a href="index.html" class="btn-home" id="homeBtn">Zurück zur Startseite</a>
   </div>
 </main>
 
 <script>
-  // Automatische Erkennung der Sprache (Prüft ob der Nutzer von einer deutschen Seite kam oder den Browser auf Deutsch hat)
-  document.addEventListener('DOMContentLoaded', function() {
-    const userLang = navigator.language || navigator.userLanguage;
-    const referrer = document.referrer;
-    
-    // Wenn URL/Referrer .html enthält oder Browser auf Deutsch steht
-    const isGerman = referrer.includes('order-info') || userLang.startsWith('de');
+  function setLanguage(lang) {
+    const btnDe = document.getElementById('btnDe');
+    const btnEn = document.getElementById('btnEn');
 
-    if (isGerman) {
+    if (lang === 'de') {
+      btnDe.classList.add('active');
+      btnEn.classList.remove('active');
+
       document.getElementById('pageTitle').textContent = "Vielen Dank | Smart Menu Solutions";
       document.getElementById('mainTitle').innerHTML = "Vielen <span>Dank!</span>";
-      document.getElementById('subTitle').textContent = "Deine Nachricht oder Bestellung wurde erfolgreich übermittelt.";
+      document.getElementById('subTitle').textContent = "Deine Bestellung wurde erfolgreich übermittelt.";
       document.getElementById('boxTitle').textContent = "Wir haben deine Anfrage erhalten";
       document.getElementById('boxText1').textContent = "Vielen Dank für dein Interesse an den digitalen QR-Menü-Diensten von Smart Menu Solutions.";
-      document.getElementById('boxText2').textContent = "Unser Team prüft deine Unterlagen und meldet sich in Kürze bei dir (in der Regel innerhalb von 24 Stunden).";
+      document.getElementById('boxText2').textContent = "Unser Team prüft deine Unterlagen und meldet sich in Kürze bei dir.";
       document.getElementById('homeBtn').textContent = "Zurück zur Startseite";
+    } else {
+      btnEn.classList.add('active');
+      btnDe.classList.remove('active');
+
+      document.getElementById('pageTitle').textContent = "Thank You | Smart Menu Solutions";
+      document.getElementById('mainTitle').innerHTML = "Thank <span>You!</span>";
+      document.getElementById('subTitle').textContent = "Your order has been successfully submitted.";
+      document.getElementById('boxTitle').textContent = "We've received your request";
+      document.getElementById('boxText1').textContent = "Thank you for reaching out to Smart Menu Solutions. We appreciate your interest in our digital QR menu services.";
+      document.getElementById('boxText2').textContent = "Our team will review your submission and get back to you shortly.";
+      document.getElementById('homeBtn').textContent = "Return to Homepage";
     }
-  });
+  }
 </script>
 
 </body>
