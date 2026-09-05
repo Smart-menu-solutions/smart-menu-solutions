@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="pageTitle">Start Your Order | Smart Menu Solutions</title>
+<title id="pageTitle">Bestellung | Smart Menu Solutions</title>
 <link rel="icon" type="image/png" href="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&enable=upscale&height=64">
 <style>
   body {
@@ -13,29 +13,29 @@
     margin: 0;
     padding: 0;
   }
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-  }
-  .site-header { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 15px 0; }
-  .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 1.2rem; color: #111; }
-  .brand img { height: 40px; }
+  .site-header { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 12px 0; position: sticky; top: 0; z-index: 1000; }
+  .header-inner { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 1.15rem; color: #111; }
+  .brand img { height: 38px; }
   .n-smart { color: #f97316; }
 
-  .lang-switcher {
-    display: flex;
-    gap: 8px;
-  }
+  .nav-menu { display: flex; align-items: center; gap: 24px; list-style: none; margin: 0; padding: 0; }
+  .nav-menu a { text-decoration: none; color: #4b5563; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+  .nav-menu a:hover, .nav-menu a.active { color: #f97316; }
+
+  .header-right { display: flex; align-items: center; gap: 16px; }
+  .btn-get-started { background: #f97316; color: #fff; padding: 10px 20px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: background 0.2s; }
+  .btn-get-started:hover { background: #ea580c; }
+
+  .lang-switcher { display: flex; gap: 6px; }
   .lang-btn {
     background: #f3f4f6;
     border: 1px solid #d1d5db;
     padding: 6px 12px;
-    border-radius: 6px;
+    border-radius: 50px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #374151;
     transition: all 0.2s;
   }
@@ -45,212 +45,10 @@
     border-color: #f97316;
   }
 
-  .page-hero { text-align: center; margin-bottom: 40px; }
-  .page-hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; color: #111; }
-  .page-hero h1 span { color: #f97316; }
-  .page-hero p { color: #6b7280; font-size: 1.1rem; }
-
-  .order-layout {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-    width: 100%;
-    flex-wrap: wrap;
-  }
-  .order-form-wrap {
-    flex: 1.3;
-    min-width: 300px;
-    background: #ffffff;
-    padding: 35px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  }
-  .order-summary-wrap {
-    flex: 0.9;
-    min-width: 300px;
-    position: sticky;
-    top: 30px;
-  }
-
-  .form-section { margin-bottom: 30px; }
-  .form-step-num {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    color: #9ca3af;
-    margin-bottom: 15px;
-  }
-  .form-row {
-    display: flex;
-    gap: 20px;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  .form-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-  }
-  .form-group label {
-    margin-bottom: 8px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #374151;
-  }
-  .form-group input[type="text"],
-  .form-group input[type="email"] {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 1rem;
-    outline: none;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
-  }
-  .form-group input:focus {
-    border-color: #f97316;
-    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
-  }
-
-  .plan-cards-row {
-    display: flex;
-    gap: 15px;
-    margin-top: 10px;
-  }
-  .plan-card-option {
-    flex: 1;
-    border: 2px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 18px 10px;
-    text-align: center;
-    cursor: pointer;
-    background: #fff;
-    transition: all 0.2s ease;
-  }
-  .plan-card-option.is-selected, .plan-card-option:hover {
-    border-color: #f97316;
-    background-color: #fffaf5;
-  }
-  .plan-option-name {
-    display: block;
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: #1f2937;
-    margin-bottom: 6px;
-  }
-  .plan-option-price {
-    display: block;
-    font-weight: 700;
-    font-size: 1.15rem;
-    color: #f97316;
-  }
-
-  .dropzone {
-    border: 2px dashed #f97316;
-    padding: 30px;
-    text-align: center;
-    border-radius: 12px;
-    cursor: pointer;
-    background: #fffaf5;
-    transition: background 0.2s;
-  }
-  .dropzone:hover { background: #ffeee2; }
-
-  .order-submit {
-    width: 100%;
-    background: #f97316;
-    color: #fff;
-    border: none;
-    padding: 16px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    transition: background 0.2s;
-  }
-  .order-submit:hover { background: #ea580c; }
-
-  .order-summary-card {
-    background-color: #121212;
-    color: #ffffff;
-    border-radius: 16px;
-    padding: 35px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  }
-  .order-summary-card .summary-top-label {
-    color: #9ca3af;
-    font-size: 0.75rem;
-    letter-spacing: 1.5px;
-    font-weight: 700;
-    display: block;
-    margin-bottom: 8px;
-  }
-  .order-summary-card .summary-plan-title {
-    color: #ffffff;
-    font-size: 1.5rem;
-    margin-bottom: 25px;
-    font-weight: 700;
-  }
-  .order-summary-card .summary-features {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 25px 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-  .order-summary-card .summary-features li {
-    display: flex;
-    justify-content: space-between;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    font-size: 0.9rem;
-    color: #d1d5db;
-  }
-  .order-summary-card .summary-features li:last-child { border-bottom: none; }
-  .order-summary-card .summary-features .val {
-    color: #f97316;
-    font-weight: 600;
-  }
-  .order-summary-card .summary-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-  }
-  .order-summary-card .total-label {
-    font-size: 0.75rem;
-    color: #9ca3af;
-    display: block;
-  }
-  .order-summary-card .total-vat {
-    font-size: 0.7rem;
-    color: #9ca3af;
-  }
-  .order-summary-card .total-price {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #ffffff;
-  }
-  .order-summary-card .summary-notice {
-    display: flex;
-    gap: 12px;
-    background: rgba(255,255,255,0.05);
-    padding: 15px;
-    border-radius: 10px;
-  }
-  .order-summary-card .summary-notice p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #9ca3af;
-  }
-  .order-summary-card .summary-notice strong { color: #ffffff; }
+  .container { max-width: 1100px; margin: 50px auto; padding: 0 20px; text-align: center; }
+  h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; color: #111; }
+  h1 span { color: #f97316; }
+  p { color: #6b7280; font-size: 1.1rem; }
 </style>
 </head>
 <body>
@@ -261,246 +59,65 @@
       <img src="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&enable=upscale&height=70" alt="Logo">
       <span class="brand-text"><span class="n-smart">Smart</span> Menu Solutions</span>
     </a>
-    
-    <div class="lang-switcher">
-      <button class="lang-btn active" id="btnDe" onclick="setLanguage('de')">DE</button>
-      <button class="lang-btn" id="btnEn" onclick="setLanguage('en')">EN</button>
+
+    <ul class="nav-menu">
+      <li><a href="index.html" id="navHome">Startseite</a></li>
+      <li><a href="our-services.html" id="navServices">Unsere Dienste</a></li>
+      <li><a href="pricing-plans.html" id="navPricing">Preise</a></li>
+      <li><a href="faq.html" id="navFaq">FAQ</a></li>
+      <li><a href="order.html" class="active" id="navOrder">Bestellen</a></li>
+      <li><a href="contact.html" id="navContact">Kontakt</a></li>
+    </ul>
+
+    <div class="header-right">
+      <a href="order-info.html" class="btn-get-started" id="btnGetStarted">Loslegen</a>
+      <div class="lang-switcher">
+        <button class="lang-btn active" id="btnDe" onclick="setLanguage('de')">DE</button>
+        <button class="lang-btn" id="btnEn" onclick="setLanguage('en')">EN</button>
+      </div>
     </div>
   </div>
 </header>
 
-<main id="main-content">
-  <div class="container">
-    
-    <div class="page-hero">
-      <h1 id="heroTitle">Deine Bestellung <span>starten</span></h1>
-      <p id="heroDesc">Fülle deine Daten aus, wähle einen Plan und lade deine Speisekarte hoch – den Rest erledigen wir.</p>
-    </div>
-
-    <div class="order-layout">
-      
-      <div class="order-form-wrap">
-        <form class="order-form" action="https://formsubmit.co/smartmenusolutions@outlook.com" method="POST" enctype="multipart/form-data">
-          
-          <input type="hidden" name="_next" value="https://smart-menu-solutions.github.io/smart-menu-solutions/thank-you.html">
-          <input type="hidden" name="_subject" value="Neue Bestellung eingegangen! - Smart Menu Solutions">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="selected_plan" id="selectedPlanInput" value="Smart Pro">
-
-          <div class="form-section">
-            <span class="form-step-num" id="step1Num">01 / KONTAKTINFORMATIONEN</span>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label for="first-name" id="labelFirstName">Vorname</label>
-                <input type="text" id="first-name" name="first-name" autocomplete="given-name" placeholder="Vorname" required>
-              </div>
-              <div class="form-group">
-                <label for="last-name" id="labelLastName">Nachname</label>
-                <input type="text" id="last-name" name="last-name" autocomplete="family-name" placeholder="Nachname" required>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="email" id="labelEmail">E-Mail-Adresse</label>
-              <input type="email" id="email" name="email" autocomplete="email" placeholder="deine@firma.com" required>
-            </div>
-          </div>
-
-          <div class="form-section">
-            <span class="form-step-num" id="step2Num">02 / WÄHLE DEINEN PLAN</span>
-            <div class="plan-cards-row">
-              <div class="plan-card-option" data-plan="Smart Start" data-price="119" data-updates="1">
-                <span class="plan-option-name">Smart Start</span>
-                <span class="plan-option-price">€119</span>
-              </div>
-              <div class="plan-card-option is-selected" data-plan="Smart Pro" data-price="129" data-updates="3">
-                <span class="plan-option-name">Smart Pro</span>
-                <span class="plan-option-price">€129</span>
-              </div>
-              <div class="plan-card-option" data-plan="Smart Premium" data-price="169" data-updates="6">
-                <span class="plan-option-name">Smart Premium</span>
-                <span class="plan-option-price">€169</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-section">
-            <span class="form-step-num" id="step3Num">03 / SPEISEKARTE HOCHLADEN</span>
-            <div class="form-group dropzone" id="dropzone">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
-              <p class="dz-title" id="fileLabel" style="font-weight: 600; margin: 10px 0 5px; color: #1f2937;">Speisekarte als PDF hochladen</p>
-              <p class="dz-sub" id="fileSub" style="font-size: 0.85rem; color: #6b7280; margin: 0;">Hier klicken oder PDF-Datei hierher ziehen</p>
-              <input type="file" id="menu-file" name="menu-file" accept=".pdf" style="display:none" required>
-            </div>
-          </div>
-
-          <button type="submit" class="order-submit" id="payButton">
-            <span id="submitText">Bestellungsanfrage absenden</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-        </form>
-      </div>
-
-      <div class="order-summary-wrap">
-        <div class="order-summary-card">
-          <span class="summary-top-label" id="summaryHeader">BESTELLÜBERSICHT</span>
-          <h3 class="summary-plan-title" id="sumPlanName">Smart Pro</h3>
-          
-          <ul class="summary-features">
-            <li><span id="sumFeat1">Digitales QR-Menü</span> <span class="val" id="valInc1">Inklusive</span></li>
-            <li><span id="sumFeat2">Menü-Aktualisierungen</span> <span class="val" id="sumUpdates">3 / Monat</span></li>
-            <li><span id="sumFeat3">Abrechnungszeitraum 1 Jahr Abo</span> <span class="val" id="valInc2">Inklusive</span></li>
-          </ul>
-
-          <div class="summary-total">
-            <div>
-              <span class="total-label" id="totalLabel">GESAMTBETRAG</span>
-              <span class="total-vat" id="totalVat">inkl. MwSt.</span>
-            </div>
-            <span class="total-price" id="sumTotal">€129.00</span>
-          </div>
-
-          <div class="summary-notice">
-            <span class="notice-icon">🛡️</span>
-            <p><strong id="noticeTitle">Was passiert als Nächstes?</strong> <span id="noticeText">Sende deine Anfrage ab und wir melden uns mit den nächsten Schritten bei dir.</span></p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
+<main class="container">
+  <h1 id="mainTitle">Deine Bestellung <span>starten</span></h1>
+  <p id="mainDesc">Fülle deine Daten aus, wähle einen Plan und lade deine Speisekarte hoch – den Rest erledigen wir.</p>
 </main>
 
 <script>
   function setLanguage(lang) {
     const btnDe = document.getElementById('btnDe');
     const btnEn = document.getElementById('btnEn');
-
     if (lang === 'de') {
-      btnDe.classList.add('active');
-      btnEn.classList.remove('active');
-
-      document.getElementById('pageTitle').textContent = "Deine Bestellung starten | Smart Menu Solutions";
-      document.getElementById('heroTitle').innerHTML = "Deine Bestellung <span>starten</span>";
-      document.getElementById('heroDesc').textContent = "Fülle deine Daten aus, wähle einen Plan und lade deine Speisekarte hoch – den Rest erledigen wir.";
-      
-      document.getElementById('step1Num').textContent = "01 / KONTAKTINFORMATIONEN";
-      document.getElementById('labelFirstName').textContent = "Vorname";
-      document.getElementById('first-name').placeholder = "Vorname";
-      document.getElementById('labelLastName').textContent = "Nachname";
-      document.getElementById('last-name').placeholder = "Nachname";
-      document.getElementById('labelEmail').textContent = "E-Mail-Adresse";
-      document.getElementById('email').placeholder = "deine@firma.com";
-
-      document.getElementById('step2Num').textContent = "02 / WÄHLE DEINEN PLAN";
-      document.getElementById('step3Num').textContent = "03 / SPEISEKARTE HOCHLADEN";
-      document.getElementById('fileLabel').textContent = "Speisekarte als PDF hochladen";
-      document.getElementById('fileSub').textContent = "Hier klicken oder PDF-Datei hierher ziehen";
-      document.getElementById('submitText').textContent = "Bestellungsanfrage absenden";
-
-      document.getElementById('summaryHeader').textContent = "BESTELLÜBERSICHT";
-      document.getElementById('sumFeat1').textContent = "Digitales QR-Menü";
-      document.getElementById('valInc1').textContent = "Inklusive";
-      document.getElementById('sumFeat2').textContent = "Menü-Aktualisierungen";
-      document.getElementById('sumFeat3').textContent = "Abrechnungszeitraum 1 Jahr Abo";
-      document.getElementById('valInc2').textContent = "Inklusive";
-      document.getElementById('totalLabel').textContent = "GESAMTBETRAG";
-      document.getElementById('totalVat').textContent = "inkl. MwSt.";
-      document.getElementById('noticeTitle').textContent = "Was passiert als Nächstes?";
-      document.getElementById('noticeText').textContent = "Sende deine Anfrage ab und wir melden uns mit den nächsten Schritten bei dir.";
+      btnDe.classList.add('active'); btnEn.classList.remove('active');
+      document.getElementById('pageTitle').textContent = "Bestellung | Smart Menu Solutions";
+      // Navbar
+      document.getElementById('navHome').textContent = "Startseite";
+      document.getElementById('navServices').textContent = "Unsere Dienste";
+      document.getElementById('navPricing').textContent = "Preise";
+      document.getElementById('navFaq').textContent = "FAQ";
+      document.getElementById('navOrder').textContent = "Bestellen";
+      document.getElementById('navContact').textContent = "Kontakt";
+      document.getElementById('btnGetStarted').textContent = "Loslegen";
+      // Content
+      document.getElementById('mainTitle').innerHTML = "Deine Bestellung <span>starten</span>";
+      document.getElementById('mainDesc').textContent = "Fülle deine Daten aus, wähle einen Plan und lade deine Speisekarte hoch – den Rest erledigen wir.";
     } else {
-      btnEn.classList.add('active');
-      btnDe.classList.remove('active');
-
-      document.getElementById('pageTitle').textContent = "Start Your Order | Smart Menu Solutions";
-      document.getElementById('heroTitle').innerHTML = "Start your <span>order</span>";
-      document.getElementById('heroDesc').textContent = "Fill in your details, choose a plan, and upload your menu — we'll take it from there.";
-      
-      document.getElementById('step1Num').textContent = "01 / CONTACT INFORMATION";
-      document.getElementById('labelFirstName').textContent = "First name";
-      document.getElementById('first-name').placeholder = "First name";
-      document.getElementById('labelLastName').textContent = "Last name";
-      document.getElementById('last-name').placeholder = "Last name";
-      document.getElementById('labelEmail').textContent = "Email address";
-      document.getElementById('email').placeholder = "you@business.com";
-
-      document.getElementById('step2Num').textContent = "02 / SELECT YOUR PLAN";
-      document.getElementById('step3Num').textContent = "03 / UPLOAD YOUR MENU";
-      document.getElementById('fileLabel').textContent = "Upload your menu PDF";
-      document.getElementById('fileSub').textContent = "Click here or drag a PDF file to upload";
-      document.getElementById('submitText').textContent = "Submit order request";
-
-      document.getElementById('summaryHeader').textContent = "ORDER SUMMARY";
-      document.getElementById('sumFeat1').textContent = "Digital QR menu";
-      document.getElementById('valInc1').textContent = "Included";
-      document.getElementById('sumFeat2').textContent = "Menu updates";
-      document.getElementById('sumFeat3').textContent = "Billing Cycle 1-Year Subscription";
-      document.getElementById('valInc2').textContent = "Included";
-      document.getElementById('totalLabel').textContent = "TOTAL DUE";
-      document.getElementById('totalVat').textContent = "VAT incl.";
-      document.getElementById('noticeTitle').textContent = "What happens next?";
-      document.getElementById('noticeText').textContent = "Submit your order request and we'll contact you with the next steps.";
+      btnEn.classList.add('active'); btnDe.classList.remove('active');
+      document.getElementById('pageTitle').textContent = "Order | Smart Menu Solutions";
+      // Navbar
+      document.getElementById('navHome').textContent = "Home";
+      document.getElementById('navServices').textContent = "Our Services";
+      document.getElementById('navPricing').textContent = "Pricing Plans";
+      document.getElementById('navFaq').textContent = "FAQ";
+      document.getElementById('navOrder').textContent = "Order";
+      document.getElementById('navContact').textContent = "Contact";
+      document.getElementById('btnGetStarted').textContent = "Get started";
+      // Content
+      document.getElementById('mainTitle').innerHTML = "Start your <span>Order</span>";
+      document.getElementById('mainDesc').textContent = "Fill in your details, choose a plan and upload your menu – we'll take care of the rest.";
     }
   }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    const planOptions = document.querySelectorAll('.plan-card-option');
-    const sumPlanName = document.getElementById('sumPlanName');
-    const sumUpdates = document.getElementById('sumUpdates');
-    const sumTotal = document.getElementById('sumTotal');
-    const selectedPlanInput = document.getElementById('selectedPlanInput');
-
-    planOptions.forEach(option => {
-      option.addEventListener('click', function() {
-        planOptions.forEach(opt => opt.classList.remove('is-selected'));
-        this.classList.add('is-selected');
-
-        const planName = this.getAttribute('data-plan');
-        const planPrice = this.getAttribute('data-price');
-        const planUpdatesNum = this.getAttribute('data-updates');
-
-        if(sumPlanName) sumPlanName.textContent = planName;
-        if(sumUpdates) {
-          const isEn = document.getElementById('btnEn').classList.contains('active');
-          sumUpdates.textContent = planUpdatesNum + (isEn ? ' / month' : ' / Monat');
-        }
-        if(sumTotal) sumTotal.textContent = '€' + parseFloat(planPrice).toFixed(2);
-        if(selectedPlanInput) selectedPlanInput.value = planName;
-      });
-    });
-
-    const dropzone = document.getElementById('dropzone');
-    const fileInput = document.getElementById('menu-file');
-    const fileLabel = document.getElementById('fileLabel');
-
-    if(dropzone && fileInput) {
-      dropzone.addEventListener('click', () => fileInput.click());
-
-      fileInput.addEventListener('change', function() {
-        if(fileInput.files.length > 0) {
-          fileLabel.textContent = "📄 " + fileInput.files[0].name;
-          dropzone.style.borderColor = "#22c55e";
-          dropzone.style.background = "#f0fdf4";
-        }
-      });
-
-      dropzone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropzone.style.borderColor = "#f97316";
-      });
-
-      dropzone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        if(e.dataTransfer.files.length > 0) {
-          fileInput.files = e.dataTransfer.files;
-          fileLabel.textContent = "📄 " + e.dataTransfer.files[0].name;
-          dropzone.style.borderColor = "#22c55e";
-          dropzone.style.background = "#f0fdf4";
-        }
-      });
-    }
-  });
 </script>
 </body>
 </html>
