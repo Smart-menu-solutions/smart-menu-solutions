@@ -86,18 +86,27 @@
             <div class="form-section">
               <span class="form-step-num" data-i18n="step_plan_label">02 / SELECT YOUR PLAN</span>
               
-              <div class="plan-cards-row">
-                <div class="plan-card-option" data-plan="start" data-price="119" data-updates="1">
-                  <span class="plan-option-name" data-i18n="plan_start_title">Smart Start</span>
-                  <span class="plan-option-price">€119</span>
+              <div class="plan-grid">
+                <div class="plan-option">
+                  <input type="radio" id="plan-start" name="plan" value="Smart Start">
+                  <label for="plan-start">
+                    <span class="p-name" data-i18n="plan_start_title">Smart Start</span>
+                    <span class="p-price">€119</span>
+                  </label>
                 </div>
-                <div class="plan-card-option is-selected" data-plan="pro" data-price="129" data-updates="3">
-                  <span class="plan-option-name" data-i18n="plan_pro_title">Smart Pro</span>
-                  <span class="plan-option-price">€129</span>
+                <div class="plan-option">
+                  <input type="radio" id="plan-pro" name="plan" value="Smart Pro" checked>
+                  <label for="plan-pro">
+                    <span class="p-name" data-i18n="plan_pro_title">Smart Pro</span>
+                    <span class="p-price">€129</span>
+                  </label>
                 </div>
-                <div class="plan-card-option" data-plan="premium" data-price="169" data-updates="6">
-                  <span class="plan-option-name" data-i18n="plan_premium_title">Smart Premium</span>
-                  <span class="plan-option-price">€169</span>
+                <div class="plan-option">
+                  <input type="radio" id="plan-premium" name="plan" value="Smart Premium">
+                  <label for="plan-premium">
+                    <span class="p-name" data-i18n="plan_premium_title">Smart Premium</span>
+                    <span class="p-price">€169</span>
+                  </label>
                 </div>
               </div>
             </div>
