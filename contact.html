@@ -50,7 +50,7 @@
   .page-hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; color: #111; }
   .page-hero p { color: #6b7280; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.5; }
 
-  .contact-layout { display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; }
+  .contact-layout { display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 60px; }
   .contact-form-wrap { flex: 1.3; min-width: 300px; background: #ffffff; padding: 35px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
   .contact-info-wrap { flex: 0.9; min-width: 300px; position: sticky; top: 90px; }
 
@@ -73,6 +73,18 @@
   .info-card .highlight-box { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-top: 20px; }
   .info-card .highlight-box p { margin: 0; font-size: 0.85rem; color: #9ca3af; }
   .info-card .highlight-box strong { color: #ffffff; }
+
+  /* Footer Design */
+  .site-footer { background: #111827; color: #9ca3af; padding: 50px 20px 20px 20px; margin-top: 80px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid #1f2937; }
+  .footer-col { flex: 1; min-width: 220px; }
+  .footer-col h4 { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 15px; }
+  .footer-col p { font-size: 0.9rem; line-height: 1.6; color: #9ca3af; margin: 0; }
+  .footer-links { list-style: none; padding: 0; margin: 0; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a { color: #9ca3af; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .footer-links a:hover { color: #f97316; }
+  .footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; color: #6b7280; }
 </style>
 </head>
 <body>
@@ -145,6 +157,35 @@
   </div>
 </main>
 
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4 id="footerCol1Title">Smart Menu Solutions</h4>
+      <p id="footerCol1Text">Die moderne Art, Speisekarten digital und flexibel für deine Gäste bereitzustellen.</p>
+    </div>
+    <div class="footer-col">
+      <h4 id="footerCol2Title">Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="index.html" id="footLinkHome">Startseite</a></li>
+        <li><a href="our-services.html" id="footLinkServices">Unsere Dienste</a></li>
+        <li><a href="pricing-plans.html" id="footLinkPricing">Preise</a></li>
+        <li><a href="faq.html" id="footLinkFaq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 id="footerCol3Title">Rechtliches</h4>
+      <ul class="footer-links">
+        <li><a href="imprint.html" id="footLinkImprint">Impressum</a></li>
+        <li><a href="privacy-policy.html" id="footLinkPrivacy">Datenschutz</a></li>
+        <li><a href="refund-policy.html" id="footLinkRefund">Widerrufsbelehrung</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p id="footerCopy">&copy; 2026 Smart Menu Solutions. Alle Rechte vorbehalten.</p>
+  </div>
+</footer>
+
 <script>
   function setLanguage(lang) {
     const btnDe = document.getElementById('btnDe');
@@ -174,6 +215,18 @@
       document.getElementById('infoText1').textContent = "Wir melden uns innerhalb von 24 Stunden bei dir, um deine Anforderungen zu besprechen, alle Fragen zu beantworten und die beste digitale Menü-Lösung für dein Unternehmen zu empfehlen. Sobald alles bereit ist, erstellen wir deine digitale Speisekarte, generieren deinen QR-Code und sorgen dafür, dass alles so schnell wie möglich für deine Gäste einsatzbereit ist.";
       document.getElementById('infoText2').textContent = "Lass uns ein intelligenteres Esserlebnis für deine Gäste schaffen.";
       document.getElementById('highlightHead').textContent = "Smart Menus. Better experiences.";
+      // Footer
+      document.getElementById('footerCol1Text').textContent = "Die moderne Art, Speisekarten digital und flexibel für deine Gäste bereitzustellen.";
+      document.getElementById('footerCol2Title').textContent = "Navigation";
+      document.getElementById('footLinkHome').textContent = "Startseite";
+      document.getElementById('footLinkServices').textContent = "Unsere Dienste";
+      document.getElementById('footLinkPricing').textContent = "Preise";
+      document.getElementById('footLinkFaq').textContent = "FAQ";
+      document.getElementById('footerCol3Title').textContent = "Rechtliches";
+      document.getElementById('footLinkImprint').textContent = "Impressum";
+      document.getElementById('footLinkPrivacy').textContent = "Datenschutz";
+      document.getElementById('footLinkRefund').textContent = "Widerrufsbelehrung";
+      document.getElementById('footerCopy').textContent = "© 2026 Smart Menu Solutions. Alle Rechte vorbehalten.";
     } else {
       btnEn.classList.add('active'); btnDe.classList.remove('active');
       document.getElementById('pageTitle').textContent = "Contact | Smart Menu Solutions";
@@ -199,6 +252,18 @@
       document.getElementById('infoText1').textContent = "We'll contact you within 24 hours to discuss your requirements, answer any questions, and recommend the best digital menu solution for your business. Once approved, we'll create and set up your digital menu, generate your QR code, and have everything ready for your customers as quickly as possible.";
       document.getElementById('infoText2').textContent = "Let's create a smarter dining experience for your customers.";
       document.getElementById('highlightHead').textContent = "Smart menus. Better experiences.";
+      // Footer
+      document.getElementById('footerCol1Text').textContent = "The modern way to provide digital and flexible menus for your guests.";
+      document.getElementById('footerCol2Title').textContent = "Navigation";
+      document.getElementById('footLinkHome').textContent = "Home";
+      document.getElementById('footLinkServices').textContent = "Our Services";
+      document.getElementById('footLinkPricing').textContent = "Pricing Plans";
+      document.getElementById('footLinkFaq').textContent = "FAQ";
+      document.getElementById('footerCol3Title').textContent = "Legal";
+      document.getElementById('footLinkImprint').textContent = "Imprint";
+      document.getElementById('footLinkPrivacy').textContent = "Privacy Policy";
+      document.getElementById('footLinkRefund').textContent = "Refund Policy";
+      document.getElementById('footerCopy').textContent = "© 2026 Smart Menu Solutions. All rights reserved.";
     }
   }
 </script>
