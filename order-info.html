@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Start Your Order | Smart Menu Solutions</title>
+<title id="pageTitle">Start Your Order | Smart Menu Solutions</title>
 <link rel="icon" type="image/png" href="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&enable=upscale&height=64">
 <style>
-  /* Grundlegendes Reset & Design, damit es nie wieder abstürzt */
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: #f9fafb;
@@ -19,20 +18,38 @@
     margin: 0 auto;
     padding: 40px 20px;
   }
-  /* Header Minimal-Style falls style.css lädt */
   .site-header { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 15px 0; }
   .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
   .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 1.2rem; color: #111; }
   .brand img { height: 40px; }
   .n-smart { color: #f97316; }
 
-  /* Hero / Überschrift */
+  .lang-switcher {
+    display: flex;
+    gap: 8px;
+  }
+  .lang-btn {
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #374151;
+    transition: all 0.2s;
+  }
+  .lang-btn.active, .lang-btn:hover {
+    background: #f97316;
+    color: #fff;
+    border-color: #f97316;
+  }
+
   .page-hero { text-align: center; margin-bottom: 40px; }
   .page-hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; color: #111; }
   .page-hero h1 span { color: #f97316; }
   .page-hero p { color: #6b7280; font-size: 1.1rem; }
 
-  /* Haupt-Layout (Formular links, Summary rechts) */
   .order-layout {
     display: flex;
     gap: 40px;
@@ -55,7 +72,6 @@
     top: 30px;
   }
 
-  /* Formular Elemente */
   .form-section { margin-bottom: 30px; }
   .form-step-num {
     display: block;
@@ -99,7 +115,6 @@
     box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
   }
 
-  /* Plan Auswahl Karten */
   .plan-cards-row {
     display: flex;
     gap: 15px;
@@ -133,7 +148,6 @@
     color: #f97316;
   }
 
-  /* Dropzone Upload */
   .dropzone {
     border: 2px dashed #f97316;
     padding: 30px;
@@ -143,11 +157,8 @@
     background: #fffaf5;
     transition: background 0.2s;
   }
-  .dropzone:hover {
-    background: #ffeee2;
-  }
+  .dropzone:hover { background: #ffeee2; }
 
-  /* Submit Button */
   .order-submit {
     width: 100%;
     background: #f97316;
@@ -164,11 +175,8 @@
     gap: 10px;
     transition: background 0.2s;
   }
-  .order-submit:hover {
-    background: #ea580c;
-  }
+  .order-submit:hover { background: #ea580c; }
 
-  /* Order Summary Card (Dunkel mit ORANGEN Akzenten) */
   .order-summary-card {
     background-color: #121212;
     color: #ffffff;
@@ -205,10 +213,7 @@
     font-size: 0.9rem;
     color: #d1d5db;
   }
-  .order-summary-card .summary-features li:last-child {
-    border-bottom: none;
-  }
-  /* Hier sind die Akzente in ORANGE wie im Originalfoto */
+  .order-summary-card .summary-features li:last-child { border-bottom: none; }
   .order-summary-card .summary-features .val {
     color: #f97316;
     font-weight: 600;
@@ -245,9 +250,7 @@
     font-size: 0.85rem;
     color: #9ca3af;
   }
-  .order-summary-card .summary-notice strong {
-    color: #ffffff;
-  }
+  .order-summary-card .summary-notice strong { color: #ffffff; }
 </style>
 </head>
 <body>
@@ -258,6 +261,11 @@
       <img src="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&enable=upscale&height=70" alt="Logo">
       <span class="brand-text"><span class="n-smart">Smart</span> Menu Solutions</span>
     </a>
+    
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btnDe" onclick="setLanguage('de')">DE</button>
+      <button class="lang-btn" id="btnEn" onclick="setLanguage('en')">EN</button>
+    </div>
   </div>
 </header>
 
@@ -265,13 +273,12 @@
   <div class="container">
     
     <div class="page-hero">
-      <h1>Start your <span>order</span></h1>
-      <p>Fill in your details, choose a plan, and upload your menu — we'll take it from there.</p>
+      <h1 id="heroTitle">Deine Bestellung <span>starten</span></h1>
+      <p id="heroDesc">Fülle deine Daten aus, wähle einen Plan und lade deine Speisekarte hoch – den Rest erledigen wir.</p>
     </div>
 
     <div class="order-layout">
       
-      <!-- FORMULAR BEREICH -->
       <div class="order-form-wrap">
         <form class="order-form" action="https://formsubmit.co/smartmenusolutions@outlook.com" method="POST" enctype="multipart/form-data">
           
@@ -281,28 +288,27 @@
           <input type="hidden" name="selected_plan" id="selectedPlanInput" value="Smart Pro">
 
           <div class="form-section">
-            <span class="form-step-num">01 / CONTACT INFORMATION</span>
+            <span class="form-step-num" id="step1Num">01 / KONTAKTINFORMATIONEN</span>
             
-            <!-- First name & Last name exakt nebeneinander -->
             <div class="form-row">
               <div class="form-group">
-                <label for="first-name">First name</label>
-                <input type="text" id="first-name" name="first-name" autocomplete="given-name" placeholder="First name" required>
+                <label for="first-name" id="labelFirstName">Vorname</label>
+                <input type="text" id="first-name" name="first-name" autocomplete="given-name" placeholder="Vorname" required>
               </div>
               <div class="form-group">
-                <label for="last-name">Last name</label>
-                <input type="text" id="last-name" name="last-name" autocomplete="family-name" placeholder="Last name" required>
+                <label for="last-name" id="labelLastName">Nachname</label>
+                <input type="text" id="last-name" name="last-name" autocomplete="family-name" placeholder="Nachname" required>
               </div>
             </div>
 
             <div class="form-group">
-              <label for="email">Email address</label>
-              <input type="email" id="email" name="email" autocomplete="email" placeholder="you@business.com" required>
+              <label for="email" id="labelEmail">E-Mail-Adresse</label>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="deine@firma.com" required>
             </div>
           </div>
 
           <div class="form-section">
-            <span class="form-step-num">02 / SELECT YOUR PLAN</span>
+            <span class="form-step-num" id="step2Num">02 / WÄHLE DEINEN PLAN</span>
             <div class="plan-cards-row">
               <div class="plan-card-option" data-plan="Smart Start" data-price="119" data-updates="1">
                 <span class="plan-option-name">Smart Start</span>
@@ -320,45 +326,44 @@
           </div>
 
           <div class="form-section">
-            <span class="form-step-num">03 / UPLOAD YOUR MENU</span>
+            <span class="form-step-num" id="step3Num">03 / SPEISEKARTE HOCHLADEN</span>
             <div class="form-group dropzone" id="dropzone">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
-              <p class="dz-title" id="fileLabel" style="font-weight: 600; margin: 10px 0 5px; color: #1f2937;">Upload your menu PDF</p>
-              <p class="dz-sub" style="font-size: 0.85rem; color: #6b7280; margin: 0;">Click here or drag a PDF file to upload</p>
+              <p class="dz-title" id="fileLabel" style="font-weight: 600; margin: 10px 0 5px; color: #1f2937;">Speisekarte als PDF hochladen</p>
+              <p class="dz-sub" id="fileSub" style="font-size: 0.85rem; color: #6b7280; margin: 0;">Hier klicken oder PDF-Datei hierher ziehen</p>
               <input type="file" id="menu-file" name="menu-file" accept=".pdf" style="display:none" required>
             </div>
           </div>
 
           <button type="submit" class="order-submit" id="payButton">
-            <span>Submit order request</span>
+            <span id="submitText">Bestellungsanfrage absenden</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </form>
       </div>
 
-      <!-- ORDER SUMMARY BEREICH -->
       <div class="order-summary-wrap">
         <div class="order-summary-card">
-          <span class="summary-top-label">ORDER SUMMARY</span>
+          <span class="summary-top-label" id="summaryHeader">BESTELLÜBERSICHT</span>
           <h3 class="summary-plan-title" id="sumPlanName">Smart Pro</h3>
           
           <ul class="summary-features">
-            <li><span>Digital QR menu</span> <span class="val">Included</span></li>
-            <li><span>Menu updates</span> <span class="val" id="sumUpdates">3 / month</span></li>
-            <li><span>Billing Cycle 1-Year Subscription</span> <span class="val">Included</span></li>
+            <li><span id="sumFeat1">Digitales QR-Menü</span> <span class="val" id="valInc1">Inklusive</span></li>
+            <li><span id="sumFeat2">Menü-Aktualisierungen</span> <span class="val" id="sumUpdates">3 / Monat</span></li>
+            <li><span id="sumFeat3">Abrechnungszeitraum 1 Jahr Abo</span> <span class="val" id="valInc2">Inklusive</span></li>
           </ul>
 
           <div class="summary-total">
             <div>
-              <span class="total-label">TOTAL DUE</span>
-              <span class="total-vat">VAT incl.</span>
+              <span class="total-label" id="totalLabel">GESAMTBETRAG</span>
+              <span class="total-vat" id="totalVat">inkl. MwSt.</span>
             </div>
             <span class="total-price" id="sumTotal">€129.00</span>
           </div>
 
           <div class="summary-notice">
             <span class="notice-icon">🛡️</span>
-            <p><strong>What happens next?</strong> Submit your order request and we'll contact you with the next steps.</p>
+            <p><strong id="noticeTitle">Was passiert als Nächstes?</strong> <span id="noticeText">Sende deine Anfrage ab und wir melden uns mit den nächsten Schritten bei dir.</span></p>
           </div>
         </div>
       </div>
@@ -368,6 +373,77 @@
 </main>
 
 <script>
+  function setLanguage(lang) {
+    const btnDe = document.getElementById('btnDe');
+    const btnEn = document.getElementById('btnEn');
+
+    if (lang === 'de') {
+      btnDe.classList.add('active');
+      btnEn.classList.remove('active');
+
+      document.getElementById('pageTitle').textContent = "Deine Bestellung starten | Smart Menu Solutions";
+      document.getElementById('heroTitle').innerHTML = "Deine Bestellung <span>starten</span>";
+      document.getElementById('heroDesc').textContent = "Fülle deine Daten aus, wähle einen Plan und lade deine Speisekarte hoch – den Rest erledigen wir.";
+      
+      document.getElementById('step1Num').textContent = "01 / KONTAKTINFORMATIONEN";
+      document.getElementById('labelFirstName').textContent = "Vorname";
+      document.getElementById('first-name').placeholder = "Vorname";
+      document.getElementById('labelLastName').textContent = "Nachname";
+      document.getElementById('last-name').placeholder = "Nachname";
+      document.getElementById('labelEmail').textContent = "E-Mail-Adresse";
+      document.getElementById('email').placeholder = "deine@firma.com";
+
+      document.getElementById('step2Num').textContent = "02 / WÄHLE DEINEN PLAN";
+      document.getElementById('step3Num').textContent = "03 / SPEISEKARTE HOCHLADEN";
+      document.getElementById('fileLabel').textContent = "Speisekarte als PDF hochladen";
+      document.getElementById('fileSub').textContent = "Hier klicken oder PDF-Datei hierher ziehen";
+      document.getElementById('submitText').textContent = "Bestellungsanfrage absenden";
+
+      document.getElementById('summaryHeader').textContent = "BESTELLÜBERSICHT";
+      document.getElementById('sumFeat1').textContent = "Digitales QR-Menü";
+      document.getElementById('valInc1').textContent = "Inklusive";
+      document.getElementById('sumFeat2').textContent = "Menü-Aktualisierungen";
+      document.getElementById('sumFeat3').textContent = "Abrechnungszeitraum 1 Jahr Abo";
+      document.getElementById('valInc2').textContent = "Inklusive";
+      document.getElementById('totalLabel').textContent = "GESAMTBETRAG";
+      document.getElementById('totalVat').textContent = "inkl. MwSt.";
+      document.getElementById('noticeTitle').textContent = "Was passiert als Nächstes?";
+      document.getElementById('noticeText').textContent = "Sende deine Anfrage ab und wir melden uns mit den nächsten Schritten bei dir.";
+    } else {
+      btnEn.classList.add('active');
+      btnDe.classList.remove('active');
+
+      document.getElementById('pageTitle').textContent = "Start Your Order | Smart Menu Solutions";
+      document.getElementById('heroTitle').innerHTML = "Start your <span>order</span>";
+      document.getElementById('heroDesc').textContent = "Fill in your details, choose a plan, and upload your menu — we'll take it from there.";
+      
+      document.getElementById('step1Num').textContent = "01 / CONTACT INFORMATION";
+      document.getElementById('labelFirstName').textContent = "First name";
+      document.getElementById('first-name').placeholder = "First name";
+      document.getElementById('labelLastName').textContent = "Last name";
+      document.getElementById('last-name').placeholder = "Last name";
+      document.getElementById('labelEmail').textContent = "Email address";
+      document.getElementById('email').placeholder = "you@business.com";
+
+      document.getElementById('step2Num').textContent = "02 / SELECT YOUR PLAN";
+      document.getElementById('step3Num').textContent = "03 / UPLOAD YOUR MENU";
+      document.getElementById('fileLabel').textContent = "Upload your menu PDF";
+      document.getElementById('fileSub').textContent = "Click here or drag a PDF file to upload";
+      document.getElementById('submitText').textContent = "Submit order request";
+
+      document.getElementById('summaryHeader').textContent = "ORDER SUMMARY";
+      document.getElementById('sumFeat1').textContent = "Digital QR menu";
+      document.getElementById('valInc1').textContent = "Included";
+      document.getElementById('sumFeat2').textContent = "Menu updates";
+      document.getElementById('sumFeat3').textContent = "Billing Cycle 1-Year Subscription";
+      document.getElementById('valInc2').textContent = "Included";
+      document.getElementById('totalLabel').textContent = "TOTAL DUE";
+      document.getElementById('totalVat').textContent = "VAT incl.";
+      document.getElementById('noticeTitle').textContent = "What happens next?";
+      document.getElementById('noticeText').textContent = "Submit your order request and we'll contact you with the next steps.";
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     const planOptions = document.querySelectorAll('.plan-card-option');
     const sumPlanName = document.getElementById('sumPlanName');
@@ -382,10 +458,13 @@
 
         const planName = this.getAttribute('data-plan');
         const planPrice = this.getAttribute('data-price');
-        const planUpdates = this.getAttribute('data-updates');
+        const planUpdatesNum = this.getAttribute('data-updates');
 
         if(sumPlanName) sumPlanName.textContent = planName;
-        if(sumUpdates) sumUpdates.textContent = planUpdates + ' / month';
+        if(sumUpdates) {
+          const isEn = document.getElementById('btnEn').classList.contains('active');
+          sumUpdates.textContent = planUpdatesNum + (isEn ? ' / month' : ' / Monat');
+        }
         if(sumTotal) sumTotal.textContent = '€' + parseFloat(planPrice).toFixed(2);
         if(selectedPlanInput) selectedPlanInput.value = planName;
       });
