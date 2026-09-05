@@ -17,21 +17,50 @@ document.addEventListener('DOMContentLoaded', function () {
       toggle.setAttribute('aria-expanded', 'false');
     }
   });
+
+  // Beim Laden gespeicherte Sprache wiederherstellen (falls vorhanden)
+  var savedLang = localStorage.getItem('selectedLang') || 'en';
+  setLanguage(savedLang);
 });
 
-// Sprachschalter-Funktion
-function switchLanguage(lang) {
-  console.log("Sprache gewechselt zu: " + lang);
-  
-  // Hier kannst du festlegen, was beim Sprachwechsel passieren soll.
-  // Wenn du z.B. separate Dateien für Deutsch hast (wie index-de.html):
-  var currentPath = window.location.pathname;
-  
-  if (lang === 'de') {
-    // Logik für Deutsch (z.B. Weiterleitung auf die deutsche Version, falls vorhanden)
-    // window.location.href = currentPath.replace('.html', '-de.html');
-  } else {
-    // Logik für Englisch (Standard)
-    // window.location.href = currentPath.replace('-de.html', '.html');
+// Wörterbuch für Übersetzungen
+var translations = {
+  'en': {
+    'home': 'Home',
+    'services': 'Our Services',
+    'pricing': 'Pricing Plans',
+    'faq': 'FAQ',
+    'order': 'Order',
+    'contact': 'Contact',
+    'get_started': 'Get started'
+  },
+  'de': {
+    'home': 'Startseite',
+    'services': 'Unsere Leistungen',
+    'pricing': 'Preise',
+    'faq': 'FAQ',
+    'order': 'Bestellen',
+    'contact': 'Kontakt',
+    'get_started': 'Loslegen'
   }
+};
+
+// Hauptfunktion zum Sprachwechsel
+function switchLanguage(lang) {
+  setLanguage(lang);
+  localStorage.setItem('selectedLang', lang); // Sprache für andere Seiten merken
+}
+
+function setLanguage(lang) {
+  console.log("Sprache aktiv: " + lang);
+  document.documentElement.setAttribute('lang', lang);
+
+  // Wir suchen nach Elementen mit dem Attribut data-i18n und übersetzen sie
+  var elements = document.querySelectorAll('[data-i18n]');
+  elements.forEach(function (el) {
+    var key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
 }
