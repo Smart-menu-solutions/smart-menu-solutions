@@ -508,3 +508,51 @@ ul {
     justify-content: center;
   }
 }
+/* =========================================
+   FIX FOR HEADER & NAVIGATION OVERFLOW
+   ========================================= */
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: nowrap;
+}
+
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-lang-container {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 4px;
+}
+
+/* Auf kleineren Bildschirmen verhindern, dass es überläuft */
+@media (max-width: 1024px) {
+  .main-nav ul {
+    gap: 12px;
+  }
+  .main-nav a {
+    font-size: 0.9rem;
+  }
+}
