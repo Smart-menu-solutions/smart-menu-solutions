@@ -471,7 +471,7 @@ var globalTranslationSelectors = {
   '.main-nav li:nth-child(4) a': 'faq',
   '.main-nav li:nth-child(5) a': 'order',
   '.main-nav li:nth-child(6) a': 'contact',
-  '.nav-cta': 'get_started',
+  '.nav-cta:not(.builder-login)': 'get_started',
   '.footer-links li:nth-child(1) a': 'services',
   '.footer-links li:nth-child(2) a': 'pricing',
   '.footer-links li:nth-child(3) a': 'faq',
