@@ -44,51 +44,74 @@ document.addEventListener('DOMContentLoaded', function () {
     applyPlan(preselect);
   }
 
-  // Dropzone interactions
-  if (dropzone && pdfInput) {
-    dropzone.addEventListener('click', function () { pdfInput.click(); });
+  setupDropzone(dropzone, pdfInput, handleFile);
 
-    pdfInput.addEventListener('change', function () {
-      handleFile(pdfInput.files && pdfInput.files[0]);
-    });
+  var currentFile = null;
 
-    ['dragover', 'dragenter'].forEach(function (evt) {
-      dropzone.addEventListener(evt, function (e) {
-        e.preventDefault();
-        dropzone.style.opacity = '.85';
-      });
-    });
-    ['dragleave', 'dragend'].forEach(function (evt) {
-      dropzone.addEventListener(evt, function () { dropzone.style.opacity = '1'; });
-    });
-    dropzone.addEventListener('drop', function (e) {
-      e.preventDefault();
-      dropzone.style.opacity = '1';
-      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-        pdfInput.files = e.dataTransfer.files;
-        handleFile(e.dataTransfer.files[0]);
+  function setCurrentFile(file) {
+    currentFile = file || null;
+    if (pdfInput) {
+      try {
+        var dt = new DataTransfer();
+        if (currentFile) dt.items.add(currentFile);
+        pdfInput.files = dt.files;
+      } catch (err) {
+        // input.files assignment unsupported; currentFile still tracks the file
       }
-    });
+    }
   }
 
   function handleFile(file) {
     if (!file) return;
-    if (file.type !== 'application/pdf') {
+    var isPdf = file.type === 'application/pdf' || (file.type === '' && /\.pdf$/i.test(file.name));
+    if (!isPdf) {
       alert('Please upload a valid PDF file.');
+      setCurrentFile(null);
       pdfInput.value = '';
       fileLabel.textContent = 'Upload your menu PDF';
       return;
     }
+    setCurrentFile(file);
     fileLabel.textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(2) + ' MB)';
   }
 
+  // Validate the attachment before the order request is submitted.
   form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (!pdfInput.files || pdfInput.files.length === 0) {
+    var hasInputFile = pdfInput.files && pdfInput.files.length > 0;
+    if (!hasInputFile && !currentFile) {
+      e.preventDefault();
       alert('Please attach your menu PDF before continuing.');
       return;
     }
-
-    form.submit();
   });
 });
+
+// Dropzone interactions: click-to-browse, drag styling, and drop handling.
+// Called with the elements and a handleFile(file) callback, so it can be tested
+// or reused independently of the rest of the order form.
+function setupDropzone(dropzone, pdfInput, handleFile) {
+  if (!dropzone || !pdfInput) return;
+
+  dropzone.addEventListener('click', function () { pdfInput.click(); });
+
+  pdfInput.addEventListener('change', function () {
+    handleFile(pdfInput.files && pdfInput.files[0]);
+  });
+
+  ['dragover', 'dragenter'].forEach(function (evt) {
+    dropzone.addEventListener(evt, function (e) {
+      e.preventDefault();
+      dropzone.style.opacity = '.85';
+    });
+  });
+  ['dragleave', 'dragend'].forEach(function (evt) {
+    dropzone.addEventListener(evt, function () { dropzone.style.opacity = '1'; });
+  });
+  dropzone.addEventListener('drop', function (e) {
+    e.preventDefault();
+    dropzone.style.opacity = '1';
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      handleFile(e.dataTransfer.files[0]);
+    }
+  });
+}
