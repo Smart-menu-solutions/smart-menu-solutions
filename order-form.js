@@ -44,74 +44,60 @@ document.addEventListener('DOMContentLoaded', function () {
     applyPlan(preselect);
   }
 
-  setupDropzone(dropzone, pdfInput, handleFile);
+  // Dropzone interactions
+  if (dropzone && pdfInput) {
+    dropzone.addEventListener('click', function () { pdfInput.click(); });
 
-  var currentFile = null;
+    pdfInput.addEventListener('change', function () {
+      handleFile(pdfInput.files && pdfInput.files[0]);
+    });
 
-  function setCurrentFile(file) {
-    currentFile = file || null;
-    if (pdfInput) {
-      try {
-        var dt = new DataTransfer();
-        if (currentFile) dt.items.add(currentFile);
-        pdfInput.files = dt.files;
-      } catch (err) {
-        // input.files assignment unsupported; currentFile still tracks the file
+    ['dragover', 'dragenter'].forEach(function (evt) {
+      dropzone.addEventListener(evt, function (e) {
+        e.preventDefault();
+        dropzone.style.opacity = '.85';
+      });
+    });
+    ['dragleave', 'dragend'].forEach(function (evt) {
+      dropzone.addEventListener(evt, function () { dropzone.style.opacity = '1'; });
+    });
+    dropzone.addEventListener('drop', function (e) {
+      e.preventDefault();
+      dropzone.style.opacity = '1';
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        pdfInput.files = e.dataTransfer.files;
+        handleFile(e.dataTransfer.files[0]);
       }
-    }
+    });
   }
 
   function handleFile(file) {
     if (!file) return;
-    var isPdf = file.type === 'application/pdf' || (file.type === '' && /\.pdf$/i.test(file.name));
-    if (!isPdf) {
+    if (file.type !== 'application/pdf') {
       alert('Please upload a valid PDF file.');
-      setCurrentFile(null);
       pdfInput.value = '';
       fileLabel.textContent = 'Upload your menu PDF';
       return;
     }
-    setCurrentFile(file);
     fileLabel.textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(2) + ' MB)';
   }
 
-  // Validate the attachment before the order request is submitted.
   form.addEventListener('submit', function (e) {
-    var hasInputFile = pdfInput.files && pdfInput.files.length > 0;
-    if (!hasInputFile && !currentFile) {
-      e.preventDefault();
+    e.preventDefault();
+    if (!pdfInput.files || pdfInput.files.length === 0) {
       alert('Please attach your menu PDF before continuing.');
       return;
     }
+
+    var nextField = form.querySelector('input[name="_next"]');
+    var emailField = form.querySelector('input[type="email"]');
+    var replyToField = form.querySelector('input[name="_replyto"]');
+    if (nextField) {
+      var isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      if (isLocalHost || window.location.protocol === 'file:') nextField.remove();
+      else nextField.value = new URL('thank-you.html', window.location.href).href;
+    }
+    if (replyToField && emailField) replyToField.value = emailField.value;
+    HTMLFormElement.prototype.submit.call(form);
   });
 });
-
-// Dropzone interactions: click-to-browse, drag styling, and drop handling.
-// Called with the elements and a handleFile(file) callback, so it can be tested
-// or reused independently of the rest of the order form.
-function setupDropzone(dropzone, pdfInput, handleFile) {
-  if (!dropzone || !pdfInput) return;
-
-  dropzone.addEventListener('click', function () { pdfInput.click(); });
-
-  pdfInput.addEventListener('change', function () {
-    handleFile(pdfInput.files && pdfInput.files[0]);
-  });
-
-  ['dragover', 'dragenter'].forEach(function (evt) {
-    dropzone.addEventListener(evt, function (e) {
-      e.preventDefault();
-      dropzone.style.opacity = '.85';
-    });
-  });
-  ['dragleave', 'dragend'].forEach(function (evt) {
-    dropzone.addEventListener(evt, function () { dropzone.style.opacity = '1'; });
-  });
-  dropzone.addEventListener('drop', function (e) {
-    e.preventDefault();
-    dropzone.style.opacity = '1';
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      handleFile(e.dataTransfer.files[0]);
-    }
-  });
-}
