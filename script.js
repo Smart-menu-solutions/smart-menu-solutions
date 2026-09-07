@@ -2,8 +2,30 @@ document.addEventListener('DOMContentLoaded', function () {
   setupLanguageControls();
   ensureLegalLinks();
   document.querySelectorAll('form[action*="formsubmit.co"]').forEach(function (form) {
+    var isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     var nextField = form.querySelector('input[name="_next"]');
-    if (nextField) nextField.value = new URL('thank-you.html', window.location.href).href;
+    if (nextField) {
+      if (isLocalHost || window.location.protocol === 'file:') nextField.remove();
+      else nextField.value = new URL('thank-you.html', window.location.href).href;
+    }
+    if (isLocalHost && !form.querySelector('input[name="_captcha"]')) {
+      var captchaField = document.createElement('input');
+      captchaField.type = 'hidden';
+      captchaField.name = '_captcha';
+      captchaField.value = 'false';
+      form.appendChild(captchaField);
+    }
+    var emailField = form.querySelector('input[type="email"]');
+    if (emailField) {
+      var replyToField = form.querySelector('input[name="_replyto"]');
+      if (!replyToField) {
+        replyToField = document.createElement('input');
+        replyToField.type = 'hidden';
+        replyToField.name = '_replyto';
+        form.appendChild(replyToField);
+      }
+      emailField.addEventListener('input', function () { replyToField.value = emailField.value; });
+    }
   });
   // Mobile Navigation Toggle
   var toggle = document.querySelector('.nav-toggle');

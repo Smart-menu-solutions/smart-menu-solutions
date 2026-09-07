@@ -89,6 +89,15 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    form.submit();
+    var nextField = form.querySelector('input[name="_next"]');
+    var emailField = form.querySelector('input[type="email"]');
+    var replyToField = form.querySelector('input[name="_replyto"]');
+    if (nextField) {
+      var isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      if (isLocalHost || window.location.protocol === 'file:') nextField.remove();
+      else nextField.value = new URL('thank-you.html', window.location.href).href;
+    }
+    if (replyToField && emailField) replyToField.value = emailField.value;
+    HTMLFormElement.prototype.submit.call(form);
   });
 });
