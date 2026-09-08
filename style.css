@@ -946,6 +946,17 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   }
 }
 
+/* Keep the mobile navigation visible after the menu toggle. */
+@media (max-width: 860px) {
+  .main-nav.is-open {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+    visibility: visible !important;
+    z-index: 110;
+  }
+}
+
 .plan-option {
   position: relative;
 }
