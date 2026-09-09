@@ -412,12 +412,13 @@ Object.assign(translations.de, { privacy_storage_sub:'Datenspeicherung', privacy
 Object.assign(translations.de, { refund_hero_title: 'Rückerstattungs<span class="accent">richtlinie</span>' });
 
 function applyMobileRefundHeading() {
-  var title = document.querySelector('[data-i18n="refund_hero_title"]');
-  var accent = title && title.querySelector('.accent');
   var isMobile = window.matchMedia('(max-width: 480px)').matches;
-  if (!accent) return;
-  accent.style.display = isMobile ? 'block' : '';
-  title.style.fontSize = isMobile ? 'clamp(1.8rem, 8.5vw, 2.25rem)' : '';
+  document.querySelectorAll('[data-i18n="refund_hero_title"], [data-i18n="privacy_page_title"]').forEach(function (title) {
+    var accent = title.querySelector('.accent');
+    if (!accent) return;
+    accent.style.display = isMobile ? 'block' : '';
+    title.style.fontSize = isMobile ? 'clamp(1.8rem, 8.5vw, 2.25rem)' : '';
+  });
 }
 
 function switchLanguage(lang) {
