@@ -864,6 +864,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 .order-consent{ display:flex; align-items:flex-start; gap:.55rem; margin:.75rem 0; color:var(--grey); font-size:.86rem; }
 .order-consent input{ margin-top:.25rem; flex:0 0 auto; }
 .order-consent a{ color:var(--orange-dark); }
+.order-field input[type="number"]{ width:100%; }
 /* ============================================================
    KORREKTUR FÜR BESTELLSEITE (GRID & TARIFE)
    ============================================================ */

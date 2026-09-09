@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var dropzone = document.getElementById('dropzone');
   var pdfInput = document.getElementById('pdfUpload');
   var fileLabel = document.getElementById('fileLabel');
+  var manualAmount = document.getElementById('manualAmount');
   var checkoutEndpoint = 'https://qlzugnwsufbgznoawvic.supabase.co/functions/v1/create-checkout-session';
 
   function eur(n) {
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     sumTotal.textContent = eur(price);
     hiddenTotal.value = eur(price);
     hiddenPlanName.value = name;
+    if (manualAmount && manualAmount.dataset.manual !== 'true') manualAmount.value = parseFloat(price).toFixed(2);
   }
 
   planInputs.forEach(function (input) {
@@ -95,6 +97,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var emailField = form.querySelector('input[type="email"]');
     var firstName = document.getElementById('firstName').value.trim();
     var lastName = document.getElementById('lastName').value.trim();
+    var amount = Number(manualAmount.value);
+    if (!Number.isFinite(amount) || amount < 119 || amount > 10000) { alert('Please enter an amount between €119 and €10,000.'); return; }
     payButton.disabled = true;
     payButton.dataset.originalText = payButton.textContent;
     payButton.textContent = 'Opening secure checkout…';
@@ -103,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         plan: selectedPlan && selectedPlan.dataset.code,
+        amount,
         email: emailField.value.trim(),
         firstName,
         lastName,
@@ -112,4 +117,5 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(function (data) { window.location.assign(data.url); })
       .catch(function (error) { alert(error.message); payButton.disabled = false; payButton.textContent = payButton.dataset.originalText; });
   });
+  manualAmount.addEventListener('input', function () { manualAmount.dataset.manual = 'true'; sumTotal.textContent = eur(manualAmount.value); hiddenTotal.value = eur(manualAmount.value); });
 });
