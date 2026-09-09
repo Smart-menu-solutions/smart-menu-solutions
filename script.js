@@ -235,13 +235,12 @@
 
   function applyStoredLanguage() {
     var storedLanguage = getStoredValue('selectedLang') || 'en';
-
-    var languageButtons = document.querySelectorAll('.flag-btn, .lang-btn');
-    if (!languageButtons.length) return;
-
     document.documentElement.lang = storedLanguage;
     applyTranslations(storedLanguage);
     updateCookieBannerLanguage(storedLanguage);
+
+    var languageButtons = document.querySelectorAll('.flag-btn, .lang-btn');
+    if (!languageButtons.length) return;
     languageButtons.forEach(function (button) {
       var marker = button.getAttribute('data-lang') || button.textContent.trim().toLowerCase();
       var normalized = marker === 'gb' ? 'en' : marker;
