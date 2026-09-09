@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var dropzone = document.getElementById('dropzone');
   var pdfInput = document.getElementById('pdfUpload');
   var fileLabel = document.getElementById('fileLabel');
+  var checkoutEndpoint = 'https://qlzugnwsufbgznoawvic.supabase.co/functions/v1/create-checkout-session';
 
   function eur(n) {
     return '\u20AC' + parseFloat(n).toFixed(2);
@@ -90,15 +91,25 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    var nextField = form.querySelector('input[name="_next"]');
+    var selectedPlan = form.querySelector('input[name="Selected Plan"]:checked');
     var emailField = form.querySelector('input[type="email"]');
-    var replyToField = form.querySelector('input[name="_replyto"]');
-    if (nextField) {
-      var isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-      if (isLocalHost || window.location.protocol === 'file:') nextField.remove();
-      else nextField.value = new URL('thank-you.html', window.location.href).href;
-    }
-    if (replyToField && emailField) replyToField.value = emailField.value;
-    HTMLFormElement.prototype.submit.call(form);
+    var firstName = document.getElementById('firstName').value.trim();
+    var lastName = document.getElementById('lastName').value.trim();
+    payButton.disabled = true;
+    payButton.dataset.originalText = payButton.textContent;
+    payButton.textContent = 'Opening secure checkout…';
+    fetch(checkoutEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        plan: selectedPlan && selectedPlan.dataset.code,
+        email: emailField.value.trim(),
+        firstName,
+        lastName,
+        pdfFileName: pdfInput.files[0].name
+      })
+    }).then(function (response) { return response.json().then(function (data) { if (!response.ok) throw new Error(data.error || 'Checkout could not be started.'); return data; }); })
+      .then(function (data) { window.location.assign(data.url); })
+      .catch(function (error) { alert(error.message); payButton.disabled = false; payButton.textContent = payButton.dataset.originalText; });
   });
 });
