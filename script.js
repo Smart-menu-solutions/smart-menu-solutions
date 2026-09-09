@@ -8,7 +8,7 @@ if (navToggle && mainNav) {
   navToggle.addEventListener('click', () => {
     const expanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', !expanded);
-    mainNav.classList.toggle('open');
+    mainNav.classList.toggle('is-open');
   });
 }
 
