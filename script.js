@@ -411,6 +411,15 @@ Object.assign(translations.de, { privacy_storage_sub:'Datenspeicherung', privacy
 
 Object.assign(translations.de, { refund_hero_title: 'Rückerstattungs<span class="accent">richtlinie</span>' });
 
+function applyMobileRefundHeading() {
+  var title = document.querySelector('[data-i18n="refund_hero_title"]');
+  var accent = title && title.querySelector('.accent');
+  var isMobile = window.matchMedia('(max-width: 480px)').matches;
+  if (!accent) return;
+  accent.style.display = isMobile ? 'block' : '';
+  title.style.fontSize = isMobile ? 'clamp(1.8rem, 8.5vw, 2.25rem)' : '';
+}
+
 function switchLanguage(lang) {
   localStorage.setItem('selectedLang', lang);
   document.documentElement.lang = lang;
@@ -437,6 +446,7 @@ function switchLanguage(lang) {
   });
 
   applyPageTranslations(lang);
+  applyMobileRefundHeading();
 }
 
 function setupLanguageControls() {
