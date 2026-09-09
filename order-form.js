@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
     fileLabel.textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(2) + ' MB)';
+    pdfInput.setCustomValidity('');
   }
 
   form.addEventListener('submit', function (e) {

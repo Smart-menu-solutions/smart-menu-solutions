@@ -7,7 +7,7 @@
 <title>Start Your Order | Smart Menu Solutions</title>
 <meta name="description" content="Place your order for a Smart Menu Solutions digital QR menu — choose your plan and upload your menu to get started.">
 <link rel="icon" type="image/png" href="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&amp;enable=upscale&amp;height=64">
-<link rel="stylesheet" href="style.css?v=d120e4a">
+<link rel="stylesheet" href="style.css?v=v1-order">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -103,9 +103,12 @@
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
                 <p class="dz-title" id="fileLabel">Upload your menu PDF</p>
                 <p class="dz-sub">Click here or drag a PDF file to upload</p>
-                <input type="file" id="pdfUpload" name="attachment" accept=".pdf" style="display:none">
+                <input type="file" id="pdfUpload" name="attachment" accept="application/pdf,.pdf" required style="display:none">
               </div>
             </div>
+
+            <label class="order-consent"><input type="checkbox" name="Privacy Policy Consent" required> I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</label>
+            <label class="order-consent"><input type="checkbox" name="Terms Consent" required> I agree to the <a href="terms-of-service.html" target="_blank" rel="noopener">Terms of Service</a>.</label>
 
             <button type="submit" class="order-submit" id="payButton">
               Submit order request
