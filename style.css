@@ -842,6 +842,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 }
 
 @media (max-width: 480px){
+  .page-hero h1[data-i18n="refund_hero_title"]{font-size:clamp(1.8rem,8.5vw,2.25rem)}
+  .page-hero h1[data-i18n="refund_hero_title"] .accent{display:block}
   .header-inner{padding:8px 10px;gap:.35rem}
   .header-inner .brand{min-width:0;gap:.3rem}
   .header-inner .brand img{height:32px;width:32px;object-fit:contain}
