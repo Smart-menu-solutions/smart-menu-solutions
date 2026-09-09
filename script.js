@@ -263,6 +263,11 @@
     document.querySelectorAll('.flag-btn, .lang-btn').forEach(function (button) {
       if (button.dataset.langBound === 'true') return;
       button.dataset.langBound = 'true';
+      var initialMarker = button.getAttribute('data-lang') || button.textContent.trim().toLowerCase();
+      if (initialMarker === 'gb') {
+        button.textContent = 'EN';
+        button.setAttribute('data-lang', 'en');
+      }
       button.addEventListener('click', function () {
         var marker = button.getAttribute('data-lang') || button.textContent.trim().toLowerCase();
         var normalized = marker === 'gb' ? 'en' : marker;
