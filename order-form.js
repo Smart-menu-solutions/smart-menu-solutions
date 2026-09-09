@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var fileLabel = document.getElementById('fileLabel');
   var manualAmount = document.getElementById('manualAmount');
   var checkoutEndpoint = 'https://qlzugnwsufbgznoawvic.supabase.co/functions/v1/create-checkout-session';
+  var supabasePublishableKey = 'sb_publishable_m7GxKtc8I3F8ASzuMaJvZg_8CQuKToA';
 
   function eur(n) {
     return '\u20AC' + parseFloat(n).toFixed(2);
@@ -104,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
     payButton.textContent = 'Opening secure checkout…';
     fetch(checkoutEndpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', apikey: supabasePublishableKey },
       body: JSON.stringify({
         plan: selectedPlan && selectedPlan.dataset.code,
         amount,
