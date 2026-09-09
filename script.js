@@ -139,6 +139,20 @@
     });
   }
 
+  function updateCookieBannerLanguage(language) {
+    var banner = document.querySelector('.cookie-banner');
+    if (!banner) return;
+    var message = language === 'de'
+      ? 'Wir verwenden essenzielle Cookies und lokalen Speicher für zentrale Website-Funktionen. <a href="cookie-policy.html">Cookie-Richtlinie</a> · <a href="privacy-policy.html">Datenschutzerklärung</a>'
+      : 'We use essential cookies and local storage for core website functions. <a href="cookie-policy.html">Cookie Policy</a> · <a href="privacy-policy.html">Privacy Policy</a>';
+    var buttonText = language === 'de' ? 'Akzeptieren' : 'Accept';
+    var paragraph = banner.querySelector('p');
+    var button = banner.querySelector('.cookie-banner__accept');
+    if (paragraph) paragraph.innerHTML = message;
+    if (button) button.textContent = buttonText;
+    banner.setAttribute('aria-label', language === 'de' ? 'Cookie-Hinweis' : 'Cookie notice');
+  }
+
   function initSmartMenus() {
     try {
       if (!window.jQuery || !window.jQuery.fn || typeof window.jQuery.fn.smartmenus !== 'function') {
@@ -227,6 +241,7 @@
 
     document.documentElement.lang = storedLanguage;
     applyTranslations(storedLanguage);
+    updateCookieBannerLanguage(storedLanguage);
     languageButtons.forEach(function (button) {
       var marker = button.getAttribute('data-lang') || button.textContent.trim().toLowerCase();
       var normalized = marker === 'gb' ? 'en' : marker;
@@ -241,6 +256,7 @@
       setStoredValue('selectedLang', normalized);
       document.documentElement.lang = normalized;
       applyTranslations(normalized);
+      updateCookieBannerLanguage(normalized);
       applyStoredLanguage();
     };
 
@@ -254,6 +270,7 @@
         setStoredValue('selectedLang', normalized);
         document.documentElement.lang = normalized;
         applyTranslations(normalized);
+        updateCookieBannerLanguage(normalized);
         applyStoredLanguage();
       });
     });
@@ -272,12 +289,8 @@
     banner.setAttribute('role', 'dialog');
     banner.setAttribute('aria-live', 'polite');
     var language = getStoredValue('selectedLang') || 'en';
-    var message = language === 'de'
-      ? 'Wir verwenden essenzielle Cookies und lokalen Speicher für zentrale Website-Funktionen. <a href="cookie-policy.html">Cookie-Richtlinie</a> · <a href="privacy-policy.html">Datenschutzerklärung</a>'
-      : 'We use essential cookies and local storage for core website functions. <a href="cookie-policy.html">Cookie Policy</a> · <a href="privacy-policy.html">Privacy Policy</a>';
-    var buttonText = language === 'de' ? 'Akzeptieren' : 'Accept';
-    banner.setAttribute('aria-label', language === 'de' ? 'Cookie-Hinweis' : 'Cookie notice');
-    banner.innerHTML = '<p>' + message + '</p><button type="button" class="btn cookie-banner__accept">' + buttonText + '</button>';
+    banner.innerHTML = '<p></p><button type="button" class="btn cookie-banner__accept"></button>';
+    updateCookieBannerLanguage(language);
 
     var acceptButton = banner.querySelector('.cookie-banner__accept');
     acceptButton.addEventListener('click', function () {
