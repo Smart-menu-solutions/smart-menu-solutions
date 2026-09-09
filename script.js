@@ -25,6 +25,13 @@
   }
 
   var translations = {
+    en: {
+      index_hero_title: '<span class="accent">SCAN. VIEW. ENJOY.</span> Smart solutions for modern business',
+      index_transform_title: 'Transform your business <span class="accent">today</span>',
+      privacy_page_title: 'Privacy <span class="accent">Policy</span>',
+      refund_hero_title: 'Refund <span class="accent">Policy</span>',
+      imprint_main_title: 'Imprint <span class="accent">Legal Notice</span>'
+    },
     de: {
       skip_link: 'Zum Hauptinhalt springen',
       home: 'Startseite',
@@ -95,9 +102,17 @@
     }
   };
 
-  function setI18nContent(element, value) {
+  var htmlTranslationKeys = {
+    index_hero_title: true,
+    index_transform_title: true,
+    privacy_page_title: true,
+    refund_hero_title: true,
+    imprint_main_title: true
+  };
+
+  function setI18nContent(element, key, value) {
     if (typeof value !== 'string') return;
-    if (value.indexOf('<') !== -1 || value.indexOf('&') !== -1) {
+    if (htmlTranslationKeys[key]) {
       element.innerHTML = value;
       return;
     }
@@ -109,17 +124,17 @@
     document.querySelectorAll('[data-i18n]').forEach(function (element) {
       var key = element.getAttribute('data-i18n');
       if (!key) return;
-      if (!element.hasAttribute('data-i18n-default')) {
-        element.setAttribute('data-i18n-default', element.innerHTML);
+      if (!element.hasAttribute('data-i18n-default-text')) {
+        element.setAttribute('data-i18n-default-text', element.textContent);
       }
       var translatedValue = dictionary[key];
       if (typeof translatedValue === 'string') {
-        setI18nContent(element, translatedValue);
+        setI18nContent(element, key, translatedValue);
         return;
       }
-      var fallback = element.getAttribute('data-i18n-default');
+      var fallback = element.getAttribute('data-i18n-default-text');
       if (typeof fallback === 'string') {
-        element.innerHTML = fallback;
+        element.textContent = fallback;
       }
     });
   }
