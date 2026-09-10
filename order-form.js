@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var fileLabel = document.getElementById('fileLabel');
   var manualAmount = document.getElementById('manualAmount');
   var feedback = document.getElementById('orderFormFeedback');
+  var droppedFile = null;
   var checkoutEndpoint = 'https://qlzugnwsufbgznoawvic.supabase.co/functions/v1/create-checkout-session';
   var supabasePublishableKey = 'sb_publishable_m7GxKtc8I3F8ASzuMaJvZg_8CQuKToA';
 
@@ -52,9 +53,14 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function resetFileState() {
+    droppedFile = null;
     pdfInput.value = '';
     pdfInput.setCustomValidity('');
     fileLabel.textContent = 'Upload your menu PDF';
+  }
+
+  function getSelectedFile() {
+    return (pdfInput.files && pdfInput.files[0]) || droppedFile || null;
   }
 
   function handleFile(file) {
@@ -98,10 +104,12 @@ document.addEventListener('DOMContentLoaded', function () {
       var transfer = new DataTransfer();
       transfer.items.add(firstFile);
       pdfInput.files = transfer.files;
-      return true;
+      droppedFile = null;
+      return firstFile;
     }
 
-    return false;
+    droppedFile = firstFile;
+    return firstFile;
   }
 
   function validateAmount() {
@@ -129,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (event.target === pdfInput) {
+      droppedFile = null;
       handleFile(pdfInput.files && pdfInput.files[0]);
     }
   });
@@ -172,11 +181,13 @@ document.addEventListener('DOMContentLoaded', function () {
       dropzone.classList.remove('is-dragover');
 
       if (event.dataTransfer.files && event.dataTransfer.files[0]) {
-        if (!setDroppedFiles(event.dataTransfer.files)) {
+        var assignedFile = setDroppedFiles(event.dataTransfer.files);
+
+        if (!assignedFile) {
           return;
         }
 
-        handleFile((pdfInput.files && pdfInput.files[0]) || event.dataTransfer.files[0]);
+        handleFile(assignedFile);
       }
     });
   }
@@ -185,8 +196,10 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault();
     setFeedback('');
 
-    if (!pdfInput.files || pdfInput.files.length === 0 || !handleFile(pdfInput.files[0])) {
-      if (!pdfInput.files || pdfInput.files.length === 0) {
+    var selectedFile = getSelectedFile();
+
+    if (!selectedFile || !handleFile(selectedFile)) {
+      if (!selectedFile) {
         pdfInput.setCustomValidity('Please attach your menu PDF before continuing.');
         pdfInput.reportValidity();
         setFeedback('Please attach your menu PDF before continuing.');
@@ -219,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function () {
         email: emailField.value.trim(),
         firstName: firstName,
         lastName: lastName,
-        pdfFileName: pdfInput.files[0].name
+        pdfFileName: selectedFile.name
       })
     })
       .then(function (response) {

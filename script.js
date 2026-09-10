@@ -1,5 +1,6 @@
 const STORAGE_KEY = 'lang';
 const DEFAULT_LANG = 'en';
+const SUPPORTED_LANGUAGES = new Set(['en', 'de']);
 const translationCache = new Map();
 let translationRequestId = 0;
 
@@ -18,16 +19,22 @@ if (navToggle && mainNav) {
 
 function getStoredLanguage() {
   try {
-    return localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
+    return normalizeLanguage(localStorage.getItem(STORAGE_KEY));
   } catch (error) {
     console.warn('Unable to read language preference:', error);
     return DEFAULT_LANG;
   }
 }
 
+function normalizeLanguage(lang) {
+  return SUPPORTED_LANGUAGES.has(lang) ? lang : DEFAULT_LANG;
+}
+
 function setStoredLanguage(lang) {
+  const nextLang = normalizeLanguage(lang);
+
   try {
-    localStorage.setItem(STORAGE_KEY, lang);
+    localStorage.setItem(STORAGE_KEY, nextLang);
   } catch (error) {
     console.warn('Unable to save language preference:', error);
   }
@@ -95,20 +102,21 @@ async function getTranslations(lang) {
 }
 
 async function loadTranslations(lang) {
+  const nextLang = normalizeLanguage(lang);
   const requestId = ++translationRequestId;
 
   try {
-    const translations = await getTranslations(lang);
+    const translations = await getTranslations(nextLang);
 
     if (requestId !== translationRequestId) {
       return;
     }
 
-    applyTranslations(translations, lang);
+    applyTranslations(translations, nextLang);
   } catch (error) {
     console.error('Translation loading error:', error);
 
-    if (lang !== DEFAULT_LANG) {
+    if (nextLang !== DEFAULT_LANG) {
       try {
         const fallbackTranslations = await getTranslations(DEFAULT_LANG);
 
@@ -126,13 +134,15 @@ async function loadTranslations(lang) {
 }
 
 async function switchLanguage(lang) {
-  if (!lang || lang === currentLang) {
+  const nextLang = normalizeLanguage(lang);
+
+  if (!lang || nextLang === currentLang) {
     syncLanguageButtons();
     return;
   }
 
-  setStoredLanguage(lang);
-  await loadTranslations(lang);
+  setStoredLanguage(nextLang);
+  await loadTranslations(nextLang);
 }
 
 function syncLanguageButtons() {
