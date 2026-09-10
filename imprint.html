@@ -7,7 +7,7 @@
 <title>Imprint | Smart Menu Solutions</title>
 <meta name="description" content="Legal information and contact details for Smart Menu Solutions.">
 <link rel="icon" type="image/png" href="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&amp;enable=upscale&amp;height=64">
-<link rel="stylesheet" href="style.css?v=d120e4a">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -33,11 +33,11 @@
       <a class="btn nav-cta" href="order-info.html" data-i18n="get_started">Get started</a>
       <div class="nav-lang-container">
         <div class="lang-switcher">
-          <button class="flag-btn" onclick="switchLanguage('de')" title="Deutsch">
-            <span style="font-size: 1.2rem;">DE</span>
+          <button class="flag-btn" type="button" data-lang="de" aria-label="Switch language to German" aria-pressed="false" title="Deutsch">
+            <span class="flag-btn__label">DE</span>
           </button>
-          <button class="flag-btn" onclick="switchLanguage('en')" title="English">
-            <span style="font-size: 1.2rem;">GB</span>
+          <button class="flag-btn" type="button" data-lang="en" aria-label="Switch language to English" aria-pressed="false" title="English">
+            <span class="flag-btn__label">EN</span>
           </button>
         </div>
       </div>
@@ -49,7 +49,7 @@
 
   <section class="page-hero">
     <div class="container">
-      <h1 data-i18n="imprint_main_title">Imprint <span class="accent">Legal Notice</span></h1>
+      <h1 data-i18n-html="imprint_main_title">Imprint <span class="accent">Legal Notice</span></h1>
       <p data-i18n="imprint_hero_desc">Business information and legal contact details.</p>
     </div>
   </section>
@@ -139,6 +139,9 @@
       <span>© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions</span>
       <ul class="footer-legal">
         <li><a href="privacy-policy.html" data-i18n="privacy_policy">Privacy Policy</a></li>
+        <li><a href="terms-of-service.html" data-i18n="terms_of_service">Terms of Service</a></li>
+        <li><a href="cookie-policy.html" data-i18n="cookie_policy">Cookie Policy</a></li>
+        <li><a href="disclaimer.html" data-i18n="disclaimer">Disclaimer</a></li>
         <li><a href="refund-policy.html" data-i18n="refund_policy">Refund Policy</a></li>
         <li><a href="imprint.html" aria-current="page" data-i18n="imprint">Imprint</a></li>
         <li><a href="mailto:smartmenusolutions@outlook.com">smartmenusolutions@outlook.com</a></li>

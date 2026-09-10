@@ -7,7 +7,7 @@
 <title>Smart Menu Solutions — Digital QR Menus for Restaurants & Cafés</title>
 <meta name="description" content="Smart Menu Solutions creates modern digital QR menus for restaurants, cafés, bars and hotels. Scan. View. Enjoy.">
 <link rel="icon" type="image/png" href="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&enable=upscale&height=64">
-<link rel="stylesheet" href="style.css?v=mobile-1">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip-link" href="#main-content" data-i18n="skip_link">Skip to main content</a>
@@ -15,7 +15,7 @@
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="index.html">
-      <img src="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&enable=upscale&height=70" alt="">
+      <img src="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&enable=upscale&height=70" alt="Smart Menu Solutions logo">
       <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
     </a>
 
@@ -40,11 +40,11 @@
 
       <div class="nav-lang-container">
         <div class="lang-switcher">
-          <button class="flag-btn" onclick="switchLanguage('de')" title="Deutsch">
-            <span style="font-size: 1.2rem;">DE</span>
+          <button class="flag-btn" type="button" data-lang="de" aria-label="Switch language to German" aria-pressed="false" title="Deutsch">
+            <span class="flag-btn__label">DE</span>
           </button>
-          <button class="flag-btn" onclick="switchLanguage('en')" title="English">
-            <span style="font-size: 1.2rem;">EN</span>
+          <button class="flag-btn" type="button" data-lang="en" aria-label="Switch language to English" aria-pressed="false" title="English">
+            <span class="flag-btn__label">EN</span>
           </button>
         </div>
       </div>
@@ -55,10 +55,10 @@
 <main id="main-content">
   <section class="hero">
     <div class="hero-banner">
-      <img src="assets/images/home-hero.png" alt="QR code menu and digital menu displayed on a smartphone in a restaurant" width="1927" height="816">
+      <img src="assets/images/home-hero.png" alt="QR code menu and digital menu displayed on a smartphone in a restaurant" width="1927" height="816" fetchpriority="high" decoding="async">
     </div>
     <div class="hero-inner">
-      <h1 data-i18n="index_hero_title">
+      <h1 data-i18n-html="index_hero_title">
         <span class="accent">SCAN. VIEW. ENJOY.</span> Smart solutions for modern business
       </h1>
       <p class="hero-lede" data-i18n="index_hero_lede">
@@ -73,7 +73,7 @@
   <section class="section section--alt">
     <div class="container">
       <div class="section-head">
-        <h2 data-i18n="index_transform_title">Transform your business <span class="accent">today</span></h2>
+        <h2 data-i18n-html="index_transform_title">Transform your business <span class="accent">today</span></h2>
         <p data-i18n="index_transform_desc">
           Ready to embrace the future? Our digital menu solutions are designed to be modern, eye-catching, and incredibly easy to use. See how Smart Menu Solutions can bring a fresh, vibrant energy to your establishment and delight your customers.
         </p>
@@ -87,7 +87,7 @@
   <div class="container">
     <div class="footer-inner">
       <a class="footer-brand" href="index.html">
-        <img src="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&width=157" alt="">
+        <img src="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&width=157" alt="Smart Menu Solutions logo" loading="lazy" decoding="async">
         <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
       </a>
 
