@@ -63,7 +63,10 @@ document.addEventListener('DOMContentLoaded', function () {
       return false;
     }
 
-    if (file.type !== 'application/pdf') {
+    var fileName = file.name || '';
+    var isPdf = file.type === 'application/pdf' || (!file.type && /\.pdf$/i.test(fileName));
+
+    if (!isPdf) {
       resetFileState();
       pdfInput.setCustomValidity('Please upload a PDF file.');
       pdfInput.reportValidity();
@@ -233,10 +236,22 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   manualAmount.addEventListener('input', function () {
+    var value = Number(manualAmount.value);
+    var fallbackPlan = form.querySelector('input[name="Selected Plan"]:checked');
+
     manualAmount.dataset.manual = 'true';
     manualAmount.setCustomValidity('');
-    sumTotal.textContent = eur(manualAmount.value);
-    hiddenTotal.value = eur(manualAmount.value);
     setFeedback('');
+
+    if (Number.isFinite(value)) {
+      sumTotal.textContent = eur(value);
+      hiddenTotal.value = eur(value);
+      return;
+    }
+
+    if (fallbackPlan) {
+      sumTotal.textContent = eur(fallbackPlan.getAttribute('data-price'));
+      hiddenTotal.value = eur(fallbackPlan.getAttribute('data-price'));
+    }
   });
 });

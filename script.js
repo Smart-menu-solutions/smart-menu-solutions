@@ -79,9 +79,13 @@ async function loadTranslations(lang) {
     console.error('Translation loading error:', error);
 
     if (lang !== DEFAULT_LANG) {
-      currentLang = DEFAULT_LANG;
-      setStoredLanguage(DEFAULT_LANG);
-      applyTranslations(await getTranslations(DEFAULT_LANG));
+      try {
+        currentLang = DEFAULT_LANG;
+        setStoredLanguage(DEFAULT_LANG);
+        applyTranslations(await getTranslations(DEFAULT_LANG));
+      } catch (fallbackError) {
+        console.error('Default translation fallback failed:', fallbackError);
+      }
     }
   }
 }
