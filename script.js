@@ -409,18 +409,6 @@ Object.assign(translations.de, policyTranslations.de);
 Object.assign(translations.en, { privacy_storage_sub:'Data storage', privacy_processing_sub:'Data processing agreements', privacy_control_sub:'Transparency and control', privacy_rights_sub:'Exercising your rights', privacy_cookies_sub:'Understanding cookies and tracking technologies', privacy_use_sub:'How we use these technologies', privacy_choices_sub:'Your choices and consent', privacy_individual_sub:'A. Individual rights', privacy_know_sub:'B. Right to know', privacy_delete_sub:'C. Right to delete', privacy_correct_sub:'D. Right to correct', privacy_limit_sub:'E. Right to limit', privacy_optout_sub:'F. Right to opt out', privacy_nondiscrimination_sub:'G. Right to non-discrimination', privacy_requests_sub:'H. Submitting requests', privacy_sensitive_sub:'I. Sensitive personal data', privacy_consent_sub:'Obtaining consent for direct marketing', privacy_types_sub:'Types of direct marketing communications', privacy_notification_sub:'Notification of changes' });
 Object.assign(translations.de, { privacy_storage_sub:'Datenspeicherung', privacy_processing_sub:'Vereinbarungen zur Datenverarbeitung', privacy_control_sub:'Transparenz und Kontrolle', privacy_rights_sub:'Ausübung Ihrer Rechte', privacy_cookies_sub:'Cookies und Tracking-Technologien verstehen', privacy_use_sub:'So verwenden wir diese Technologien', privacy_choices_sub:'Ihre Wahlmöglichkeiten und Einwilligung', privacy_individual_sub:'A. Individuelle Rechte', privacy_know_sub:'B. Recht auf Auskunft', privacy_delete_sub:'C. Recht auf Löschung', privacy_correct_sub:'D. Recht auf Berichtigung', privacy_limit_sub:'E. Recht auf Einschränkung', privacy_optout_sub:'F. Recht auf Widerspruch', privacy_nondiscrimination_sub:'G. Schutz vor Diskriminierung', privacy_requests_sub:'H. Anträge stellen', privacy_sensitive_sub:'I. Sensible personenbezogene Daten', privacy_consent_sub:'Einwilligung für Direktmarketing', privacy_types_sub:'Arten der Direktmarketing-Kommunikation', privacy_notification_sub:'Benachrichtigung über Änderungen' });
 
-Object.assign(translations.de, { refund_hero_title: 'Rückerstattungs<span class="accent">richtlinie</span>' });
-
-function applyMobileRefundHeading() {
-  var isMobile = window.matchMedia('(max-width: 480px)').matches;
-  document.querySelectorAll('[data-i18n="refund_hero_title"], [data-i18n="privacy_page_title"]').forEach(function (title) {
-    var accent = title.querySelector('.accent');
-    if (!accent) return;
-    accent.style.display = isMobile ? 'block' : '';
-    title.style.fontSize = isMobile ? 'clamp(1.8rem, 8.5vw, 2.25rem)' : '';
-  });
-}
-
 function switchLanguage(lang) {
   localStorage.setItem('selectedLang', lang);
   document.documentElement.lang = lang;
@@ -447,7 +435,6 @@ function switchLanguage(lang) {
   });
 
   applyPageTranslations(lang);
-  applyMobileRefundHeading();
 }
 
 function setupLanguageControls() {
