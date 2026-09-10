@@ -7,7 +7,7 @@
 <title>Start Your Order | Smart Menu Solutions</title>
 <meta name="description" content="Place your order for a Smart Menu Solutions digital QR menu — choose your plan and upload your menu to get started.">
 <link rel="icon" type="image/png" href="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&amp;enable=upscale&amp;height=64">
-<link rel="stylesheet" href="style.css?v=d120e4a">
+<link rel="stylesheet" href="style.css?v=v1-order">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -78,19 +78,23 @@
               <div class="plan-grid">
                 <div class="plan-option">
                   <input type="radio" id="planStart" name="Selected Plan" value="Smart Start (EUR 119, VAT incl. 1-Year Subscription)"
-                    data-name="Smart Start" data-price="119" data-updates="1">
+                    data-code="start" data-name="Smart Start" data-price="119" data-updates="1">
                   <label for="planStart"><span class="p-name">Smart Start</span><span class="p-price">€119</span></label>
                 </div>
                 <div class="plan-option">
                   <input type="radio" id="planPro" name="Selected Plan" value="Smart Pro (EUR 129, VAT incl. 1-Year Subscription)"
-                    data-name="Smart Pro" data-price="129" data-updates="3" checked>
+                    data-code="pro" data-name="Smart Pro" data-price="129" data-updates="3" checked>
                   <label for="planPro"><span class="plan-badge" data-i18n="badge_popular">Most popular</span><span class="p-name">Smart Pro</span><span class="p-price">€129</span></label>
                 </div>
                 <div class="plan-option">
                   <input type="radio" id="planPremium" name="Selected Plan" value="Smart Premium (EUR 169, VAT incl. 1-Year Subscription)"
-                    data-name="Smart Premium" data-price="169" data-updates="6">
+                    data-code="premium" data-name="Smart Premium" data-price="169" data-updates="6">
                   <label for="planPremium"><span class="p-name">Smart Premium</span><span class="p-price">€169</span></label>
                 </div>
+              </div>
+              <div class="order-field" style="margin-top:.9rem">
+                <label for="manualAmount">Amount to pay (minimum €119)</label>
+                <input type="number" id="manualAmount" name="Manual Amount" min="119" max="10000" step="0.01" value="129.00" required>
               </div>
             </div>
 
@@ -103,9 +107,12 @@
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
                 <p class="dz-title" id="fileLabel">Upload your menu PDF</p>
                 <p class="dz-sub">Click here or drag a PDF file to upload</p>
-                <input type="file" id="pdfUpload" name="attachment" accept=".pdf" style="display:none">
+                <input type="file" id="pdfUpload" name="attachment" accept="application/pdf,.pdf" style="display:none">
               </div>
             </div>
+
+            <label class="order-consent"><input type="checkbox" name="Privacy Policy Consent" required> I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</label>
+            <label class="order-consent"><input type="checkbox" name="Terms Consent" required> I agree to the <a href="terms-of-service.html" target="_blank" rel="noopener">Terms of Service</a>.</label>
 
             <button type="submit" class="order-submit" id="payButton">
               Submit order request
