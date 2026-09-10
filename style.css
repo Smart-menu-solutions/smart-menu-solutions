@@ -47,7 +47,7 @@ body{
   background: var(--bg);
   color: var(--ink);
   font-family: 'Open Sans', system-ui, sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -78,7 +78,7 @@ p{ margin: 0 0 1em; max-width: 62ch; color: var(--grey); }
 .container{
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 16px;
 }
 
 .visually-hidden{
@@ -112,8 +112,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 .header-inner{
   display: flex; align-items: center; justify-content: space-between;
   gap: 1.5rem;
-  padding: 12px 24px;
+  padding: 12px 16px;
   max-width: var(--maxw); margin: 0 auto;
+  width: 100%;
 }
 .brand{
   display: flex; align-items: center; gap: .65rem;
@@ -135,11 +136,13 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   width: 44px; height: 44px;
   align-items: center; justify-content: center;
   cursor: pointer;
+  flex: 0 0 auto;
 }
 .nav-toggle svg{ width: 20px; height: 20px; }
 
 .main-nav{
   display: flex; align-items: center; gap: 1.7rem;
+  flex: 1;
 }
 .main-nav ul{
   list-style: none; display: flex; gap: 2.1rem;
@@ -168,6 +171,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 .nav-lang-container {
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
 }
 
 .lang-switcher {
@@ -247,7 +251,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 }
 .hero-banner img{
   width: 100%;
-  height: clamp(420px, 62vw, 620px);
+  height: clamp(300px, 62vw, 620px);
   object-fit: cover;
   display: block;
 }
@@ -256,7 +260,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   z-index: 2;
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
   max-width: 820px; margin: 0 auto;
-  padding: var(--space-4) 24px calc(var(--space-4) + 1rem);
+  padding: 3rem 1.5rem 4rem;
   text-align: center;
 }
 .hero h1{ color: #fff; }
@@ -277,11 +281,14 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 }
 
 .footer-inner{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 16px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .footer-brand{ display: flex; align-items: center; gap: .5rem; font-weight: 600; }
@@ -300,109 +307,266 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 .footer-social a:hover{ border-color: var(--orange); color: var(--orange); }
 
 .footer-bottom{
-  margin-top: var(--space-3);
-  padding-top: var(--space-3);
+  max-width: var(--maxw);
+  margin: var(--space-3) auto 0;
+  padding: var(--space-3) 16px 0;
   border-top: 1px solid #3A3733;
   font-size: .85rem; color: #A8A49D;
-  display: flex; justify-content: space-between; flex-wrap: wrap; gap: .6rem;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  width: 100%;
 }
 .footer-bottom a{ text-decoration: underline; color: #A8A49D; }
 .footer-bottom a:hover{ color: var(--orange); }
 .footer-legal{ display: flex; gap: 1.2rem; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
 
 /* ============================================================
-   Mobile Responsive
+   Tablet (768px - 860px)
    ============================================================ */
 @media (max-width: 860px) {
-  .header-inner{
-    padding: 10px 10px;
+  .container {
+    padding: 0 16px;
+  }
+  
+  .header-inner {
+    padding: 10px 12px;
+  }
+  
+  .brand-text {
+    font-size: .95rem;
+  }
+  
+  .main-nav ul {
+    gap: 1.2rem;
+  }
+  
+  .nav-cta {
+    font-size: .85rem;
+    padding: .6em 1.2em;
+  }
+}
+
+/* ============================================================
+   Mobile (< 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+  
+  .header-inner {
+    padding: 8px 8px;
     gap: .5rem;
   }
   
-  .brand-text{
-    font-size: .92rem;
+  .brand-text {
+    font-size: .85rem;
   }
   
-  .nav-toggle{ 
+  .nav-toggle { 
     display: flex; 
   }
   
-  .main-nav{
+  .main-nav {
+    position: fixed; 
+    inset: 52px 0 auto 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    position: fixed; 
-    inset: 69px 0 auto 0;
     background: var(--paper);
     border-bottom: var(--border);
-    max-height: calc(100vh - 69px);
-    overflow: auto;
-    transform: translateY(-8px);
+    max-height: calc(100vh - 52px);
+    overflow-y: auto;
+    transform: translateY(-100%);
     opacity: 0; 
     pointer-events: none;
-    transition: opacity .16s ease, transform .16s ease;
+    transition: opacity .2s ease, transform .2s ease;
+    z-index: 99;
+    width: 100%;
   }
   
-  .main-nav.is-open{
+  .main-nav.is-open {
     opacity: 1; 
     pointer-events: auto; 
     transform: translateY(0);
   }
   
-  .main-nav ul{
+  .main-nav ul {
     flex-direction: column; 
     gap: 0;
-    padding: 8px 24px 20px;
+    padding: 12px 16px 16px;
   }
   
-  .main-nav li{ 
+  .main-nav li { 
     border-bottom: 1px solid var(--line); 
   }
   
-  .main-nav a{ 
+  .main-nav a { 
     display: block; 
-    padding: 14px 4px; 
+    padding: 12px 0;
+    font-size: .9rem;
   }
   
-  .nav-cta{ 
-    margin: 4px 24px 20px; 
-    align-self: stretch; 
+  .nav-cta { 
+    margin: 8px 16px 16px; 
+    width: calc(100% - 32px);
+    font-size: .85rem;
+    padding: .6em 1.2em;
   }
 
   .nav-lang-container {
     display: flex;
     position: absolute;
-    right: 10px;
-    top: 12px;
+    right: 8px;
+    top: 8px;
+    z-index: 101;
   }
 
   .lang-switcher {
-    gap: 4px;
+    gap: 3px;
   }
 
   .flag-btn {
-    min-width: 30px;
-    height: 28px;
-    font-size: .7rem;
-    padding: 0 5px;
+    min-width: 28px;
+    height: 26px;
+    font-size: .65rem;
+    padding: 0 4px;
   }
 
-  .footer-inner, 
-  .footer-bottom{ 
-    flex-direction: column; 
-    align-items: flex-start; 
+  .hero-inner {
+    padding: 60px 16px 80px;
   }
 
-  .hero-inner{
-    padding: 80px 20px 100px;
+  .hero-banner img {
+    min-height: 300px;
+    max-height: 400px;
   }
 
-  .hero-banner img{
-    min-height: 400px;
-  }
-
-  .hero-lede{
+  .hero-lede {
     font-size: .95rem;
+  }
+
+  .footer-inner {
+    gap: 1.5rem;
+    justify-content: flex-start;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .8rem;
+  }
+
+  .footer-legal {
+    gap: .8rem;
+  }
+}
+
+/* ============================================================
+   Small Mobile (< 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 { font-size: clamp(1.5rem, 4vw, 2.3rem); }
+  h2 { font-size: clamp(1.3rem, 3vw, 1.8rem); }
+  h3 { font-size: 1.1rem; }
+
+  .container {
+    padding: 0 12px;
+  }
+
+  .header-inner {
+    padding: 6px 6px;
+  }
+
+  .brand-text {
+    font-size: .75rem;
+  }
+
+  .brand img {
+    height: 32px;
+  }
+
+  .nav-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-toggle svg {
+    width: 18px;
+  }
+
+  .main-nav {
+    inset: 48px 0 auto 0;
+    max-height: calc(100vh - 48px);
+  }
+
+  .main-nav ul {
+    padding: 8px 12px 12px;
+  }
+
+  .main-nav a {
+    padding: 10px 0;
+    font-size: .85rem;
+  }
+
+  .nav-cta {
+    margin: 6px 12px 12px;
+    width: calc(100% - 24px);
+    font-size: .8rem;
+    padding: .5em 1em;
+  }
+
+  .flag-btn {
+    min-width: 26px;
+    height: 24px;
+    font-size: .6rem;
+    padding: 0 3px;
+  }
+
+  .hero-inner {
+    padding: 50px 12px 60px;
+  }
+
+  .hero-banner img {
+    min-height: 250px;
+  }
+
+  .section {
+    padding: 2rem 0;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .footer-brand img {
+    height: 28px;
+  }
+
+  .footer-links {
+    gap: 1rem;
+  }
+
+  .footer-links a {
+    font-size: .85rem;
+  }
+
+  .footer-bottom {
+    padding: 1rem 12px 0;
+  }
+
+  .footer-legal {
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  .footer-legal a {
+    font-size: .8rem;
   }
 }
 
