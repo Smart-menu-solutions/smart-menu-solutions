@@ -7,7 +7,7 @@
 <title>Refund Policy | Smart Menu Solutions</title>
 <meta name="description" content="Read the refund policy for Smart Menu Solutions digital services and custom QR menus.">
 <link rel="icon" type="image/png" href="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&amp;enable=upscale&amp;height=64">
-<link rel="stylesheet" href="style.css?v=refund-accent-2">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip-link" href="#main-content" data-i18n="skip_link">Skip to main content</a>
@@ -33,11 +33,11 @@
       <a class="btn nav-cta" href="order-info.html" data-i18n="get_started">Get started</a>
       <div class="nav-lang-container">
         <div class="lang-switcher">
-          <button class="flag-btn" onclick="switchLanguage('de')" title="Deutsch">
-            <span style="font-size: 1.2rem;">DE</span>
+          <button class="flag-btn" type="button" data-lang="de" aria-label="Switch language to German" aria-pressed="false" title="Deutsch">
+            <span class="flag-btn__label">DE</span>
           </button>
-          <button class="flag-btn" onclick="switchLanguage('en')" title="English">
-            <span style="font-size: 1.2rem;">GB</span>
+          <button class="flag-btn" type="button" data-lang="en" aria-label="Switch language to English" aria-pressed="false" title="English">
+            <span class="flag-btn__label">EN</span>
           </button>
         </div>
       </div>
@@ -49,7 +49,7 @@
 
   <section class="page-hero">
     <div class="container">
-      <h1 data-i18n="refund_hero_title">Refund <span class="accent">Policy</span></h1>
+      <h1 data-i18n-html="refund_hero_title">Refund <span class="accent">Policy</span></h1>
       <p data-i18n="refund_hero_desc">Please read our refund policy carefully before placing an order.</p>
     </div>
   </section>
@@ -112,6 +112,9 @@
       <span>© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions</span>
       <ul class="footer-legal">
         <li><a href="privacy-policy.html" data-i18n="privacy_policy">Privacy Policy</a></li>
+        <li><a href="terms-of-service.html" data-i18n="terms_of_service">Terms of Service</a></li>
+        <li><a href="cookie-policy.html" data-i18n="cookie_policy">Cookie Policy</a></li>
+        <li><a href="disclaimer.html" data-i18n="disclaimer">Disclaimer</a></li>
         <li><a href="refund-policy.html" aria-current="page" data-i18n="refund_policy">Refund Policy</a></li>
         <li><a href="imprint.html" data-i18n="imprint">Imprint</a></li>
         <li><a href="mailto:smartmenusolutions@outlook.com">smartmenusolutions@outlook.com</a></li>
@@ -120,6 +123,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=refund-accent-1"></script>
+<script src="script.js"></script>
 </body>
 </html>
