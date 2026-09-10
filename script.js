@@ -2,7 +2,10 @@ const STORAGE_KEY = 'lang';
 const DEFAULT_LANG = 'en';
 const SUPPORTED_LANGUAGES = new Set(['en', 'de']);
 const translationCache = new Map();
+const translationScript = document.currentScript || document.querySelector('script[src*="script.js"]');
+const translationsBaseUrl = new URL('assets/i18n/', translationScript ? translationScript.src : document.baseURI);
 let translationRequestId = 0;
+let loadedLanguage = null;
 
 const navToggle = document.querySelector('.nav-toggle');
 const mainNav = document.querySelector('.main-nav');
@@ -81,6 +84,7 @@ function applyTranslations(translations, lang) {
   });
 
   currentLang = lang;
+  loadedLanguage = lang;
   syncLanguageButtons();
 }
 
@@ -89,7 +93,7 @@ async function getTranslations(lang) {
     return translationCache.get(lang);
   }
 
-  const response = await fetch(`assets/i18n/${lang}.json`);
+  const response = await fetch(new URL(`${lang}.json`, translationsBaseUrl));
 
   if (!response.ok) {
     throw new Error(`Could not load translations for "${lang}".`);
@@ -136,7 +140,12 @@ async function loadTranslations(lang) {
 async function switchLanguage(lang) {
   const nextLang = normalizeLanguage(lang);
 
-  if (!lang || nextLang === currentLang) {
+  if (!lang) {
+    syncLanguageButtons();
+    return;
+  }
+
+  if (nextLang === currentLang && loadedLanguage === currentLang) {
     syncLanguageButtons();
     return;
   }

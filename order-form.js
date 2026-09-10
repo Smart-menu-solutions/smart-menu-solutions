@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var manualAmount = document.getElementById('manualAmount');
   var feedback = document.getElementById('orderFormFeedback');
   var droppedFile = null;
+  var dragDepth = 0;
   var checkoutEndpoint = 'https://qlzugnwsufbgznoawvic.supabase.co/functions/v1/create-checkout-session';
   var supabasePublishableKey = 'sb_publishable_m7GxKtc8I3F8ASzuMaJvZg_8CQuKToA';
 
@@ -163,22 +164,35 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    ['dragover', 'dragenter'].forEach(function (type) {
-      dropzone.addEventListener(type, function (event) {
-        event.preventDefault();
-        dropzone.classList.add('is-dragover');
-      });
+    dropzone.addEventListener('dragenter', function (event) {
+      event.preventDefault();
+      dragDepth += 1;
+      dropzone.classList.add('is-dragover');
     });
 
-    ['dragleave', 'dragend'].forEach(function (type) {
+    dropzone.addEventListener('dragover', function (event) {
+      event.preventDefault();
+      dropzone.classList.add('is-dragover');
+    });
+
+    dropzone.addEventListener('dragleave', function (event) {
+      event.preventDefault();
+      dragDepth = Math.max(0, dragDepth - 1);
+
+      if (dragDepth === 0) {
+        dropzone.classList.remove('is-dragover');
+      }
+    });
+
+    ['drop', 'dragend'].forEach(function (type) {
       dropzone.addEventListener(type, function () {
+        dragDepth = 0;
         dropzone.classList.remove('is-dragover');
       });
     });
 
     dropzone.addEventListener('drop', function (event) {
       event.preventDefault();
-      dropzone.classList.remove('is-dragover');
 
       if (event.dataTransfer.files && event.dataTransfer.files[0]) {
         var assignedFile = setDroppedFiles(event.dataTransfer.files);
