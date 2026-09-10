@@ -86,11 +86,11 @@ document.addEventListener('DOMContentLoaded', function () {
       return false;
     }
 
+    var firstFile = fileList[0];
+
     if (typeof DataTransfer === 'function') {
       var transfer = new DataTransfer();
-      Array.prototype.slice.call(fileList).forEach(function (file) {
-        transfer.items.add(file);
-      });
+      transfer.items.add(firstFile);
       pdfInput.files = transfer.files;
       return true;
     }

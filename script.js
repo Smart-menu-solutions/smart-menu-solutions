@@ -1,6 +1,7 @@
 const STORAGE_KEY = 'lang';
 const DEFAULT_LANG = 'en';
 const translationCache = new Map();
+let translationRequestId = 0;
 
 const navToggle = document.querySelector('.nav-toggle');
 const mainNav = document.querySelector('.main-nav');
@@ -32,8 +33,29 @@ function setStoredLanguage(lang) {
   }
 }
 
-function applyTranslations(translations) {
-  document.documentElement.lang = currentLang;
+function renderFormattedTranslation(value) {
+  const fragment = document.createDocumentFragment();
+  const parts = String(value).split(/(\[\[accent:[^[\]]+\]\])/g);
+
+  parts.forEach((part) => {
+    const match = part.match(/^\[\[accent:([^[\]]+)\]\]$/);
+
+    if (match) {
+      const accent = document.createElement('span');
+      accent.className = 'accent';
+      accent.textContent = match[1];
+      fragment.appendChild(accent);
+      return;
+    }
+
+    fragment.appendChild(document.createTextNode(part));
+  });
+
+  return fragment;
+}
+
+function applyTranslations(translations, lang) {
+  document.documentElement.lang = lang;
 
   document.querySelectorAll('[data-i18n]').forEach((element) => {
     const key = element.getAttribute('data-i18n');
@@ -47,10 +69,11 @@ function applyTranslations(translations) {
     const key = element.getAttribute('data-i18n-html');
 
     if (translations[key]) {
-      element.innerHTML = translations[key];
+      element.replaceChildren(renderFormattedTranslation(translations[key]));
     }
   });
 
+  currentLang = lang;
   syncLanguageButtons();
 }
 
@@ -72,17 +95,29 @@ async function getTranslations(lang) {
 }
 
 async function loadTranslations(lang) {
+  const requestId = ++translationRequestId;
+
   try {
-    currentLang = lang;
-    applyTranslations(await getTranslations(lang));
+    const translations = await getTranslations(lang);
+
+    if (requestId !== translationRequestId) {
+      return;
+    }
+
+    applyTranslations(translations, lang);
   } catch (error) {
     console.error('Translation loading error:', error);
 
     if (lang !== DEFAULT_LANG) {
       try {
-        currentLang = DEFAULT_LANG;
+        const fallbackTranslations = await getTranslations(DEFAULT_LANG);
+
+        if (requestId !== translationRequestId) {
+          return;
+        }
+
         setStoredLanguage(DEFAULT_LANG);
-        applyTranslations(await getTranslations(DEFAULT_LANG));
+        applyTranslations(fallbackTranslations, DEFAULT_LANG);
       } catch (fallbackError) {
         console.error('Default translation fallback failed:', fallbackError);
       }
@@ -96,7 +131,6 @@ async function switchLanguage(lang) {
     return;
   }
 
-  currentLang = lang;
   setStoredLanguage(lang);
   await loadTranslations(lang);
 }
