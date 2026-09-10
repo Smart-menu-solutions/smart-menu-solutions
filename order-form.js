@@ -86,6 +86,12 @@ document.addEventListener('DOMContentLoaded', function () {
       return false;
     }
 
+    if (fileList.length > 1) {
+      resetFileState();
+      setFeedback('Please upload only one PDF file at a time.');
+      return false;
+    }
+
     var firstFile = fileList[0];
 
     if (typeof DataTransfer === 'function') {
@@ -166,7 +172,10 @@ document.addEventListener('DOMContentLoaded', function () {
       dropzone.classList.remove('is-dragover');
 
       if (event.dataTransfer.files && event.dataTransfer.files[0]) {
-        setDroppedFiles(event.dataTransfer.files);
+        if (!setDroppedFiles(event.dataTransfer.files)) {
+          return;
+        }
+
         handleFile((pdfInput.files && pdfInput.files[0]) || event.dataTransfer.files[0]);
       }
     });

@@ -60,7 +60,7 @@ function applyTranslations(translations, lang) {
   document.querySelectorAll('[data-i18n]').forEach((element) => {
     const key = element.getAttribute('data-i18n');
 
-    if (translations[key]) {
+    if (Object.prototype.hasOwnProperty.call(translations, key)) {
       element.textContent = translations[key];
     }
   });
@@ -68,7 +68,7 @@ function applyTranslations(translations, lang) {
   document.querySelectorAll('[data-i18n-html]').forEach((element) => {
     const key = element.getAttribute('data-i18n-html');
 
-    if (translations[key]) {
+    if (Object.prototype.hasOwnProperty.call(translations, key)) {
       element.replaceChildren(renderFormattedTranslation(translations[key]));
     }
   });
