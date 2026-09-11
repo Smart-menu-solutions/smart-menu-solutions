@@ -214,7 +214,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 }
 .btn:hover{ background: var(--orange-dark); transform: translateY(-1px); }
 .btn:active{ transform: translateY(0); }
+.btn:visited{ color: #fff; }
 .btn--outline{ background: transparent; color: var(--ink); border-color: var(--line); box-shadow: none; }
+.btn--outline:visited{ color: var(--ink); }
 .btn--outline:hover{ border-color: var(--orange); color: var(--orange); background: transparent; }
 .btn--block{ width: 100%; justify-content: center; }
 
