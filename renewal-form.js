@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     supabaseClient.storage.from('menu-pdfs').upload(storagePath, file, { contentType: 'application/pdf' })
       .then(function (result) {
-        if (result.error) throw new Error('Could not upload your PDF. Please try again.');
+        if (result.error) throw new Error('Could not upload your PDF: ' + (result.error.message || 'unknown error'));
         setBusy('Opening secure checkout…');
         return fetch(renewalEndpoint, {
           method: 'POST',
