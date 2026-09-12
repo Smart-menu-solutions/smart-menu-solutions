@@ -889,7 +889,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 }
 
 /* Legal and informational content */
-.prose a{ text-decoration:none; color:#464feb; }
+.prose a{ text-decoration:none; color:var(--orange); }
+.prose a:visited{ color:var(--orange); }
 .prose a:hover{ text-decoration:underline; }
 .prose tr th,.prose tr td{ border:1px solid #e6e6e6; }
 .prose tr th{ background-color:#f5f5f5; }
