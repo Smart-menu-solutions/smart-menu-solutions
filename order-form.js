@@ -16,6 +16,18 @@ document.addEventListener('DOMContentLoaded', function () {
   var supabaseUrl = 'https://qlzugnwsufbgznoawvic.supabase.co';
   var supabasePublishableKey = 'sb_publishable_m7GxKtc8I3F8ASzuMaJvZg_8CQuKToA';
   var checkoutEndpoint = supabaseUrl + '/functions/v1/create-checkout-session';
+
+  // These are the messages this form still shows via alert()/plain text
+  // instead of data-i18n, so they follow the same localStorage language
+  // switch as the rest of the page instead of always being English.
+  function t(en, de) {
+    return localStorage.getItem('selectedLang') === 'de' ? de : en;
+  }
+
+  if (!window.supabase) {
+    alert(t('Could not load the order form. Please refresh the page.', 'Das Bestellformular konnte nicht geladen werden. Bitte laden Sie die Seite neu.'));
+    return;
+  }
   var supabaseClient = window.supabase.createClient(supabaseUrl, supabasePublishableKey);
 
   function eur(n) {
@@ -79,9 +91,9 @@ document.addEventListener('DOMContentLoaded', function () {
   function handleFile(file) {
     if (!file) return;
     if (file.type !== 'application/pdf') {
-      alert('Please upload a valid PDF file.');
+      alert(t('Please upload a valid PDF file.', 'Bitte laden Sie eine gültige PDF-Datei hoch.'));
       pdfInput.value = '';
-      fileLabel.textContent = 'Upload your menu PDF';
+      fileLabel.textContent = t('Upload your menu PDF', 'Menü als PDF hochladen');
       return;
     }
     fileLabel.textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(2) + ' MB)';
@@ -102,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
     var file = pdfInput.files && pdfInput.files[0];
     if (!file) {
-      alert('Please attach your menu PDF before continuing.');
+      alert(t('Please attach your menu PDF before continuing.', 'Bitte fügen Sie Ihr Menü als PDF an, bevor Sie fortfahren.'));
       return;
     }
 
@@ -116,10 +128,12 @@ document.addEventListener('DOMContentLoaded', function () {
     setBusy('Uploading menu…');
     var safeName = file.name.replace(/[^a-zA-Z0-9.\-_]+/g, '_');
     var storagePath = 'pending/' + Date.now() + '-' + Math.random().toString(36).slice(2, 8) + '-' + safeName;
+    var uploaded = false;
 
     supabaseClient.storage.from('menu-pdfs').upload(storagePath, file, { contentType: 'application/pdf' })
       .then(function (result) {
         if (result.error) throw new Error('Could not upload your PDF: ' + (result.error.message || 'unknown error'));
+        uploaded = true;
         setBusy('Opening secure checkout…');
         return fetch(checkoutEndpoint, {
           method: 'POST',
@@ -138,6 +152,13 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(function (response) { return response.json().then(function (data) { if (!response.ok) throw new Error(data.error || 'Checkout could not be started.'); return data; }); })
       .then(function (data) { window.location.assign(data.url); })
       .catch(function (error) {
+        // Checkout failed (or was declined) after the PDF already made it to
+        // storage — remove it rather than leaving an orphaned upload with no
+        // order attached to it. Best-effort: a failure here isn't shown to
+        // the customer, it just means manual cleanup is needed later.
+        if (uploaded) {
+          supabaseClient.storage.from('menu-pdfs').remove([storagePath]).catch(function () {});
+        }
         alert(error.message);
         resetButton();
       });

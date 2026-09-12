@@ -13,6 +13,20 @@ document.addEventListener('DOMContentLoaded', function () {
   var supabaseUrl = 'https://qlzugnwsufbgznoawvic.supabase.co';
   var supabasePublishableKey = 'sb_publishable_m7GxKtc8I3F8ASzuMaJvZg_8CQuKToA';
   var renewalEndpoint = supabaseUrl + '/functions/v1/renewal';
+
+  // Same rationale as order-form.js: the handful of messages this form still
+  // shows via alert()/plain text follow the page's localStorage language
+  // switch instead of always being English.
+  function t(en, de) {
+    return localStorage.getItem('selectedLang') === 'de' ? de : en;
+  }
+
+  if (!window.supabase) {
+    var errorText = errorBox.querySelector('p');
+    if (errorText) errorText.textContent = t('Could not load the renewal form. Please refresh the page.', 'Das Verlängerungsformular konnte nicht geladen werden. Bitte laden Sie die Seite neu.');
+    errorBox.style.display = '';
+    return;
+  }
   var supabaseClient = window.supabase.createClient(supabaseUrl, supabasePublishableKey);
 
   var planInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="Selected Plan"]'));
@@ -85,9 +99,9 @@ document.addEventListener('DOMContentLoaded', function () {
   function handleFile(file) {
     if (!file) return;
     if (file.type !== 'application/pdf') {
-      alert('Please upload a valid PDF file.');
+      alert(t('Please upload a valid PDF file.', 'Bitte laden Sie eine gültige PDF-Datei hoch.'));
       pdfInput.value = '';
-      fileLabel.textContent = 'Upload your menu PDF (new or unchanged)';
+      fileLabel.textContent = t('Upload your menu PDF (new or unchanged)', 'Menü als PDF hochladen (neu oder unverändert)');
       return;
     }
     fileLabel.textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(2) + ' MB)';
@@ -108,22 +122,24 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
     var file = pdfInput.files && pdfInput.files[0];
     if (!file) {
-      alert('Please attach your menu PDF before continuing.');
+      alert(t('Please attach your menu PDF before continuing.', 'Bitte fügen Sie Ihr Menü als PDF an, bevor Sie fortfahren.'));
       return;
     }
     var selectedPlan = form.querySelector('input[name="Selected Plan"]:checked');
     if (!selectedPlan) {
-      alert('Please choose a plan.');
+      alert(t('Please choose a plan.', 'Bitte wählen Sie einen Plan.'));
       return;
     }
 
     setBusy('Uploading menu…');
     var safeName = file.name.replace(/[^a-zA-Z0-9.\-_]+/g, '_');
     var storagePath = 'pending/' + Date.now() + '-' + Math.random().toString(36).slice(2, 8) + '-' + safeName;
+    var uploaded = false;
 
     supabaseClient.storage.from('menu-pdfs').upload(storagePath, file, { contentType: 'application/pdf' })
       .then(function (result) {
         if (result.error) throw new Error('Could not upload your PDF: ' + (result.error.message || 'unknown error'));
+        uploaded = true;
         setBusy('Opening secure checkout…');
         return fetch(renewalEndpoint, {
           method: 'POST',
@@ -143,6 +159,11 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(function (response) { return response.json().then(function (data) { if (!response.ok) throw new Error(data.error || 'Renewal checkout could not be started.'); return data; }); })
       .then(function (data) { window.location.assign(data.url); })
       .catch(function (error) {
+        // Checkout failed after the PDF already made it to storage — remove
+        // it rather than leaving an orphaned upload with no order attached.
+        if (uploaded) {
+          supabaseClient.storage.from('menu-pdfs').remove([storagePath]).catch(function () {});
+        }
         alert(error.message);
         resetButton();
       });

@@ -31,7 +31,8 @@ try {
         }
 
         $filePath = [IO.Path]::GetFullPath((Join-Path $root $relativePath))
-        if (-not $filePath.StartsWith($root, [StringComparison]::OrdinalIgnoreCase) -or -not (Test-Path $filePath -PathType Leaf)) {
+        $rootWithSeparator = $root.TrimEnd([IO.Path]::DirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar
+        if (-not $filePath.StartsWith($rootWithSeparator, [StringComparison]::OrdinalIgnoreCase) -or -not (Test-Path $filePath -PathType Leaf)) {
             $context.Response.StatusCode = 404
             $body = [Text.Encoding]::UTF8.GetBytes('Not found')
             $context.Response.OutputStream.Write($body, 0, $body.Length)
