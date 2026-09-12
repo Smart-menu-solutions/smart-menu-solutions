@@ -87,6 +87,11 @@ var translations = {
     'compare_after_li1': 'Update instantly, anytime, from any device',
     'compare_after_li2': 'Multiple languages built in',
     'compare_after_li3': 'Always clean, modern and on-brand',
+    'compare_ready_tag': 'Ready to go',
+    'compare_ready_title': 'Your menu, live and ready',
+    'compare_ready_li1': 'Every dish with its own photo',
+    'compare_ready_li2': 'Prices and items update instantly',
+    'compare_ready_li3': 'Share the link or QR code today',
 
     // --- Our Services Seite ---
     'services_hero_title': '<span class="accent">Beyond</span> the ordinary',
@@ -277,6 +282,11 @@ var translations = {
     'compare_after_li1': 'Jederzeit sofort aktualisierbar, von jedem Gerät',
     'compare_after_li2': 'Mehrere Sprachen fest eingebaut',
     'compare_after_li3': 'Immer sauber, modern und markengerecht',
+    'compare_ready_tag': 'Startklar',
+    'compare_ready_title': 'Ihr Menü, live und startklar',
+    'compare_ready_li1': 'Jedes Gericht mit eigenem Foto',
+    'compare_ready_li2': 'Preise und Gerichte sofort aktualisiert',
+    'compare_ready_li3': 'Link oder QR-Code noch heute teilen',
 
     // --- Our Services Seite ---
     'services_hero_title': '<span class="accent">Mehr als</span> gewöhnlich',
