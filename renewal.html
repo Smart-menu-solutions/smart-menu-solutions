@@ -7,7 +7,7 @@
 <title>Renew Your Subscription | Smart Menu Solutions</title>
 <meta name="description" content="Renew your Smart Menu Solutions subscription — confirm your plan and upload your current menu.">
 <link rel="icon" type="image/png" href="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&amp;enable=upscale&amp;height=64">
-<link rel="stylesheet" href="style.css?v=2026-09-12a">
+<link rel="stylesheet" href="style.css?v=2026-09-12b">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -23,14 +23,14 @@
     </button>
     <nav class="main-nav" aria-label="Main">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="our-services.html">Our Services</a></li>
-        <li><a href="pricing-plans.html">Pricing Plans</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="order.html">Order</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html" data-i18n="home">Home</a></li>
+        <li><a href="our-services.html" data-i18n="services">Our Services</a></li>
+        <li><a href="pricing-plans.html" data-i18n="pricing">Pricing Plans</a></li>
+        <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
+        <li><a href="order.html" data-i18n="order">Order</a></li>
+        <li><a href="contact.html" data-i18n="contact">Contact</a></li>
       </ul>
-      <a class="btn nav-cta" href="order-info.html">Get started</a>
+      <a class="btn nav-cta" href="order-info.html" data-i18n="get_started">Get started</a>
     </nav>
   </div>
 </header>
@@ -39,54 +39,54 @@
 
   <section class="page-hero">
     <div class="container">
-      <h1>Renew your <span class="accent">subscription</span></h1>
-      <p>Confirm your details, choose your plan, and upload your current menu to continue for another year.</p>
+      <h1 data-i18n="renewal_hero_title">Renew your <span class="accent">subscription</span></h1>
+      <p data-i18n="renewal_hero_desc">Confirm your details, choose your plan, and upload your current menu to continue for another year.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <div id="renewalError" class="order-card" style="display:none">
-        <p>This renewal link is invalid or has expired. Please contact us so we can help.</p>
-        <p><a class="btn" href="mailto:smartmenusolutions@outlook.com">Contact support</a></p>
+        <p data-i18n="renewal_error_desc">This renewal link is invalid or has expired. Please contact us so we can help.</p>
+        <p><a class="btn" href="mailto:smartmenusolutions@outlook.com" data-i18n="contact_support">Contact support</a></p>
       </div>
 
       <div id="renewalLayout" class="order-layout" style="display:none">
 
         <div class="order-card">
-          <h2>Renew your subscription</h2>
+          <h2 data-i18n="renewal_form_title">Renew your subscription</h2>
 
           <form id="orderForm" name="renewal">
             <div class="order-section">
-              <div class="order-step-label">01 / Contact information</div>
+              <div class="order-step-label" data-i18n="step_contact_label">01 / Contact information</div>
               <div class="order-form-grid">
                 <div class="order-field">
-                  <label for="firstName">First name</label>
-                  <input type="text" id="firstName" name="First Name" required placeholder="First name">
+                  <label for="firstName" data-i18n="label_firstname">First name</label>
+                  <input type="text" id="firstName" name="First Name" required placeholder="First name" data-i18n-placeholder="placeholder_firstname">
                 </div>
                 <div class="order-field">
-                  <label for="lastName">Last name</label>
-                  <input type="text" id="lastName" name="Last Name" required placeholder="Last name">
+                  <label for="lastName" data-i18n="label_lastname">Last name</label>
+                  <input type="text" id="lastName" name="Last Name" required placeholder="Last name" data-i18n-placeholder="placeholder_lastname">
                 </div>
               </div>
               <div class="order-field" style="margin-top:.9rem">
-                <label for="email">Email address</label>
-                <input type="email" id="email" name="email" required placeholder="you@business.com">
+                <label for="email" data-i18n="label_email">Email address</label>
+                <input type="email" id="email" name="email" required placeholder="you@business.com" data-i18n-placeholder="placeholder_email">
               </div>
               <div class="order-form-grid" style="margin-top:.9rem">
                 <div class="order-field">
-                  <label for="companyName">Company name <span style="font-weight:400">(optional)</span></label>
+                  <label for="companyName" data-i18n="label_company">Company name <span style="font-weight:400">(optional)</span></label>
                   <input type="text" id="companyName" name="Company Name" placeholder="Your restaurant name">
                 </div>
                 <div class="order-field">
-                  <label for="phone">Phone number <span style="font-weight:400">(optional)</span></label>
+                  <label for="phone" data-i18n="label_phone">Phone number <span style="font-weight:400">(optional)</span></label>
                   <input type="tel" id="phone" name="Phone" placeholder="+30 123456789">
                 </div>
               </div>
             </div>
 
             <div class="order-section">
-              <div class="order-step-label">02 / Confirm or change your plan</div>
+              <div class="order-step-label" data-i18n="renewal_step_plan_label">02 / Confirm or change your plan</div>
               <div class="plan-grid">
                 <div class="plan-option">
                   <input type="radio" id="planStart" name="Selected Plan" data-code="start" data-name="Smart Start" data-price="119" data-updates="1">
@@ -94,7 +94,7 @@
                 </div>
                 <div class="plan-option">
                   <input type="radio" id="planPro" name="Selected Plan" data-code="pro" data-name="Smart Pro" data-price="129" data-updates="3">
-                  <label for="planPro"><span class="plan-badge">Most popular</span><span class="p-name">Smart Pro</span><span class="p-price">€129</span></label>
+                  <label for="planPro"><span class="plan-badge" data-i18n="badge_popular">Most popular</span><span class="p-name">Smart Pro</span><span class="p-price">€129</span></label>
                 </div>
                 <div class="plan-option">
                   <input type="radio" id="planPremium" name="Selected Plan" data-code="premium" data-name="Smart Premium" data-price="169" data-updates="6">
@@ -107,39 +107,39 @@
             <input type="hidden" id="hiddenPlanName" name="Plan Name" value="">
 
             <div class="order-section">
-              <div class="order-step-label">03 / Upload your current menu</div>
+              <div class="order-step-label" data-i18n="renewal_step_upload_label">03 / Upload your current menu</div>
               <div class="dropzone" id="dropzone">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
-                <p class="dz-title" id="fileLabel">Upload your menu PDF (new or unchanged)</p>
-                <p class="dz-sub">Click here or drag a PDF file to upload</p>
+                <p class="dz-title" id="fileLabel" data-i18n="renewal_label_upload_title">Upload your menu PDF (new or unchanged)</p>
+                <p class="dz-sub" data-i18n="label_upload_sub">Click here or drag a PDF file to upload</p>
                 <input type="file" id="pdfUpload" name="attachment" accept="application/pdf,.pdf" style="display:none">
               </div>
             </div>
 
-            <label class="order-consent"><input type="checkbox" name="Policy Consent" required> <span class="order-consent-text">I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="terms-of-service.html" target="_blank" rel="noopener">Terms of Service</a>.</span></label>
+            <label class="order-consent"><input type="checkbox" name="Policy Consent" required> <span class="order-consent-text" data-i18n="consent_policies">I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="terms-of-service.html" target="_blank" rel="noopener">Terms of Service</a>.</span></label>
 
             <button type="submit" class="order-submit" id="payButton">
-              Renew now
+              <span data-i18n="renewal_submit_btn">Renew now</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </button>
           </form>
         </div>
 
         <aside class="order-summary">
-          <div class="os-label">Renewal summary</div>
+          <div class="os-label" data-i18n="renewal_summary_header">Renewal summary</div>
           <h3 id="sumPlanName">Smart Pro</h3>
 
-          <div class="os-line os-line-qr"><span>Unique QR code</span><span>Included</span></div>
-          <div class="os-line os-line-updates"><span>Menu updates</span><span id="sumUpdates">3 / month</span></div>
-          <div class="os-line os-line-billing"><span>Billing Cycle 1-Year Subscription</span><span>Included</span></div>
+          <div class="os-line os-line-qr"><span data-i18n="feat_unique_qr">Unique QR code</span><span data-i18n="included">Included</span></div>
+          <div class="os-line os-line-updates"><span data-i18n="summary_updates_label">Menu updates</span><span id="sumUpdates">3 / month</span></div>
+          <div class="os-line os-line-billing"><span data-i18n="summary_billing_label">Billing Cycle 1-Year Subscription</span><span data-i18n="included">Included</span></div>
           <div class="os-total">
-            <span class="os-total-label">Total due<br><span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:.82em">VAT incl.</span></span>
+            <span class="os-total-label" data-i18n="total_due">Total due<br><span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:.82em">VAT incl.</span></span>
             <span class="os-total-value" id="sumTotal">€129.00</span>
           </div>
 
           <div class="os-note">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5l-8-3Z"/></svg>
-            <p style="margin:0"><strong>What happens next?</strong> Your subscription is renewed for another year as soon as payment succeeds.</p>
+            <p style="margin:0"><strong data-i18n="what_happens_next">What happens next?</strong> <span data-i18n="renewal_what_happens_next_desc">Your subscription is renewed for another year as soon as payment succeeds.</span></p>
           </div>
         </aside>
 
@@ -157,16 +157,16 @@
         <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
       </a>
       <ul class="footer-links">
-        <li><a href="our-services.html">Services</a></li>
-        <li><a href="pricing-plans.html">Pricing</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="our-services.html" data-i18n="services">Services</a></li>
+        <li><a href="pricing-plans.html" data-i18n="pricing">Pricing</a></li>
+        <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
+        <li><a href="contact.html" data-i18n="contact">Contact</a></li>
       </ul>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Smart Menu Solutions</span>
       <ul class="footer-legal">
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="privacy-policy.html" data-i18n="privacy_policy">Privacy Policy</a></li>
         <li><a href="mailto:smartmenusolutions@outlook.com">smartmenusolutions@outlook.com</a></li>
       </ul>
     </div>
@@ -174,7 +174,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="script.js?v=2026-09-12a"></script>
-<script src="renewal-form.js?v=2026-09-11a"></script>
+<script src="script.js?v=2026-09-12b"></script>
+<script src="renewal-form.js?v=2026-09-12a"></script>
 </body>
 </html>

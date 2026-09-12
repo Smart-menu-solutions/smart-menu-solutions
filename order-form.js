@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var price = input.getAttribute('data-price');
     var updates = input.getAttribute('data-updates');
     sumPlanName.textContent = name;
-    sumUpdates.textContent = updates + ' / month';
+    sumUpdates.textContent = updates + t(' / month', ' / Monat');
     sumTotal.textContent = eur(price);
     hiddenTotal.value = eur(price);
     hiddenPlanName.value = name;
@@ -60,6 +60,16 @@ document.addEventListener('DOMContentLoaded', function () {
     preselect.checked = true;
     applyPlan(preselect);
   }
+
+  // The order summary's "N / month" text is set by applyPlan() above, not
+  // by data-i18n, so switching language afterwards would otherwise leave
+  // it in whichever language was active when the plan was last (re)selected.
+  document.querySelectorAll('.lang-btn, .flag-btn').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var current = form.querySelector('input[name="Selected Plan"]:checked');
+      if (current) applyPlan(current);
+    });
+  });
 
   // Dropzone interactions
   if (dropzone && pdfInput) {

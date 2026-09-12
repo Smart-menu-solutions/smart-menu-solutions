@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function applyPlan(input) {
     if (!input) return;
     sumPlanName.textContent = input.getAttribute('data-name');
-    sumUpdates.textContent = input.getAttribute('data-updates') + ' / month';
+    sumUpdates.textContent = input.getAttribute('data-updates') + t(' / month', ' / Monat');
     sumTotal.textContent = eur(input.getAttribute('data-price'));
     hiddenTotal.value = eur(input.getAttribute('data-price'));
     hiddenPlanName.value = input.getAttribute('data-name');
@@ -55,6 +55,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   planInputs.forEach(function (input) {
     input.addEventListener('change', function () { applyPlan(input); });
+  });
+
+  // See order-form.js: the summary's "N / month" text is JS-managed, not
+  // data-i18n, so it needs to be refreshed when the language changes too.
+  document.querySelectorAll('.lang-btn, .flag-btn').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var current = form.querySelector('input[name="Selected Plan"]:checked');
+      if (current) applyPlan(current);
+    });
   });
 
   fetch(renewalEndpoint + '?token=' + encodeURIComponent(token))
