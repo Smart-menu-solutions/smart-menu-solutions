@@ -1,0 +1,54 @@
+$ErrorActionPreference = 'Stop'
+
+$root = (Resolve-Path $PSScriptRoot).Path
+$prefix = 'http://localhost:8001/'
+$listener = [System.Net.HttpListener]::new()
+$listener.Prefixes.Add($prefix)
+$listener.Start()
+
+$contentTypes = @{
+    '.css' = 'text/css; charset=utf-8'
+    '.html' = 'text/html; charset=utf-8'
+    '.js' = 'text/javascript; charset=utf-8'
+    '.json' = 'application/json; charset=utf-8'
+    '.png' = 'image/png'
+    '.jpg' = 'image/jpeg'
+    '.jpeg' = 'image/jpeg'
+    '.svg' = 'image/svg+xml'
+    '.xml' = 'application/xml; charset=utf-8'
+    '.txt' = 'text/plain; charset=utf-8'
+}
+
+Write-Host "Smart Menu Solutions: $prefix"
+Write-Host 'Press Ctrl+C to stop.'
+
+try {
+    while ($listener.IsListening) {
+        $context = $listener.GetContext()
+        $relativePath = [Uri]::UnescapeDataString($context.Request.Url.AbsolutePath.TrimStart('/'))
+        if ([string]::IsNullOrWhiteSpace($relativePath)) {
+            $relativePath = 'index.html'
+        }
+
+        $filePath = [IO.Path]::GetFullPath((Join-Path $root $relativePath))
+        $rootWithSeparator = $root.TrimEnd([IO.Path]::DirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar
+        if (-not $filePath.StartsWith($rootWithSeparator, [StringComparison]::OrdinalIgnoreCase) -or -not (Test-Path $filePath -PathType Leaf)) {
+            $context.Response.StatusCode = 404
+            $body = [Text.Encoding]::UTF8.GetBytes('Not found')
+            $context.Response.OutputStream.Write($body, 0, $body.Length)
+            $context.Response.Close()
+            continue
+        }
+
+        $extension = [IO.Path]::GetExtension($filePath).ToLowerInvariant()
+        $context.Response.ContentType = if ($contentTypes.ContainsKey($extension)) { $contentTypes[$extension] } else { 'application/octet-stream' }
+        $body = [IO.File]::ReadAllBytes($filePath)
+        $context.Response.ContentLength64 = $body.Length
+        $context.Response.OutputStream.Write($body, 0, $body.Length)
+        $context.Response.Close()
+    }
+}
+finally {
+    $listener.Stop()
+    $listener.Close()
+}
