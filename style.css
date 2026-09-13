@@ -548,11 +548,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   padding-top: var(--space-3);
   border-top: 1px solid #3A3733;
   font-size: .85rem; color: #A8A49D;
-  display: flex; justify-content: space-between; flex-wrap: wrap; gap: .6rem;
+  display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .6rem;
 }
 .footer-bottom a{ text-decoration: underline; color: #A8A49D; }
 .footer-bottom a:hover{ color: var(--orange); }
-.footer-legal{ display: flex; gap: 1.2rem; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+.footer-powered{ white-space: nowrap; }
+.footer-legal{ display: flex; gap: 1.2rem; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; flex-basis: 100%; }
 
 @media (max-width: 640px){
   .footer-inner, .footer-bottom{ flex-direction: column; align-items: flex-start; }

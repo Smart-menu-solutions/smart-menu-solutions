@@ -65,7 +65,8 @@ var translations = {
     'privacy_policy': 'Privacy Policy',
     'refund_policy': 'Refund Policy',
     'imprint': 'Imprint',
-    'footer_copyright': '© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions',
+    'footer_copyright': '© 2026 Smart Menu Solutions',
+    'footer_powered': 'Powered by Smart Menu Solutions',
 
     // --- Index / Startseite ---
     'index_hero_title': '<span class="accent">SCAN. VIEW. ENJOY.</span> Smart solutions for modern business',
@@ -272,7 +273,8 @@ var translations = {
     'privacy_policy': 'Datenschutz',
     'refund_policy': 'Rückerstattungsrichtlinie',
     'imprint': 'Impressum',
-    'footer_copyright': '© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions',
+    'footer_copyright': '© 2026 Smart Menu Solutions',
+    'footer_powered': 'Bereitgestellt von Smart Menu Solutions',
 
     // --- Index / Startseite ---
     'index_hero_title': '<span class="accent">SCANNEN. ANSEHEN. GENIESSEN.</span> Intelligente Lösungen für moderne Unternehmen',
@@ -729,7 +731,8 @@ var globalTranslationSelectors = {
   '.footer-legal a[href="cookie-policy.html"]': 'footer_cookies',
   '.footer-legal a[href="disclaimer.html"]': 'footer_disclaimer',
   '.footer-legal a[href="imprint.html"]': 'imprint',
-  '.footer-bottom > span': 'footer_copyright'
+  '.footer-bottom > span:first-of-type': 'footer_copyright',
+  '.footer-bottom > span.footer-powered': 'footer_powered'
 };
 
   var pageTranslationSelectors = {
