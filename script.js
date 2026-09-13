@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   setupLanguageControls();
   ensureLegalLinks();
+  ensureFooterPowered();
   ensureFooterSocial();
   document.querySelectorAll('form[action*="formsubmit.co"]').forEach(function (form) {
     var isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
@@ -768,6 +769,17 @@ function ensureLegalLinks() {
     if (!legal.querySelector('a[href="imprint.html"]')) legal.insertAdjacentHTML('beforeend', '<li><a href="imprint.html" data-i18n="imprint">Imprint</a></li>');
     var emailLink = legal.querySelector('a[href^="mailto:"]');
     if (emailLink) legal.appendChild(emailLink.parentElement);
+  });
+}
+
+function ensureFooterPowered() {
+  document.querySelectorAll('.footer-bottom').forEach(function (bottom) {
+    if (bottom.querySelector('.footer-powered')) return;
+    var span = document.createElement('span');
+    span.className = 'footer-powered';
+    span.textContent = 'Powered by Smart Menu Solutions';
+    var legal = bottom.querySelector('.footer-legal');
+    if (legal) bottom.insertBefore(span, legal); else bottom.appendChild(span);
   });
 }
 
