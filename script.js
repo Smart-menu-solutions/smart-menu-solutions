@@ -219,6 +219,11 @@ var translations = {
     'placeholder_email': 'you@business.com',
     'label_upload_title': 'Upload your menu PDF',
     'label_upload_sub': 'Click here or drag a PDF file to upload',
+    'step_photo_label': '04 / UPLOAD PHOTO ZIP',
+    'label_photo_upload_title': 'Upload photo PNGs (ZIP)',
+    'label_photo_upload_sub': 'Click here or drag a <strong>PNG ZIP</strong> file to upload',
+    'label_photo_naming_hint': '<strong>PNG naming tip:</strong> menu title "Bruschetta Classica" → file name "Bruschetta_Classica.png"',
+    'label_photo_upload_note': '<strong>Note: The customer is responsible for the quality of the photos.</strong>',
     'addon_photo_mini': 'Add photos',
     'addon_photo_summary': 'Dish photos (optional)',
     'submit_order_btn': 'Submit order request',
@@ -421,6 +426,11 @@ var translations = {
     'placeholder_email': 'ihre@firma.de',
     'label_upload_title': 'Menü-PDF hochladen',
     'label_upload_sub': 'Hier klicken oder PDF-Datei hierher ziehen',
+    'step_photo_label': '04 / FOTO-ZIP HOCHLADEN',
+    'label_photo_upload_title': 'Foto-PNG hochladen',
+    'label_photo_upload_sub': 'Hier klicken oder <strong>PNG ZIP</strong>-Datei hierher ziehen',
+    'label_photo_naming_hint': '<strong>PNG-Hinweis:</strong> Menü-Titel "Bruschetta Classica" → Dateiname "Bruschetta_Classica.png"',
+    'label_photo_upload_note': '<strong>Hinweis: Für die Qualität der Fotos ist der Kunde verantwortlich.</strong>',
     'addon_photo_mini': 'Fotos hinzufügen',
     'addon_photo_summary': 'Gericht-Fotos (optional)',
     'submit_order_btn': 'Bestellantrag absenden',
@@ -737,7 +747,7 @@ var globalTranslationSelectors = {
     '.page-hero h1': 'order_overview_title', '.page-hero p': 'order_overview_desc', '.section-head h2': 'order_steps_heading', '.section-head p': 'order_steps_sub', '.step:nth-child(1) h3': 'step1_title', '.step:nth-child(1) p': 'step1_desc', '.step:nth-child(2) h3': 'step2_title', '.step:nth-child(2) p': 'step2_desc', '.step:nth-child(3) h3': 'step3_title', '.step:nth-child(3) p': 'step3_desc', '.step:nth-child(4) h3': 'step4_title', '.step:nth-child(4) p': 'step4_desc', '.step:nth-child(5) h3': 'step5_title', '.step:nth-child(5) p': 'step5_desc', '.step:nth-child(6) h3': 'step6_title', '.step:nth-child(6) p': 'step6_desc', '.step:nth-child(7) h3': 'step7_title', '.step:nth-child(7) p': 'step7_desc', '.section > .container > div[style] a': 'order_cta_btn'
   },
   'order-info.html': {
-    '.page-hero h1': 'order_info_hero_title', '.page-hero p': 'order_info_hero_desc', '.order-card > h2': 'form_main_title', '#orderForm .order-section:nth-of-type(1) .order-step-label': 'step_contact_label', '#orderForm .order-section:nth-of-type(2) .order-step-label': 'step_plan_label', '#orderForm .order-section:nth-of-type(3) .order-step-label': 'step_upload_label', 'label[for="firstName"]': 'label_firstname', 'label[for="lastName"]': 'label_lastname', 'label[for="email"]': 'label_email', '#firstName': 'placeholder_firstname', '#lastName': 'placeholder_lastname', '#email': 'placeholder_email', '#fileLabel': 'label_upload_title', '.dz-sub': 'label_upload_sub', '#payButton': 'submit_order_btn', '.os-label': 'summary_header', '.os-line-qr span:first-child': 'feat_unique_qr', '.os-line-qr span:last-child': 'included', '.os-line-updates span:first-child': 'summary_updates_label', '.os-line-billing span:first-child': 'summary_billing_label', '.os-line-billing span:last-child': 'included', '.os-total-label': 'total_due', '.os-note strong': 'what_happens_next', '.os-note p': 'what_happens_next_desc', 'label[for="companyName"]': 'label_company', 'label[for="phone"]': 'label_phone', '.order-consent-text': 'consent_policies'
+    '.page-hero h1': 'order_info_hero_title', '.page-hero p': 'order_info_hero_desc', '.order-card > h2': 'form_main_title', '#orderForm .order-section:nth-of-type(1) .order-step-label': 'step_contact_label', '#orderForm .order-section:nth-of-type(2) .order-step-label': 'step_plan_label', '#orderForm .order-section:nth-of-type(3) .order-step-label': 'step_upload_label', '#orderForm .order-section:nth-of-type(4) .order-step-label': 'step_photo_label', 'label[for="firstName"]': 'label_firstname', 'label[for="lastName"]': 'label_lastname', 'label[for="email"]': 'label_email', '#firstName': 'placeholder_firstname', '#lastName': 'placeholder_lastname', '#email': 'placeholder_email', '#fileLabel': 'label_upload_title', '#dropzone .dz-sub': 'label_upload_sub', '#photoFileLabel': 'label_photo_upload_title', '#photoDropzone .dz-sub': 'label_photo_upload_sub', '#payButton': 'submit_order_btn', '.os-label': 'summary_header', '.os-line-qr span:first-child': 'feat_unique_qr', '.os-line-qr span:last-child': 'included', '.os-line-updates span:first-child': 'summary_updates_label', '.os-line-billing span:first-child': 'summary_billing_label', '.os-line-billing span:last-child': 'included', '.os-total-label': 'total_due', '.os-note strong': 'what_happens_next', '.os-note p': 'what_happens_next_desc', 'label[for="companyName"]': 'label_company', 'label[for="phone"]': 'label_phone', '.order-consent-text': 'consent_policies'
   },
   'renewal.html': {
     '.page-hero h1': 'renewal_hero_title', '.page-hero p': 'renewal_hero_desc', '.order-card > h2': 'renewal_form_title', '#orderForm .order-section:nth-of-type(1) .order-step-label': 'step_contact_label', '#orderForm .order-section:nth-of-type(2) .order-step-label': 'renewal_step_plan_label', '#orderForm .order-section:nth-of-type(3) .order-step-label': 'renewal_step_upload_label', 'label[for="firstName"]': 'label_firstname', 'label[for="lastName"]': 'label_lastname', 'label[for="email"]': 'label_email', 'label[for="companyName"]': 'label_company', 'label[for="phone"]': 'label_phone', '#fileLabel': 'renewal_label_upload_title', '.dz-sub': 'label_upload_sub', '.order-consent-text': 'consent_policies', '#payButton': 'renewal_submit_btn', '.os-label': 'renewal_summary_header', '.os-line-qr span:first-child': 'feat_unique_qr', '.os-line-qr span:last-child': 'included', '.os-line-updates span:first-child': 'summary_updates_label', '.os-line-billing span:first-child': 'summary_billing_label', '.os-line-billing span:last-child': 'included', '.os-total-label': 'total_due', '.os-note strong': 'what_happens_next', '.os-note p': 'renewal_what_happens_next_desc'

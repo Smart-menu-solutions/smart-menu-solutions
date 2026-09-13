@@ -8,13 +8,16 @@ document.addEventListener('DOMContentLoaded', function () {
   var sumPlanName = document.getElementById('sumPlanName');
   var sumUpdates = document.getElementById('sumUpdates');
   var sumTotal = document.getElementById('sumTotal');
-  // One "add photos" checkbox is embedded in each plan card (so its price
-  // can show next to that specific plan), but it's a single shared choice -
-  // checking any of them checks them all, so switching plans keeps the
-  // customer's preference instead of silently dropping it.
+  // Each plan card has its own "add photos" checkbox so its price can show
+  // next to that specific plan. Only the checkbox on the currently selected
+  // plan's card counts - the other two are inert until that plan is chosen.
   var photoAddonChecks = Array.prototype.slice.call(document.querySelectorAll('.photo-addon-check'));
   var osLinePhoto = document.getElementById('osLinePhoto');
   var sumPhotoPrice = document.getElementById('sumPhotoPrice');
+  var photoUploadSection = document.getElementById('photoUploadSection');
+  var photoDropzone = document.getElementById('photoDropzone');
+  var photoUpload = document.getElementById('photoUpload');
+  var photoFileLabel = document.getElementById('photoFileLabel');
   var payButton = document.getElementById('payButton');
   var dropzone = document.getElementById('dropzone');
   var pdfInput = document.getElementById('pdfUpload');
@@ -46,10 +49,14 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // The photo add-on's price depends on which plan is selected (more menu
-  // items -> more photos -> higher estimated cost), so both plan changes
-  // and toggling the checkbox itself need to recompute the total.
+  // items -> more photos -> higher estimated cost), so only the checkbox
+  // that lives inside the currently selected plan's own card counts.
   function isPhotoAddonChecked() {
-    return photoAddonChecks.some(function (cb) { return cb.checked; });
+    var input = currentPlanInput();
+    if (!input) return false;
+    var card = input.closest('.plan-option');
+    var checkbox = card && card.querySelector('.photo-addon-check');
+    return !!(checkbox && checkbox.checked);
   }
 
   function updateTotal() {
@@ -67,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (osLinePhoto) osLinePhoto.style.display = addonOn ? '' : 'none';
     if (sumPhotoPrice) sumPhotoPrice.textContent = '+' + eur(photoPrice);
+    if (photoUploadSection) photoUploadSection.style.display = addonOn ? '' : 'none';
   }
 
   function applyPlan(input) {
@@ -82,25 +90,25 @@ document.addEventListener('DOMContentLoaded', function () {
     input.addEventListener('change', function () { applyPlan(input); });
   });
 
-  // Keep all three mini toggles in sync (they represent one shared choice)
-  // and stop the click from bubbling up into the plan card's own <label>,
-  // which would otherwise re-select that plan on every toggle click.
+  // Each mini toggle is independent (it only ever matters for its own plan
+  // card) - stop its click from bubbling up into the plan card's own
+  // <label>, which would otherwise re-select that plan on every toggle click.
   photoAddonChecks.forEach(function (checkbox) {
     checkbox.addEventListener('click', function (e) { e.stopPropagation(); });
-    checkbox.addEventListener('change', function () {
-      var checked = checkbox.checked;
-      photoAddonChecks.forEach(function (cb) { cb.checked = checked; });
-      updateTotal();
-    });
+    checkbox.addEventListener('change', function () { updateTotal(); });
   });
-  // Normalize on load in case only one checkbox starts out checked (e.g.
-  // a browser restoring form state on back/forward navigation) - without
-  // this the other two would visually disagree until the next click.
-  if (isPhotoAddonChecked()) photoAddonChecks.forEach(function (cb) { cb.checked = true; });
 
+  // Clicking a plan's photo toggle also selects that plan, since the toggle
+  // is a property of that specific card, not a page-wide setting.
   document.querySelectorAll('.p-photo-toggle').forEach(function (wrapper) {
     wrapper.addEventListener('click', function (e) {
       e.stopPropagation();
+      var card = wrapper.closest('.plan-option');
+      var planRadio = card && card.querySelector('input[name="Selected Plan"]');
+      if (planRadio && !planRadio.checked) {
+        planRadio.checked = true;
+        applyPlan(planRadio);
+      }
       if (e.target.tagName === 'INPUT') return;
       var checkbox = wrapper.querySelector('.photo-addon-check');
       if (!checkbox) return;
@@ -168,6 +176,50 @@ document.addEventListener('DOMContentLoaded', function () {
     fileLabel.textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(2) + ' MB)';
   }
 
+  // Second dropzone (its own "04" step), only shown once the photo add-on
+  // is active for the selected plan (see updateTotal()). Takes a single ZIP
+  // containing all the dish photos, rather than picking PNGs one by one.
+  if (photoDropzone && photoUpload) {
+    photoDropzone.addEventListener('click', function () { photoUpload.click(); });
+
+    photoUpload.addEventListener('change', function () {
+      handlePhotoZip(photoUpload.files && photoUpload.files[0]);
+    });
+
+    ['dragover', 'dragenter'].forEach(function (evt) {
+      photoDropzone.addEventListener(evt, function (e) {
+        e.preventDefault();
+        photoDropzone.style.opacity = '.85';
+      });
+    });
+    ['dragleave', 'dragend'].forEach(function (evt) {
+      photoDropzone.addEventListener(evt, function () { photoDropzone.style.opacity = '1'; });
+    });
+    photoDropzone.addEventListener('drop', function (e) {
+      e.preventDefault();
+      photoDropzone.style.opacity = '1';
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        photoUpload.files = e.dataTransfer.files;
+        handlePhotoZip(e.dataTransfer.files[0]);
+      }
+    });
+  }
+
+  function isZipFile(file) {
+    return file.type === 'application/zip' || file.type === 'application/x-zip-compressed' || /\.zip$/i.test(file.name);
+  }
+
+  function handlePhotoZip(file) {
+    if (!file) return;
+    if (!isZipFile(file)) {
+      alert(t('Please upload a ZIP file.', 'Bitte laden Sie eine ZIP-Datei hoch.'));
+      photoUpload.value = '';
+      photoFileLabel.textContent = t('Upload photo PNGs (ZIP)', 'Foto-PNG hochladen');
+      return;
+    }
+    photoFileLabel.textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(2) + ' MB)';
+  }
+
   function setBusy(text) {
     payButton.disabled = true;
     if (!payButton.dataset.originalText) payButton.dataset.originalText = payButton.textContent;
@@ -187,6 +239,13 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
+    var addonOn = isPhotoAddonChecked();
+    var photoZipFile = photoUpload && photoUpload.files ? photoUpload.files[0] : null;
+    if (addonOn && !photoZipFile) {
+      alert(t('Please upload your dish photos as a ZIP file, or turn off the photo add-on.', 'Bitte laden Sie Ihre Gerichtfotos als ZIP-Datei hoch oder deaktivieren Sie den Foto-Zusatz.'));
+      return;
+    }
+
     var selectedPlan = form.querySelector('input[name="Selected Plan"]:checked');
     var firstName = document.getElementById('firstName').value.trim();
     var lastName = document.getElementById('lastName').value.trim();
@@ -195,14 +254,26 @@ document.addEventListener('DOMContentLoaded', function () {
     var phone = document.getElementById('phone').value.trim();
 
     setBusy('Uploading menu…');
+    var token = Date.now() + '-' + Math.random().toString(36).slice(2, 8);
     var safeName = file.name.replace(/[^a-zA-Z0-9.\-_]+/g, '_');
-    var storagePath = 'pending/' + Date.now() + '-' + Math.random().toString(36).slice(2, 8) + '-' + safeName;
+    var storagePath = 'pending/' + token + '-' + safeName;
+    var photoZipPath = 'pending/' + token + '-photos.zip';
     var uploaded = false;
+    var photoZipUploaded = false;
 
     supabaseClient.storage.from('menu-pdfs').upload(storagePath, file, { contentType: 'application/pdf' })
       .then(function (result) {
         if (result.error) throw new Error('Could not upload your PDF: ' + (result.error.message || 'unknown error'));
         uploaded = true;
+        if (!photoZipFile) return null;
+        setBusy(t('Uploading photos…', 'Fotos werden hochgeladen…'));
+        return supabaseClient.storage.from('menu-pdfs').upload(photoZipPath, photoZipFile, { contentType: 'application/zip' })
+          .then(function (result) {
+            if (result.error) throw new Error('Could not upload your photo ZIP: ' + (result.error.message || 'unknown error'));
+            photoZipUploaded = true;
+          });
+      })
+      .then(function () {
         setBusy('Opening secure checkout…');
         return fetch(checkoutEndpoint, {
           method: 'POST',
@@ -215,19 +286,23 @@ document.addEventListener('DOMContentLoaded', function () {
             companyName: companyName,
             phone: phone,
             pdfPath: storagePath,
-            photoAddon: isPhotoAddonChecked()
+            photoAddon: addonOn,
+            photoZipPath: photoZipUploaded ? photoZipPath : ''
           })
         });
       })
       .then(function (response) { return response.json().then(function (data) { if (!response.ok) throw new Error(data.error || 'Checkout could not be started.'); return data; }); })
       .then(function (data) { window.location.assign(data.url); })
       .catch(function (error) {
-        // Checkout failed (or was declined) after the PDF already made it to
-        // storage — remove it rather than leaving an orphaned upload with no
-        // order attached to it. Best-effort: a failure here isn't shown to
+        // Checkout failed (or was declined) after files already made it to
+        // storage — remove them rather than leaving orphaned uploads with no
+        // order attached to them. Best-effort: a failure here isn't shown to
         // the customer, it just means manual cleanup is needed later.
         if (uploaded) {
           supabaseClient.storage.from('menu-pdfs').remove([storagePath]).catch(function () {});
+        }
+        if (photoZipUploaded) {
+          supabaseClient.storage.from('menu-pdfs').remove([photoZipPath]).catch(function () {});
         }
         alert(error.message);
         resetButton();

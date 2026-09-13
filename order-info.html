@@ -7,7 +7,7 @@
 <title>Start Your Order | Smart Menu Solutions</title>
 <meta name="description" content="Place your order for a Smart Menu Solutions digital QR menu — choose your plan and upload your menu to get started.">
 <link rel="icon" type="image/png" href="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&amp;enable=upscale&amp;height=64">
-<link rel="stylesheet" href="style.css?v=2026-09-13a">
+<link rel="stylesheet" href="style.css?v=2026-09-13b">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -142,6 +142,18 @@
               </div>
             </div>
 
+            <div class="order-section" id="photoUploadSection" style="display:none">
+              <div class="order-step-label" data-i18n="step_photo_label">04 / Upload photo ZIP</div>
+              <div class="dropzone photo-dropzone" id="photoDropzone">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
+                <p class="dz-title" id="photoFileLabel" data-i18n="label_photo_upload_title">Upload photo PNGs (ZIP)</p>
+                <p class="dz-sub" data-i18n="label_photo_upload_sub">Click here or drag a <strong>PNG ZIP</strong> file to upload</p>
+                <p class="dz-hint" data-i18n="label_photo_naming_hint"><strong>PNG naming tip:</strong> menu title "Bruschetta Classica" → file name "Bruschetta_Classica.png"</p>
+                <input type="file" id="photoUpload" name="photos" accept="application/zip,.zip" style="display:none">
+              </div>
+              <p class="photo-upload-note" data-i18n="label_photo_upload_note"><strong>Note: The customer is responsible for the quality of the photos.</strong></p>
+            </div>
+
             <label class="order-consent"><input type="checkbox" name="Policy Consent" required> <span class="order-consent-text" data-i18n="consent_policies">I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="terms-of-service.html" target="_blank" rel="noopener">Terms of Service</a>.</span></label>
 
             <button type="submit" class="order-submit" id="payButton">
@@ -207,7 +219,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="script.js?v=2026-09-13d"></script>
-<script src="order-form.js?v=2026-09-13a"></script>
+<script src="script.js?v=2026-09-13g"></script>
+<script src="order-form.js?v=2026-09-13c"></script>
 </body>
 </html>

@@ -646,6 +646,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 .dropzone svg{ margin: 0 auto .5rem; color: var(--orange); }
 .dropzone .dz-title{ font-weight: 700; margin: 0 0 .25em; }
 .dropzone .dz-sub{ margin: 0; font-size: .88rem; color: var(--grey); }
+.dropzone .dz-hint{ margin: .5em 0 0; font-size: .72rem; font-weight: 700; color: var(--grey); }
+.photo-upload-note{ margin: .7rem 0 0; font-size: .82rem; color: var(--grey); text-align: center; }
 
 .order-submit{
   display: flex; align-items: center; justify-content: center; gap: .5em;
