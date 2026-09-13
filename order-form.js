@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var sumPlanName = document.getElementById('sumPlanName');
   var sumUpdates = document.getElementById('sumUpdates');
   var sumTotal = document.getElementById('sumTotal');
+  // One "add photos" checkbox is embedded in each plan card (so its price
+  // can show next to that specific plan), but it's a single shared choice -
+  // checking any of them checks them all, so switching plans keeps the
+  // customer's preference instead of silently dropping it.
+  var photoAddonChecks = Array.prototype.slice.call(document.querySelectorAll('.photo-addon-check'));
+  var osLinePhoto = document.getElementById('osLinePhoto');
+  var sumPhotoPrice = document.getElementById('sumPhotoPrice');
   var payButton = document.getElementById('payButton');
   var dropzone = document.getElementById('dropzone');
   var pdfInput = document.getElementById('pdfUpload');
@@ -34,20 +41,72 @@ document.addEventListener('DOMContentLoaded', function () {
     return '€' + parseFloat(n).toFixed(2);
   }
 
+  function currentPlanInput() {
+    return form.querySelector('input[name="Selected Plan"]:checked');
+  }
+
+  // The photo add-on's price depends on which plan is selected (more menu
+  // items -> more photos -> higher estimated cost), so both plan changes
+  // and toggling the checkbox itself need to recompute the total.
+  function isPhotoAddonChecked() {
+    return photoAddonChecks.some(function (cb) { return cb.checked; });
+  }
+
+  function updateTotal() {
+    var input = currentPlanInput();
+    if (!input) return;
+    var name = input.getAttribute('data-name');
+    var price = parseFloat(input.getAttribute('data-price'));
+    var photoPrice = parseFloat(input.getAttribute('data-photo-price')) || 0;
+    var addonOn = isPhotoAddonChecked();
+
+    var total = price + (addonOn ? photoPrice : 0);
+    sumTotal.textContent = eur(total);
+    hiddenTotal.value = eur(total);
+    hiddenPlanName.value = name;
+
+    if (osLinePhoto) osLinePhoto.style.display = addonOn ? '' : 'none';
+    if (sumPhotoPrice) sumPhotoPrice.textContent = '+' + eur(photoPrice);
+  }
+
   function applyPlan(input) {
     if (!input) return;
     var name = input.getAttribute('data-name');
-    var price = input.getAttribute('data-price');
     var updates = input.getAttribute('data-updates');
     sumPlanName.textContent = name;
     sumUpdates.textContent = updates + t(' / month', ' / Monat');
-    sumTotal.textContent = eur(price);
-    hiddenTotal.value = eur(price);
-    hiddenPlanName.value = name;
+    updateTotal();
   }
 
   planInputs.forEach(function (input) {
     input.addEventListener('change', function () { applyPlan(input); });
+  });
+
+  // Keep all three mini toggles in sync (they represent one shared choice)
+  // and stop the click from bubbling up into the plan card's own <label>,
+  // which would otherwise re-select that plan on every toggle click.
+  photoAddonChecks.forEach(function (checkbox) {
+    checkbox.addEventListener('click', function (e) { e.stopPropagation(); });
+    checkbox.addEventListener('change', function () {
+      var checked = checkbox.checked;
+      photoAddonChecks.forEach(function (cb) { cb.checked = checked; });
+      updateTotal();
+    });
+  });
+  // Normalize on load in case only one checkbox starts out checked (e.g.
+  // a browser restoring form state on back/forward navigation) - without
+  // this the other two would visually disagree until the next click.
+  if (isPhotoAddonChecked()) photoAddonChecks.forEach(function (cb) { cb.checked = true; });
+
+  document.querySelectorAll('.p-photo-toggle').forEach(function (wrapper) {
+    wrapper.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (e.target.tagName === 'INPUT') return;
+      var checkbox = wrapper.querySelector('.photo-addon-check');
+      if (!checkbox) return;
+      checkbox.checked = !checkbox.checked;
+      checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+    });
   });
 
   // Pre-select a plan from ?plan=start|pro|premium
@@ -155,7 +214,8 @@ document.addEventListener('DOMContentLoaded', function () {
             email: email,
             companyName: companyName,
             phone: phone,
-            pdfPath: storagePath
+            pdfPath: storagePath,
+            photoAddon: isPhotoAddonChecked()
           })
         });
       })

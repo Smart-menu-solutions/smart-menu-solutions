@@ -611,6 +611,31 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
 }
 
+/* Small "add photos" toggle embedded in each plan card. Sits inside the
+   card's own <label>, so clicks on it must not bubble up and re-trigger
+   the plan radio's label (handled in order-form.js with stopPropagation). */
+.p-photo-toggle{
+  display: flex; align-items: center; justify-content: center; gap: .4rem;
+  margin-top: .7rem; padding-top: .6rem; border-top: 1px dashed var(--line);
+  font-size: .74rem; color: var(--grey); cursor: pointer;
+}
+.p-photo-toggle input{ position: absolute; opacity: 0; width: 0; height: 0; }
+.photo-addon-mini-mark{
+  flex-shrink: 0; width: 15px; height: 15px; border-radius: 50%;
+  border: 2px solid var(--orange); display: grid; place-items: center;
+}
+.photo-addon-mini-mark::after{
+  content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--orange);
+  transform: scale(0); transition: transform .15s ease;
+}
+.p-photo-toggle input:checked ~ .photo-addon-mini-mark::after{ transform: scale(1); }
+.photo-addon-mini-price{ font-weight: 700; color: var(--orange); white-space: nowrap; }
+
+/* Robust "this plan is selected" highlight that doesn't depend on the
+   radio input being the label's immediate previous sibling (the mini
+   photo toggle above sits inside the label, between other content). */
+.plan-option:has(input[name="Selected Plan"]:checked) label{ border-color: var(--orange) !important; background: var(--orange-tint) !important; }
+
 .dropzone{
   border: 2px dashed var(--orange);
   background: var(--orange-tint);
