@@ -3,9 +3,11 @@
    Palette matched to the real site: white, orange #F66A09, grey #737373
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+/* Open Sans is now loaded via a <link> tag with preconnect in each page's
+   <head>, not @import here -- @import blocks CSS parsing on an extra
+   network round-trip before anything can render. */
 
-html{ 
+html{
   scroll-behavior: smooth; 
 }
 
