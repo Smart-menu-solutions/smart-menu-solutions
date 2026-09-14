@@ -255,6 +255,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 .hero h1{ color: #fff; }
 .hero h1 .accent{ color: var(--orange); }
 .hero h1 .hero-sub{ display: block; font-size: 0.5em; font-weight: 600; margin-top: 0.35em; color: #fff; }
+/* German "Scannen. Ansehen. Genießen." is noticeably longer than the
+   English "Scan. View. Enjoy." and wraps to two lines at the same size -
+   scale it down specifically so it fits on one line like the EN version. */
+html[lang="de"] .hero h1 .accent{ font-size: 0.78em; }
 .hero-lede{ font-size: 1.12rem; max-width: 52ch; color: #EDEBE7; }
 .hero-actions{ margin-top: 1.2rem; }
 
