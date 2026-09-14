@@ -262,6 +262,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   text-align: center;
 }
 .page-hero .container{ max-width: 780px; }
+.page-hero h1{ overflow-wrap: break-word; }
 .page-hero h1 .accent{ color: var(--orange); }
 .page-hero p{ font-size: 1.06rem; margin-left: auto; margin-right: auto; }
 
@@ -690,6 +691,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
    Legal / prose pages
    ============================================================ */
 .prose{ max-width: 760px; margin: 0 auto; }
+/* Safety net so a long German compound word (Datenschutzgrundverordnung,
+   Geschäftsinformationen, etc.) wraps instead of overflowing its container
+   on narrow screens, without needing a manual space in every single one. */
+.prose h1, .prose h2, .prose h3{ overflow-wrap: break-word; }
 .prose h2{ margin-top: 2.4rem; }
 .prose h3{ margin-top: 1.6rem; }
 .prose h2:first-child{ margin-top: 0; }
