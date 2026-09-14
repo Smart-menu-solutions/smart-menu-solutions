@@ -70,7 +70,7 @@ var translations = {
     'footer_powered': 'Powered by Smart Menu Solutions',
 
     // --- Index / Startseite ---
-    'index_hero_title': '<span class="accent">Scan. View. Enjoy.</span> Digital QR Menus for Restaurants, Bars &amp; Cafés',
+    'index_hero_title': '<span class="accent">Scan. View. Enjoy.</span><span class="hero-sub">Digital QR Menus for Restaurants, Bars &amp; Cafés</span>',
     'index_hero_lede': 'Welcome to Smart Menu Solutions, where we blend digital innovation with modern branding to revolutionise the hospitality industry. Discover how our creative solutions can transform your restaurant or cafe.',
     'index_hero_btn': 'Explore our services',
     'index_transform_title': 'Transform your business <span class="accent">today</span>',
@@ -278,7 +278,7 @@ var translations = {
     'footer_powered': 'Bereitgestellt von Smart Menu Solutions',
 
     // --- Index / Startseite ---
-    'index_hero_title': '<span class="accent">Scannen. Ansehen. Genießen.</span> Digitale QR-Speisekarten für Restaurants, Bars &amp; Cafés',
+    'index_hero_title': '<span class="accent">Scannen. Ansehen. Genießen.</span><span class="hero-sub">Digitale QR-Speisekarten für Restaurants, Bars &amp; Cafés</span>',
     'index_hero_lede': 'Willkommen bei Smart Menu Solutions, wo wir digitale Innovation mit modernem Branding verbinden, um das Gastgewerbe zu revolutionieren.',
     'index_hero_btn': 'Unsere Dienste erkunden',
     'index_transform_title': 'Verändern Sie Ihr Unternehmen <span class="accent">heute</span>',
