@@ -896,7 +896,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   font-weight: 700 !important;
 }
 
-.flag-btn:hover, .nav-lang-container .lang-btn:hover, .nav-lang-container .lang-btn.active {
+.flag-btn:hover, .flag-btn.active, .nav-lang-container .lang-btn:hover, .nav-lang-container .lang-btn.active {
   background: var(--orange) !important;
   border-color: var(--orange) !important;
   color: #fff !important;
