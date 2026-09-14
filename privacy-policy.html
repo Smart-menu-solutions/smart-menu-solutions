@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="style.css?v=2026-09-14a">
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
+<a class="skip-link" href="#main-content" data-i18n="skip_link">Skip to main content</a>
 
 <header class="site-header">
   <div class="header-inner">
@@ -31,6 +31,16 @@
         <li><a href="contact.html" data-i18n="contact">Contact</a></li>
       </ul>
       <a class="btn nav-cta" href="order-info.html" data-i18n="get_started">Get started</a>
+      <div class="nav-lang-container">
+        <div class="lang-switcher">
+          <button class="flag-btn" onclick="switchLanguage('de')" title="Deutsch">
+            <span style="font-size: 1.2rem;">🇩🇪</span>
+          </button>
+          <button class="flag-btn" onclick="switchLanguage('en')" title="English">
+            <span style="font-size: 1.2rem;">🇬🇧</span>
+          </button>
+        </div>
+      </div>
     </nav>
   </div>
 </header>
@@ -182,9 +192,15 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Smart Menu Solutions</span>
+      <span data-i18n="footer_copyright">© 2026 Smart Menu Solutions</span>
+      <span class="footer-powered" data-i18n="footer_powered">Powered by Smart Menu Solutions</span>
       <ul class="footer-legal">
         <li><a href="privacy-policy.html" aria-current="page" data-i18n="privacy_policy">Privacy Policy</a></li>
+        <li><a href="terms-of-service.html">Terms of Service</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="refund-policy.html" data-i18n="refund_policy">Refund Policy</a></li>
+        <li><a href="imprint.html" data-i18n="imprint">Imprint</a></li>
         <li><a href="mailto:smartmenusolutions@outlook.com">smartmenusolutions@outlook.com</a></li>
       </ul>
     </div>
