@@ -665,6 +665,26 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .p-photo-toggle input:checked ~ .photo-addon-mini-mark::after{ transform: scale(1); }
 .photo-addon-mini-price{ font-weight: 700; color: var(--orange); white-space: nowrap; }
 
+/* Second, independent add-on toggle in the same card - same look as the
+   photo one, own class names so the two never fight over the same
+   checkbox/JS state. */
+.p-sfm-toggle{
+  display: flex; align-items: center; justify-content: center; gap: .4rem;
+  margin-top: .5rem; padding-top: .5rem; border-top: 1px dashed var(--line);
+  font-size: .74rem; color: var(--grey); cursor: pointer;
+}
+.p-sfm-toggle input{ position: absolute; opacity: 0; width: 0; height: 0; }
+.sfm-addon-mini-mark{
+  flex-shrink: 0; width: 15px; height: 15px; border-radius: 50%;
+  border: 2px solid var(--orange); display: grid; place-items: center;
+}
+.sfm-addon-mini-mark::after{
+  content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--orange);
+  transform: scale(0); transition: transform .15s ease;
+}
+.p-sfm-toggle input:checked ~ .sfm-addon-mini-mark::after{ transform: scale(1); }
+.sfm-addon-mini-price{ font-weight: 700; color: var(--orange); white-space: nowrap; }
+
 /* Robust "this plan is selected" highlight that doesn't depend on the
    radio input being the label's immediate previous sibling (the mini
    photo toggle above sits inside the label, between other content). */
