@@ -322,6 +322,22 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
   padding: var(--space-3);
 }
 
+.sfm-panel{
+  margin-top: 1.6rem;
+  text-align: center;
+}
+.sfm-panel h3{ margin-bottom: .5em; }
+.sfm-panel > p:first-of-type{ max-width: 560px; margin: 0 auto .9rem; }
+.sfm-features{
+  list-style: none; margin: 0 auto .8rem; padding: 0;
+  max-width: 560px; text-align: left;
+}
+.sfm-features li{ margin: .3em 0; color: var(--grey); font-weight: 600; }
+.sfm-available{ max-width: 560px; margin: 0 auto; font-weight: 600; color: var(--grey); text-align: right; }
+@media (max-width: 640px){
+  .sfm-available{ text-align: center; }
+}
+
 .grid-3{
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem;
 }
