@@ -106,11 +106,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
    Header / nav
    ============================================================ */
 .site-header{
-  position: sticky; top: 0; z-index: 100;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(255,255,255,.92);
   backdrop-filter: blur(6px);
   border-bottom: var(--border);
 }
+body{ padding-top: 69px; }
 .header-inner{
   display: flex; align-items: center; justify-content: space-between;
   gap: 1.5rem;
@@ -165,12 +166,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 }
 
 @media (max-width: 860px){
-  /* position:sticky is unreliable here because html,body sets overflow-x:hidden
-     (which forces overflow-y to auto per spec and breaks the sticky context on
-     mobile browsers) -- pin the header with position:fixed instead and give the
-     page the matching top padding so content doesn't start underneath it. */
-  .site-header{ position: fixed; left: 0; right: 0; }
-  body{ padding-top: 69px; }
   .header-inner{padding-left:10px;padding-right:10px;gap:.5rem}
   .header-inner .brand{gap:.4rem}
   .header-inner .brand-text{font-size:.92rem}
