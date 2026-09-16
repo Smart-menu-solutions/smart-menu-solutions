@@ -166,7 +166,7 @@ var translations = {
     'btn_choose_premium': 'Choose Smart Premium',
     'pricing_questions': 'Questions about a plan? Email',
 
-    'sfm_pricing_title': 'Smart Food Match™',
+    'sfm_pricing_title': '<span class="accent">Smart</span> Food Match™',
     'sfm_pricing_desc': 'The intelligent add-on for every Smart Menu. Your guests answer 3 quick questions and instantly receive a personalized recommendation from your menu.',
     'sfm_feat_1': 'Personalized menu recommendations',
     'sfm_feat_2': 'Perfect for restaurants, cafés, bars, and takeaways',
@@ -386,7 +386,7 @@ var translations = {
     'btn_choose_premium': 'Smart Premium wählen',
     'pricing_questions': 'Fragen zu einem Tarif? Schreibe an',
 
-    'sfm_pricing_title': 'Smart Food Match™',
+    'sfm_pricing_title': '<span class="accent">Smart</span> Food Match™',
     'sfm_pricing_desc': 'Das intelligente Add-on für jedes Smart Menü. Deine Gäste beantworten 3 kurze Fragen und erhalten sofort eine persönliche Empfehlung aus deiner Speisekarte.',
     'sfm_feat_1': 'Personalisierte Menü-Empfehlungen',
     'sfm_feat_2': 'Perfekt für Restaurants, Cafés, Bars und Imbisse',
