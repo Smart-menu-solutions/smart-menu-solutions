@@ -165,6 +165,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 }
 
 @media (max-width: 860px){
+  /* position:sticky is unreliable here because html,body sets overflow-x:hidden
+     (which forces overflow-y to auto per spec and breaks the sticky context on
+     mobile browsers) -- pin the header with position:fixed instead and give the
+     page the matching top padding so content doesn't start underneath it. */
+  .site-header{ position: fixed; left: 0; right: 0; }
+  body{ padding-top: 69px; }
   .header-inner{padding-left:10px;padding-right:10px;gap:.5rem}
   .header-inner .brand{gap:.4rem}
   .header-inner .brand-text{font-size:.92rem}
