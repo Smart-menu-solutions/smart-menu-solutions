@@ -5,9 +5,10 @@ Reads TIKTOK_CLIENT_KEY, TIKTOK_CLIENT_SECRET, TIKTOK_REFRESH_TOKEN from the
 environment (set as GitHub Actions secrets), refreshes a fresh access token,
 uploads the given video file in one chunk, and posts it.
 
-privacy_level defaults to SELF_ONLY (private) -- while this app is unaudited,
-TikTok restricts unaudited clients to private viewing anyway, so this makes
-the actual intent explicit rather than relying on that safeguard silently.
+privacy_level defaults to PUBLIC_TO_EVERYONE now that the app has passed
+TikTok's review (previously it was pinned to SELF_ONLY, since TikTok
+restricts unaudited clients to private viewing regardless of what is
+requested here).
 
 Usage:
     python post_tiktok.py <video_path.mp4> "<caption text>"
@@ -41,7 +42,7 @@ def refresh_access_token() -> str:
     return data["access_token"]
 
 
-def post_video(access_token: str, video_path: Path, caption: str, privacy_level: str = "SELF_ONLY") -> str:
+def post_video(access_token: str, video_path: Path, caption: str, privacy_level: str = "PUBLIC_TO_EVERYONE") -> str:
     video_size = video_path.stat().st_size
 
     init_resp = requests.post(
