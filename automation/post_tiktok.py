@@ -63,6 +63,8 @@ def post_video(access_token: str, video_path: Path, caption: str, privacy_level:
             },
         },
     )
+    if not init_resp.ok:
+        print(f"Init failed ({init_resp.status_code}): {init_resp.text}")
     init_resp.raise_for_status()
     init_data = init_resp.json()
     if init_data.get("error", {}).get("code") not in (None, "ok"):
@@ -83,6 +85,8 @@ def post_video(access_token: str, video_path: Path, caption: str, privacy_level:
         },
         data=video_bytes,
     )
+    if not upload_resp.ok:
+        print(f"Upload failed ({upload_resp.status_code}): {upload_resp.text}")
     upload_resp.raise_for_status()
 
     print(f"Posted. publish_id={publish_id}")
