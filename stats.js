@@ -72,6 +72,32 @@ document.addEventListener('DOMContentLoaded', function () {
     container.innerHTML = '<div class="donut-row"><div class="ring-wrap">' + ringSvg(total, unitLabel, segments) + '</div><div class="ring-legend">' + legendHtml(segments) + '</div></div>';
   }
 
+  var COURSE_LABELS = {
+    starter: t('Starters', 'Vorspeisen'),
+    main: t('Main courses', 'Hauptgerichte'),
+    dessert: t('Desserts', 'Desserts')
+  };
+
+  function sfmLegendHtml(items) {
+    return items.map(function (item, index) {
+      var color = RING_COLORS[index] || RING_COLORS[RING_COLORS.length - 1];
+      var courseLabel = COURSE_LABELS[item.course] || item.course;
+      return '<span class="sfm-row"><i style="background:' + color + '"></i><span class="sfm-course">' + escapeHtml(courseLabel) + '</span><span class="sfm-dish">' + escapeHtml(item.dish) + '</span><b>' + item.count + '</b></span>';
+    }).join('');
+  }
+
+  function renderSfmCard(container, items) {
+    if (!items || !items.length) {
+      container.innerHTML = '<p class="stats-bars-empty">' + t('No recommendations given out yet this week.', 'Diese Woche noch keine Empfehlungen ausgegeben.') + '</p>';
+      return;
+    }
+    var segments = items.map(function (item, index) {
+      return { count: item.count, color: RING_COLORS[index] || RING_COLORS[RING_COLORS.length - 1] };
+    });
+    var total = segments.reduce(function (sum, seg) { return sum + seg.count; }, 0);
+    container.innerHTML = '<div class="donut-row"><div class="ring-wrap">' + ringSvg(total, t('reco', 'Empf.'), segments) + '</div><div class="sfm-legend">' + sfmLegendHtml(items) + '</div></div>';
+  }
+
   function renderTrend(current, previous) {
     if (!previous) return current > 0 ? t('New this week', 'Neu diese Woche') : '';
     var change = Math.round(((current - previous) / previous) * 100);
@@ -108,6 +134,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       renderDonutCard(document.getElementById('statsCategoryDonut'), data.topCategories, t('views', 'Aufrufe'));
       renderDonutCard(document.getElementById('statsDishDonut'), data.topDishes, t('views', 'Aufrufe'));
+
+      var sfmCard = document.getElementById('statsSfmCard');
+      if (data.sfmEnabled) {
+        sfmCard.style.display = '';
+        renderSfmCard(document.getElementById('statsSfmDonut'), data.topRecommendations);
+      } else {
+        sfmCard.style.display = 'none';
+      }
 
       layout.style.display = '';
     })
