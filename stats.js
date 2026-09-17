@@ -75,7 +75,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var COURSE_LABELS = {
     starter: t('Starters', 'Vorspeisen'),
     main: t('Main courses', 'Hauptgerichte'),
-    dessert: t('Desserts', 'Desserts')
+    dessert: t('Desserts', 'Desserts'),
+    drink: t('Drinks', 'Getränke')
   };
 
   function sfmLegendHtml(items) {
@@ -86,16 +87,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }).join('');
   }
 
-  function renderSfmCard(container, items) {
+  function renderSfmCard(container, items, totalCompletions) {
     if (!items || !items.length) {
       container.innerHTML = '<p class="stats-bars-empty">' + t('No recommendations given out yet this week.', 'Diese Woche noch keine Empfehlungen ausgegeben.') + '</p>';
       return;
     }
+    // The ring's segments are still sized by each course's top-dish count
+    // (so the split reads correctly), but the center number is the real
+    // total quiz completions, not the sum of those three (possibly
+    // smaller) top counts - see topRecommendations()'s comment in
+    // get-stats for why those can differ once a course has more than one
+    // distinct dish recommended.
     var segments = items.map(function (item, index) {
       return { count: item.count, color: RING_COLORS[index] || RING_COLORS[RING_COLORS.length - 1] };
     });
-    var total = segments.reduce(function (sum, seg) { return sum + seg.count; }, 0);
-    container.innerHTML = '<div class="donut-row"><div class="ring-wrap">' + ringSvg(total, t('reco', 'Empf.'), segments) + '</div><div class="sfm-legend">' + sfmLegendHtml(items) + '</div></div>';
+    container.innerHTML = '<div class="donut-row"><div class="ring-wrap">' + ringSvg(totalCompletions, t('quizzes', 'Durchläufe'), segments) + '</div><div class="sfm-legend">' + sfmLegendHtml(items) + '</div></div>';
   }
 
   function renderTrend(current, previous) {
@@ -138,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var sfmCard = document.getElementById('statsSfmCard');
       if (data.sfmEnabled) {
         sfmCard.style.display = '';
-        renderSfmCard(document.getElementById('statsSfmDonut'), data.topRecommendations);
+        renderSfmCard(document.getElementById('statsSfmDonut'), data.topRecommendations, data.sfmTotalCompletions || 0);
       } else {
         sfmCard.style.display = 'none';
       }
