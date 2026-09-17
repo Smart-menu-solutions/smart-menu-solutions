@@ -28,17 +28,48 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  function renderBars(container, items) {
+  // One accent-to-tint ramp, reused for every ring so a segment's rank
+  // (1st, 2nd, ...) always reads the same color across cards.
+  var RING_COLORS = ['#f66a09', '#f7903d', '#f7ac70', '#f8c79f', '#f0e4d6'];
+  var RING_CIRCUMFERENCE = 326.7; // 2 * PI * 52 (matches the r=52 circle below)
+
+  // Pure SVG donut - no charting library. Segments are drawn as concentric
+  // stroke-dasharray arcs on the same circle, rotated -90deg so the first
+  // segment starts at 12 o'clock, matching how a plain read-then-render
+  // pie/donut is usually hand-built.
+  function ringSvg(centerValue, centerLabel, segments) {
+    var total = segments.reduce(function (sum, seg) { return sum + seg.count; }, 0);
+    var offset = 0;
+    var circles = total > 0
+      ? segments.map(function (seg) {
+        var len = RING_CIRCUMFERENCE * (seg.count / total);
+        var circle = '<circle cx="60" cy="60" r="52" stroke="' + seg.color + '" stroke-width="14" fill="none" stroke-dasharray="' + len.toFixed(1) + ' ' + RING_CIRCUMFERENCE + '" stroke-dashoffset="-' + offset.toFixed(1) + '"></circle>';
+        offset += len;
+        return circle;
+      }).join('')
+      : '<circle cx="60" cy="60" r="52" stroke="#f0e4d6" stroke-width="14" fill="none"></circle>';
+    return '<svg viewBox="0 0 120 120" class="ring" role="img" aria-label="' + escapeHtml(centerValue + ' ' + centerLabel) + '">' +
+      '<g transform="rotate(-90 60 60)">' + circles + '</g>' +
+      '<text x="60" y="56" text-anchor="middle" class="ring-num">' + escapeHtml(centerValue) + '</text>' +
+      '<text x="60" y="72" text-anchor="middle" class="ring-sub">' + escapeHtml(centerLabel) + '</text></svg>';
+  }
+
+  function legendHtml(segments) {
+    return segments.map(function (seg) {
+      return '<span><i style="background:' + seg.color + '"></i>' + escapeHtml(seg.label) + '<b>' + seg.count + '</b></span>';
+    }).join('');
+  }
+
+  function renderDonutCard(container, items, unitLabel) {
     if (!items || !items.length) {
       container.innerHTML = '<p class="stats-bars-empty">' + t('No visits recorded yet this week.', 'Diese Woche noch keine Aufrufe erfasst.') + '</p>';
       return;
     }
-    var max = items[0].count || 1;
-    container.innerHTML = items.map(function (item) {
-      var pct = Math.max(4, Math.round((item.count / max) * 100));
-      return '<div class="stats-bar-row"><div class="stats-bar-head"><span>' + escapeHtml(item.label) + '</span><strong>' + item.count + '</strong></div>' +
-        '<div class="stats-bar-track"><div class="stats-bar-fill" style="width:' + pct + '%"></div></div></div>';
-    }).join('');
+    var segments = items.map(function (item, index) {
+      return { label: item.label, count: item.count, color: RING_COLORS[index] || RING_COLORS[RING_COLORS.length - 1] };
+    });
+    var total = segments.reduce(function (sum, seg) { return sum + seg.count; }, 0);
+    container.innerHTML = '<div class="donut-row"><div class="ring-wrap">' + ringSvg(total, unitLabel, segments) + '</div><div class="ring-legend">' + legendHtml(segments) + '</div></div>';
   }
 
   function renderTrend(current, previous) {
@@ -59,10 +90,25 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       document.getElementById('statsMenuName').textContent = data.menuName || t('Your menu', 'Deine Speisekarte');
       document.getElementById('statsRange').textContent = data.rangeStart + ' – ' + data.rangeEnd;
-      document.getElementById('statsTotalVisits').textContent = data.totalVisits || 0;
-      document.getElementById('statsTrend').textContent = renderTrend(data.totalVisits || 0, data.previousWeekVisits || 0);
-      renderBars(document.getElementById('statsCategoryBars'), data.topCategories);
-      renderBars(document.getElementById('statsDishBars'), data.topDishes);
+
+      var current = data.totalVisits || 0;
+      var previous = data.previousWeekVisits || 0;
+      var visitSegments = [
+        { label: t('This week', 'Diese Woche'), count: current, color: '#f66a09' },
+        { label: t('Last week', 'Letzte Woche'), count: previous, color: '#f0e4d6' }
+      ];
+      document.getElementById('statsVisitsRing').innerHTML = ringSvg(current, t('visits', 'Besuche'), visitSegments);
+      document.getElementById('statsVisitsLegend').innerHTML = legendHtml(visitSegments);
+
+      var trendEl = document.getElementById('statsTrend');
+      var trendText = renderTrend(current, previous);
+      trendEl.textContent = trendText;
+      trendEl.classList.toggle('down', trendText.indexOf('▼') === 0);
+      trendEl.style.display = trendText ? '' : 'none';
+
+      renderDonutCard(document.getElementById('statsCategoryDonut'), data.topCategories, t('views', 'Aufrufe'));
+      renderDonutCard(document.getElementById('statsDishDonut'), data.topDishes, t('views', 'Aufrufe'));
+
       layout.style.display = '';
     })
     .catch(function () {

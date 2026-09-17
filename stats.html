@@ -8,7 +8,7 @@
 <title>Your Weekly Analytics Report | Smart Menu Solutions</title>
 <meta name="description" content="Your QR menu's weekly traffic - total visits, top categories and top dishes.">
 <link rel="icon" type="image/png" href="assets/images/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"><link rel="stylesheet" href="style.css?v=2026-09-17b">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"><link rel="stylesheet" href="style.css?v=2026-09-17c">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -46,7 +46,7 @@
   </section>
 
   <section class="section">
-    <div class="container" style="max-width:760px">
+    <div class="container stats-wide">
 
       <div id="statsError" class="order-card" style="display:none">
         <p data-i18n="stats_error_desc">This link is invalid or has expired. Please contact us so we can help.</p>
@@ -63,24 +63,26 @@
       </div>
 
       <div id="statsLayout" style="display:none">
-        <div class="order-card">
-          <h2 id="statsMenuName">Your menu</h2>
-          <p class="stats-range" id="statsRange"></p>
-          <div class="stats-tile">
-            <span class="stats-tile-value" id="statsTotalVisits">0</span>
-            <span class="stats-tile-label" data-i18n="stats_visits_label">visits this week</span>
-            <span class="stats-tile-trend" id="statsTrend"></span>
+        <h2 id="statsMenuName">Your menu</h2>
+        <p class="stats-range" id="statsRange"></p>
+
+        <div class="dash-grid">
+          <div class="d-card card-visits">
+            <h3 data-i18n="stats_visits_label">Visits this week</h3>
+            <div class="ring-wrap" id="statsVisitsRing"></div>
+            <div class="ring-legend" id="statsVisitsLegend"></div>
+            <span class="trend-pill" id="statsTrend"></span>
           </div>
-        </div>
 
-        <div class="order-card" style="margin-top:1.2rem">
-          <h3 data-i18n="stats_top_categories">Top categories</h3>
-          <div class="stats-bars" id="statsCategoryBars"></div>
-        </div>
+          <div class="d-card card-categories">
+            <h3 data-i18n="stats_top_categories">Top categories</h3>
+            <div id="statsCategoryDonut"></div>
+          </div>
 
-        <div class="order-card" style="margin-top:1.2rem">
-          <h3 data-i18n="stats_top_dishes">Top dishes</h3>
-          <div class="stats-bars" id="statsDishBars"></div>
+          <div class="d-card card-dishes">
+            <h3 data-i18n="stats_top_dishes">Top dishes</h3>
+            <div id="statsDishDonut"></div>
+          </div>
         </div>
       </div>
 
@@ -114,6 +116,6 @@
 </footer>
 
 <script src="script.js?v=2026-09-17b"></script>
-<script src="stats.js?v=1"></script>
+<script src="stats.js?v=2"></script>
 </body>
 </html>
