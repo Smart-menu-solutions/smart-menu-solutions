@@ -49,7 +49,40 @@ document.addEventListener('DOMContentLoaded', function () {
   // Sprache beim Laden der Seite wiederherstellen
   var savedLang = localStorage.getItem('selectedLang') || 'en';
   switchLanguage(savedLang);
+
+  wireStatsDemoModal();
 });
+
+// Homepage "Weekly Analytics Report" card - opens the real, live El Greco
+// stats page in a small popup so visitors see an actual example instead of
+// a mockup. No-ops on every other page (the elements simply don't exist).
+// embed=1 tells stats.html to hide its own header/footer (see style.css
+// html.is-embedded) so a click in there can't navigate the visitor out of
+// this little box. The iframe's src is only set on first open, not on page
+// load, so browsing the homepage never fires an extra request against the
+// live stats endpoint.
+function wireStatsDemoModal() {
+  var openButton = document.getElementById('statsDemoOpen');
+  var overlay = document.getElementById('statsDemoOverlay');
+  var closeButton = document.getElementById('statsDemoClose');
+  var frame = document.getElementById('statsDemoFrame');
+  if (!openButton || !overlay || !closeButton || !frame) return;
+  var DEMO_URL = 'stats.html?token=529c5e64-3262-448b-9160-07f1289f8418&embed=1';
+  var loaded = false;
+  function openModal() {
+    if (!loaded) { frame.src = DEMO_URL; loaded = true; }
+    overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    overlay.hidden = true;
+    document.body.style.overflow = '';
+  }
+  openButton.addEventListener('click', openModal);
+  closeButton.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function (event) { if (event.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && !overlay.hidden) closeModal(); });
+}
 
 // Zentrales Übersetzungswörterbuch für die gesamte Website
 var translations = {
@@ -96,6 +129,12 @@ var translations = {
     'compare_ready_li2': 'Prices and items update instantly',
     'compare_ready_li3': 'Share the link or QR code today',
     'compare_ready_li4': 'Scan the code above to see it live',
+    'compare_new_tag': 'New',
+    'compare_new_cta': 'View a live example',
+    'compare_new_title': 'Weekly Analytics Report',
+    'compare_new_li1': 'See your top dishes & categories',
+    'compare_new_li2': 'Delivered to your inbox every Monday',
+    'compare_new_li3': 'Click above to see a live example',
 
     // --- Our Services Seite ---
     'services_hero_title': '<span class="accent">Beyond</span> the ordinary',
@@ -357,6 +396,12 @@ var translations = {
     'compare_ready_li2': 'Preise und Gerichte sofort aktualisiert',
     'compare_ready_li3': 'Link oder QR-Code noch heute teilen',
     'compare_ready_li4': 'Code oben scannen und live ansehen',
+    'compare_new_tag': 'Neu',
+    'compare_new_cta': 'Live-Beispiel ansehen',
+    'compare_new_title': 'Wöchentlicher Analyse-Bericht',
+    'compare_new_li1': 'Sieh deine meistgesehenen Gerichte & Kategorien',
+    'compare_new_li2': 'Jeden Montag direkt in dein Postfach',
+    'compare_new_li3': 'Klicke oben für ein Live-Beispiel',
 
     // --- Our Services Seite ---
     'services_hero_title': '<span class="accent">Mehr als</span> gewöhnlich',

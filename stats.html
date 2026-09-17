@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>try{localStorage.setItem('selectedLang','en');}catch(e){}</script>
+<script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('is-embedded');</script>
 <meta name="robots" content="noindex, nofollow">
 <title>Your Weekly Analytics Report | Smart Menu Solutions</title>
 <meta name="description" content="Your QR menu's weekly traffic - total visits, top categories and top dishes.">
@@ -63,8 +64,16 @@
       </div>
 
       <div id="statsLayout" style="display:none">
-        <h2 id="statsMenuName">Your menu</h2>
-        <p class="stats-range" id="statsRange"></p>
+        <div class="stats-header-row">
+          <div>
+            <h2 id="statsMenuName">Your menu</h2>
+            <p class="stats-range" id="statsRange"></p>
+          </div>
+          <div class="lang-switcher" id="statsLangSwitcher">
+            <button type="button" class="flag-btn" data-lang="de">DE</button>
+            <button type="button" class="flag-btn" data-lang="en">EN</button>
+          </div>
+        </div>
 
         <div class="dash-grid">
           <div class="d-card card-visits">
@@ -122,6 +131,6 @@
 </footer>
 
 <script src="script.js?v=2026-09-17e"></script>
-<script src="stats.js?v=4"></script>
+<script src="stats.js?v=5"></script>
 </body>
 </html>

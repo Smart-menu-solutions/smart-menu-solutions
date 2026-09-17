@@ -156,9 +156,32 @@
             <li><strong>Code oben scannen und live ansehen</strong></li>
           </ul>
         </div>
+        <div class="compare-arrow" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+        <div class="compare-card compare-card--after">
+          <span class="compare-tag compare-tag--after">Neu</span>
+          <button type="button" class="compare-photo compare-photo--demo" id="statsDemoOpen" aria-haspopup="dialog">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.4" stroke-dasharray="28 999" stroke-linecap="round" transform="rotate(-90 12 12)"/><circle cx="12" cy="12" r="9" stroke="#5a5650" stroke-width="2.4" opacity=".4"/></svg>
+            <span>Live-Beispiel ansehen</span>
+          </button>
+          <h3>Wöchentlicher Analyse-Bericht</h3>
+          <ul class="compare-list">
+            <li>Sieh deine meistgesehenen Gerichte &amp; Kategorien</li>
+            <li>Jeden Montag direkt in dein Postfach</li>
+            <li><strong>Klicke oben für ein Live-Beispiel</strong></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
+
+  <div class="stats-demo-overlay" id="statsDemoOverlay" hidden>
+    <div class="stats-demo-box" role="dialog" aria-modal="true" aria-label="Wöchentlicher Analyse-Bericht Live-Beispiel">
+      <button type="button" class="stats-demo-close" id="statsDemoClose" aria-label="Schließen">✕</button>
+      <iframe id="statsDemoFrame" title="Wöchentlicher Analyse-Bericht Live-Beispiel" loading="lazy"></iframe>
+    </div>
+  </div>
 
   <section class="section section--alt">
     <div class="container">

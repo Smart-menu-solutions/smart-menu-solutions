@@ -72,17 +72,23 @@ document.addEventListener('DOMContentLoaded', function () {
     container.innerHTML = '<div class="donut-row"><div class="ring-wrap">' + ringSvg(total, unitLabel, segments) + '</div><div class="ring-legend">' + legendHtml(segments) + '</div></div>';
   }
 
-  var COURSE_LABELS = {
-    starter: t('Starters', 'Vorspeisen'),
-    main: t('Main courses', 'Hauptgerichte'),
-    dessert: t('Desserts', 'Desserts'),
-    drink: t('Drinks', 'Getränke')
-  };
+  // Evaluated at render time (not cached) so it always reflects whichever
+  // language was just switched to - the page never reloads on a language
+  // change, only re-fetches and re-renders.
+  function courseLabels() {
+    return {
+      starter: t('Starters', 'Vorspeisen'),
+      main: t('Main courses', 'Hauptgerichte'),
+      dessert: t('Desserts', 'Desserts'),
+      drink: t('Drinks', 'Getränke')
+    };
+  }
 
   function sfmLegendHtml(items) {
+    var labels = courseLabels();
     return items.map(function (item, index) {
       var color = RING_COLORS[index] || RING_COLORS[RING_COLORS.length - 1];
-      var courseLabel = COURSE_LABELS[item.course] || item.course;
+      var courseLabel = labels[item.course] || item.course;
       return '<span class="sfm-row"><i style="background:' + color + '"></i><span class="sfm-course">' + escapeHtml(courseLabel) + '</span><span class="sfm-dish">' + escapeHtml(item.dish) + '</span><b>' + item.count + '</b></span>';
     }).join('');
   }
@@ -112,47 +118,78 @@ document.addEventListener('DOMContentLoaded', function () {
     return t('Same as last week', 'Gleich wie letzte Woche');
   }
 
-  fetch(statsEndpoint + '?token=' + encodeURIComponent(token))
-    .then(function (response) { return response.json().then(function (data) { if (!response.ok) throw new Error(data.error || 'This link is not valid.'); return data; }); })
-    .then(function (data) {
-      loadingBox.style.display = 'none';
-      if (!data.addonActive) {
-        pausedBox.style.display = '';
-        return;
-      }
-      document.getElementById('statsMenuName').textContent = data.menuName || t('Your menu', 'Deine Speisekarte');
-      document.getElementById('statsRange').textContent = data.rangeStart + ' – ' + data.rangeEnd;
+  var langSwitcher = document.getElementById('statsLangSwitcher');
 
-      var current = data.totalVisits || 0;
-      var previous = data.previousWeekVisits || 0;
-      var visitSegments = [
-        { label: t('This week', 'Diese Woche'), count: current, color: '#f66a09' },
-        { label: t('Last week', 'Letzte Woche'), count: previous, color: '#f0e4d6' }
-      ];
-      document.getElementById('statsVisitsRing').innerHTML = ringSvg(current, t('visits', 'Besuche'), visitSegments);
-      document.getElementById('statsVisitsLegend').innerHTML = legendHtml(visitSegments);
-
-      var trendEl = document.getElementById('statsTrend');
-      var trendText = renderTrend(current, previous);
-      trendEl.textContent = trendText;
-      trendEl.classList.toggle('down', trendText.indexOf('▼') === 0);
-      trendEl.style.display = trendText ? '' : 'none';
-
-      renderDonutCard(document.getElementById('statsCategoryDonut'), data.topCategories, t('views', 'Aufrufe'));
-      renderDonutCard(document.getElementById('statsDishDonut'), data.topDishes, t('views', 'Aufrufe'));
-
-      var sfmCard = document.getElementById('statsSfmCard');
-      if (data.sfmEnabled) {
-        sfmCard.style.display = '';
-        renderSfmCard(document.getElementById('statsSfmDonut'), data.topRecommendations, data.sfmTotalCompletions || 0);
-      } else {
-        sfmCard.style.display = 'none';
-      }
-
-      layout.style.display = '';
-    })
-    .catch(function () {
-      loadingBox.style.display = 'none';
-      errorBox.style.display = '';
+  function setActiveLangButton(lang) {
+    if (!langSwitcher) return;
+    langSwitcher.querySelectorAll('.flag-btn').forEach(function (button) {
+      button.classList.toggle('active', button.dataset.lang === lang);
     });
+  }
+
+  function loadStats(lang) {
+    fetch(statsEndpoint + '?token=' + encodeURIComponent(token) + '&lang=' + encodeURIComponent(lang))
+      .then(function (response) { return response.json().then(function (data) { if (!response.ok) throw new Error(data.error || 'This link is not valid.'); return data; }); })
+      .then(function (data) {
+        loadingBox.style.display = 'none';
+        if (!data.addonActive) {
+          pausedBox.style.display = '';
+          return;
+        }
+        document.getElementById('statsMenuName').textContent = data.menuName || t('Your menu', 'Deine Speisekarte');
+        document.getElementById('statsRange').textContent = data.rangeStart + ' – ' + data.rangeEnd;
+
+        var current = data.totalVisits || 0;
+        var previous = data.previousWeekVisits || 0;
+        var visitSegments = [
+          { label: t('This week', 'Diese Woche'), count: current, color: '#f66a09' },
+          { label: t('Last week', 'Letzte Woche'), count: previous, color: '#f0e4d6' }
+        ];
+        document.getElementById('statsVisitsRing').innerHTML = ringSvg(current, t('visits', 'Besuche'), visitSegments);
+        document.getElementById('statsVisitsLegend').innerHTML = legendHtml(visitSegments);
+
+        var trendEl = document.getElementById('statsTrend');
+        var trendText = renderTrend(current, previous);
+        trendEl.textContent = trendText;
+        trendEl.classList.toggle('down', trendText.indexOf('▼') === 0);
+        trendEl.style.display = trendText ? '' : 'none';
+
+        renderDonutCard(document.getElementById('statsCategoryDonut'), data.topCategories, t('views', 'Aufrufe'));
+        renderDonutCard(document.getElementById('statsDishDonut'), data.topDishes, t('views', 'Aufrufe'));
+
+        var sfmCard = document.getElementById('statsSfmCard');
+        if (data.sfmEnabled) {
+          sfmCard.style.display = '';
+          renderSfmCard(document.getElementById('statsSfmDonut'), data.topRecommendations, data.sfmTotalCompletions || 0);
+        } else {
+          sfmCard.style.display = 'none';
+        }
+
+        layout.style.display = '';
+      })
+      .catch(function () {
+        loadingBox.style.display = 'none';
+        errorBox.style.display = '';
+      });
+  }
+
+  function switchStatsLanguage(lang) {
+    try { localStorage.setItem('selectedLang', lang); } catch (e) {}
+    setActiveLangButton(lang);
+    // switchLanguage() (script.js) re-translates every static data-i18n
+    // element on the page (hero title, card headings, etc.) - the dynamic
+    // parts below are rebuilt separately via loadStats().
+    if (typeof window.switchLanguage === 'function') window.switchLanguage(lang);
+    loadStats(lang);
+  }
+
+  if (langSwitcher) {
+    langSwitcher.querySelectorAll('.flag-btn').forEach(function (button) {
+      button.addEventListener('click', function () { switchStatsLanguage(button.dataset.lang); });
+    });
+  }
+
+  var initialLang = localStorage.getItem('selectedLang') === 'de' ? 'de' : 'en';
+  setActiveLangButton(initialLang);
+  loadStats(initialLang);
 });
