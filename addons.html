@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>try{localStorage.setItem('selectedLang','en');}catch(e){}</script>
 <meta name="robots" content="noindex, nofollow">
-<title>Your Weekly Analytics Report | Smart Menu Solutions</title>
-<meta name="description" content="Your QR menu's weekly traffic - total visits, top categories and top dishes.">
+<title>Manage Your Add-ons | Smart Menu Solutions</title>
+<meta name="description" content="Add Smart Food Match or the Weekly Analytics Report to your Smart Menu Solutions plan anytime - billed pro-rated for the rest of your current year.">
 <link rel="icon" type="image/png" href="assets/images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"><link rel="stylesheet" href="style.css?v=2026-09-17d">
 </head>
@@ -40,50 +40,32 @@
 
   <section class="page-hero">
     <div class="container">
-      <h1 data-i18n="stats_hero_title">Your menu's <span class="accent">weekly traffic</span></h1>
-      <p data-i18n="stats_hero_desc">How many guests scanned your QR menu, and which categories and dishes they looked at most.</p>
+      <h1 data-i18n="addons_hero_title">Manage your <span class="accent">add-ons</span></h1>
+      <p data-i18n="addons_hero_desc">Add a feature anytime - you'll only pay the pro-rated amount for the rest of your current plan year.</p>
     </div>
   </section>
 
   <section class="section">
-    <div class="container stats-wide">
+    <div class="container" style="max-width:640px">
 
-      <div id="statsError" class="order-card" style="display:none">
-        <p data-i18n="stats_error_desc">This link is invalid or has expired. Please contact us so we can help.</p>
+      <div id="addonsError" class="order-card" style="display:none">
+        <p data-i18n="addons_error_desc">This link is invalid or has expired. Please contact us so we can help.</p>
         <p><a class="btn" href="mailto:smartmenusolutions@outlook.com" data-i18n="contact_support">Contact support</a></p>
       </div>
 
-      <div id="statsPaused" class="order-card" style="display:none">
-        <p data-i18n="stats_paused_desc">The Weekly Analytics Report add-on isn't part of your active plan anymore, so there's nothing new to show here.</p>
-        <p><a class="btn" href="mailto:smartmenusolutions@outlook.com" data-i18n="stats_paused_cta">Want it back on? Contact us</a></p>
+      <div id="addonsLocked" class="order-card" style="display:none">
+        <p data-i18n="addons_locked_desc">Your subscription isn't currently active, so add-ons can't be added right now. Please use the renewal link from your email, or contact us.</p>
+        <p><a class="btn" href="mailto:smartmenusolutions@outlook.com" data-i18n="contact_support">Contact support</a></p>
       </div>
 
-      <div id="statsLoading" class="order-card">
-        <p data-i18n="stats_loading">Loading your stats…</p>
+      <div id="addonsLoading" class="order-card">
+        <p data-i18n="addons_loading">Loading your add-ons…</p>
       </div>
 
-      <div id="statsLayout" style="display:none">
-        <h2 id="statsMenuName">Your menu</h2>
-        <p class="stats-range" id="statsRange"></p>
-
-        <div class="dash-grid">
-          <div class="d-card card-visits">
-            <h3 data-i18n="stats_visits_label">Visits this week</h3>
-            <div class="ring-wrap" id="statsVisitsRing"></div>
-            <div class="ring-legend" id="statsVisitsLegend"></div>
-            <span class="trend-pill" id="statsTrend"></span>
-          </div>
-
-          <div class="d-card card-categories">
-            <h3 data-i18n="stats_top_categories">Top categories</h3>
-            <div id="statsCategoryDonut"></div>
-          </div>
-
-          <div class="d-card card-dishes">
-            <h3 data-i18n="stats_top_dishes">Top dishes</h3>
-            <div id="statsDishDonut"></div>
-          </div>
-        </div>
+      <div id="addonsLayout" class="order-card" style="display:none">
+        <h2 data-i18n="addons_list_title">Available add-ons</h2>
+        <div id="addonsList" class="addons-list"></div>
+        <p class="addons-note" data-i18n="addon_prorate_note">Adding a feature charges only the pro-rated amount for the rest of your current plan year - not a full year. From your next renewal on, it's included automatically.</p>
       </div>
 
     </div>
@@ -116,6 +98,6 @@
 </footer>
 
 <script src="script.js?v=2026-09-17d"></script>
-<script src="stats.js?v=2"></script>
+<script src="addons.js?v=1"></script>
 </body>
 </html>

@@ -711,6 +711,27 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
    pages to let the two-column card grid breathe. */
 .stats-wide{ max-width: 980px; }
 
+/* Manage-addons page (addons.html) */
+.addons-list{ display: grid; gap: .9rem; margin: 1.2rem 0; }
+.addon-row{
+  display: flex; align-items: center; gap: .9rem; flex-wrap: wrap;
+  border: var(--border); border-radius: 12px; padding: .9rem 1.1rem;
+}
+.addon-name{ font-weight: 700; display: flex; flex-direction: column; gap: .2rem; }
+.addon-price{ font-weight: 400; color: var(--grey); font-size: .85rem; }
+.addon-active-badge{
+  margin-left: auto; font-size: .75rem; font-weight: 700; color: #1e6b3c;
+  background: #e8f5ec; padding: .3rem .7rem; border-radius: 999px;
+}
+.button-add-addon{
+  margin-left: auto; border: var(--border); border-radius: 999px; padding: .5rem 1.1rem;
+  background: var(--orange); color: #fff; font-weight: 700; font-size: .85rem; cursor: pointer;
+}
+.button-add-addon:hover{ background: var(--orange-dark); }
+.button-add-addon:disabled{ opacity: .6; cursor: not-allowed; }
+.addon-error{ flex-basis: 100%; color: #b3261e; font-size: .8rem; }
+.addons-note{ color: var(--grey); font-size: .85rem; line-height: 1.5; }
+
 .dash-grid{ display: grid; grid-template-columns: 1fr 1.25fr; grid-auto-rows: min-content; gap: 1rem; }
 .d-card{
   background: var(--paper); border: var(--border); border-radius: 18px;
