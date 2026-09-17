@@ -683,6 +683,38 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .p-sfm-toggle input:checked ~ .sfm-addon-mini-mark::after{ transform: scale(1); }
 .sfm-addon-mini-price{ font-weight: 700; color: var(--orange); white-space: nowrap; }
 
+/* Third, independent add-on toggle - same look again, own class names. */
+.p-analytics-toggle{
+  display: flex; align-items: center; justify-content: center; gap: .4rem;
+  margin-top: .5rem; padding-top: .5rem; border-top: 1px dashed var(--line);
+  font-size: .74rem; color: var(--grey); cursor: pointer;
+}
+.p-analytics-toggle input{ position: absolute; opacity: 0; width: 0; height: 0; }
+.analytics-addon-mini-mark{
+  flex-shrink: 0; width: 15px; height: 15px; border-radius: 50%;
+  border: 2px solid var(--orange); display: grid; place-items: center;
+}
+.analytics-addon-mini-mark::after{
+  content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--orange);
+  transform: scale(0); transition: transform .15s ease;
+}
+.p-analytics-toggle input:checked ~ .analytics-addon-mini-mark::after{ transform: scale(1); }
+.analytics-addon-mini-price{ font-weight: 700; color: var(--orange); white-space: nowrap; }
+
+/* Weekly Analytics Report stats page (stats.html) */
+.stats-range{ color: var(--grey); font-size: .9rem; margin: -.6rem 0 1.2rem; }
+.stats-tile{ display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem; }
+.stats-tile-value{ font-size: 2.6rem; font-weight: 700; color: var(--orange); line-height: 1; }
+.stats-tile-label{ font-size: 1rem; color: var(--grey); }
+.stats-tile-trend{ flex-basis: 100%; font-size: .85rem; color: var(--grey); margin-top: .3rem; }
+.stats-bars{ display: grid; gap: .7rem; margin-top: .9rem; }
+.stats-bar-row{ display: grid; gap: .3rem; }
+.stats-bar-row .stats-bar-head{ display: flex; justify-content: space-between; font-size: .88rem; }
+.stats-bar-row .stats-bar-head strong{ font-weight: 700; }
+.stats-bar-track{ background: var(--orange-tint); border-radius: 999px; height: 10px; overflow: hidden; }
+.stats-bar-fill{ background: var(--orange); height: 100%; border-radius: 999px; }
+.stats-bars-empty{ color: var(--grey); font-size: .9rem; }
+
 /* Robust "this plan is selected" highlight that doesn't depend on the
    radio input being the label's immediate previous sibling (the mini
    photo toggle above sits inside the label, between other content). */

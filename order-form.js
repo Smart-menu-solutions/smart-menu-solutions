@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var sfmAddonChecks = Array.prototype.slice.call(document.querySelectorAll('.sfm-addon-check'));
   var osLineSfm = document.getElementById('osLineSfm');
   var sumSfmPrice = document.getElementById('sumSfmPrice');
+  // Same per-card pattern again, third independent toggle.
+  var analyticsAddonChecks = Array.prototype.slice.call(document.querySelectorAll('.analytics-addon-check'));
+  var osLineAnalytics = document.getElementById('osLineAnalytics');
+  var sumAnalyticsPrice = document.getElementById('sumAnalyticsPrice');
   var photoUploadSection = document.getElementById('photoUploadSection');
   var photoDropzone = document.getElementById('photoDropzone');
   var photoUpload = document.getElementById('photoUpload');
@@ -72,6 +76,14 @@ document.addEventListener('DOMContentLoaded', function () {
     return !!(checkbox && checkbox.checked);
   }
 
+  function isAnalyticsAddonChecked() {
+    var input = currentPlanInput();
+    if (!input) return false;
+    var card = input.closest('.plan-option');
+    var checkbox = card && card.querySelector('.analytics-addon-check');
+    return !!(checkbox && checkbox.checked);
+  }
+
   function updateTotal() {
     var input = currentPlanInput();
     if (!input) return;
@@ -79,10 +91,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var price = parseFloat(input.getAttribute('data-price'));
     var photoPrice = parseFloat(input.getAttribute('data-photo-price')) || 0;
     var sfmPrice = parseFloat(input.getAttribute('data-sfm-price')) || 0;
+    var analyticsPrice = parseFloat(input.getAttribute('data-analytics-price')) || 0;
     var addonOn = isPhotoAddonChecked();
     var sfmOn = isSfmAddonChecked();
+    var analyticsOn = isAnalyticsAddonChecked();
 
-    var total = price + (addonOn ? photoPrice : 0) + (sfmOn ? sfmPrice : 0);
+    var total = price + (addonOn ? photoPrice : 0) + (sfmOn ? sfmPrice : 0) + (analyticsOn ? analyticsPrice : 0);
     sumTotal.textContent = eur(total);
     hiddenTotal.value = eur(total);
     hiddenPlanName.value = name;
@@ -93,6 +107,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (osLineSfm) osLineSfm.style.display = sfmOn ? '' : 'none';
     if (sumSfmPrice) sumSfmPrice.textContent = '+' + eur(sfmPrice);
+
+    if (osLineAnalytics) osLineAnalytics.style.display = analyticsOn ? '' : 'none';
+    if (sumAnalyticsPrice) sumAnalyticsPrice.textContent = '+' + eur(analyticsPrice);
   }
 
   function applyPlan(input) {
@@ -117,6 +134,11 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   sfmAddonChecks.forEach(function (checkbox) {
+    checkbox.addEventListener('click', function (e) { e.stopPropagation(); });
+    checkbox.addEventListener('change', function () { updateTotal(); });
+  });
+
+  analyticsAddonChecks.forEach(function (checkbox) {
     checkbox.addEventListener('click', function (e) { e.stopPropagation(); });
     checkbox.addEventListener('change', function () { updateTotal(); });
   });
@@ -152,6 +174,24 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       if (e.target.tagName === 'INPUT') return;
       var checkbox = wrapper.querySelector('.sfm-addon-check');
+      if (!checkbox) return;
+      checkbox.checked = !checkbox.checked;
+      checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  });
+
+  // Same pattern again, third independent addon.
+  document.querySelectorAll('.p-analytics-toggle').forEach(function (wrapper) {
+    wrapper.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var card = wrapper.closest('.plan-option');
+      var planRadio = card && card.querySelector('input[name="Selected Plan"]');
+      if (planRadio && !planRadio.checked) {
+        planRadio.checked = true;
+        applyPlan(planRadio);
+      }
+      if (e.target.tagName === 'INPUT') return;
+      var checkbox = wrapper.querySelector('.analytics-addon-check');
       if (!checkbox) return;
       checkbox.checked = !checkbox.checked;
       checkbox.dispatchEvent(new Event('change', { bubbles: true }));
@@ -282,6 +322,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var addonOn = isPhotoAddonChecked();
     var sfmOn = isSfmAddonChecked();
+    var analyticsOn = isAnalyticsAddonChecked();
     var photoZipFile = photoUpload && photoUpload.files ? photoUpload.files[0] : null;
     if (addonOn && !photoZipFile) {
       alert(t('Please upload your dish photos as a ZIP file, or turn off the photo add-on.', 'Bitte laden Sie Ihre Gerichtfotos als ZIP-Datei hoch oder deaktivieren Sie den Foto-Zusatz.'));
@@ -330,7 +371,8 @@ document.addEventListener('DOMContentLoaded', function () {
             pdfPath: storagePath,
             photoAddon: addonOn,
             photoZipPath: photoZipUploaded ? photoZipPath : '',
-            smartFoodMatchAddon: sfmOn
+            smartFoodMatchAddon: sfmOn,
+            analyticsReportsAddon: analyticsOn
           })
         });
       })
