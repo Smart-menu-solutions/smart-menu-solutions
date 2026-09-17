@@ -87,7 +87,7 @@ var translations = {
     'compare_before_li3': 'Gets worn, stained, torn or lost',
     'compare_after_tag': 'After',
     'compare_after_title': 'Smart QR digital menu',
-    'compare_after_li1': 'Update instantly, anytime, from any device',
+    'compare_after_li1': 'Update instantly, anytime.',
     'compare_after_li2': 'Multiple languages built in',
     'compare_after_li3': 'Always clean, modern and on-brand',
     'compare_ready_tag': 'Ready to go',
