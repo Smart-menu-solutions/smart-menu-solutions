@@ -148,6 +148,7 @@ var translations = {
     'plan_premium_desc': 'Designed for busy restaurants, hotel restaurants, chains, and businesses seeking a fully professional solution.',
     
     'vat_incl': 'VAT incl.',
+    'vat_incl_year': 'VAT incl. / year',
     'badge_popular': 'Most popular',
     
     'feat_qr': 'Digital QR code menu',
@@ -179,6 +180,16 @@ var translations = {
     'sfm_feat_3': 'Increase average order value with smarter suggestions',
     'sfm_feat_4': 'Fully integrated into your QR menu',
     'sfm_available': 'Available for Smart Start, Smart Pro, and Smart Premium.',
+    'addons_pricing_heading': 'Add-ons',
+    'addons_pricing_sub': 'Boost any plan with these optional extras.',
+    'addon_photos_feat_1': 'A professional photo for every dish',
+    'addon_photos_feat_2': 'Helps guests decide faster and order with confidence',
+    'addon_photos_feat_3': 'Priced per plan - see your plan above',
+    'addon_photos_feat_4': 'Uploaded once as a single ZIP file',
+    'addon_analytics_feat_1': 'Weekly email with your menu\'s visitor stats',
+    'addon_analytics_feat_2': 'See your top categories and dishes at a glance',
+    'addon_analytics_feat_3': 'Live stats page - shareable, no login required',
+    'addon_analytics_feat_4': 'Fully integrated into your QR menu',
 
     // --- FAQ Seite ---
     'faq_hero_title': '<span class="accent">FAQ</span>',
@@ -393,6 +404,7 @@ var translations = {
     'plan_premium_desc': 'Entwickelt für viel besuchte Restaurants, Hotelrestaurants, Ketten und Unternehmen mit höchsten Ansprüchen.',
     
     'vat_incl': 'inkl. MwSt.',
+    'vat_incl_year': 'inkl. MwSt. / Jahr',
     'badge_popular': 'Am beliebtesten',
     
     'feat_qr': 'Digitale QR-Code-Speisekarte',
@@ -424,6 +436,16 @@ var translations = {
     'sfm_feat_3': 'Höherer durchschnittlicher Bestellwert durch smarte Vorschläge',
     'sfm_feat_4': 'Vollständig in dein QR-Menü integriert',
     'sfm_available': 'Verfügbar für Smart Start, Smart Pro und Smart Premium.',
+    'addons_pricing_heading': 'Add-ons',
+    'addons_pricing_sub': 'Erweitere jeden Plan mit diesen optionalen Extras.',
+    'addon_photos_feat_1': 'Ein professionelles Foto für jedes Gericht',
+    'addon_photos_feat_2': 'Hilft Gästen, schneller und mit mehr Zuversicht zu bestellen',
+    'addon_photos_feat_3': 'Preis je nach Plan - siehe oben',
+    'addon_photos_feat_4': 'Einmaliger Upload als ZIP-Datei',
+    'addon_analytics_feat_1': 'Wöchentliche E-Mail mit den Besucherstatistiken deiner Speisekarte',
+    'addon_analytics_feat_2': 'Top-Kategorien und -Gerichte auf einen Blick',
+    'addon_analytics_feat_3': 'Live-Statistikseite - zum Teilen, ganz ohne Login',
+    'addon_analytics_feat_4': 'Vollständig in dein QR-Menü integriert',
 
     // --- FAQ Seite ---
     'faq_hero_title': '<span class="accent">FAQ</span>',
@@ -817,7 +839,7 @@ var globalTranslationSelectors = {
     '.services-testimonials .section-head h2': 'testimonials_heading', '.testimonial:nth-child(1) p': 'testimonial_1_text', '.testimonial:nth-child(1) cite': 'testimonial_1_author', '.testimonial:nth-child(2) p': 'testimonial_2_text', '.testimonial:nth-child(2) cite': 'testimonial_2_author', '.testimonial:nth-child(3) p': 'testimonial_3_text', '.testimonial:nth-child(3) cite': 'testimonial_3_author', '.cta-band h2': 'cta_band_title', '.cta-band p': 'cta_band_sub', '.cta-band a': 'cta_band_btn'
   },
   'pricing-plans.html': {
-    '.page-hero h1': 'pricing_page_title', '.page-hero p': 'pricing_page_desc', '.section-head h2': 'pricing_section_heading', '.section-head p': 'pricing_section_sub', '.price-card:nth-child(1) h3': 'plan_start_title', '.price-card:nth-child(1) > p:nth-of-type(2)': 'plan_start_desc', '.price-card:nth-child(2) h3': 'plan_pro_title', '.price-card:nth-child(2) > p:nth-of-type(2)': 'plan_pro_desc', '.price-card:nth-child(3) h3': 'plan_premium_title', '.price-card:nth-child(3) > p:nth-of-type(2)': 'plan_premium_desc', '.price-card:nth-child(1) .price small': 'vat_incl', '.price-card:nth-child(2) .price small': 'vat_incl', '.price-card:nth-child(3) .price small': 'vat_incl', '.price-card:nth-child(2) .badge': 'badge_popular', '.price-card:nth-child(1) li:nth-child(1)': 'feat_qr', '.price-card:nth-child(2) li:nth-child(1)': 'feat_qr', '.price-card:nth-child(3) li:nth-child(1)': 'feat_qr', '.price-card:nth-child(1) li:nth-child(2)': 'feat_start_items', '.price-card:nth-child(2) li:nth-child(2)': 'feat_pro_items', '.price-card:nth-child(3) li:nth-child(2)': 'feat_premium_items', '.price-card:nth-child(1) li:nth-child(3)': 'feat_mobile', '.price-card:nth-child(2) li:nth-child(3)': 'feat_mobile', '.price-card:nth-child(3) li:nth-child(3)': 'feat_mobile', '.price-card:nth-child(1) li:nth-child(4)': 'feat_unique_qr', '.price-card:nth-child(2) li:nth-child(4)': 'feat_unique_qr', '.price-card:nth-child(3) li:nth-child(4)': 'feat_unique_qr', '.price-card:nth-child(1) li:nth-child(5)': 'feat_dish_photo_start', '.price-card:nth-child(2) li:nth-child(5)': 'feat_dish_photo_pro', '.price-card:nth-child(3) li:nth-child(5)': 'feat_dish_photo_premium', '.price-card:nth-child(1) li:nth-child(6)': 'feat_start_updates', '.price-card:nth-child(2) li:nth-child(6)': 'feat_pro_updates', '.price-card:nth-child(3) li:nth-child(6)': 'feat_premium_updates', '.price-card:nth-child(1) li:nth-child(7)': 'feat_billing_year', '.price-card:nth-child(2) li:nth-child(7)': 'feat_pro_lang', '.price-card:nth-child(2) li:nth-child(8)': 'feat_billing_year', '.price-card:nth-child(3) li:nth-child(7)': 'feat_premium_lang', '.price-card:nth-child(3) li:nth-child(8)': 'feat_billing_year', '.price-card:nth-child(1) .btn': 'btn_choose_start', '.price-card:nth-child(2) .btn': 'btn_choose_pro', '.price-card:nth-child(3) .btn': 'btn_choose_premium'
+    '.page-hero h1': 'pricing_page_title', '.page-hero p': 'pricing_page_desc', '#pricing-section-head h2': 'pricing_section_heading', '#pricing-section-head p': 'pricing_section_sub', '#plans-grid .price-card:nth-child(1) h3': 'plan_start_title', '#plans-grid .price-card:nth-child(1) > p:nth-of-type(2)': 'plan_start_desc', '#plans-grid .price-card:nth-child(2) h3': 'plan_pro_title', '#plans-grid .price-card:nth-child(2) > p:nth-of-type(2)': 'plan_pro_desc', '#plans-grid .price-card:nth-child(3) h3': 'plan_premium_title', '#plans-grid .price-card:nth-child(3) > p:nth-of-type(2)': 'plan_premium_desc', '#plans-grid .price-card:nth-child(1) .price small': 'vat_incl', '#plans-grid .price-card:nth-child(2) .price small': 'vat_incl', '#plans-grid .price-card:nth-child(3) .price small': 'vat_incl', '#plans-grid .price-card:nth-child(2) .badge': 'badge_popular', '#plans-grid .price-card:nth-child(1) li:nth-child(1)': 'feat_qr', '#plans-grid .price-card:nth-child(2) li:nth-child(1)': 'feat_qr', '#plans-grid .price-card:nth-child(3) li:nth-child(1)': 'feat_qr', '#plans-grid .price-card:nth-child(1) li:nth-child(2)': 'feat_start_items', '#plans-grid .price-card:nth-child(2) li:nth-child(2)': 'feat_pro_items', '#plans-grid .price-card:nth-child(3) li:nth-child(2)': 'feat_premium_items', '#plans-grid .price-card:nth-child(1) li:nth-child(3)': 'feat_mobile', '#plans-grid .price-card:nth-child(2) li:nth-child(3)': 'feat_mobile', '#plans-grid .price-card:nth-child(3) li:nth-child(3)': 'feat_mobile', '#plans-grid .price-card:nth-child(1) li:nth-child(4)': 'feat_unique_qr', '#plans-grid .price-card:nth-child(2) li:nth-child(4)': 'feat_unique_qr', '#plans-grid .price-card:nth-child(3) li:nth-child(4)': 'feat_unique_qr', '#plans-grid .price-card:nth-child(1) li:nth-child(5)': 'feat_dish_photo_start', '#plans-grid .price-card:nth-child(2) li:nth-child(5)': 'feat_dish_photo_pro', '#plans-grid .price-card:nth-child(3) li:nth-child(5)': 'feat_dish_photo_premium', '#plans-grid .price-card:nth-child(1) li:nth-child(6)': 'feat_start_updates', '#plans-grid .price-card:nth-child(2) li:nth-child(6)': 'feat_pro_updates', '#plans-grid .price-card:nth-child(3) li:nth-child(6)': 'feat_premium_updates', '#plans-grid .price-card:nth-child(1) li:nth-child(7)': 'feat_billing_year', '#plans-grid .price-card:nth-child(2) li:nth-child(7)': 'feat_pro_lang', '#plans-grid .price-card:nth-child(2) li:nth-child(8)': 'feat_billing_year', '#plans-grid .price-card:nth-child(3) li:nth-child(7)': 'feat_premium_lang', '#plans-grid .price-card:nth-child(3) li:nth-child(8)': 'feat_billing_year', '#plans-grid .price-card:nth-child(1) .btn': 'btn_choose_start', '#plans-grid .price-card:nth-child(2) .btn': 'btn_choose_pro', '#plans-grid .price-card:nth-child(3) .btn': 'btn_choose_premium'
   },
   'faq.html': {
     '.page-hero h1': 'faq_hero_title', '.page-hero p': 'faq_hero_desc', '.faq-item:nth-child(1) summary': 'faq_q1', '.faq-item:nth-child(1) .faq-a': 'faq_a1', '.faq-item:nth-child(2) summary': 'faq_q2', '.faq-item:nth-child(2) .faq-a': 'faq_a2', '.faq-item:nth-child(3) summary': 'faq_q3', '.faq-item:nth-child(3) .faq-a': 'faq_a3', '.faq-item:nth-child(4) summary': 'faq_q4', '.faq-item:nth-child(4) .faq-a': 'faq_a4', '.faq-item:nth-child(5) summary': 'faq_q5', '.faq-item:nth-child(5) .faq-a': 'faq_a5', '.faq-item:nth-child(6) summary': 'faq_q6', '.faq-item:nth-child(6) .faq-a': 'faq_a6', '.faq-item:nth-child(7) summary': 'faq_q7', '.faq-item:nth-child(7) .faq-a': 'faq_a7', '.section--alt h2': 'faq_beyond_title', '.section--alt p': 'faq_beyond_desc', '.section--alt a': 'faq_beyond_btn'

@@ -57,12 +57,12 @@
 
   <section class="section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" id="pricing-section-head">
         <h2 data-i18n="pricing_section_heading">Choose your plan</h2>
         <p data-i18n="pricing_section_sub">We offer a range of specialised plans tailored to meet your individual needs.</p>
       </div>
 
-      <div class="grid-3">
+      <div class="grid-3" id="plans-grid">
 
         <div class="panel price-card">
           <h3>Smart Start</h3>
@@ -119,19 +119,56 @@
 
       </div>
 
-      <div class="panel sfm-panel">
-        <h3 data-i18n="sfm_pricing_title"><span class="accent">Smart</span> Food Match™</h3>
-        <p data-i18n="sfm_pricing_desc">The intelligent add-on for every Smart Menu. Your guests answer 3 quick questions and instantly receive a personalized recommendation from your menu.</p>
-        <ul class="sfm-features">
-          <li data-i18n="sfm_feat_1">Personalized menu recommendations</li>
-          <li data-i18n="sfm_feat_2">Perfect for restaurants, cafés, bars, and takeaways</li>
-          <li data-i18n="sfm_feat_3">Increase average order value with smarter suggestions</li>
-          <li data-i18n="sfm_feat_4">Fully integrated into your QR menu</li>
-        </ul>
-        <p class="sfm-available" data-i18n="sfm_available">Available for Smart Start, Smart Pro, and Smart Premium.</p>
+      <div class="section-head" style="margin-top:2.8rem">
+        <h2 data-i18n="addons_pricing_heading">Add-ons</h2>
+        <p data-i18n="addons_pricing_sub">Boost any plan with these optional extras.</p>
+      </div>
+
+      <div class="grid-3">
+
+        <div class="panel price-card">
+          <h3 data-i18n="service_card_photos_name">Dish photos</h3>
+          <p class="price" style="font-size:1.7rem">From €10.00 <small data-i18n="vat_incl">VAT incl.</small></p>
+          <p data-i18n="service_card_photos_desc">Add a real photo to every dish on your menu — a polished, appetizing look that helps guests decide faster and order with confidence.</p>
+          <ul>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="addon_photos_feat_1">A professional photo for every dish</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="addon_photos_feat_2">Helps guests decide faster and order with confidence</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="addon_photos_feat_3">Priced per plan - see your plan above</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="addon_photos_feat_4">Uploaded once as a single ZIP file</span></li>
+          </ul>
+          <p class="sfm-available" data-i18n="sfm_available">Available for Smart Start, Smart Pro, and Smart Premium.</p>
+        </div>
+
+        <div class="panel price-card">
+          <h3 data-i18n="sfm_pricing_title"><span class="accent">Smart</span> Food Match™</h3>
+          <p class="price">€5.00 <small data-i18n="vat_incl_year">VAT incl. / year</small></p>
+          <p data-i18n="sfm_pricing_desc">The intelligent add-on for every Smart Menu. Your guests answer 3 quick questions and instantly receive a personalized recommendation from your menu.</p>
+          <ul>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="sfm_feat_1">Personalized menu recommendations</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="sfm_feat_2">Perfect for restaurants, cafés, bars, and takeaways</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="sfm_feat_3">Increase average order value with smarter suggestions</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="sfm_feat_4">Fully integrated into your QR menu</span></li>
+          </ul>
+          <p class="sfm-available" data-i18n="sfm_available">Available for Smart Start, Smart Pro, and Smart Premium.</p>
+        </div>
+
+        <div class="panel price-card">
+          <h3 data-i18n="addon_analytics_mini">Weekly Analytics Report</h3>
+          <p class="price">€5.00 <small data-i18n="vat_incl_year">VAT incl. / year</small></p>
+          <p data-i18n="service_card_report_desc">A weekly email with visitor stats for your menu — see which categories and dishes guests view most, no login required.</p>
+          <ul>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="addon_analytics_feat_1">Weekly email with your menu's visitor stats</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="addon_analytics_feat_2">See your top categories and dishes at a glance</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="addon_analytics_feat_3">Live stats page - shareable, no login required</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="addon_analytics_feat_4">Fully integrated into your QR menu</span></li>
+          </ul>
+          <p class="sfm-available" data-i18n="sfm_available">Available for Smart Start, Smart Pro, and Smart Premium.</p>
+        </div>
+
       </div>
 
       <p style="text-align:center;margin:1.2rem auto 0;font-size:.82rem;color:var(--grey)" data-i18n="pricing_photo_note">* Estimated maximum cost if every menu item gets its own photo, at €0.20 per photo. Photos are provided by the customer.</p>
+      <p style="text-align:center;margin:.6rem auto 0;max-width:640px;margin-left:auto;margin-right:auto;font-size:.82rem;color:var(--grey)" data-i18n="services_addon_note">Already a customer? You can add any of these add-ons to your plan at any time - you'll only pay the pro-rated amount for the rest of your current plan year, and it renews automatically from then on.</p>
       <p style="text-align:center;margin:.6rem auto 0"><span data-i18n="pricing_questions">Questions about a plan? Email</span> <a href="mailto:smartmenusolutions@outlook.com" style="text-decoration:underline;color:var(--orange)">smartmenusolutions@outlook.com</a></p>
     </div>
   </section>
