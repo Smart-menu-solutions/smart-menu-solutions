@@ -111,6 +111,12 @@ var translations = {
     'service_card_premium_desc': 'Designed for busy restaurants, hotel restaurants, chains, and businesses seeking a fully professional solution.',
     'service_card_sfm_name': 'Smart Food Match™',
     'service_card_sfm_desc': 'The intelligent add-on for every Smart Menu — guests answer 3 quick questions and get an instant personalized recommendation.',
+    'services_addon_heading': 'Add on',
+    'service_card_photos_name': 'Dish photos',
+    'service_card_photos_desc': 'Add a real photo to every dish on your menu — a polished, appetizing look that helps guests decide faster and order with confidence.',
+    'service_card_report_name': 'Weekly Report',
+    'service_card_report_desc': 'A weekly email with visitor stats for your menu — see which categories and dishes guests view most, no login required.',
+    'services_addon_note': 'Already a customer? You can add any of these add-ons to your plan at any time - you\'ll only pay the pro-rated amount for the rest of your current plan year, and it renews automatically from then on.',
     'testimonials_heading': 'What our customers say',
     'testimonial_1_text': '"Smart Menu Solutions made the transition to a digital menu incredibly easy. Our customers love scanning the QR code, and updating menu items is now quick and hassle-free."',
     'testimonial_1_author': 'Maria K., Restaurant Owner',
@@ -350,6 +356,12 @@ var translations = {
     'service_card_premium_desc': 'Entwickelt für viel besuchte Restaurants, Hotelrestaurants, Ketten und Unternehmen mit höchsten Ansprüchen.',
     'service_card_sfm_name': 'Smart Food Match™',
     'service_card_sfm_desc': 'Das intelligente Add-on für jedes Smart Menü — Gäste beantworten 3 kurze Fragen und erhalten sofort eine persönliche Empfehlung.',
+    'services_addon_heading': 'Add-on',
+    'service_card_photos_name': 'Gericht-Fotos',
+    'service_card_photos_desc': 'Ein echtes Foto zu jedem Gericht auf deiner Speisekarte — ein professioneller, appetitlicher Look, der Gästen hilft, schneller zu entscheiden und mit mehr Zuversicht zu bestellen.',
+    'service_card_report_name': 'Wochenbericht',
+    'service_card_report_desc': 'Eine wöchentliche E-Mail mit Besucherstatistiken für deine Speisekarte — sieh, welche Kategorien und Gerichte am häufigsten angesehen werden, ganz ohne Login.',
+    'services_addon_note': 'Schon Kunde? Du kannst jedes dieser Add-ons jederzeit zu deinem Plan hinzufügen - du zahlst nur den anteiligen Betrag für den Rest deines laufenden Abo-Jahres, und ab der nächsten Verlängerung läuft es automatisch mit.',
     'testimonials_heading': 'Was unsere Kunden sagen',
     'testimonial_1_text': '"Smart Menu Solutions hat den Wechsel zu einer digitalen Speisekarte unglaublich einfach gemacht. Unsere Kunden lieben das Scannen des QR-Codes, und das Aktualisieren geht blitzschnell."',
     'testimonial_1_author': 'Maria K., Restaurantbesitzerin',
@@ -800,8 +812,8 @@ var globalTranslationSelectors = {
 
   var pageTranslationSelectors = {
   'our-services.html': {
-    '.hero-inner h1': 'services_hero_title', '.hero-lede': 'services_hero_lede', '.section-head h2': 'services_section_heading', '.section-head p': 'services_section_sub',
-    '.service-card:nth-child(1) h3': 'plan_start_name', '.service-card:nth-child(1) p': 'service_card_start_desc', '.service-card:nth-child(2) h3': 'plan_pro_name', '.service-card:nth-child(2) p': 'service_card_pro_desc', '.service-card:nth-child(3) h3': 'plan_premium_name', '.service-card:nth-child(3) p': 'service_card_premium_desc',
+    '.hero-inner h1': 'services_hero_title', '.hero-lede': 'services_hero_lede', '#services-section-head h2': 'services_section_heading', '#services-section-head p': 'services_section_sub',
+    '#services-grid .service-card:nth-child(1) h3': 'plan_start_name', '#services-grid .service-card:nth-child(1) p': 'service_card_start_desc', '#services-grid .service-card:nth-child(2) h3': 'plan_pro_name', '#services-grid .service-card:nth-child(2) p': 'service_card_pro_desc', '#services-grid .service-card:nth-child(3) h3': 'plan_premium_name', '#services-grid .service-card:nth-child(3) p': 'service_card_premium_desc',
     '.services-testimonials .section-head h2': 'testimonials_heading', '.testimonial:nth-child(1) p': 'testimonial_1_text', '.testimonial:nth-child(1) cite': 'testimonial_1_author', '.testimonial:nth-child(2) p': 'testimonial_2_text', '.testimonial:nth-child(2) cite': 'testimonial_2_author', '.testimonial:nth-child(3) p': 'testimonial_3_text', '.testimonial:nth-child(3) cite': 'testimonial_3_author', '.cta-band h2': 'cta_band_title', '.cta-band p': 'cta_band_sub', '.cta-band a': 'cta_band_btn'
   },
   'pricing-plans.html': {
