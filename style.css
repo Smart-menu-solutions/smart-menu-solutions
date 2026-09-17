@@ -645,15 +645,23 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 
 /* Small "add photos" toggle embedded in each plan card. Sits inside the
    card's own <label>, so clicks on it must not bubble up and re-trigger
-   the plan radio's label (handled in order-form.js with stopPropagation). */
+   the plan radio's label (handled in order-form.js with stopPropagation).
+   Grid, not flex+justify-content:center: with justify-content:center the
+   whole [dot][text][price] row is centered as one unit, so when the label
+   text wraps to a different number of lines per row (Add photos: 1 line,
+   Weekly Analytics Report: up to 3), each row's own total width changes
+   and the centered dot/price end up at a different x per row - a visible
+   staircase. A fixed-column grid instead pins the dot to the far left and
+   the price to the far right on every row regardless of how the middle
+   column wraps. */
 .p-photo-toggle{
-  display: flex; align-items: center; justify-content: center; gap: .4rem;
+  display: grid; grid-template-columns: 15px 1fr auto; align-items: center; column-gap: .5rem;
   margin-top: .7rem; padding-top: .6rem; border-top: 1px dashed var(--line);
-  font-size: .74rem; color: var(--grey); cursor: pointer;
+  font-size: .74rem; color: var(--grey); cursor: pointer; text-align: left;
 }
 .p-photo-toggle input{ position: absolute; opacity: 0; width: 0; height: 0; }
 .photo-addon-mini-mark{
-  flex-shrink: 0; width: 15px; height: 15px; border-radius: 50%;
+  width: 15px; height: 15px; border-radius: 50%;
   border: 2px solid var(--orange); display: grid; place-items: center;
 }
 .photo-addon-mini-mark::after{
@@ -667,13 +675,13 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
    photo one, own class names so the two never fight over the same
    checkbox/JS state. */
 .p-sfm-toggle{
-  display: flex; align-items: center; justify-content: center; gap: .4rem;
+  display: grid; grid-template-columns: 15px 1fr auto; align-items: center; column-gap: .5rem;
   margin-top: .5rem; padding-top: .5rem; border-top: 1px dashed var(--line);
-  font-size: .74rem; color: var(--grey); cursor: pointer;
+  font-size: .74rem; color: var(--grey); cursor: pointer; text-align: left;
 }
 .p-sfm-toggle input{ position: absolute; opacity: 0; width: 0; height: 0; }
 .sfm-addon-mini-mark{
-  flex-shrink: 0; width: 15px; height: 15px; border-radius: 50%;
+  width: 15px; height: 15px; border-radius: 50%;
   border: 2px solid var(--orange); display: grid; place-items: center;
 }
 .sfm-addon-mini-mark::after{
@@ -685,13 +693,13 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 
 /* Third, independent add-on toggle - same look again, own class names. */
 .p-analytics-toggle{
-  display: flex; align-items: center; justify-content: center; gap: .4rem;
+  display: grid; grid-template-columns: 15px 1fr auto; align-items: center; column-gap: .5rem;
   margin-top: .5rem; padding-top: .5rem; border-top: 1px dashed var(--line);
-  font-size: .74rem; color: var(--grey); cursor: pointer;
+  font-size: .74rem; color: var(--grey); cursor: pointer; text-align: left;
 }
 .p-analytics-toggle input{ position: absolute; opacity: 0; width: 0; height: 0; }
 .analytics-addon-mini-mark{
-  flex-shrink: 0; width: 15px; height: 15px; border-radius: 50%;
+  width: 15px; height: 15px; border-radius: 50%;
   border: 2px solid var(--orange); display: grid; place-items: center;
 }
 .analytics-addon-mini-mark::after{
