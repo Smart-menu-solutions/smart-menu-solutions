@@ -559,6 +559,17 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .contact-side h3{ color: #fff; }
 .contact-side p{ color: #D9D7D3; }
 .contact-side a{ color: #fff; text-decoration: underline; }
+.contact-side .contact-link{
+  display: flex; align-items: center; gap: .55em;
+  margin-bottom: .5em;
+}
+.contact-side .contact-link-icon{ flex-shrink: 0; color: #D9D7D3; }
+.contact-side .contact-link a{
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  color: var(--orange);
+}
 
 /* ============================================================
    CTA band & Footer

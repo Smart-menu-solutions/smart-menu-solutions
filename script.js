@@ -654,6 +654,7 @@ Object.assign(translations.en, {
   contact_next_intro: "Let's create a smarter dining experience for your customers.<br><strong>Smart menus. Better experiences.</strong>",
   contact_email_label: 'Email',
   contact_instagram_label: 'Instagram',
+  contact_tiktok_label: 'TikTok',
 
   notfound_desc: 'That page could not be found.',
   notfound_help: 'Use the home page or contact our support team if you followed a broken link.',
@@ -730,6 +731,7 @@ Object.assign(translations.de, {
   contact_next_intro: 'Lass uns gemeinsam ein smarteres Restauranterlebnis schaffen.<br><strong>Smarte Menüs. Bessere Erlebnisse.</strong>',
   contact_email_label: 'E-Mail',
   contact_instagram_label: 'Instagram',
+  contact_tiktok_label: 'TikTok',
 
   notfound_desc: 'Diese Seite konnte nicht gefunden werden.',
   notfound_help: 'Nutze die Startseite oder kontaktiere unser Support-Team, falls du einem defekten Link gefolgt bist.',
