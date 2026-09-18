@@ -34,8 +34,11 @@ document.addEventListener('DOMContentLoaded', function () {
       if (addon.active) {
         return '<div class="addon-row"><span class="addon-name">' + escapeHtml(addon.label) + '</span><span class="addon-active-badge">' + t('Active', 'Aktiv') + '</span></div>';
       }
+      var prorateHint = addon.billing === 'recurring'
+        ? '<span class="addon-prorate-hint">' + t('adjusted to your pro-rated amount at checkout', 'wird beim Bezahlen auf den anteiligen Betrag angepasst') + '</span>'
+        : '';
       return '<div class="addon-row">' +
-        '<span class="addon-name">' + escapeHtml(addon.label) + '<span class="addon-price">' + escapeHtml(addon.priceLabel) + '</span></span>' +
+        '<span class="addon-name">' + escapeHtml(addon.label) + '<span class="addon-price">' + escapeHtml(addon.priceLabel) + '</span>' + prorateHint + '</span>' +
         '<button type="button" class="button-add-addon" data-addon="' + escapeHtml(addon.key) + '">' + t('Add', 'Hinzufügen') + '</button>' +
         '<span class="addon-error" data-addon-error="' + escapeHtml(addon.key) + '"></span>' +
         '</div>';

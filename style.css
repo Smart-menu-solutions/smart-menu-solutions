@@ -775,6 +775,7 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 }
 .addon-name{ font-weight: 700; display: flex; flex-direction: column; gap: .2rem; }
 .addon-price{ font-weight: 400; color: var(--grey); font-size: .85rem; }
+.addon-prorate-hint{ font-weight: 400; font-style: italic; color: var(--grey); font-size: .78rem; }
 .addon-active-badge{
   margin-left: auto; font-size: .75rem; font-weight: 700; color: #1e6b3c;
   background: #e8f5ec; padding: .3rem .7rem; border-radius: 999px;
