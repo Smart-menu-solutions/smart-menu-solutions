@@ -372,7 +372,8 @@ document.addEventListener('DOMContentLoaded', function () {
             photoAddon: addonOn,
             photoZipPath: photoZipUploaded ? photoZipPath : '',
             smartFoodMatchAddon: sfmOn,
-            analyticsReportsAddon: analyticsOn
+            analyticsReportsAddon: analyticsOn,
+            lang: localStorage.getItem('selectedLang') === 'de' ? 'de' : 'en'
           })
         });
       })

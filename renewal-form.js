@@ -161,7 +161,8 @@ document.addEventListener('DOMContentLoaded', function () {
             email: document.getElementById('email').value.trim(),
             companyName: document.getElementById('companyName').value.trim(),
             phone: document.getElementById('phone').value.trim(),
-            pdfPath: storagePath
+            pdfPath: storagePath,
+            lang: localStorage.getItem('selectedLang') === 'de' ? 'de' : 'en'
           })
         });
       })
