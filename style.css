@@ -303,7 +303,7 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
   color: var(--grey); background: var(--bg-alt); border-radius: 999px; padding: .25em .85em; margin-bottom: .7em;
 }
 .compare-tag--after{ color: #fff; background: var(--orange); }
-.compare-photo{ border-radius: calc(var(--radius) - 4px); overflow: hidden; margin-bottom: .8em; aspect-ratio: 16/6; }
+.compare-photo{ position: relative; border-radius: calc(var(--radius) - 4px); overflow: hidden; margin-bottom: .8em; aspect-ratio: 16/6; }
 .compare-photo img{ width: 100%; height: 100%; object-fit: cover; display: block; }
 .compare-card h3{ margin: 0 0 .4em; font-size: 1.05rem; }
 .compare-list{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .4em; color: var(--grey); font-size: .88rem; }
@@ -313,12 +313,20 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .compare-arrow{ display: flex; align-items: center; justify-content: center; color: var(--orange); }
 
 .compare-photo--demo{
-  border: 0; padding: 0; width: 100%; font: inherit; cursor: pointer;
-  background: var(--ink); color: #fff; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: .5rem; font-weight: 600; font-size: .85rem;
+  position: absolute; inset: 0; z-index: 1;
+  border: 0; padding: 0; width: 100%; height: 100%; font: inherit; cursor: pointer;
+  background: transparent;
+  display: flex; align-items: center; justify-content: center;
 }
-.compare-photo--demo svg{ color: var(--orange); }
-.compare-photo--demo:hover{ background: #34302b; }
+.compare-photo--demo .demo-pill{
+  display: inline-flex; align-items: center; gap: .5em;
+  background: var(--ink); color: #fff;
+  padding: .55em 1.1em; border-radius: 999px;
+  font-weight: 600; font-size: .85rem;
+  box-shadow: 0 10px 22px -8px rgba(0,0,0,.55);
+}
+.compare-photo--demo svg{ color: var(--orange); flex-shrink: 0; }
+.compare-photo--demo:hover .demo-pill{ background: #34302b; }
 
 .stats-demo-overlay{
   position: fixed; inset: 0; z-index: 400; background: rgba(20,18,16,.75);
