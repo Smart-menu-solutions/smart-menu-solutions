@@ -3,19 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{localStorage.setItem('selectedLang','en');}catch(e){}</script>
 <meta name="robots" content="index, follow, max-image-preview:large">
 <title>Imprint | Smart Menu Solutions</title>
-<meta name="description" content="Legal information and contact details for Smart Menu Solutions.">
-<link rel="icon" type="image/png" href="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&amp;enable=upscale&amp;height=64">
-<link rel="stylesheet" href="style.css?v=d120e4a">
+<meta name="description" content="Legal information and contact details for Smart Menu Solutions."><meta property="og:title" content="Imprint | Smart Menu Solutions"><meta property="og:description" content="Legal information and contact details for Smart Menu Solutions.">
+<link rel="canonical" href="https://smartmenusolutions.com/imprint.html">
+<link rel="alternate" hreflang="en" href="https://smartmenusolutions.com/imprint.html">
+<link rel="alternate" hreflang="de" href="https://smartmenusolutions.com/de/imprint.html">
+<link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/imprint.html">
+<link rel="icon" type="image/png" href="assets/images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"><link rel="stylesheet" href="style.css?v=2026-09-19b">
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
+<a class="skip-link" href="#main-content" data-i18n="skip_link">Skip to main content</a>
 
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="index.html">
-     <img src="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&amp;enable=upscale&amp;height=70" alt="Smart Menu Solutions Logo">
+     <img src="assets/images/logo.png" alt="Smart Menu Solutions Logo">
       <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
     </a>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -33,12 +38,8 @@
       <a class="btn nav-cta" href="order-info.html" data-i18n="get_started">Get started</a>
       <div class="nav-lang-container">
         <div class="lang-switcher">
-          <button class="flag-btn" onclick="switchLanguage('de')" title="Deutsch">
-            <span style="font-size: 1.2rem;">DE</span>
-          </button>
-          <button class="flag-btn" onclick="switchLanguage('en')" title="English">
-            <span style="font-size: 1.2rem;">GB</span>
-          </button>
+          <a class="flag-btn" href="de/imprint.html" title="Deutsch">DE</a>
+          <a class="flag-btn active" href="imprint.html" title="English" aria-current="page" onclick="try{localStorage.setItem('selectedLang','en');}catch(e){}">EN</a>
         </div>
       </div>
     </nav>
@@ -65,7 +66,7 @@
       </p>
 
       <p>
-        <strong data-i18n="imprint_owner_label">Owner:</strong><br>
+        <strong data-i18n="imprint_owner_label">CEO:</strong><br>
         George Tsiafitsas
       </p>
 
@@ -120,7 +121,7 @@
   <div class="container">
     <div class="footer-inner">
       <a class="footer-brand" href="index.html">
-        <img src="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&amp;width=157" alt="Smart Menu Solutions Logo">
+        <img src="assets/images/logo-white.png" alt="Smart Menu Solutions Logo">
         <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
       </a>
       <ul class="footer-links">
@@ -136,9 +137,13 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions</span>
+      <span data-i18n="footer_copyright">© 2026 Smart Menu Solutions</span>
+      <span class="footer-powered" data-i18n="footer_powered">Powered by Smart Menu Solutions</span>
       <ul class="footer-legal">
         <li><a href="privacy-policy.html" data-i18n="privacy_policy">Privacy Policy</a></li>
+        <li><a href="terms-of-service.html">Terms of Service</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
         <li><a href="refund-policy.html" data-i18n="refund_policy">Refund Policy</a></li>
         <li><a href="imprint.html" aria-current="page" data-i18n="imprint">Imprint</a></li>
         <li><a href="mailto:smartmenusolutions@outlook.com">smartmenusolutions@outlook.com</a></li>
@@ -147,6 +152,6 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=2026-09-18l"></script>
 </body>
 </html>

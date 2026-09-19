@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700&family=Open+Sans:wght@400;700&display=swap">
+<style>
+  :root{
+    --ink:#262421; --paper:#f4efe6; --orange:#f66a09; --orange-dark:#d85d06; --cream:#fff1e4;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    width:1080px; height:1080px; overflow:hidden;
+    background:var(--paper);
+    font-family:'Open Sans',system-ui,sans-serif;
+    color:var(--ink);
+    position:relative;
+  }
+  .texture{
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(115deg, rgba(0,0,0,.02) 0 2px, transparent 2px 6px);
+  }
+  .frame{
+    position:absolute; inset:40px;
+    border:3px solid var(--ink);
+    border-radius:28px;
+    display:flex; flex-direction:column;
+    padding:64px 68px 56px;
+    background:var(--paper);
+  }
+  .brand-row{
+    display:flex; align-items:center; gap:16px;
+  }
+  .brand-row img{ width:56px; height:56px; display:block }
+  .brand-row .name{ font-weight:700; font-size:26px; letter-spacing:-.01em }
+  .brand-row .name .n-smart{ color:var(--orange) }
+  .tag{
+    align-self:flex-start;
+    margin-top:40px;
+    background:var(--orange); color:#fff;
+    font-weight:700; font-size:22px; letter-spacing:.04em; text-transform:uppercase;
+    padding:10px 24px; border-radius:999px;
+  }
+  .hook{
+    margin-top:46px;
+    font-family:'Bricolage Grotesque',system-ui,sans-serif;
+    font-weight:700;
+    font-size:__HOOK_SIZE__px;
+    line-height:1.14;
+    max-width:900px;
+    text-wrap:balance;
+  }
+  .spacer{ flex:1 }
+  .cta-row{
+    display:flex; align-items:center; justify-content:space-between;
+    border-top:2px solid var(--ink);
+    padding-top:28px;
+  }
+  .cta{ font-weight:700; font-size:28px; max-width:640px }
+  .handle{
+    font-weight:700; font-size:24px; color:var(--orange);
+    white-space:nowrap;
+  }
+</style>
+</head>
+<body>
+  <div class="texture"></div>
+  <div class="frame">
+    <div class="brand-row">
+      <img src="__LOGO_PATH__" alt="">
+      <div class="name"><span class="n-smart">Smart</span> Menu Solutions</div>
+    </div>
+    <div class="tag">__CATEGORY__</div>
+    <div class="hook">__HOOK__</div>
+    <div class="spacer"></div>
+    <div class="cta-row">
+      <div class="cta">__CTA__</div>
+      <div class="handle">@smartmenusolutions</div>
+    </div>
+  </div>
+</body>
+</html>

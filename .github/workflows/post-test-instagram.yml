@@ -1,0 +1,74 @@
+name: Post to Instagram (test)
+
+on:
+  workflow_dispatch:
+    inputs:
+      day:
+        description: "Day number from content_calendar.csv (1-180)"
+        required: true
+        default: "1"
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        working-directory: automation
+        run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Render card
+        working-directory: automation
+        run: python render_card.py "${{ inputs.day }}" "output/day-${{ inputs.day }}.png"
+
+      - name: Convert to JPEG
+        working-directory: automation
+        run: python to_jpeg.py "output/day-${{ inputs.day }}.png" "output/day-${{ inputs.day }}.jpg"
+
+      - name: Commit and push image (so it has a public URL)
+        working-directory: automation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "output/day-${{ inputs.day }}.jpg"
+          git commit -m "chore: render Instagram test image for day ${{ inputs.day }}"
+          git push
+
+      - name: Read caption
+        working-directory: automation
+        id: caption
+        run: |
+          CAPTION=$(python -c "
+          import csv
+          with open('content_calendar.csv', newline='', encoding='utf-8-sig') as f:
+              for row in csv.DictReader(f):
+                  if int(row['Tag']) == ${{ inputs.day }}:
+                      print(row['Hook'] + ' ' + row['CTA'])
+                      break
+          ")
+          echo "text=$CAPTION" >> "$GITHUB_OUTPUT"
+
+      - name: Post to Instagram
+        working-directory: automation
+        env:
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+        run: |
+          IMAGE_URL="https://raw.githubusercontent.com/Smart-menu-solutions/smart-menu-solutions/main/automation/output/day-${{ inputs.day }}.jpg"
+          python post_instagram.py "$IMAGE_URL" "${{ steps.caption.outputs.text }}"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: instagram-test-day-${{ inputs.day }}
+          path: automation/output/day-${{ inputs.day }}.jpg
