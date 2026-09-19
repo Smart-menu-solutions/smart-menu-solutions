@@ -305,6 +305,9 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .compare-tag--after{ color: #fff; background: var(--orange); }
 .compare-photo{ position: relative; border-radius: calc(var(--radius) - 4px); overflow: hidden; margin-bottom: .8em; aspect-ratio: 16/6; }
 .compare-photo img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+/* The report photo is 4:3 but shown in a 16:6 strip - anchor it low so the
+   whole donut chart stays in view instead of being cut off at the bottom. */
+.compare-photo img.compare-photo__report{ object-position: center 65%; }
 .compare-card h3{ margin: 0 0 .4em; font-size: 1.05rem; }
 .compare-list{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .4em; color: var(--grey); font-size: .88rem; }
 .compare-list li{ padding-left: 1.3em; position: relative; }
