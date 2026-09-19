@@ -611,7 +611,7 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 1rem;
 }
-.footer-brand{ display: flex; align-items: center; gap: .5rem; font-weight: 600; }
+.footer-brand{ display: flex; align-items: center; gap: .5rem; font-weight: 600; text-decoration: none; }
 .footer-brand img{ height: 32px; }
 .footer-brand .brand-text .n-rest{ color: #fff; }
 .footer-links{ display: flex; gap: 1.4rem; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
@@ -631,7 +631,7 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
   font-size: .85rem; color: #A8A49D;
   display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .6rem;
 }
-.footer-bottom a{ text-decoration: underline; color: #A8A49D; }
+.footer-bottom a{ text-decoration: none; color: #A8A49D; }
 .footer-bottom a:hover{ color: var(--orange); }
 .footer-powered{ white-space: nowrap; }
 .footer-legal{ display: flex; gap: 1.2rem; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; flex-basis: 100%; }
