@@ -12,7 +12,7 @@
 <link rel="alternate" hreflang="de" href="https://smartmenusolutions.com/de/order-info.html">
 <link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/order-info.html">
 <link rel="icon" type="image/png" href="../assets/images/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"><link rel="stylesheet" href="../style.css?v=2026-09-21d">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"><link rel="stylesheet" href="../style.css?v=2026-09-21h">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
@@ -96,7 +96,7 @@
               <div class="plan-grid">
                 <div class="plan-option">
                   <input type="radio" id="planStart" name="Selected Plan" value="Smart Start (EUR 119, VAT incl. 1-Year Subscription)"
-                    data-code="start" data-name="Smart Start" data-price="119" data-updates="1" data-photo-price="10" data-sfm-price="5" data-analytics-price="5">
+                    data-code="start" data-name="Smart Start" data-price="119" data-updates="1" data-photo-price="10" data-sfm-price="5" data-analytics-price="5" data-hub-price="89">
                   <label for="planStart">
                     <span class="p-name">Smart Start</span>
                     <span class="p-price">€119</span>
@@ -118,11 +118,17 @@
                       <span class="analytics-addon-mini-text">Wöchentlicher Analyse-Bericht</span>
                       <span class="analytics-addon-mini-price">+€5.00</span>
                     </span>
+                    <span class="p-hub-toggle">
+                      <input type="checkbox" class="hub-addon-check" id="hubAddonStart">
+                      <span class="hub-addon-mini-mark" aria-hidden="true"></span>
+                      <span class="hub-addon-mini-text">Smart ServiceHub</span>
+                      <span class="hub-addon-mini-price">+€89.00</span>
+                    </span>
                   </label>
                 </div>
                 <div class="plan-option">
                   <input type="radio" id="planPro" name="Selected Plan" value="Smart Pro (EUR 129, VAT incl. 1-Year Subscription)"
-                    data-code="pro" data-name="Smart Pro" data-price="129" data-updates="3" data-photo-price="30" data-sfm-price="5" data-analytics-price="5" checked>
+                    data-code="pro" data-name="Smart Pro" data-price="129" data-updates="3" data-photo-price="30" data-sfm-price="5" data-analytics-price="5" data-hub-price="89" checked>
                   <label for="planPro">
                     <span class="plan-badge">Am beliebtesten</span>
                     <span class="p-name">Smart Pro</span>
@@ -145,11 +151,17 @@
                       <span class="analytics-addon-mini-text">Wöchentlicher Analyse-Bericht</span>
                       <span class="analytics-addon-mini-price">+€5.00</span>
                     </span>
+                    <span class="p-hub-toggle">
+                      <input type="checkbox" class="hub-addon-check" id="hubAddonPro">
+                      <span class="hub-addon-mini-mark" aria-hidden="true"></span>
+                      <span class="hub-addon-mini-text">Smart ServiceHub</span>
+                      <span class="hub-addon-mini-price">+€89.00</span>
+                    </span>
                   </label>
                 </div>
                 <div class="plan-option">
                   <input type="radio" id="planPremium" name="Selected Plan" value="Smart Premium (EUR 169, VAT incl. 1-Year Subscription)"
-                    data-code="premium" data-name="Smart Premium" data-price="169" data-updates="6" data-photo-price="90" data-sfm-price="5" data-analytics-price="5">
+                    data-code="premium" data-name="Smart Premium" data-price="169" data-updates="6" data-photo-price="90" data-sfm-price="5" data-analytics-price="5" data-hub-price="89">
                   <label for="planPremium">
                     <span class="p-name">Smart Premium</span>
                     <span class="p-price">€169</span>
@@ -170,6 +182,12 @@
                       <span class="analytics-addon-mini-mark" aria-hidden="true"></span>
                       <span class="analytics-addon-mini-text">Wöchentlicher Analyse-Bericht</span>
                       <span class="analytics-addon-mini-price">+€5.00</span>
+                    </span>
+                    <span class="p-hub-toggle">
+                      <input type="checkbox" class="hub-addon-check" id="hubAddonPremium">
+                      <span class="hub-addon-mini-mark" aria-hidden="true"></span>
+                      <span class="hub-addon-mini-text">Smart ServiceHub</span>
+                      <span class="hub-addon-mini-price">+€89.00</span>
                     </span>
                   </label>
                 </div>
@@ -221,6 +239,7 @@
           <div class="os-line os-line-photo" id="osLinePhoto" style="display:none"><span>Gericht-Fotos (optional)</span><span id="sumPhotoPrice">+€30.00</span></div>
           <div class="os-line os-line-sfm" id="osLineSfm" style="display:none"><span>Smart Food Match (optional)</span><span id="sumSfmPrice">+€5.00</span></div>
           <div class="os-line os-line-analytics" id="osLineAnalytics" style="display:none"><span>Wöchentlicher Analyse-Bericht (optional)</span><span id="sumAnalyticsPrice">+€5.00</span></div>
+          <div class="os-line os-line-hub" id="osLineHub" style="display:none"><span>Smart ServiceHub (optional)</span><span id="sumHubPrice">+€89.00</span></div>
           <div class="os-total">
             <span class="os-total-label">Gesamtbetrag<br><span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:.82em">inkl. MwSt.</span></span>
             <span class="os-total-value" id="sumTotal">€129.00</span>
@@ -268,7 +287,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../script.js?v=2026-09-21c"></script>
-<script src="../order-form.js?v=2026-09-18a"></script>
+<script src="../script.js?v=2026-09-21i"></script>
+<script src="../order-form.js?v=2026-09-21a"></script>
 </body>
 </html>

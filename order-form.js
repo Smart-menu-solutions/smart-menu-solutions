@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var analyticsAddonChecks = Array.prototype.slice.call(document.querySelectorAll('.analytics-addon-check'));
   var osLineAnalytics = document.getElementById('osLineAnalytics');
   var sumAnalyticsPrice = document.getElementById('sumAnalyticsPrice');
+  // Same pattern again, fourth independent toggle - flat €89 across all plans.
+  var hubAddonChecks = Array.prototype.slice.call(document.querySelectorAll('.hub-addon-check'));
+  var osLineHub = document.getElementById('osLineHub');
+  var sumHubPrice = document.getElementById('sumHubPrice');
   var photoUploadSection = document.getElementById('photoUploadSection');
   var photoDropzone = document.getElementById('photoDropzone');
   var photoUpload = document.getElementById('photoUpload');
@@ -84,6 +88,14 @@ document.addEventListener('DOMContentLoaded', function () {
     return !!(checkbox && checkbox.checked);
   }
 
+  function isHubAddonChecked() {
+    var input = currentPlanInput();
+    if (!input) return false;
+    var card = input.closest('.plan-option');
+    var checkbox = card && card.querySelector('.hub-addon-check');
+    return !!(checkbox && checkbox.checked);
+  }
+
   function updateTotal() {
     var input = currentPlanInput();
     if (!input) return;
@@ -92,11 +104,13 @@ document.addEventListener('DOMContentLoaded', function () {
     var photoPrice = parseFloat(input.getAttribute('data-photo-price')) || 0;
     var sfmPrice = parseFloat(input.getAttribute('data-sfm-price')) || 0;
     var analyticsPrice = parseFloat(input.getAttribute('data-analytics-price')) || 0;
+    var hubPrice = parseFloat(input.getAttribute('data-hub-price')) || 0;
     var addonOn = isPhotoAddonChecked();
     var sfmOn = isSfmAddonChecked();
     var analyticsOn = isAnalyticsAddonChecked();
+    var hubOn = isHubAddonChecked();
 
-    var total = price + (addonOn ? photoPrice : 0) + (sfmOn ? sfmPrice : 0) + (analyticsOn ? analyticsPrice : 0);
+    var total = price + (addonOn ? photoPrice : 0) + (sfmOn ? sfmPrice : 0) + (analyticsOn ? analyticsPrice : 0) + (hubOn ? hubPrice : 0);
     sumTotal.textContent = eur(total);
     hiddenTotal.value = eur(total);
     hiddenPlanName.value = name;
@@ -110,6 +124,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (osLineAnalytics) osLineAnalytics.style.display = analyticsOn ? '' : 'none';
     if (sumAnalyticsPrice) sumAnalyticsPrice.textContent = '+' + eur(analyticsPrice);
+
+    if (osLineHub) osLineHub.style.display = hubOn ? '' : 'none';
+    if (sumHubPrice) sumHubPrice.textContent = '+' + eur(hubPrice);
   }
 
   function applyPlan(input) {
@@ -139,6 +156,11 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   analyticsAddonChecks.forEach(function (checkbox) {
+    checkbox.addEventListener('click', function (e) { e.stopPropagation(); });
+    checkbox.addEventListener('change', function () { updateTotal(); });
+  });
+
+  hubAddonChecks.forEach(function (checkbox) {
     checkbox.addEventListener('click', function (e) { e.stopPropagation(); });
     checkbox.addEventListener('change', function () { updateTotal(); });
   });
@@ -192,6 +214,24 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       if (e.target.tagName === 'INPUT') return;
       var checkbox = wrapper.querySelector('.analytics-addon-check');
+      if (!checkbox) return;
+      checkbox.checked = !checkbox.checked;
+      checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+  });
+
+  // Same pattern again, fourth independent addon.
+  document.querySelectorAll('.p-hub-toggle').forEach(function (wrapper) {
+    wrapper.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var card = wrapper.closest('.plan-option');
+      var planRadio = card && card.querySelector('input[name="Selected Plan"]');
+      if (planRadio && !planRadio.checked) {
+        planRadio.checked = true;
+        applyPlan(planRadio);
+      }
+      if (e.target.tagName === 'INPUT') return;
+      var checkbox = wrapper.querySelector('.hub-addon-check');
       if (!checkbox) return;
       checkbox.checked = !checkbox.checked;
       checkbox.dispatchEvent(new Event('change', { bubbles: true }));
@@ -323,6 +363,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var addonOn = isPhotoAddonChecked();
     var sfmOn = isSfmAddonChecked();
     var analyticsOn = isAnalyticsAddonChecked();
+    var hubOn = isHubAddonChecked();
     var photoZipFile = photoUpload && photoUpload.files ? photoUpload.files[0] : null;
     if (addonOn && !photoZipFile) {
       alert(t('Please upload your dish photos as a ZIP file, or turn off the photo add-on.', 'Bitte laden Sie Ihre Gerichtfotos als ZIP-Datei hoch oder deaktivieren Sie den Foto-Zusatz.'));
@@ -373,6 +414,7 @@ document.addEventListener('DOMContentLoaded', function () {
             photoZipPath: photoZipUploaded ? photoZipPath : '',
             smartFoodMatchAddon: sfmOn,
             analyticsReportsAddon: analyticsOn,
+            smartServiceHubAddon: hubOn,
             lang: localStorage.getItem('selectedLang') === 'de' ? 'de' : 'en'
           })
         });
