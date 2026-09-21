@@ -366,7 +366,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var hubOn = isHubAddonChecked();
     var photoZipFile = photoUpload && photoUpload.files ? photoUpload.files[0] : null;
     if (addonOn && !photoZipFile) {
-      alert(t('Please upload your dish photos as a ZIP file, or turn off the photo add-on.', 'Bitte laden Sie Ihre Gerichtfotos als ZIP-Datei hoch oder deaktivieren Sie den Foto-Zusatz.'));
+      alert(t('Please upload your dish photos as a ZIP file, or turn off the Smart DishPhoto™ add-on.', 'Bitte laden Sie Ihre Gerichtfotos als ZIP-Datei hoch oder deaktivieren Sie den Smart-DishPhoto™-Zusatz.'));
       return;
     }
 
