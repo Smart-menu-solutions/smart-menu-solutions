@@ -287,10 +287,11 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .section--dark{ background: var(--ink); color: #fff; border-top: var(--border); border-bottom: var(--border); padding: var(--space-3) 0; }
 .section--dark .section-head{ margin-bottom: var(--space-2); }
 .section--dark .section-head p{ color: #C9C6C0; }
-#before-after .container{ max-width: 1400px; }
+#before-after .container{ max-width: 3200px; }
+
 .compare-grid{
-  display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: var(--space-3);
-  align-items: stretch; max-width: 1400px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto 1fr; gap: var(--space-3);
+  align-items: stretch; max-width: 2800px; margin: 0 auto;
 }
 .compare-card{
   background: var(--paper); border: var(--border); border-radius: var(--radius);
@@ -303,7 +304,7 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
   color: var(--grey); background: var(--bg-alt); border-radius: 999px; padding: .25em .85em; margin-bottom: .7em;
 }
 .compare-tag--after{ color: #fff; background: var(--orange); }
-.compare-photo{ position: relative; border-radius: calc(var(--radius) - 4px); overflow: hidden; margin-bottom: .8em; aspect-ratio: 16/6; }
+.compare-photo{ position: relative; border-radius: calc(var(--radius) - 4px); overflow: hidden; margin-bottom: .8em; aspect-ratio: 16/5; }
 .compare-photo img{ width: 100%; height: 100%; object-fit: cover; display: block; }
 /* The report photo is 4:3 but shown in a 16:6 strip - anchor it low so the
    whole donut chart stays in view instead of being cut off at the bottom. */
@@ -312,6 +313,7 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .compare-list{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .4em; color: var(--grey); font-size: .88rem; }
 .compare-list li{ padding-left: 1.3em; position: relative; }
 .compare-list li::before{ content: "—"; position: absolute; left: 0; color: var(--grey); }
+.compare-list a{ color: var(--orange); }
 .compare-card--after .compare-list li::before{ content: "✓"; color: var(--orange); font-weight: 700; }
 .compare-arrow{ display: flex; align-items: center; justify-content: center; color: var(--orange); }
 
