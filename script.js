@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
   switchLanguage(savedLang);
 
   wireStatsDemoModal();
+  wireHubDemoModal();
 });
 
 // Homepage "Weekly Analytics Report" card - opens the real, live El Greco
@@ -78,6 +79,22 @@ function wireStatsDemoModal() {
     overlay.hidden = true;
     document.body.style.overflow = '';
   }
+  openButton.addEventListener('click', openModal);
+  closeButton.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function (event) { if (event.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && !overlay.hidden) closeModal(); });
+}
+
+// Smart ServiceHub "how it works" popup - same open/close/escape pattern as
+// wireStatsDemoModal above, but the content is a static flow diagram baked
+// into the page (no iframe/live data to lazy-load).
+function wireHubDemoModal() {
+  var openButton = document.getElementById('hubDemoOpen');
+  var overlay = document.getElementById('hubDemoOverlay');
+  var closeButton = document.getElementById('hubDemoClose');
+  if (!openButton || !overlay || !closeButton) return;
+  function openModal() { overlay.hidden = false; document.body.style.overflow = 'hidden'; }
+  function closeModal() { overlay.hidden = true; document.body.style.overflow = ''; }
   openButton.addEventListener('click', openModal);
   closeButton.addEventListener('click', closeModal);
   overlay.addEventListener('click', function (event) { if (event.target === overlay) closeModal(); });
@@ -115,6 +132,21 @@ var translations = {
     'compare_hub_li2': 'Live dashboards for kitchen, bar, service and cashier',
     'compare_hub_li3': 'Call the waiter or ask for the bill with one tap',
     'compare_hub_li4': 'No app to install — works on any phone or tablet',
+    'compare_hub_cta': 'See how it works',
+    'hub_flow_title': 'How Smart ServiceHub™ works',
+    'hub_flow_guest': 'Guest',
+    'hub_flow_step1_title': 'Scan the QR code',
+    'hub_flow_step1_desc': 'Guest scans the code at their table',
+    'hub_flow_step2_title': 'Digital menu opens',
+    'hub_flow_step2_desc': 'Instantly, on their own phone - no app needed',
+    'hub_flow_step3_title': 'Places the order',
+    'hub_flow_step3_desc': 'A few taps, right from the table',
+    'hub_flow_step4_title': 'Instant transmission',
+    'hub_flow_step4_desc': 'Goes straight to cashier, kitchen, bar & waiter',
+    'hub_flow_step5_title': 'Service & preparation',
+    'hub_flow_step5_desc': 'Every station stays perfectly in sync',
+    'hub_flow_step6_title': 'Reorder in 1 click',
+    'hub_flow_step6_desc': 'No waiting to flag down a waiter',
     'about_title': 'About <span class="accent">Smart Menu Solutions</span>',
     'about_desc': 'We help restaurants, cafes, bars and hotels replace static paper menus with fast, beautiful digital menus guests can open instantly from any phone — no app required.',
     'compare_title': 'From paper menu <span class="accent">to digital experience</span>',
@@ -398,6 +430,21 @@ var translations = {
     'compare_hub_li2': 'Live-Ansicht für Küche, Bar, Service und Kasse',
     'compare_hub_li3': 'Kellner rufen oder Rechnung anfordern – mit einem Tipp',
     'compare_hub_li4': 'Keine App nötig – funktioniert auf jedem Handy und Tablet',
+    'compare_hub_cta': 'So funktioniert\'s',
+    'hub_flow_title': 'So funktioniert Smart ServiceHub™',
+    'hub_flow_guest': 'Gast',
+    'hub_flow_step1_title': 'QR-Code scannen',
+    'hub_flow_step1_desc': 'Gast scannt den Code am Tisch',
+    'hub_flow_step2_title': 'Digitales Menü öffnet sich',
+    'hub_flow_step2_desc': 'Sofort, auf dem eigenen Handy – ohne App',
+    'hub_flow_step3_title': 'Bestellung aufgeben',
+    'hub_flow_step3_desc': 'Ein paar Klicks, direkt vom Tisch aus',
+    'hub_flow_step4_title': 'Sofortige Übermittlung',
+    'hub_flow_step4_desc': 'Geht direkt an Kasse, Küche, Bar & Kellner',
+    'hub_flow_step5_title': 'Service & Zubereitung',
+    'hub_flow_step5_desc': 'Jede Station bleibt perfekt synchron',
+    'hub_flow_step6_title': 'Nachbestellung mit 1 Klick',
+    'hub_flow_step6_desc': 'Kein Warten auf den Kellner',
     'about_title': 'Über <span class="accent">Smart Menu Solutions</span>',
     'about_desc': 'Wir helfen Restaurants, Cafés, Bars und Hotels dabei, statische Papier-Speisekarten durch schnelle, ansprechende digitale Menüs zu ersetzen, die Gäste sofort auf jedem Smartphone öffnen können — ganz ohne App.',
     'compare_title': 'Von der Papier-Speisekarte <span class="accent">zum digitalen Erlebnis</span>',

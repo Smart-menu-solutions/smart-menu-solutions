@@ -22,7 +22,7 @@
 <link rel="alternate" hreflang="de" href="https://smartmenusolutions.com/de/index.html">
 <link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/index.html">
 <link rel="icon" type="image/png" href="../assets/images/logo.png"><link rel="manifest" href="../site.webmanifest"><link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"><link rel="stylesheet" href="../style.css?v=2026-09-22b">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"><link rel="stylesheet" href="../style.css?v=2026-09-22c">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -184,6 +184,12 @@
           <span class="compare-tag compare-tag--after">Smart ServiceHub™</span>
           <div class="compare-photo">
             <img src="../assets/images/service-smart-servicehub.png" alt="">
+            <button type="button" class="compare-photo--demo" id="hubDemoOpen" aria-haspopup="dialog">
+              <span class="demo-pill">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+                <span>So funktioniert's</span>
+              </span>
+            </button>
           </div>
           <h3>Live-Tischservice</h3>
           <ul class="compare-list">
@@ -201,6 +207,46 @@
     <div class="stats-demo-box" role="dialog" aria-modal="true" aria-label="Smart WeeklyReport™ Live-Beispiel">
       <button type="button" class="stats-demo-close" id="statsDemoClose" aria-label="Schließen">✕</button>
       <iframe id="statsDemoFrame" title="Smart WeeklyReport™ Live-Beispiel" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <div class="stats-demo-overlay" id="hubDemoOverlay" hidden>
+    <div class="hub-demo-box" role="dialog" aria-modal="true" aria-label="Smart ServiceHub™ - so funktioniert's">
+      <button type="button" class="stats-demo-close" id="hubDemoClose" aria-label="Schließen">✕</button>
+      <div class="hub-flow">
+        <h3>So funktioniert Smart ServiceHub™</h3>
+        <div class="hub-flow-node hub-flow-guest"><span>Gast</span></div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">📱</span>
+          <div><h4>QR-Code scannen</h4><p>Gast scannt den Code am Tisch</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">🍽️</span>
+          <div><h4>Digitales Menü öffnet sich</h4><p>Sofort, auf dem eigenen Handy – ohne App</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">🛒</span>
+          <div><h4>Bestellung aufgeben</h4><p>Ein paar Klicks, direkt vom Tisch aus</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">⚡</span>
+          <div><h4>Sofortige Übermittlung</h4><p>Geht direkt an Kasse, Küche, Bar &amp; Kellner</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">👨‍🍳</span>
+          <div><h4>Service &amp; Zubereitung</h4><p>Jede Station bleibt perfekt synchron</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">➕</span>
+          <div><h4>Nachbestellung mit 1 Klick</h4><p>Kein Warten auf den Kellner</p></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -251,7 +297,7 @@
   </div>
 </footer>
 
-<script src="../script.js?v=2026-09-22a"></script>
+<script src="../script.js?v=2026-09-22b"></script>
 
 </body>
 </html>

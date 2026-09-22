@@ -23,7 +23,7 @@
 <link rel="alternate" hreflang="de" href="https://smartmenusolutions.com/de/index.html">
 <link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/index.html">
 <link rel="icon" type="image/png" href="assets/images/logo.png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"><link rel="stylesheet" href="style.css?v=2026-09-22b">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"><link rel="stylesheet" href="style.css?v=2026-09-22c">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -185,6 +185,12 @@
           <span class="compare-tag compare-tag--after" data-i18n="compare_hub_tag">Smart ServiceHub™</span>
           <div class="compare-photo">
             <img src="assets/images/service-smart-servicehub.png" alt="">
+            <button type="button" class="compare-photo--demo" id="hubDemoOpen" aria-haspopup="dialog">
+              <span class="demo-pill">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+                <span data-i18n="compare_hub_cta">See how it works</span>
+              </span>
+            </button>
           </div>
           <h3 data-i18n="compare_hub_title">Live table service</h3>
           <ul class="compare-list">
@@ -202,6 +208,46 @@
     <div class="stats-demo-box" role="dialog" aria-modal="true" aria-label="Smart WeeklyReport™ live example">
       <button type="button" class="stats-demo-close" id="statsDemoClose" aria-label="Close">✕</button>
       <iframe id="statsDemoFrame" title="Smart WeeklyReport™ live example" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <div class="stats-demo-overlay" id="hubDemoOverlay" hidden>
+    <div class="hub-demo-box" role="dialog" aria-modal="true" aria-label="Smart ServiceHub™ - how it works">
+      <button type="button" class="stats-demo-close" id="hubDemoClose" aria-label="Close">✕</button>
+      <div class="hub-flow">
+        <h3 data-i18n="hub_flow_title">How Smart ServiceHub™ works</h3>
+        <div class="hub-flow-node hub-flow-guest"><span data-i18n="hub_flow_guest">Guest</span></div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">📱</span>
+          <div><h4 data-i18n="hub_flow_step1_title">Scan the QR code</h4><p data-i18n="hub_flow_step1_desc">Guest scans the code at their table</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">🍽️</span>
+          <div><h4 data-i18n="hub_flow_step2_title">Digital menu opens</h4><p data-i18n="hub_flow_step2_desc">Instantly, on their own phone - no app needed</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">🛒</span>
+          <div><h4 data-i18n="hub_flow_step3_title">Places the order</h4><p data-i18n="hub_flow_step3_desc">A few taps, right from the table</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">⚡</span>
+          <div><h4 data-i18n="hub_flow_step4_title">Instant transmission</h4><p data-i18n="hub_flow_step4_desc">Goes straight to cashier, kitchen, bar &amp; waiter</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">👨‍🍳</span>
+          <div><h4 data-i18n="hub_flow_step5_title">Service &amp; preparation</h4><p data-i18n="hub_flow_step5_desc">Every station stays perfectly in sync</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">➕</span>
+          <div><h4 data-i18n="hub_flow_step6_title">Reorder in 1 click</h4><p data-i18n="hub_flow_step6_desc">No waiting to flag down a waiter</p></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -252,7 +298,7 @@
   </div>
 </footer>
 
-<script src="script.js?v=2026-09-22a"></script>
+<script src="script.js?v=2026-09-22b"></script>
 
 </body>
 </html>
