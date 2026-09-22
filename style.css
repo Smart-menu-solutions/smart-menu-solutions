@@ -310,9 +310,14 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
    whole donut chart stays in view instead of being cut off at the bottom. */
 .compare-photo img.compare-photo__report{ object-position: center 65%; }
 /* The QR code image is a tight square crop - cover at 16:5 would slice into
-   the QR pattern itself, so show it uncropped on a matching background instead. */
-.compare-photo--qr{ background: var(--bg-alt); }
-.compare-photo--qr img{ object-fit: contain; }
+   the QR pattern itself, so show it uncropped over an atmospheric restaurant
+   photo instead of a plain background. */
+.compare-photo--qr{ background: var(--bg-alt) url('assets/images/qr-demo-background.png') center/cover no-repeat; }
+.compare-photo--qr img{
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: auto; height: 74%; object-fit: contain;
+  border-radius: 6px; box-shadow: 0 6px 18px -4px rgba(0,0,0,.45);
+}
 .compare-card h3{ margin: 0 0 .4em; font-size: 1.05rem; }
 .compare-list{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .4em; color: var(--grey); font-size: .88rem; }
 .compare-list li{ padding-left: 1.3em; position: relative; }
