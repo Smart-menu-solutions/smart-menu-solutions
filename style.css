@@ -309,6 +309,10 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 /* The report photo is 4:3 but shown in a 16:6 strip - anchor it low so the
    whole donut chart stays in view instead of being cut off at the bottom. */
 .compare-photo img.compare-photo__report{ object-position: center 65%; }
+/* The QR code image is a tight square crop - cover at 16:5 would slice into
+   the QR pattern itself, so show it uncropped on a matching background instead. */
+.compare-photo--qr{ background: var(--bg-alt); }
+.compare-photo--qr img{ object-fit: contain; }
 .compare-card h3{ margin: 0 0 .4em; font-size: 1.05rem; }
 .compare-list{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .4em; color: var(--grey); font-size: .88rem; }
 .compare-list li{ padding-left: 1.3em; position: relative; }
@@ -482,6 +486,7 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
   font-family: 'Open Sans', sans-serif;
   font-weight: 500; font-size: .95rem;
   color: var(--grey);
+  white-space: nowrap;
 }
 .price-card ul{
   list-style: none; margin: 1em 0 1.4em; padding: 0;

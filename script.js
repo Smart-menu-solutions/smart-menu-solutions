@@ -321,7 +321,7 @@ var translations = {
     'stats_paused_desc': 'The Smart WeeklyReport™ add-on isn\'t part of your active plan anymore, so there\'s nothing new to show here.',
     'stats_paused_cta': 'Want it back on? Contact us',
     'stats_loading': 'Loading your stats…',
-    'stats_visits_label': 'visits this week',
+    'stats_visits_label': 'Visits this week',
     'stats_top_categories': 'Top categories',
     'stats_top_dishes': 'Top dishes',
     'stats_sfm_title': 'Smart FoodMatch™',
