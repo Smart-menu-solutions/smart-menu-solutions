@@ -377,6 +377,7 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 }
 .hub-flow-step h4{ margin: 0 0 .15em; font-size: .92rem; }
 .hub-flow-step p{ margin: 0; font-size: .78rem; color: var(--grey); line-height: 1.4; }
+.hub-flow-outcome{ margin: 1.1rem 0 0; font-size: .88rem; font-weight: 600; color: var(--ink); }
 
 @media (max-width: 780px){
   .compare-grid{ grid-template-columns: 1fr; }
