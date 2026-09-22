@@ -413,6 +413,7 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
   border-radius: var(--radius);
   overflow: hidden;
   min-height: 320px;
+  min-width: 0;
   padding: 0;
   isolation: isolate;
 }
