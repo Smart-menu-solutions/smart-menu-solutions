@@ -1352,4 +1352,9 @@ html.is-embedded .page-hero{ padding-top: 1.6rem; padding-bottom: 1.2rem; }
   .order-layout { grid-template-columns: 1fr !important; }
   .order-card, .order-summary { width: 100%; min-width: 0; }
   .order-summary { overflow: hidden; }
+  /* .os-total already wraps (flex-wrap: wrap) so long labels drop the value
+     to its own line instead of overflowing - .os-line never got the same
+     treatment, so a long label (esp. German) pushed its value past the
+     card edge, where the overflow:hidden above silently clipped it. */
+  .os-line { flex-direction: column; align-items: flex-start; gap: .2rem; }
 }
