@@ -85,7 +85,10 @@ function wireStatsDemoModal() {
   var closeButton = document.getElementById('statsDemoClose');
   var frame = document.getElementById('statsDemoFrame');
   if (!openButton || !overlay || !closeButton || !frame) return;
-  var DEMO_URL = 'stats.html?token=529c5e64-3262-448b-9160-07f1289f8418&embed=1';
+  // Root-relative, not relative - script.js is shared by both /index.html
+  // and /de/index.html, and a plain 'stats.html' resolves to the wrong
+  // place (de/stats.html, a 404) when loaded from the German page.
+  var DEMO_URL = '/stats.html?token=529c5e64-3262-448b-9160-07f1289f8418&embed=1';
   var loaded = false;
   function openModal() {
     if (!loaded) { frame.src = DEMO_URL; loaded = true; }
