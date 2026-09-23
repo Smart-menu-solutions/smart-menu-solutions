@@ -1,4 +1,21 @@
+// The header is position:fixed, so body's padding-top has to match its real
+// height exactly or a sliver of the body background shows above the hero
+// image (reported on some mobile browsers) - a hardcoded px value in CSS
+// can drift by a pixel or two after load (web font swap, the DE/EN buttons
+// re-wrapping at narrow widths, etc.). ResizeObserver keeps --header-h
+// correct continuously instead of guessing every possible cause up front.
+function syncHeaderHeight() {
+  var header = document.querySelector('.site-header');
+  if (!header || typeof ResizeObserver === 'undefined') return;
+  var apply = function () {
+    document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+  };
+  apply();
+  new ResizeObserver(apply).observe(header);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+  syncHeaderHeight();
   setupLanguageControls();
   ensureLegalLinks();
   ensureFooterPowered();

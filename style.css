@@ -111,7 +111,13 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   backdrop-filter: blur(6px);
   border-bottom: var(--border);
 }
-body{ padding-top: 69px; }
+/* --header-h is kept in sync with the real, live height of .site-header by
+   script.js's syncHeaderHeight() (a ResizeObserver) - the fixed header's
+   actual height can shift by a pixel or two after load (web font swap,
+   the DE/EN buttons re-wrapping, etc.), and a hardcoded value here would
+   then leave a sliver of body background showing above the hero image on
+   some phones/browsers. 69px is only the before-JS fallback. */
+body{ padding-top: var(--header-h, 69px); }
 .header-inner{
   display: flex; align-items: center; justify-content: space-between;
   gap: 1.5rem;
