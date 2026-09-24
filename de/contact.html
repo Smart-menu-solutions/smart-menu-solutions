@@ -60,10 +60,9 @@
 
       <div>
         <h2>Kontaktiere uns heute</h2>
-        <form id="contact-form" name="contact" method="POST" action="https://formsubmit.co/smartmenusolutions@outlook.com">
-          <input type="hidden" name="_next" value="../thank-you.html">
-          <input type="hidden" name="_subject" value="Neue Kontaktanfrage (DE) - smartmenusolutions.com">
-          <input type="hidden" name="_template" value="table">
+        <form id="contact-form" name="contact" method="POST" action="https://qlzugnwsufbgznoawvic.supabase.co/functions/v1/contact-form">
+          <input type="hidden" name="lang" value="de">
+          <p id="contactError" role="alert" hidden style="margin:0 0 1rem;padding:.7rem .9rem;border-radius:10px;background:#fdecea;color:#b3261e;font-size:.9rem">Deine Nachricht konnte leider nicht gesendet werden. Bitte versuche es noch einmal oder schreib uns an smartmenusolutions@outlook.com.</p>
           <div class="field hp-field">
             <label for="company">Unternehmen</label>
             <input type="text" id="company" name="_honey" tabindex="-1" autocomplete="off">
@@ -82,8 +81,9 @@
           </div>
           <button type="submit" class="btn">Formular absenden</button>
           <p class="field-hint">Fülle das Formular aus und wir melden uns so schnell wie möglich bei dir.</p>
-          <p class="field-hint privacy-note">Deine Angaben verwenden wir nur, um deine Anfrage zu beantworten; sie werden über FormSubmit an uns übermittelt. Mehr dazu in unserer <a href="privacy-policy.html">Datenschutzerklärung</a>.</p>
+          <p class="field-hint privacy-note">Deine Angaben verwenden wir nur, um deine Anfrage zu beantworten; sie werden per E-Mail (über unseren E-Mail-Dienst Resend) an uns übermittelt. Mehr dazu in unserer <a href="privacy-policy.html">Datenschutzerklärung</a>.</p>
         </form>
+        <script>if (/[?&]error=1/.test(location.search)) { var e = document.getElementById('contactError'); if (e) e.hidden = false; }</script>
       </div>
 
       <div class="contact-side">

@@ -78,7 +78,7 @@
       <p>Schriftarten und Bilder unserer Website werden von unserer eigenen Domain geladen; Ihr Browser nimmt keine Verbindung zu Google oder anderen Schriftdiensten auf. Wir verwenden keine Analyse-Tools, Tracking-Pixel oder Werbe-Cookies.</p>
 
       <h2>4. Kontaktformular und E-Mail</h2>
-      <p>Wenn Sie unser Kontaktformular nutzen, verarbeiten wir Ihren Namen, Ihre E-Mail-Adresse und Ihre Nachricht. Das Formular wird über <strong>FormSubmit</strong> (formsubmit.co), einen Dienst zur Weiterleitung von Formularen, an unser Postfach übermittelt. Unser Postfach wird von <strong>Microsoft</strong> (Outlook.com) bereitgestellt. Dasselbe gilt, wenn Sie uns direkt eine E-Mail schreiben.</p>
+      <p>Wenn Sie unser Kontaktformular nutzen, verarbeiten wir Ihren Namen, Ihre E-Mail-Adresse und Ihre Nachricht. Das Formular wird an eine unserer Server-Funktionen bei <strong>Supabase</strong> gesendet, die es über <strong>Resend</strong> als E-Mail an unser Postfach weiterleitet; die Nachricht selbst wird dort nicht gespeichert. Unser Postfach wird von <strong>Microsoft</strong> (Outlook.com) bereitgestellt. Dasselbe gilt, wenn Sie uns direkt eine E-Mail schreiben.</p>
       <p>Wir nutzen diese Daten ausschließlich zur Beantwortung Ihrer Anfrage. Rechtsgrundlage: vorvertragliche Maßnahmen bzw. Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO), im Übrigen unser berechtigtes Interesse an der Beantwortung von Anfragen (Art. 6 Abs. 1 lit. f DSGVO). Wir löschen Anfragen, sobald sie erledigt sind, sofern daraus kein Vertrag entsteht und keine gesetzliche Aufbewahrungspflicht besteht.</p>
 
       <h2>5. Bestellungen, Abonnements und Zahlungen</h2>
@@ -134,11 +134,10 @@
       <p>Wir geben personenbezogene Daten nur an Dienstleister weiter, die wir für den Betrieb unserer Website und Dienste benötigen. Soweit sie Daten in unserem Auftrag verarbeiten, gelten deren Bedingungen zur Auftragsverarbeitung:</p>
       <ul>
         <li>GitHub, Inc. (USA) – Hosting von Website und Speisekarten</li>
-        <li>FormSubmit (formsubmit.co) – Zustellung des Kontaktformulars</li>
         <li>Microsoft Corporation (USA / EU) – E-Mail-Postfach</li>
-        <li>Supabase, Inc. – Datenbank, Dateispeicher, Server-Funktionen</li>
+        <li>Supabase, Inc. – Datenbank, Dateispeicher, Server-Funktionen (auch das Kontaktformular)</li>
         <li>Stripe Payments Europe, Ltd. (Irland) – Zahlungen</li>
-        <li>Resend, Inc. (USA) – E-Mail-Versand</li>
+        <li>Resend, Inc. (USA) – E-Mail-Versand (auch Kontaktanfragen an uns)</li>
         <li>jsDelivr – Bereitstellung einer Programm-Bibliothek</li>
         <li>DeepL SE (Deutschland) und Translated srl / MyMemory (Italien) – Übersetzung von Speisekarten</li>
         <li>goQR.me (Deutschland) – QR-Code-Bilder</li>

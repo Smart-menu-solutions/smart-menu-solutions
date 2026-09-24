@@ -60,10 +60,9 @@
 
       <div>
         <h2 data-i18n="contact_section_heading">Contact us today</h2>
-        <form id="contact-form" name="contact" method="POST" action="https://formsubmit.co/smartmenusolutions@outlook.com">
-          <input type="hidden" name="_next" value="thank-you.html">
-          <input type="hidden" name="_subject" value="New contact request (EN) - smartmenusolutions.com">
-          <input type="hidden" name="_template" value="table">
+        <form id="contact-form" name="contact" method="POST" action="https://qlzugnwsufbgznoawvic.supabase.co/functions/v1/contact-form">
+          <input type="hidden" name="lang" value="en">
+          <p id="contactError" role="alert" hidden style="margin:0 0 1rem;padding:.7rem .9rem;border-radius:10px;background:#fdecea;color:#b3261e;font-size:.9rem">Sorry, your message could not be sent. Please try again or email us at smartmenusolutions@outlook.com.</p>
           <div class="field hp-field">
             <label for="company" data-i18n="contact_label_company">Company</label>
             <input type="text" id="company" name="_honey" tabindex="-1" autocomplete="off">
@@ -82,8 +81,9 @@
           </div>
           <button type="submit" class="btn" data-i18n="contact_submit">Submit form</button>
           <p class="field-hint" data-i18n="contact_hint">Complete the form and we'll get back to you as soon as possible.</p>
-          <p class="field-hint privacy-note">Your details are only used to answer your request and are sent to us via FormSubmit. More in our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+          <p class="field-hint privacy-note">Your details are only used to answer your request and are sent to our inbox by email (via our email provider Resend). More in our <a href="privacy-policy.html">Privacy Policy</a>.</p>
         </form>
+        <script>if (/[?&]error=1/.test(location.search)) { var e = document.getElementById('contactError'); if (e) e.hidden = false; }</script>
       </div>
 
       <div class="contact-side">
