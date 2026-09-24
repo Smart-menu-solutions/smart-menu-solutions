@@ -12,7 +12,7 @@
 <link rel="alternate" hreflang="de" href="https://smartmenusolutions.com/de/contact.html">
 <link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/contact.html">
 <link rel="icon" type="image/png" href="../assets/images/logo.png"><link rel="manifest" href="../site.webmanifest"><link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"><link rel="stylesheet" href="../style.css?v=2026-09-24a">
+<link rel="stylesheet" href="../assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="../style.css?v=2026-09-24a">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
@@ -60,8 +60,10 @@
 
       <div>
         <h2>Kontaktiere uns heute</h2>
-        <form id="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="_honey" action="../thank-you.html">
-          <input type="hidden" name="form-name" value="contact">
+        <form id="contact-form" name="contact" method="POST" action="https://formsubmit.co/smartmenusolutions@outlook.com">
+          <input type="hidden" name="_next" value="../thank-you.html">
+          <input type="hidden" name="_subject" value="Neue Kontaktanfrage (DE) - smartmenusolutions.com">
+          <input type="hidden" name="_template" value="table">
           <div class="field hp-field">
             <label for="company">Unternehmen</label>
             <input type="text" id="company" name="_honey" tabindex="-1" autocomplete="off">
@@ -80,6 +82,7 @@
           </div>
           <button type="submit" class="btn">Formular absenden</button>
           <p class="field-hint">Fülle das Formular aus und wir melden uns so schnell wie möglich bei dir.</p>
+          <p class="field-hint privacy-note">Deine Angaben verwenden wir nur, um deine Anfrage zu beantworten; sie werden über FormSubmit an uns übermittelt. Mehr dazu in unserer <a href="privacy-policy.html">Datenschutzerklärung</a>.</p>
         </form>
       </div>
 
@@ -140,6 +143,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=2026-09-24a"></script>
+<script src="../script.js?v=2026-09-24b"></script>
 </body>
 </html>
