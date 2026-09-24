@@ -23,7 +23,7 @@
 <link rel="alternate" hreflang="de" href="https://smartmenusolutions.com/de/index.html">
 <link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/index.html">
 <link rel="icon" type="image/png" href="assets/images/logo.png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
-<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-09-24a">
+<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-09-24b">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -251,6 +251,86 @@
       </div>
     </div>
   </div>
+
+  <section class="section section--servicehub" id="servicehub-showcase">
+    <div class="container">
+      <div class="section-head">
+        <h2>From notepad <span class="accent">to Smart ServiceHub™</span></h2>
+        <p>Guests order from their own phone – every order lands instantly on the right screen in kitchen, bar, service and cashier. No paper, no running back and forth.</p>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <span class="compare-tag">Before</span>
+          <div class="compare-photo compare-photo--shot"><img src="assets/images/servicehub-before-notepad.jpg" alt="Waiter writing an order on a paper notepad" loading="lazy"></div>
+          <h3>Orders on paper</h3>
+          <ul class="compare-list">
+            <li>Handwritten notes, hard to read</li>
+            <li>Every order walked to kitchen and bar</li>
+            <li>Bills added up by hand</li>
+          </ul>
+        </div>
+        <div class="compare-arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="compare-card compare-card--after">
+          <span class="compare-tag compare-tag--after">Service Hub</span>
+          <button type="button" class="compare-photo compare-photo--shot shot-zoom" data-shot="assets/images/servicehub-waiter-en.jpg" aria-label="Enlarge screenshot: Service Hub"><img src="assets/images/servicehub-waiter-en-card.jpg" alt="Service Hub screen with all tables in green, orange and red" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
+          <h3>All tables at a glance</h3>
+          <ul class="compare-list">
+            <li>Green = free, orange = active, red = wants to pay</li>
+            <li>Activate a table with one tap</li>
+            <li>Live activity and today’s order summary</li>
+          </ul>
+        </div>
+        <div class="compare-arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="compare-card compare-card--after">
+          <span class="compare-tag compare-tag--after">Kitchen</span>
+          <button type="button" class="compare-photo compare-photo--shot shot-zoom" data-shot="assets/images/servicehub-kitchen-en.jpg" aria-label="Enlarge screenshot: Kitchen"><img src="assets/images/servicehub-kitchen-en-card.jpg" alt="Kitchen screen with open dishes per table" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
+          <h3>Only what the kitchen cooks</h3>
+          <ul class="compare-list">
+            <li>Dishes arrive automatically, sorted by table</li>
+            <li>Tap a line when it’s ready</li>
+            <li>Guest notes like “no onions” included</li>
+          </ul>
+        </div>
+        <div class="compare-arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="compare-card compare-card--after">
+          <span class="compare-tag compare-tag--after">Bar</span>
+          <button type="button" class="compare-photo compare-photo--shot shot-zoom" data-shot="assets/images/servicehub-bar-en.jpg" aria-label="Enlarge screenshot: Bar"><img src="assets/images/servicehub-bar-en-card.jpg" alt="Bar screen with open drinks per table" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
+          <h3>Drinks straight to the bar</h3>
+          <ul class="compare-list">
+            <li>Only drinks, sorted by table</li>
+            <li>Mark a whole table done in one tap</li>
+            <li>Add drinks for guests ordering at the bar</li>
+          </ul>
+        </div>
+        <div class="compare-arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="compare-card compare-card--after">
+          <span class="compare-tag compare-tag--after">Cashier</span>
+          <button type="button" class="compare-photo compare-photo--shot shot-zoom" data-shot="assets/images/servicehub-cashier-en.jpg" aria-label="Enlarge screenshot: Cashier"><img src="assets/images/servicehub-cashier-en-card.jpg" alt="Cashier screen with prices and totals per table" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
+          <h3>Pay and close in seconds</h3>
+          <ul class="compare-list">
+            <li>Bill requests on top, marked 💳</li>
+            <li>Every item with price and total</li>
+            <li>Close the table – it’s free again instantly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="shot-overlay" id="shotOverlay" hidden>
+    <button type="button" class="shot-close" aria-label="Close">✕</button>
+    <img id="shotOverlayImg" alt="">
+  </div>
+  <script>
+  (function () {
+    var overlay = document.getElementById('shotOverlay'), big = document.getElementById('shotOverlayImg');
+    document.querySelectorAll('.shot-zoom').forEach(function (button) {
+      button.addEventListener('click', function () { big.src = button.getAttribute('data-shot'); big.alt = button.querySelector('img').alt; overlay.hidden = false; });
+    });
+    overlay.addEventListener('click', function (event) { if (event.target !== big) overlay.hidden = true; });
+    document.addEventListener('keydown', function (event) { if (event.key === 'Escape') overlay.hidden = true; });
+  })();
+  </script>
 
   <section class="section section--alt">
     <div class="container">
