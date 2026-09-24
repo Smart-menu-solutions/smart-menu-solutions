@@ -321,7 +321,7 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .compare-photo--qr{ background: var(--bg-alt) url('assets/images/qr-demo-background.png') center/cover no-repeat; }
 .compare-photo--qr img{
   position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-  width: auto; height: 74%; object-fit: contain;
+  width: auto; height: 92%; object-fit: contain;
   border-radius: 6px; box-shadow: 0 6px 18px -4px rgba(0,0,0,.45);
 }
 .compare-card h3{ margin: 0 0 .4em; font-size: 1.05rem; }
