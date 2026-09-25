@@ -6,13 +6,13 @@
 <script>try{localStorage.setItem('selectedLang','de');}catch(e){}</script>
 <meta name="robots" content="index, follow, max-image-preview:large">
 <title>Bestellung starten | Smart Menu Solutions</title>
-<meta name="description" content="Bestellen Sie Ihre digitale QR-Speisekarte bei Smart Menu Solutions — Tarif wählen, Speisekarte hochladen, fertig."><meta property="og:title" content="Bestellung starten | Smart Menu Solutions"><meta property="og:description" content="Bestellen Sie Ihre digitale QR-Speisekarte bei Smart Menu Solutions — Tarif wählen, Speisekarte hochladen, fertig.">
+<meta name="description" content="Bestellen Sie Ihre digitale QR-Speisekarte bei Smart Menu Solutions — Tarif wählen, sicher bezahlen, Speisekarte hochladen."><meta property="og:title" content="Bestellung starten | Smart Menu Solutions"><meta property="og:description" content="Bestellen Sie Ihre digitale QR-Speisekarte bei Smart Menu Solutions — Tarif wählen, sicher bezahlen, Speisekarte hochladen.">
 <link rel="canonical" href="https://smartmenusolutions.com/de/order-info.html">
 <link rel="alternate" hreflang="en" href="https://smartmenusolutions.com/order-info.html">
 <link rel="alternate" hreflang="de" href="https://smartmenusolutions.com/de/order-info.html">
 <link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/order-info.html">
 <link rel="icon" type="image/png" href="../assets/images/logo.png"><link rel="manifest" href="../site.webmanifest"><link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
-<link rel="stylesheet" href="../assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="../style.css?v=2026-09-25d">
+<link rel="stylesheet" href="../assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="../style.css?v=2026-09-25e">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
@@ -51,7 +51,7 @@
   <section class="page-hero">
     <div class="container">
       <h1>Starten Sie Ihre <span class="accent">Bestellung</span></h1>
-      <p>Geben Sie Ihre Daten ein, wählen Sie einen Tarif und laden Sie Ihre Speisekarte hoch – wir kümmern uns um den Rest.</p>
+      <p>Geben Sie Ihre Daten ein und wählen Sie einen Tarif. Direkt nach der Bezahlung laden Sie Ihre Speisekarte hoch – wir kümmern uns um den Rest.</p>
     </div>
   </section>
 
@@ -197,32 +197,11 @@
             <input type="hidden" id="hiddenTotal" name="Total Price" value="">
             <input type="hidden" id="hiddenPlanName" name="Plan Name" value="">
 
-            <div class="order-section">
-              <div class="order-step-label">03 / SPEISEKARTE HOCHLADEN</div>
-              <div class="dropzone" id="dropzone">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
-                <p class="dz-title" id="fileLabel">Menü-PDF hochladen</p>
-                <p class="dz-sub">Hier klicken oder PDF-Datei hierher ziehen</p>
-                <input type="file" id="pdfUpload" name="attachment" accept="application/pdf,.pdf" style="display:none">
-              </div>
-            </div>
-
-            <div class="order-section" id="photoUploadSection" style="display:none">
-              <div class="order-step-label">04 / FOTO-ZIP HOCHLADEN</div>
-              <div class="dropzone photo-dropzone" id="photoDropzone">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
-                <p class="dz-title" id="photoFileLabel">Foto-PNG hochladen</p>
-                <p class="dz-sub">Hier klicken oder <strong>PNG ZIP</strong>-Datei hierher ziehen</p>
-                <p class="dz-hint"><strong>PNG-Hinweis:</strong> Menü-Titel "Bruschetta Classica" → Dateiname "Bruschetta_Classica.png"</p>
-                <input type="file" id="photoUpload" name="photos" accept="application/zip,.zip" style="display:none">
-              </div>
-              <p class="photo-upload-note"><strong>Hinweis: Für die Qualität der Fotos ist der Kunde verantwortlich.</strong></p>
-            </div>
 
             <label class="order-consent"><input type="checkbox" name="Policy Consent" required> <span class="order-consent-text">Ich stimme der <a href="privacy-policy.html" target="_blank" rel="noopener">Datenschutzrichtlinie</a> und den <a href="terms-of-service.html" target="_blank" rel="noopener">Nutzungsbedingungen</a> zu.</span></label>
 
             <button type="submit" class="order-submit" id="payButton">
-              <span>Bestellantrag absenden</span>
+              <span>Weiter zur Bezahlung</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </button>
           </form>
@@ -247,7 +226,7 @@
 
           <div class="os-note">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5l-8-3Z"/></svg>
-            <p style="margin:0"><strong>Was passiert als Nächstes?</strong> <span>Senden Sie Ihre Bestellanfrage ab und wir kontaktieren Sie mit den nächsten Schritten.</span></p>
+            <p style="margin:0"><strong>Was passiert als Nächstes?</strong> <span>Nach der Bezahlung kommen Sie direkt zur Upload-Seite für Ihre Speisekarte (PDF) und ggf. Ihre Fotos. Danach melden wir uns mit den nächsten Schritten.</span></p>
           </div>
         </aside>
 
@@ -293,8 +272,7 @@
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../script.js?v=2026-09-25e"></script>
-<script src="../order-form.js?v=2026-09-25a"></script>
+<script src="../script.js?v=2026-09-25f"></script>
+<script src="../order-form.js?v=2026-09-25b"></script>
 </body>
 </html>

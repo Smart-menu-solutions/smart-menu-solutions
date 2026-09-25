@@ -4,13 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>try{localStorage.setItem('selectedLang','de');}catch(e){}</script>
-<meta name="robots" content="index, follow, max-image-preview:large">
-<title>QR-Speisekarte für Hotels | Smart Menu Solutions</title>
-<meta name="description" content="Ein digitales QR-Menüsystem für Hotels — verwalte Restaurant-, Bar- und Zimmerservice-Karten aus einem Dashboard, mehrsprachig und immer aktuell."><meta property="og:title" content="QR-Speisekarte für Hotels | Smart Menu Solutions"><meta property="og:description" content="Ein digitales QR-Menüsystem für Hotels — verwalte Restaurant-, Bar- und Zimmerservice-Karten aus einem Dashboard, mehrsprachig und immer aktuell.">
-<link rel="canonical" href="https://smartmenusolutions.com/de/hotels.html">
-<link rel="alternate" hreflang="en" href="https://smartmenusolutions.com/hotels.html">
-<link rel="alternate" hreflang="de" href="https://smartmenusolutions.com/de/hotels.html">
-<link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/hotels.html">
+<meta name="robots" content="noindex, nofollow">
+<title>Speisekarte hochladen | Smart Menu Solutions</title>
+<meta name="description" content="Laden Sie nach der Bezahlung Ihre Speisekarte und Fotos hoch.">
 <link rel="icon" type="image/png" href="../assets/images/logo.png"><link rel="manifest" href="../site.webmanifest"><link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
 <link rel="stylesheet" href="../assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="../style.css?v=2026-09-25e">
 </head>
@@ -32,14 +28,14 @@
         <li><a href="our-services.html">Unsere Dienste</a></li>
         <li><a href="pricing-plans.html">Preise</a></li>
         <li><a href="faq.html">FAQ</a></li>
-        <li><a href="order.html">Bestellen</a></li>
+        <li><a href="order.html" aria-current="page">Bestellen</a></li>
         <li><a href="contact.html">Kontakt</a></li>
       </ul>
-      <a class="btn nav-cta" href="order-info.html">Loslegen</a>
+      <a class="btn nav-cta" href="upload.html">Loslegen</a>
       <div class="nav-lang-container">
         <div class="lang-switcher">
-          <a class="flag-btn active" href="hotels.html" title="Deutsch" aria-current="page">DE</a>
-          <a class="flag-btn" href="../hotels.html" title="English">EN</a>
+          <a class="flag-btn active" href="upload.html" title="Deutsch" aria-current="page">DE</a>
+          <a class="flag-btn" href="../upload.html" title="English">EN</a>
         </div>
       </div>
     </nav>
@@ -50,44 +46,61 @@
 
   <section class="page-hero">
     <div class="container">
-      <h1>Die <span class="accent">smarte</span> QR-Speisekarte für Hotels</h1>
-      <p>Ein digitales Menüsystem für Restaurant, Bar und Zimmerservice — immer aktuell und einheitlich zu Ihrer Marke.</p>
+      <h1>Speisekarte <span class="accent">hochladen</span></h1>
     </div>
   </section>
 
   <section class="section">
-    <div class="container prose">
-      <h2>Warum Hotels sich für Smart Menu Solutions entscheiden</h2>
-      <ul>
-        <li>Mehrere Menüs — Restaurant, Bar, Zimmerservice — aus einem einzigen Dashboard verwalten.</li>
-        <li>Speisekarten in bis zu 5 Sprachen für internationale Gäste.</li>
-        <li>Preise und saisonale Angebote in allen Outlets gleichzeitig aktualisieren.</li>
-        <li>Eine professionelle, einheitliche Präsentation, die Gästen auffällt.</li>
-      </ul>
-      <p style="text-align:center;margin-top:2rem">
-        <a class="btn" href="pricing-plans.html">Preise ansehen</a>
-      </p>
-    </div>
-  </section>
-
-
-  <section class="cta-band cta-band--light">
     <div class="container">
-      <h2>Bereit, Ihr Hotel online zu bringen?</h2>
-      <p>Die Einrichtung dauert nur wenige Tage — keine Einrichtungsgebühren, keine langen Verträge.</p>
-      <a class="btn" href="order-info.html">Loslegen</a>
-    </div>
-  </section>
+      <div class="order-card upload-card" id="uploadApp" data-lang="de">
 
-  <section class="section section--tight">
-    <div class="container prose" style="text-align:center">
-      <h2>Lösungen für jeden Betriebstyp</h2>
-      <div style="display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center">
-        <a class="btn btn--outline" href="restaurants.html">Restaurants</a>
-        <a class="btn btn--outline" href="bars.html">Bars</a>
-        <a class="btn btn--outline" href="cafes.html">Cafés</a>
-        <span class="btn btn--outline" aria-current="page">Hotels</span>
-        <a class="btn btn--outline" href="food-trucks.html">Food Trucks</a>
+        <p class="upload-status" id="uploadLoading">Einen Moment bitte …</p>
+
+        <div id="uploadError" hidden>
+          <p class="upload-status upload-status--error"></p>
+          <p style="text-align:center"><a class="btn btn--outline" href="mailto:smartmenusolutions@outlook.com">Support kontaktieren</a></p>
+        </div>
+
+        <form id="uploadForm" hidden>
+          <h2 id="uploadTitle"></h2>
+          <p id="uploadIntro"></p>
+
+          <div class="order-section" id="pdfSection">
+            <div class="order-step-label"></div>
+            <div class="dropzone">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
+              <p class="dz-title"></p>
+              <p class="dz-sub"></p>
+              <input type="file" accept="application/pdf,.pdf" style="display:none">
+            </div>
+            <p class="upload-already" hidden></p>
+          </div>
+
+          <div class="order-section" id="zipSection" hidden>
+            <div class="order-step-label"></div>
+            <div class="dropzone photo-dropzone">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
+              <p class="dz-title"></p>
+              <p class="dz-sub"></p>
+              <p class="dz-hint">Hinweis zu den Dateinamen: Gericht „Bruschetta Classica“ → Datei „Bruschetta_Classica.png“</p>
+              <input type="file" accept="application/zip,.zip" style="display:none">
+            </div>
+            <p class="upload-already" hidden></p>
+            <p class="photo-upload-note"><strong>Für die Qualität der Fotos ist der Kunde verantwortlich.</strong></p>
+          </div>
+
+          <button type="submit" class="order-submit" id="uploadSubmit">
+            <span></span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+
+        <div id="uploadDone" hidden>
+          <h2>Vielen Dank, Ihre Dateien sind bei uns!</h2>
+          <p>Wir prüfen Ihre Speisekarte und melden uns mit den nächsten Schritten. Falls Sie später etwas ändern möchten, nutzen Sie einfach den Link aus Ihrer Bestätigungs-E-Mail.</p>
+          <p><a class="btn" href="index.html">Zur Startseite</a></p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -131,5 +144,7 @@
 </footer>
 
 <script src="../script.js?v=2026-09-25f"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../upload.js?v=2026-09-25a"></script>
 </body>
 </html>

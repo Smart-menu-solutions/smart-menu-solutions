@@ -4,13 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>try{localStorage.setItem('selectedLang','en');}catch(e){}</script>
-<meta name="robots" content="index, follow, max-image-preview:large">
-<title>QR Menu for Bars | Smart Menu Solutions</title>
-<meta name="description" content="A digital QR menu built for bars — update cocktails, wine and prices instantly, showcase drinks with photos, and skip the sticky laminated menus for good."><meta property="og:title" content="QR Menu for Bars | Smart Menu Solutions"><meta property="og:description" content="A digital QR menu built for bars — update cocktails, wine and prices instantly, showcase drinks with photos, and skip the sticky laminated menus for good.">
-<link rel="canonical" href="https://smartmenusolutions.com/bars.html">
-<link rel="alternate" hreflang="en" href="https://smartmenusolutions.com/bars.html">
-<link rel="alternate" hreflang="de" href="https://smartmenusolutions.com/de/bars.html">
-<link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/bars.html">
+<meta name="robots" content="noindex, nofollow">
+<title>Upload your menu | Smart Menu Solutions</title>
+<meta name="description" content="Upload your menu and photos after payment.">
 <link rel="icon" type="image/png" href="assets/images/logo.png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
 <link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-09-25e">
 </head>
@@ -32,14 +28,14 @@
         <li><a href="our-services.html" data-i18n="services">Our Services</a></li>
         <li><a href="pricing-plans.html" data-i18n="pricing">Pricing Plans</a></li>
         <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
-        <li><a href="order.html" data-i18n="order">Order</a></li>
+        <li><a href="order.html" aria-current="page" data-i18n="order">Order</a></li>
         <li><a href="contact.html" data-i18n="contact">Contact</a></li>
       </ul>
-      <a class="btn nav-cta" href="order-info.html" data-i18n="get_started">Get started</a>
+      <a class="btn nav-cta" href="upload.html" data-i18n="get_started">Get started</a>
       <div class="nav-lang-container">
         <div class="lang-switcher">
-          <a class="flag-btn" href="de/bars.html" title="Deutsch">DE</a>
-          <a class="flag-btn active" href="bars.html" title="English" aria-current="page" onclick="try{localStorage.setItem('selectedLang','en');}catch(e){}">EN</a>
+          <a class="flag-btn" href="de/upload.html" title="Deutsch">DE</a>
+          <a class="flag-btn active" href="upload.html" title="English" aria-current="page" onclick="try{localStorage.setItem('selectedLang','en');}catch(e){}">EN</a>
         </div>
       </div>
     </nav>
@@ -50,44 +46,61 @@
 
   <section class="page-hero">
     <div class="container">
-      <h1><span class="accent">Smart</span> QR Menu for Bars</h1>
-      <p>Let guests browse your full drinks menu from their own phone — always current, even when a bottle runs out mid-shift.</p>
+      <h1>Upload your <span class="accent">menu</span></h1>
     </div>
   </section>
 
   <section class="section">
-    <div class="container prose">
-      <h2>Why bars choose Smart Menu Solutions</h2>
-      <ul>
-        <li>Update prices and specials instantly, including happy hour.</li>
-        <li>Photo-led presentation makes cocktails and signature drinks more tempting.</li>
-        <li>No more sticky, torn or outdated laminated menus.</li>
-        <li>Multilingual menus for tourist-heavy locations.</li>
-      </ul>
-      <p style="text-align:center;margin-top:2rem">
-        <a class="btn" href="pricing-plans.html">View pricing plans</a>
-      </p>
-    </div>
-  </section>
-
-
-  <section class="cta-band cta-band--light">
     <div class="container">
-      <h2>Ready to bring your bar online?</h2>
-      <p>Set up takes just a few days — no setup fees, no long contracts.</p>
-      <a class="btn" href="order-info.html">Get started</a>
-    </div>
-  </section>
+      <div class="order-card upload-card" id="uploadApp" data-lang="en">
 
-  <section class="section section--tight">
-    <div class="container prose" style="text-align:center">
-      <h2>Solutions for every business type</h2>
-      <div style="display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center">
-        <a class="btn btn--outline" href="restaurants.html">Restaurants</a>
-        <span class="btn btn--outline" aria-current="page">Bars</span>
-        <a class="btn btn--outline" href="cafes.html">Cafés</a>
-        <a class="btn btn--outline" href="hotels.html">Hotels</a>
-        <a class="btn btn--outline" href="food-trucks.html">Food Trucks</a>
+        <p class="upload-status" id="uploadLoading">One moment please …</p>
+
+        <div id="uploadError" hidden>
+          <p class="upload-status upload-status--error"></p>
+          <p style="text-align:center"><a class="btn btn--outline" href="mailto:smartmenusolutions@outlook.com">Contact support</a></p>
+        </div>
+
+        <form id="uploadForm" hidden>
+          <h2 id="uploadTitle"></h2>
+          <p id="uploadIntro"></p>
+
+          <div class="order-section" id="pdfSection">
+            <div class="order-step-label"></div>
+            <div class="dropzone">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
+              <p class="dz-title"></p>
+              <p class="dz-sub"></p>
+              <input type="file" accept="application/pdf,.pdf" style="display:none">
+            </div>
+            <p class="upload-already" hidden></p>
+          </div>
+
+          <div class="order-section" id="zipSection" hidden>
+            <div class="order-step-label"></div>
+            <div class="dropzone photo-dropzone">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
+              <p class="dz-title"></p>
+              <p class="dz-sub"></p>
+              <p class="dz-hint">File name tip: dish "Bruschetta Classica" → file "Bruschetta_Classica.png"</p>
+              <input type="file" accept="application/zip,.zip" style="display:none">
+            </div>
+            <p class="upload-already" hidden></p>
+            <p class="photo-upload-note"><strong>The customer is responsible for the quality of the photos.</strong></p>
+          </div>
+
+          <button type="submit" class="order-submit" id="uploadSubmit">
+            <span></span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+
+        <div id="uploadDone" hidden>
+          <h2>Thank you, we have your files!</h2>
+          <p>We will review your menu and get back to you with the next steps. If you want to change something later, just use the link in your confirmation email.</p>
+          <p><a class="btn" href="index.html">Return home</a></p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -131,5 +144,7 @@
 </footer>
 
 <script src="script.js?v=2026-09-25f"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="upload.js?v=2026-09-25a"></script>
 </body>
 </html>

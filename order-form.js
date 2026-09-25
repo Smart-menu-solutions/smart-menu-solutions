@@ -27,15 +27,11 @@ document.addEventListener('DOMContentLoaded', function () {
   var hubAddonChecks = Array.prototype.slice.call(document.querySelectorAll('.hub-addon-check'));
   var osLineHub = document.getElementById('osLineHub');
   var sumHubPrice = document.getElementById('sumHubPrice');
-  var photoUploadSection = document.getElementById('photoUploadSection');
-  var photoDropzone = document.getElementById('photoDropzone');
-  var photoUpload = document.getElementById('photoUpload');
-  var photoFileLabel = document.getElementById('photoFileLabel');
   var payButton = document.getElementById('payButton');
-  var dropzone = document.getElementById('dropzone');
-  var pdfInput = document.getElementById('pdfUpload');
-  var fileLabel = document.getElementById('fileLabel');
 
+  // The menu PDF (and the photo ZIP) are no longer uploaded here: Stripe
+  // Checkout redirects to upload.html after payment, and only a paid order can
+  // upload (see the order-upload function).
   var supabaseUrl = 'https://qlzugnwsufbgznoawvic.supabase.co';
   var supabasePublishableKey = 'sb_publishable_m7GxKtc8I3F8ASzuMaJvZg_8CQuKToA';
   var checkoutEndpoint = supabaseUrl + '/functions/v1/create-checkout-session';
@@ -46,12 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
   function t(en, de) {
     return localStorage.getItem('selectedLang') === 'de' ? de : en;
   }
-
-  if (!window.supabase) {
-    alert(t('Could not load the order form. Please refresh the page.', 'Das Bestellformular konnte nicht geladen werden. Bitte laden Sie die Seite neu.'));
-    return;
-  }
-  var supabaseClient = window.supabase.createClient(supabaseUrl, supabasePublishableKey);
 
   function eur(n) {
     return '€' + parseFloat(n).toFixed(2);
@@ -117,7 +107,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (osLinePhoto) osLinePhoto.style.display = addonOn ? '' : 'none';
     if (sumPhotoPrice) sumPhotoPrice.textContent = '+' + eur(photoPrice);
-    if (photoUploadSection) photoUploadSection.style.display = addonOn ? '' : 'none';
 
     if (osLineSfm) osLineSfm.style.display = sfmOn ? '' : 'none';
     if (sumSfmPrice) sumSfmPrice.textContent = '+' + eur(sfmPrice);
@@ -259,88 +248,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Dropzone interactions
-  if (dropzone && pdfInput) {
-    dropzone.addEventListener('click', function () { pdfInput.click(); });
-
-    pdfInput.addEventListener('change', function () {
-      handleFile(pdfInput.files && pdfInput.files[0]);
-    });
-
-    ['dragover', 'dragenter'].forEach(function (evt) {
-      dropzone.addEventListener(evt, function (e) {
-        e.preventDefault();
-        dropzone.style.opacity = '.85';
-      });
-    });
-    ['dragleave', 'dragend'].forEach(function (evt) {
-      dropzone.addEventListener(evt, function () { dropzone.style.opacity = '1'; });
-    });
-    dropzone.addEventListener('drop', function (e) {
-      e.preventDefault();
-      dropzone.style.opacity = '1';
-      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-        pdfInput.files = e.dataTransfer.files;
-        handleFile(e.dataTransfer.files[0]);
-      }
-    });
-  }
-
-  function handleFile(file) {
-    if (!file) return;
-    if (file.type !== 'application/pdf') {
-      alert(t('Please upload a valid PDF file.', 'Bitte laden Sie eine gültige PDF-Datei hoch.'));
-      pdfInput.value = '';
-      fileLabel.textContent = t('Upload your menu PDF', 'Menü als PDF hochladen');
-      return;
-    }
-    fileLabel.textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(2) + ' MB)';
-  }
-
-  // Second dropzone (its own "04" step), only shown once the photo add-on
-  // is active for the selected plan (see updateTotal()). Takes a single ZIP
-  // containing all the dish photos, rather than picking PNGs one by one.
-  if (photoDropzone && photoUpload) {
-    photoDropzone.addEventListener('click', function () { photoUpload.click(); });
-
-    photoUpload.addEventListener('change', function () {
-      handlePhotoZip(photoUpload.files && photoUpload.files[0]);
-    });
-
-    ['dragover', 'dragenter'].forEach(function (evt) {
-      photoDropzone.addEventListener(evt, function (e) {
-        e.preventDefault();
-        photoDropzone.style.opacity = '.85';
-      });
-    });
-    ['dragleave', 'dragend'].forEach(function (evt) {
-      photoDropzone.addEventListener(evt, function () { photoDropzone.style.opacity = '1'; });
-    });
-    photoDropzone.addEventListener('drop', function (e) {
-      e.preventDefault();
-      photoDropzone.style.opacity = '1';
-      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-        photoUpload.files = e.dataTransfer.files;
-        handlePhotoZip(e.dataTransfer.files[0]);
-      }
-    });
-  }
-
-  function isZipFile(file) {
-    return file.type === 'application/zip' || file.type === 'application/x-zip-compressed' || /\.zip$/i.test(file.name);
-  }
-
-  function handlePhotoZip(file) {
-    if (!file) return;
-    if (!isZipFile(file)) {
-      alert(t('Please upload a ZIP file.', 'Bitte laden Sie eine ZIP-Datei hoch.'));
-      photoUpload.value = '';
-      photoFileLabel.textContent = t('Upload photo PNGs (ZIP)', 'Foto-PNG hochladen');
-      return;
-    }
-    photoFileLabel.textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(2) + ' MB)';
-  }
-
   function setBusy(text) {
     payButton.disabled = true;
     if (!payButton.dataset.originalText) payButton.dataset.originalText = payButton.textContent;
@@ -354,86 +261,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var file = pdfInput.files && pdfInput.files[0];
-    if (!file) {
-      alert(t('Please attach your menu PDF before continuing.', 'Bitte fügen Sie Ihr Menü als PDF an, bevor Sie fortfahren.'));
-      return;
-    }
-
-    var addonOn = isPhotoAddonChecked();
-    var sfmOn = isSfmAddonChecked();
-    var analyticsOn = isAnalyticsAddonChecked();
-    var hubOn = isHubAddonChecked();
-    var photoZipFile = photoUpload && photoUpload.files ? photoUpload.files[0] : null;
-    if (addonOn && !photoZipFile) {
-      alert(t('Please upload your dish photos as a ZIP file, or turn off the Smart DishPhoto™ add-on.', 'Bitte laden Sie Ihre Gerichtfotos als ZIP-Datei hoch oder deaktivieren Sie den Smart-DishPhoto™-Zusatz.'));
-      return;
-    }
 
     var selectedPlan = form.querySelector('input[name="Selected Plan"]:checked');
-    var firstName = document.getElementById('firstName').value.trim();
-    var lastName = document.getElementById('lastName').value.trim();
-    var email = document.getElementById('email').value.trim();
-    var companyName = document.getElementById('companyName').value.trim();
-    var phone = document.getElementById('phone').value.trim();
+    setBusy(t('Opening secure checkout…', 'Sichere Bezahlung wird geöffnet…'));
 
-    setBusy('Uploading menu…');
-    var token = Date.now() + '-' + Math.random().toString(36).slice(2, 8);
-    // Capped (keeping the end, i.e. ".pdf") - the storage upload policy only
-    // accepts names up to 200 characters (see migration 0024).
-    var safeName = file.name.replace(/[^a-zA-Z0-9.\-_]+/g, '_').slice(-150);
-    var storagePath = 'pending/' + token + '-' + safeName;
-    var photoZipPath = 'pending/' + token + '-photos.zip';
-    var uploaded = false;
-    var photoZipUploaded = false;
-
-    supabaseClient.storage.from('menu-pdfs').upload(storagePath, file, { contentType: 'application/pdf' })
-      .then(function (result) {
-        if (result.error) throw new Error('Could not upload your PDF: ' + (result.error.message || 'unknown error'));
-        uploaded = true;
-        if (!photoZipFile) return null;
-        setBusy(t('Uploading photos…', 'Fotos werden hochgeladen…'));
-        return supabaseClient.storage.from('menu-pdfs').upload(photoZipPath, photoZipFile, { contentType: 'application/zip' })
-          .then(function (result) {
-            if (result.error) throw new Error('Could not upload your photo ZIP: ' + (result.error.message || 'unknown error'));
-            photoZipUploaded = true;
-          });
+    fetch(checkoutEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', apikey: supabasePublishableKey },
+      body: JSON.stringify({
+        plan: selectedPlan && selectedPlan.dataset.code,
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName: document.getElementById('lastName').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        companyName: document.getElementById('companyName').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        photoAddon: isPhotoAddonChecked(),
+        smartFoodMatchAddon: isSfmAddonChecked(),
+        analyticsReportsAddon: isAnalyticsAddonChecked(),
+        smartServiceHubAddon: isHubAddonChecked(),
+        lang: localStorage.getItem('selectedLang') === 'de' ? 'de' : 'en'
       })
-      .then(function () {
-        setBusy('Opening secure checkout…');
-        return fetch(checkoutEndpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', apikey: supabasePublishableKey },
-          body: JSON.stringify({
-            plan: selectedPlan && selectedPlan.dataset.code,
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            companyName: companyName,
-            phone: phone,
-            pdfPath: storagePath,
-            photoAddon: addonOn,
-            photoZipPath: photoZipUploaded ? photoZipPath : '',
-            smartFoodMatchAddon: sfmOn,
-            analyticsReportsAddon: analyticsOn,
-            smartServiceHubAddon: hubOn,
-            lang: localStorage.getItem('selectedLang') === 'de' ? 'de' : 'en'
-          })
-        });
-      })
+    })
       .then(function (response) { return response.json().then(function (data) { if (!response.ok) throw new Error(data.error || 'Checkout could not be started.'); return data; }); })
       .then(function (data) { window.location.assign(data.url); })
       .catch(function (error) {
-        // Checkout failed (or was declined) after files already made it to
-        // storage — remove them rather than leaving orphaned uploads with no
-        // order attached to them. Best-effort: a failure here isn't shown to
-        // the customer, it just means manual cleanup is needed later.
-        if (uploaded) {
-          supabaseClient.storage.from('menu-pdfs').remove([storagePath]).catch(function () {});
-        }
-        if (photoZipUploaded) {
-          supabaseClient.storage.from('menu-pdfs').remove([photoZipPath]).catch(function () {});
-        }
         alert(error.message);
         resetButton();
       });

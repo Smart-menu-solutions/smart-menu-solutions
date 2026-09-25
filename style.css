@@ -975,6 +975,13 @@ html.is-embedded .page-hero{ padding-top: 1.6rem; padding-bottom: 1.2rem; }
 .dropzone .dz-hint{ margin: .5em 0 0; font-size: .72rem; font-weight: 700; color: var(--grey); }
 .photo-upload-note{ margin: .7rem 0 0; font-size: .82rem; color: var(--grey); text-align: center; }
 
+/* upload.html - the upload step after payment (upload.js) */
+.upload-card{ max-width: 720px; margin: 0 auto; }
+.upload-card h2{ margin-bottom: .4em; }
+.upload-status{ text-align: center; margin: 1rem auto; }
+.upload-status--error{ color: #b3261e; font-weight: 600; }
+.upload-already{ margin: .6rem 0 0; font-size: .85rem; color: #1e7b34; font-weight: 600; text-align: center; }
+
 .order-submit{
   display: flex; align-items: center; justify-content: center; gap: .5em;
   width: 100%; background: var(--orange); color: #fff; border: none;
