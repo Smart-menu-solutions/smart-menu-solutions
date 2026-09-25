@@ -379,7 +379,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setBusy('Uploading menu…');
     var token = Date.now() + '-' + Math.random().toString(36).slice(2, 8);
-    var safeName = file.name.replace(/[^a-zA-Z0-9.\-_]+/g, '_');
+    // Capped (keeping the end, i.e. ".pdf") - the storage upload policy only
+    // accepts names up to 200 characters (see migration 0024).
+    var safeName = file.name.replace(/[^a-zA-Z0-9.\-_]+/g, '_').slice(-150);
     var storagePath = 'pending/' + token + '-' + safeName;
     var photoZipPath = 'pending/' + token + '-photos.zip';
     var uploaded = false;
