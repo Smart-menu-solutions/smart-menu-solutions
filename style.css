@@ -262,6 +262,14 @@ body{ padding-top: var(--header-h, 69px); }
 .hero h1{ color: #fff; margin-bottom: 0.9em; }
 .hero h1 .accent{ color: var(--orange); }
 .hero h1 .hero-sub{ display: block; font-size: 0.5em; font-weight: 600; margin-top: 0.6em; color: #fff; }
+/* Home hero: the keyword line is the real <h1> (what search engines read as
+   the page topic) and the "Scan|View|Enjoy" slogan above it is a styled
+   <p> - same look as before, when the slogan was the big part of the h1. */
+.hero .hero-slogan{
+  font-size: clamp(2.3rem, 5vw, 3.4rem); font-weight: 600; line-height: 1.18;
+  color: var(--orange); margin: 0; text-wrap: balance;
+}
+.hero h1.hero-title{ font-size: calc(clamp(2.3rem, 5vw, 3.4rem) * .5); margin: .6em 0 1.8em; }
 /* German "Scannen|Ansehen|Genießen" is noticeably longer than the
    English "Scan|View|Enjoy" - widen the hero text zone on German pages
    only, instead of shrinking the font, so it stays the same size as the
@@ -1053,6 +1061,8 @@ html.is-embedded .page-hero{ padding-top: 1.6rem; padding-bottom: 1.2rem; }
     font-size: 2rem;
     line-height: 1.2;
   }
+  .hero .hero-slogan{ font-size: 2rem; line-height: 1.2; }
+  .hero h1.hero-title{ font-size: 1rem; }
 
   h2{
     font-size: 1.8rem;
