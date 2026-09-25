@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
   var hubAddonChecks = Array.prototype.slice.call(document.querySelectorAll('.hub-addon-check'));
   var osLineHub = document.getElementById('osLineHub');
   var sumHubPrice = document.getElementById('sumHubPrice');
+  // Smart QuickPay™ (till numbers on the cashier screen) comes free with the
+  // ServiceHub, so it's listed as "Included" whenever the ServiceHub is booked.
+  var osLineQuickPay = document.getElementById('osLineQuickPay');
   var payButton = document.getElementById('payButton');
 
   // The menu PDF (and the photo ZIP) are no longer uploaded here: Stripe
@@ -116,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (osLineHub) osLineHub.style.display = hubOn ? '' : 'none';
     if (sumHubPrice) sumHubPrice.textContent = '+' + eur(hubPrice);
+    if (osLineQuickPay) osLineQuickPay.style.display = hubOn ? '' : 'none';
   }
 
   function applyPlan(input) {

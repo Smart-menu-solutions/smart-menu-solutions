@@ -216,7 +216,7 @@ var translations = {
     'service_card_report_name': 'Smart WeeklyReport™',
     'service_card_report_desc': 'A weekly email with visitor stats for your menu — see which categories and dishes guests view most, no login required.',
     'service_card_hub_name': 'Smart ServiceHub™',
-    'service_card_hub_desc': 'Guests order via QR code while waiter, kitchen, bar and cashier stay perfectly in sync in real time — less paper, fewer errors, faster service.',
+    'service_card_hub_desc': 'Guests order via QR code while waiter, kitchen, bar and cashier stay perfectly in sync in real time — less paper, fewer errors, faster service. Includes Smart QuickPay™ at no extra cost: bill fast in your own till.',
     'services_addon_note': 'Already a customer? You can add any of these add-ons to your plan at any time - you\'ll only pay the pro-rated amount for the rest of your current plan year, and it renews automatically from then on.',
     'testimonials_heading': 'What our customers say',
     'testimonial_1_text': '"Smart Menu Solutions made the transition to a digital menu incredibly easy. Our customers love scanning the QR code, and updating menu items is now quick and hassle-free."',
@@ -296,6 +296,7 @@ var translations = {
     'addon_hub_feat_2': 'Waiter, kitchen, bar and cashier dashboards included',
     'addon_hub_feat_3': 'Unlimited number of tables',
     'addon_hub_feat_4': 'Fully integrated into your QR menu',
+    'addon_hub_feat_5': 'Incl. <strong>Smart QuickPay™</strong> (free): till numbers for fast billing in your own till',
 
     // --- FAQ Seite ---
     'faq_hero_title': '<span class="accent">FAQ</span>',
@@ -369,6 +370,7 @@ var translations = {
     'addon_analytics_summary': 'Smart WeeklyReport™ (optional)',
     'addon_hub_mini': 'Smart ServiceHub™',
     'addon_hub_summary': 'Smart ServiceHub™ (optional)',
+    'addon_quickpay_summary': 'Smart QuickPay™ (with ServiceHub)',
     'stats_hero_title': 'Your menu\'s weekly traffic',
     'stats_hero_desc': 'How many guests scanned your QR menu, and which categories and dishes they looked at most.',
     'stats_error_desc': 'This link is invalid or has expired. Please contact us so we can help.',
@@ -516,7 +518,7 @@ var translations = {
     'service_card_report_name': 'Smart WeeklyReport™',
     'service_card_report_desc': 'Eine wöchentliche E-Mail mit Besucherstatistiken für Ihre Speisekarte — sehen Sie, welche Kategorien und Gerichte am häufigsten angesehen werden, ganz ohne Login.',
     'service_card_hub_name': 'Smart ServiceHub™',
-    'service_card_hub_desc': 'Gäste bestellen per QR-Code, während Kellner, Küche, Bar und Kasse in Echtzeit synchron bleiben — weniger Zettelwirtschaft, weniger Fehler, schnellerer Service.',
+    'service_card_hub_desc': 'Gäste bestellen per QR-Code, während Kellner, Küche, Bar und Kasse in Echtzeit synchron bleiben — weniger Zettelwirtschaft, weniger Fehler, schnellerer Service. Inklusive Smart QuickPay™ ohne Aufpreis: schnell abrechnen in Ihrer eigenen Kasse.',
     'services_addon_note': 'Schon Kunde? Sie können jedes dieser Add-ons jederzeit zu Ihrem Plan hinzufügen – Sie zahlen nur den anteiligen Betrag für den Rest Ihres laufenden Abo-Jahres, und ab der nächsten Verlängerung läuft es automatisch mit.',
     'testimonials_heading': 'Was unsere Kunden sagen',
     'testimonial_1_text': '"Smart Menu Solutions hat den Wechsel zu einer digitalen Speisekarte unglaublich einfach gemacht. Unsere Kunden lieben das Scannen des QR-Codes, und das Aktualisieren geht blitzschnell."',
@@ -596,6 +598,7 @@ var translations = {
     'addon_hub_feat_2': 'Dashboards für Kellner, Küche, Bar und Kasse inklusive',
     'addon_hub_feat_3': 'Unbegrenzte Anzahl an Tischen',
     'addon_hub_feat_4': 'Vollständig in Ihr QR-Menü integriert',
+    'addon_hub_feat_5': 'Inkl. <strong>Smart QuickPay™</strong> (kostenlos): Kassen-Nummern für schnelles Abrechnen in Ihrer eigenen Kasse',
 
     // --- FAQ Seite ---
     'faq_hero_title': '<span class="accent">FAQ</span>',
@@ -669,6 +672,7 @@ var translations = {
     'addon_analytics_summary': 'Smart WeeklyReport™ (optional)',
     'addon_hub_mini': 'Smart ServiceHub™',
     'addon_hub_summary': 'Smart ServiceHub™ (optional)',
+    'addon_quickpay_summary': 'Smart QuickPay™ (mit ServiceHub)',
     'stats_hero_title': 'Der wöchentliche Traffic Ihrer Speisekarte',
     'stats_hero_desc': 'Wie viele Gäste Ihre QR-Speisekarte gescannt haben, und welche Kategorien und Gerichte am häufigsten angesehen wurden.',
     'stats_error_desc': 'Dieser Link ist ungültig oder abgelaufen. Bitte kontaktieren Sie uns, wir helfen gerne weiter.',
