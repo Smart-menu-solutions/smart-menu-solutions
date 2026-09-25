@@ -685,6 +685,16 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .footer-bottom a:hover{ color: var(--orange); }
 .footer-powered{ white-space: nowrap; }
 .footer-legal{ display: flex; gap: 1.2rem; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; flex-basis: 100%; }
+/* Industry landing pages + About - linked from every footer so they aren't
+   orphan pages only reachable via the sitemap. Its own class, not
+   .footer-links: script.js translates .footer-links items by position. */
+.footer-industries{
+  margin-top: var(--space-3);
+  display: flex; flex-wrap: wrap; gap: .5rem 1.4rem;
+  font-size: .88rem;
+}
+.footer-industries a{ text-decoration: none; color: #C9C5BE; }
+.footer-industries a:hover{ color: var(--orange); }
 
 @media (max-width: 640px){
   .footer-inner, .footer-bottom{ flex-direction: column; align-items: flex-start; }
