@@ -987,7 +987,6 @@ var globalTranslationSelectors = {
   '.footer-legal a[href="refund-policy.html"]': 'refund_policy',
   '.footer-legal a[href="cookie-policy.html"]': 'footer_cookies',
   '.footer-legal a[href="disclaimer.html"]': 'footer_disclaimer',
-  '.footer-legal a[href="imprint.html"]': 'imprint',
   '.footer-bottom > span:first-of-type': 'footer_copyright',
   '.footer-bottom > span.footer-powered': 'footer_powered'
 };
@@ -1022,7 +1021,6 @@ var globalTranslationSelectors = {
 function ensureLegalLinks() {
   document.querySelectorAll('.footer-legal').forEach(function (legal) {
     if (!legal.querySelector('a[href="refund-policy.html"]')) legal.insertAdjacentHTML('beforeend', '<li><a href="refund-policy.html" data-i18n="refund_policy">Refund Policy</a></li>');
-    if (!legal.querySelector('a[href="imprint.html"]')) legal.insertAdjacentHTML('beforeend', '<li><a href="imprint.html" data-i18n="imprint">Imprint</a></li>');
     var emailLink = legal.querySelector('a[href^="mailto:"]');
     if (emailLink) legal.appendChild(emailLink.parentElement);
   });
