@@ -572,7 +572,7 @@ var translations = {
     'btn_choose_start': 'Smart Start wählen',
     'btn_choose_pro': 'Smart Pro wählen',
     'btn_choose_premium': 'Smart Premium wählen',
-    'pricing_questions': 'Fragen zu einem Tarif? Schreibe an',
+    'pricing_questions': 'Fragen zu einem Tarif? Schreiben Sie an',
 
     'sfm_pricing_title': '<span class="accent">Smart</span> FoodMatch™',
     'sfm_pricing_desc': 'Das intelligente Add-on für jedes Smart Menü. Ihre Gäste beantworten 3 kurze Fragen und erhalten sofort eine persönliche Empfehlung aus Ihrer Speisekarte.',

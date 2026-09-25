@@ -704,6 +704,28 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .footer-industries a{ text-decoration: none; color: #C9C5BE; }
 .footer-industries a:hover{ color: var(--orange); }
 
+/* Guides (guides.html overview + one page per article) */
+.guide-meta{ color: var(--grey); font-size: .92rem; margin-bottom: 1.6rem; }
+.guide-table-wrap{ overflow-x: auto; margin: 1.2rem 0 1.4rem; -webkit-overflow-scrolling: touch; }
+.guide-table{ width: 100%; border-collapse: collapse; font-size: .95rem; min-width: 560px; }
+.guide-table th, .guide-table td{ padding: .65rem .8rem; border-bottom: 1px solid #E7E4DF; text-align: left; }
+.guide-table th{ font-weight: 600; background: #F7F5F2; }
+.guide-table td{ white-space: nowrap; }
+.guide-table td:first-child{ font-weight: 600; }
+/* the mobile "table{ display:block; overflow-x:auto }" rule would give a
+   second scrollbar - the wrapper already scrolls */
+.guide-table-wrap .guide-table{ display: table; overflow: visible; }
+.guide-list{ display: grid; gap: 1.2rem; max-width: 760px; margin: 0 auto; }
+.guide-card{
+  display: block; padding: 1.4rem 1.6rem; border: 1px solid #E7E4DF; border-radius: 14px;
+  background: #fff; text-decoration: none; color: inherit; transition: border-color .15s, box-shadow .15s;
+}
+.guide-card:hover{ border-color: var(--orange); box-shadow: 0 6px 20px rgba(0,0,0,.06); }
+.guide-card h2{ font-size: 1.35rem; margin: .3rem 0 .5rem; }
+.guide-card p{ color: var(--grey); margin: 0 0 .8rem; }
+.guide-card__meta{ color: var(--grey); font-size: .85rem; }
+.guide-card__more{ color: var(--orange); font-weight: 600; }
+
 @media (max-width: 640px){
   .footer-inner, .footer-bottom{ flex-direction: column; align-items: flex-start; }
 }
