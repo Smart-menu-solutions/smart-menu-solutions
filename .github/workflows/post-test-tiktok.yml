@@ -1,0 +1,66 @@
+name: Post to TikTok (test)
+
+on:
+  workflow_dispatch:
+    inputs:
+      day:
+        description: "Day number from content_calendar.csv (1-180)"
+        required: true
+        default: "1"
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Install dependencies
+        working-directory: automation
+        run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Render card
+        working-directory: automation
+        run: python render_card.py "${{ inputs.day }}" "output/day-${{ inputs.day }}.png"
+
+      - name: Make video
+        working-directory: automation
+        run: python make_video.py "output/day-${{ inputs.day }}.png" "output/day-${{ inputs.day }}.mp4"
+
+      - name: Read caption
+        working-directory: automation
+        id: caption
+        run: |
+          CAPTION=$(python -c "
+          import csv
+          with open('content_calendar.csv', newline='', encoding='utf-8-sig') as f:
+              for row in csv.DictReader(f):
+                  if int(row['Tag']) == ${{ inputs.day }}:
+                      print(row['Hook'] + ' ' + row['CTA'])
+                      break
+          ")
+          echo "text=$CAPTION" >> "$GITHUB_OUTPUT"
+
+      - name: Post to TikTok
+        working-directory: automation
+        env:
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+        run: python post_tiktok.py "output/day-${{ inputs.day }}.mp4" "${{ steps.caption.outputs.text }}"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tiktok-test-day-${{ inputs.day }}
+          path: |
+            automation/output/day-${{ inputs.day }}.png
+            automation/output/day-${{ inputs.day }}.mp4

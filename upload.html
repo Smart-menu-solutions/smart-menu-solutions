@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{localStorage.setItem('selectedLang','en');}catch(e){}</script>
+<meta name="robots" content="noindex, nofollow">
+<title>Upload your menu | Smart Menu Solutions</title>
+<meta name="description" content="Upload your menu and photos after payment.">
+<link rel="icon" type="image/png" href="assets/images/logo.png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
+<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-09-26a">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/images/logo.png" alt="">
+      <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav class="main-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html" data-i18n="home">Home</a></li>
+        <li><a href="our-services.html" data-i18n="services">Our Services</a></li>
+        <li><a href="pricing-plans.html" data-i18n="pricing">Pricing Plans</a></li>
+        <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
+        <li><a href="order.html" aria-current="page" data-i18n="order">Order</a></li>
+        <li><a href="contact.html" data-i18n="contact">Contact</a></li>
+      </ul>
+      <a class="btn nav-cta" href="upload.html" data-i18n="get_started">Get started</a>
+      <div class="nav-lang-container">
+        <div class="lang-switcher">
+          <a class="flag-btn" href="de/upload.html" title="Deutsch">DE</a>
+          <a class="flag-btn active" href="upload.html" title="English" aria-current="page" onclick="try{localStorage.setItem('selectedLang','en');}catch(e){}">EN</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Upload your <span class="accent">menu</span></h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="order-card upload-card" id="uploadApp" data-lang="en">
+
+        <p class="upload-status" id="uploadLoading">One moment please …</p>
+
+        <div id="uploadError" hidden>
+          <p class="upload-status upload-status--error"></p>
+          <p style="text-align:center"><a class="btn btn--outline" href="mailto:info@smartmenusolutions.com">Contact support</a></p>
+        </div>
+
+        <form id="uploadForm" hidden>
+          <h2 id="uploadTitle"></h2>
+          <p id="uploadIntro"></p>
+
+          <div class="order-section" id="pdfSection">
+            <div class="order-step-label"></div>
+            <div class="dropzone">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
+              <p class="dz-title"></p>
+              <p class="dz-sub"></p>
+              <input type="file" accept="application/pdf,.pdf" style="display:none">
+            </div>
+            <p class="upload-already" hidden></p>
+          </div>
+
+          <div class="order-section" id="zipSection" hidden>
+            <div class="order-step-label"></div>
+            <div class="dropzone photo-dropzone">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/><polyline points="7 9 12 4 17 9"/><line x1="12" y1="4" x2="12" y2="15"/></svg>
+              <p class="dz-title"></p>
+              <p class="dz-sub"></p>
+              <p class="dz-hint">File name tip: dish "Bruschetta Classica" → file "Bruschetta_Classica.png"</p>
+              <input type="file" accept="application/zip,.zip" style="display:none">
+            </div>
+            <p class="upload-already" hidden></p>
+            <p class="photo-upload-note"><strong>The customer is responsible for the quality of the photos.</strong></p>
+          </div>
+
+          <button type="submit" class="order-submit" id="uploadSubmit">
+            <span></span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+
+        <div id="uploadDone" hidden>
+          <h2>Thank you, we have your files!</h2>
+          <p>We will review your menu and get back to you with the next steps. If you want to change something later, just use the link in your confirmation email.</p>
+          <p><a class="btn" href="index.html">Return home</a></p>
+          <p>Happy with how easy that was? We'd love a <a href="https://g.page/r/CeQGeIap64TYEBM/review" target="_blank" rel="noopener">review on Google</a>.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <a class="footer-brand" href="index.html">
+        <img src="assets/images/logo-white.png" alt="">
+        <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="our-services.html" data-i18n="services">Services</a></li>
+        <li><a href="pricing-plans.html" data-i18n="pricing">Pricing</a></li>
+        <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
+        <li><a href="contact.html" data-i18n="contact">Contact</a></li>
+        <li><a href="guides.html">Guides</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="https://instagram.com/smartmenusolutions/" aria-label="Smart Menu Solutions on Instagram" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+        </a>
+      </div>
+    </div>
+    <nav class="footer-industries" aria-label="Solutions by industry"><a href="restaurants.html">Restaurants</a><a href="bars.html">Bars</a><a href="cafes.html">Cafés</a><a href="hotels.html">Hotels</a><a href="food-trucks.html">Food Trucks</a><a href="about.html">About us</a></nav>
+    <div class="footer-bottom">
+      <span>© 2026 Smart Menu Solutions</span>
+      <ul class="footer-legal">
+        <li><a href="privacy-policy.html" data-i18n="privacy_policy">Privacy Policy</a></li>
+        <li><a href="terms-of-service.html">Terms of Service</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="refund-policy.html" data-i18n="refund_policy">Refund Policy</a></li>
+        <li><a href="imprint.html" data-i18n="imprint">Imprint</a></li>
+        <li><a href="mailto:info@smartmenusolutions.com">info@smartmenusolutions.com</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js?v=2026-09-26a"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="upload.js?v=2026-09-25a"></script>
+</body>
+</html>

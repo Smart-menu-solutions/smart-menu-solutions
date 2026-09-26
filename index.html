@@ -3,11 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{localStorage.setItem('selectedLang','en');}catch(e){}</script>
 <meta name="robots" content="index, follow, max-image-preview:large">
-<title>Smart Menu Solutions — Digital QR Menus for Restaurants & Cafés</title>
-<meta name="description" content="Smart Menu Solutions creates modern digital QR menus for restaurants, cafés, bars and hotels. Scan. View. Enjoy.">
-<link rel="icon" type="image/png" href="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&enable=upscale&height=64">
-<link rel="stylesheet" href="style.css">
+<meta name="msvalidate.01" content="DFBDC8E97D71BE8761B883E972E04FA3" />
+<title>Smart Menu Solutions - Digital QR Menus for Restaurants, Bars, Cafes & Hotels</title>
+<meta name="description" content="Smart Menu Solutions creates modern digital QR menus for restaurants, bars, Cafes, and hotels. Scan. View. Enjoy.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Smart Menu Solutions">
+<meta property="og:title" content="Smart Menu Solutions - Digital QR Menus for Restaurants, Bars, Cafes & Hotels">
+<meta property="og:description" content="Smart Menu Solutions creates modern digital QR menus for restaurants, bars, cafes, and hotels. Scan. View. Enjoy.">
+<meta property="og:url" content="https://smartmenusolutions.com/">
+<meta property="og:image" content="https://smartmenusolutions.com/assets/images/home-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Smart Menu Solutions - Digital QR Menus for Restaurants, Bars, Cafes & Hotels">
+<meta name="twitter:description" content="Smart Menu Solutions creates modern digital QR menus for restaurants, bars, cafes, and hotels. Scan. View. Enjoy.">
+<meta name="twitter:image" content="https://smartmenusolutions.com/assets/images/home-hero.jpg">
+<link rel="canonical" href="https://smartmenusolutions.com/">
+<link rel="alternate" hreflang="en" href="https://smartmenusolutions.com/">
+<link rel="alternate" hreflang="de" href="https://smartmenusolutions.com/de/">
+<link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/">
+<link rel="icon" type="image/png" href="assets/images/logo.png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
+<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-09-26a">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Smart Menu Solutions",
+  "url": "https://smartmenusolutions.com/",
+  "logo": "https://smartmenusolutions.com/assets/images/logo.png",
+  "email": "info@smartmenusolutions.com",
+  "telephone": "+49 1575 7933765",
+  "description": "Smart Menu Solutions creates modern digital QR code menus for restaurants, bars, cafes, and hotels.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Rhodes",
+    "addressCountry": "GR"
+  },
+  "sameAs": [
+    "https://instagram.com/smartmenusolutions/",
+    "https://www.tiktok.com/@smartmenusolutions"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Smart Menu Solutions",
+  "url": "https://smartmenusolutions.com/",
+  "inLanguage": "en"
+}
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main-content" data-i18n="skip_link">Skip to main content</a>
@@ -15,16 +61,12 @@
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="index.html">
-      <img src="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&enable=upscale&height=70" alt="Smart Menu Solutions Logo">
+      <img src="assets/images/logo.png" alt="">
       <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
     </a>
-
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-        <path d="M3 6h18M3 12h18M3 18h18"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
-
     <nav class="main-nav" aria-label="Main">
       <ul>
         <li><a href="index.html" aria-current="page" data-i18n="home">Home</a></li>
@@ -35,13 +77,12 @@
         <li><a href="contact.html" data-i18n="contact">Contact</a></li>
         <li><a href="https://smart-menu-solutions.github.io/smart-menu-builder/login.html">Smart Builder</a></li>
       </ul>
-
       <a class="btn nav-cta" href="order-info.html" data-i18n="get_started">Get started</a>
 
       <div class="nav-lang-container">
         <div class="lang-switcher">
-          <button class="flag-btn" type="button" data-lang="de" aria-label="Switch to Deutsch">DE</button>
-          <button class="flag-btn" type="button" data-lang="en" aria-label="Switch to English">EN</button>
+          <a class="flag-btn" href="de/index.html" title="Deutsch">DE</a>
+          <a class="flag-btn active" href="index.html" title="English" aria-current="page" onclick="try{localStorage.setItem('selectedLang','en');}catch(e){}">EN</a>
         </div>
       </div>
     </nav>
@@ -49,74 +90,309 @@
 </header>
 
 <main id="main-content">
+
   <section class="hero">
     <div class="hero-banner">
-      <img src="assets/images/home-hero.png" alt="QR code menu and digital menu displayed on a smartphone in a restaurant" width="1927" height="816">
+      <img src="assets/images/home-hero.jpg" alt="QR code menu and digital menu displayed on a smartphone in a restaurant" width="1927" height="816">
     </div>
     <div class="hero-inner">
-      <h1 data-i18n="index_hero_title">
-        <span class="accent">SCAN. VIEW. ENJOY.</span> Smart solutions for modern business
-      </h1>
+      <p class="hero-slogan" data-i18n="index_hero_slogan">Scan|View|Enjoy</p>
+      <h1 class="hero-title" data-i18n="index_hero_title">Digital QR Menus for Restaurants, Bars &amp; Cafés</h1>
+
       <p class="hero-lede" data-i18n="index_hero_lede">
         Welcome to Smart Menu Solutions, where we blend digital innovation with modern branding to revolutionise the hospitality industry. Discover how our creative solutions can transform your restaurant or cafe.
       </p>
+
       <div class="hero-actions">
         <a class="btn" href="our-services.html" data-i18n="index_hero_btn">Explore our services</a>
       </div>
     </div>
   </section>
 
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2 data-i18n="about_title">About <span class="accent">Smart Menu Solutions</span></h2>
+        <p data-i18n="about_desc">We help restaurants, cafes, bars and hotels replace static paper menus with fast, beautiful digital menus guests can open instantly from any phone — no app required.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark" id="before-after">
+    <div class="container">
+      <div class="section-head">
+        <h2 data-i18n="compare_title">From paper menu <span class="accent">to digital experience</span></h2>
+        <p data-i18n="compare_desc">See the difference a QR menu makes for your restaurant, bar, café or hotel.</p>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <span class="compare-tag" data-i18n="compare_before_tag">Before</span>
+          <div class="compare-photo">
+            <img src="assets/images/paper-menu-before.jpg" alt="Printed paper menu on a restaurant table" loading="lazy">
+          </div>
+          <h3 data-i18n="compare_before_title">Printed paper menu</h3>
+          <ul class="compare-list">
+            <li data-i18n="compare_before_li1">Reprint everything for a single price change</li>
+            <li data-i18n="compare_before_li2">Usually just one language</li>
+            <li data-i18n="compare_before_li3">Gets worn, stained, torn or lost</li>
+          </ul>
+        </div>
+        <div class="compare-arrow" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+        <div class="compare-card compare-card--after">
+          <span class="compare-tag compare-tag--after" data-i18n="compare_after_tag">After</span>
+          <div class="compare-photo">
+            <img src="assets/images/menu-after-el-greco.png" alt="QR code digital menu shown on a smartphone in a restaurant" loading="lazy">
+          </div>
+          <h3 data-i18n="compare_after_title">Smart QR digital menu</h3>
+          <ul class="compare-list">
+            <li data-i18n="compare_after_li1">Update instantly, anytime.</li>
+            <li data-i18n="compare_after_li2">Multiple languages built in</li>
+            <li data-i18n="compare_after_li3">Always clean, modern and on-brand</li>
+          </ul>
+        </div>
+        <div class="compare-arrow" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+        <div class="compare-card compare-card--after">
+          <span class="compare-tag compare-tag--after" data-i18n="compare_ready_tag">Ready to go</span>
+          <div class="compare-photo compare-photo--qr">
+            <img class="compare-photo__qr" src="assets/images/menu-ready-el-greco-en.png?v=table-secret-2" alt="QR code linking to a real live Smart Menu Solutions digital menu" loading="lazy">
+          </div>
+          <h3 data-i18n="compare_ready_title">Your menu, live and ready</h3>
+          <ul class="compare-list">
+            <li data-i18n="compare_ready_li1">Every dish with its own photo</li>
+            <li data-i18n="compare_ready_li2">Prices and items update instantly</li>
+            <li data-i18n="compare_ready_li3">Share the link or QR code today</li>
+            <li><strong data-i18n="compare_ready_li4">Scan the code above to see it live</strong></li>
+          </ul>
+        </div>
+        <div class="compare-arrow" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+        <div class="compare-card compare-card--after">
+          <span class="compare-tag compare-tag--after" data-i18n="compare_new_tag">Smart WeeklyReport™</span>
+          <div class="compare-photo">
+            <img class="compare-photo__report" src="assets/images/Report_backround.png" alt="Printed sales report with a donut chart and a table of figures">
+            <button type="button" class="compare-photo--demo" id="statsDemoOpen" aria-haspopup="dialog">
+              <span class="demo-pill">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.4" stroke-dasharray="28 999" stroke-linecap="round" transform="rotate(-90 12 12)"/><circle cx="12" cy="12" r="9" stroke="#5a5650" stroke-width="2.4" opacity=".4"/></svg>
+                <span data-i18n="compare_new_cta">View a live example</span>
+              </span>
+            </button>
+          </div>
+          <h3 data-i18n="compare_new_title">Weekly Analytics Report</h3>
+          <ul class="compare-list">
+            <li data-i18n="compare_new_li1">See your top dishes &amp; categories</li>
+            <li data-i18n="compare_new_li2">Delivered to your inbox every Monday</li>
+            <li><strong data-i18n="compare_new_li3">Click above to see a live example</strong></li>
+          </ul>
+        </div>
+        <div class="compare-arrow" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+        <div class="compare-card compare-card--after">
+          <span class="compare-tag compare-tag--after" data-i18n="compare_hub_tag">Smart ServiceHub™</span>
+          <div class="compare-photo">
+            <img src="assets/images/service-smart-servicehub.png" alt="Server taking an order on a notepad at a café table">
+            <button type="button" class="compare-photo--demo" id="hubDemoOpen" aria-haspopup="dialog">
+              <span class="demo-pill">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+                <span data-i18n="compare_hub_cta">See how it works</span>
+              </span>
+            </button>
+          </div>
+          <h3 data-i18n="compare_hub_title">Live table service</h3>
+          <ul class="compare-list">
+            <li data-i18n="compare_hub_li1">Guests order, staff stay in sync</li>
+            <li data-i18n="compare_hub_li2">Live dashboards for kitchen, bar, service and cashier</li>
+            <li data-i18n="compare_hub_li3">Ask for the bill with one tap</li>
+            <li data-i18n="compare_hub_li4">No app to install — works on any phone or tablet</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-demo-overlay" id="statsDemoOverlay" hidden>
+    <div class="stats-demo-box" role="dialog" aria-modal="true" aria-label="Smart WeeklyReport™ live example">
+      <button type="button" class="stats-demo-close" id="statsDemoClose" aria-label="Close">✕</button>
+      <iframe id="statsDemoFrame" title="Smart WeeklyReport™ live example" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <div class="stats-demo-overlay" id="hubDemoOverlay" hidden>
+    <div class="hub-demo-box" role="dialog" aria-modal="true" aria-label="Smart ServiceHub™ - how it works">
+      <button type="button" class="stats-demo-close" id="hubDemoClose" aria-label="Close">✕</button>
+      <div class="hub-flow">
+        <h3 data-i18n="hub_flow_title">How Smart ServiceHub™ works</h3>
+        <div class="hub-flow-node hub-flow-guest"><span data-i18n="hub_flow_guest">Guest</span></div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">📱</span>
+          <div><h4 data-i18n="hub_flow_step1_title">Scan the QR code</h4><p data-i18n="hub_flow_step1_desc">Guest scans the code at their table</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">🍽️</span>
+          <div><h4 data-i18n="hub_flow_step2_title">Digital menu opens</h4><p data-i18n="hub_flow_step2_desc">Instantly, on their own phone - no app needed</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">🛒</span>
+          <div><h4 data-i18n="hub_flow_step3_title">Places the order</h4><p data-i18n="hub_flow_step3_desc">A few taps, right from the table</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">⚡</span>
+          <div><h4 data-i18n="hub_flow_step4_title">Instant transmission</h4><p data-i18n="hub_flow_step4_desc">Goes straight to cashier, kitchen, bar &amp; waiter</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">👨‍🍳</span>
+          <div><h4 data-i18n="hub_flow_step5_title">Service &amp; preparation</h4><p data-i18n="hub_flow_step5_desc">Every station stays perfectly in sync</p></div>
+        </div>
+        <div class="hub-flow-arrow" aria-hidden="true"></div>
+        <div class="hub-flow-step">
+          <span class="hub-flow-icon" aria-hidden="true">➕</span>
+          <div><h4 data-i18n="hub_flow_step6_title">Reorder in 1 click</h4><p data-i18n="hub_flow_step6_desc">No waiting to flag down a waiter</p></div>
+        </div>
+        <p class="hub-flow-outcome" data-i18n="hub_flow_outcome">😊 Guests order, staff stay in sync</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section--servicehub" id="servicehub-showcase">
+    <div class="container">
+      <div class="section-head">
+        <h2>From notepad <span class="accent">to Smart ServiceHub™</span></h2>
+        <p>Guests order from their own phone – every order lands instantly on the right screen in kitchen, bar, service and cashier. No paper, no running back and forth.</p>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <span class="compare-tag">Before</span>
+          <div class="compare-photo compare-photo--shot"><img src="assets/images/servicehub-before-notepad.jpg" alt="Waiter writing an order on a paper notepad" loading="lazy"></div>
+          <h3>Orders on paper</h3>
+          <ul class="compare-list">
+            <li>Handwritten notes, hard to read</li>
+            <li>Every order walked to kitchen and bar</li>
+            <li>Bills added up by hand</li>
+          </ul>
+        </div>
+        <div class="compare-arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="compare-card compare-card--after">
+          <span class="compare-tag compare-tag--after">Service Hub</span>
+          <button type="button" class="compare-photo compare-photo--shot shot-zoom" data-shot="assets/images/servicehub-waiter-en.jpg?v=4" aria-label="Enlarge screenshot: Service Hub"><img src="assets/images/servicehub-waiter-en-card.jpg?v=4" alt="Service Hub screen with all tables in green, orange and red" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
+          <h3>All tables at a glance</h3>
+          <ul class="compare-list">
+            <li>Green = free, orange = active, red = wants to pay</li>
+            <li>Activate a table with one tap</li>
+            <li>Live activity and today’s order summary</li>
+          </ul>
+        </div>
+        <div class="compare-arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="compare-card compare-card--after">
+          <span class="compare-tag compare-tag--after">Kitchen</span>
+          <button type="button" class="compare-photo compare-photo--shot shot-zoom" data-shot="assets/images/servicehub-kitchen-en.jpg?v=4" aria-label="Enlarge screenshot: Kitchen"><img src="assets/images/servicehub-kitchen-en-card.jpg?v=4" alt="Kitchen screen with open dishes per table" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
+          <h3>Only what the kitchen cooks</h3>
+          <ul class="compare-list">
+            <li>Dishes arrive automatically, sorted by table</li>
+            <li>Tap a line when it’s ready</li>
+            <li>Guest notes like “no onions” included</li>
+          </ul>
+        </div>
+        <div class="compare-arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="compare-card compare-card--after">
+          <span class="compare-tag compare-tag--after">Bar</span>
+          <button type="button" class="compare-photo compare-photo--shot shot-zoom" data-shot="assets/images/servicehub-bar-en.jpg?v=4" aria-label="Enlarge screenshot: Bar"><img src="assets/images/servicehub-bar-en-card.jpg?v=4" alt="Bar screen with open drinks per table" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
+          <h3>Drinks straight to the bar</h3>
+          <ul class="compare-list">
+            <li>Only drinks, sorted by table</li>
+            <li>Mark a whole table done in one tap</li>
+            <li>Add drinks for guests ordering at the bar</li>
+          </ul>
+        </div>
+        <div class="compare-arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="compare-card compare-card--after">
+          <span class="compare-tag compare-tag--after">Cashier</span>
+          <button type="button" class="compare-photo compare-photo--shot shot-zoom" data-shot="assets/images/servicehub-cashier-en.jpg?v=4" aria-label="Enlarge screenshot: Cashier"><img src="assets/images/servicehub-cashier-en-card.jpg?v=4" alt="Cashier screen with prices and totals per table" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
+          <h3>Pay and close in seconds</h3>
+          <ul class="compare-list">
+            <li>Bill requests on top, marked 💳</li>
+            <li>Every item with price and total</li>
+            <li>Close the table – it’s free again instantly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="shot-overlay" id="shotOverlay" hidden>
+    <button type="button" class="shot-close" aria-label="Close">✕</button>
+    <img id="shotOverlayImg" alt="">
+  </div>
+  <script>
+  (function () {
+    var overlay = document.getElementById('shotOverlay'), big = document.getElementById('shotOverlayImg');
+    document.querySelectorAll('.shot-zoom').forEach(function (button) {
+      button.addEventListener('click', function () { big.src = button.getAttribute('data-shot'); big.alt = button.querySelector('img').alt; overlay.hidden = false; });
+    });
+    overlay.addEventListener('click', function (event) { if (event.target !== big) overlay.hidden = true; });
+    document.addEventListener('keydown', function (event) { if (event.key === 'Escape') overlay.hidden = true; });
+  })();
+  </script>
+
   <section class="section section--alt">
     <div class="container">
       <div class="section-head">
         <h2 data-i18n="index_transform_title">Transform your business <span class="accent">today</span></h2>
-        <p data-i18n="index_transform_desc">
-          Ready to embrace the future? Our digital menu solutions are designed to be modern, eye-catching, and incredibly easy to use. See how Smart Menu Solutions can bring a fresh, vibrant energy to your establishment and delight your customers.
-        </p>
+        <p data-i18n="index_transform_desc">Ready to embrace the future? Our digital menu solutions are designed to be modern, eye-catching, and incredibly easy to use. See how Smart Menu Solutions can bring a fresh, vibrant energy to your establishment and delight your customers.</p>
         <a class="btn" href="order-info.html" data-i18n="index_transform_btn">Start your order</a>
       </div>
     </div>
   </section>
+
 </main>
 
 <footer class="site-footer">
   <div class="container">
     <div class="footer-inner">
       <a class="footer-brand" href="index.html">
-        <img src="https://primary.jwwb.nl/public/q/b/h/temp-qwfllybferzrbmruxsqy/designer-6-photoroom-high.png?enable-io=true&width=157" alt="Smart Menu Solutions Logo">
+        <img src="assets/images/logo-white.png" alt="">
         <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
       </a>
-
       <ul class="footer-links">
         <li><a href="our-services.html" data-i18n="services">Services</a></li>
         <li><a href="pricing-plans.html" data-i18n="pricing">Pricing</a></li>
         <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
         <li><a href="contact.html" data-i18n="contact">Contact</a></li>
+        <li><a href="guides.html">Guides</a></li>
       </ul>
-
       <div class="footer-social">
         <a href="https://instagram.com/smartmenusolutions/" aria-label="Smart Menu Solutions on Instagram" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="2" width="20" height="20" rx="5"/>
-            <circle cx="12" cy="12" r="4.2"/>
-            <circle cx="17.4" cy="6.6" r="1"/>
-          </svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1"/></svg>
         </a>
       </div>
     </div>
-
+    <nav class="footer-industries" aria-label="Solutions by industry"><a href="restaurants.html">Restaurants</a><a href="bars.html">Bars</a><a href="cafes.html">Cafés</a><a href="hotels.html">Hotels</a><a href="food-trucks.html">Food Trucks</a><a href="about.html">About us</a></nav>
     <div class="footer-bottom">
-      <span data-i18n="footer_copyright">© 2026 Smart Menu Solutions — Powered by Smart Menu Solutions</span>
+      <span data-i18n="footer_copyright">© 2026 Smart Menu Solutions</span>
+      <span class="footer-powered" data-i18n="footer_powered">Powered by Smart Menu Solutions</span>
       <ul class="footer-legal">
         <li><a href="privacy-policy.html" data-i18n="privacy_policy">Privacy Policy</a></li>
+        <li><a href="terms-of-service.html">Terms of Service</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
         <li><a href="refund-policy.html" data-i18n="refund_policy">Refund Policy</a></li>
         <li><a href="imprint.html" data-i18n="imprint">Imprint</a></li>
-        <li><a href="mailto:smartmenusolutions@outlook.com">smartmenusolutions@outlook.com</a></li>
+        <li><a href="mailto:info@smartmenusolutions.com">info@smartmenusolutions.com</a></li>
       </ul>
     </div>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=2026-09-26a"></script>
+
 </body>
 </html>
