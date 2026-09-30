@@ -1,4 +1,4 @@
-// Discovery Pass order form (discovery.html + de/discovery.html): contact
+// Smart Discovery order form (discovery.html + de/discovery.html): contact
 // details only - plan and price are fixed server-side in
 // create-checkout-session (plan "discovery", €2.99 one-off).
 document.addEventListener('DOMContentLoaded', function () {

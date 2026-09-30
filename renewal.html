@@ -8,7 +8,7 @@
 <title>Renew Your Subscription | Smart Menu Solutions</title>
 <meta name="description" content="Renew your Smart Menu Solutions subscription — confirm your plan and continue for another year.">
 <link rel="icon" type="image/png" href="assets/images/logo.png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
-<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-09-30g">
+<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-09-30h">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -103,6 +103,16 @@
                 </div>
               </div>
             </div>
+            <div class="order-section" id="upgradeAddons" hidden>
+              <div class="order-step-label" id="upgradeAddonsLabel">03 / Add-ons</div>
+              <p class="upgrade-addons-hint" id="upgradeAddonsHint">You tried all add-ons in Smart Discovery – they are pre-selected.</p>
+              <div class="upgrade-addon-list">
+                <label class="upgrade-addon"><input type="checkbox" id="upPhoto" checked> <span class="ua-name">Smart DishPhoto™</span><span class="ua-price" id="upPhotoPrice">+€30.00</span></label>
+                <label class="upgrade-addon"><input type="checkbox" id="upSfm" checked> <span class="ua-name">Smart FoodMatch™</span><span class="ua-price" id="upSfmPrice">+€5.00</span></label>
+                <label class="upgrade-addon"><input type="checkbox" id="upAnalytics" checked> <span class="ua-name">Smart WeeklyReport™</span><span class="ua-price" id="upAnalyticsPrice">+€5.00</span></label>
+                <label class="upgrade-addon"><input type="checkbox" id="upHub" checked> <span class="ua-name">Smart ServiceHub™</span><span class="ua-price" id="upHubPrice">+€89.00</span></label>
+              </div>
+            </div>
 
             <input type="hidden" id="hiddenTotal" name="Total Price" value="">
             <input type="hidden" id="hiddenPlanName" name="Plan Name" value="">
@@ -124,6 +134,11 @@
           <div class="os-line os-line-qr"><span data-i18n="feat_unique_qr">Unique QR code</span><span data-i18n="included">Included</span></div>
           <div class="os-line os-line-updates"><span data-i18n="summary_updates_label">Menu updates</span><span id="sumUpdates">3 / month</span></div>
           <div class="os-line os-line-billing"><span data-i18n="summary_billing_label">Billing Cycle 1-Year Subscription</span><span data-i18n="included">Included</span></div>
+          <div class="os-line" id="upLinePhoto" style="display:none"><span>Smart DishPhoto™</span><span>+€30.00</span></div>
+          <div class="os-line" id="upLineSfm" style="display:none"><span>Smart FoodMatch™</span><span>+€5.00</span></div>
+          <div class="os-line" id="upLineAnalytics" style="display:none"><span>Smart WeeklyReport™</span><span>+€5.00</span></div>
+          <div class="os-line" id="upLineHub" style="display:none"><span>Smart ServiceHub™</span><span>+€89.00</span></div>
+          <div class="os-line os-line-credit" id="upLineCredit" style="display:none"><span>Smart Discovery credit</span><span>−€2.99</span></div>
           <div class="os-total">
             <span class="os-total-label" data-i18n="total_due">Total due<br><span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:.82em">VAT incl.</span></span>
             <span class="os-total-value" id="sumTotal">€129.00</span>
@@ -173,6 +188,6 @@
 </footer>
 
 <script src="script.js?v=2026-09-30b"></script>
-<script src="renewal-form.js?v=2026-09-30a"></script>
+<script src="renewal-form.js?v=2026-09-30b"></script>
 </body>
 </html>

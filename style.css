@@ -1477,3 +1477,12 @@ button.compare-photo:hover .shot-zoom-badge, button.compare-photo:focus-visible 
 .shot-overlay[hidden]{ display: none; }
 .shot-overlay img{ max-width: min(1440px, 100%); max-height: 90vh; border-radius: 10px; box-shadow: 0 20px 50px rgba(0,0,0,.5); cursor: default; }
 .shot-close{ position: absolute; top: .8rem; right: 1rem; width: 40px; height: 40px; border: 0; border-radius: 50%; background: #fff; color: var(--ink); font-size: 1.1rem; cursor: pointer; }
+
+/* renewal.html upgrade from Smart Discovery: add-ons to keep. */
+.upgrade-addons-hint{ font-size: .85rem; color: var(--grey); margin: 0 0 .7rem; }
+.upgrade-addon-list{ display: grid; gap: .5rem; }
+.upgrade-addon{ display: flex; align-items: center; gap: .6rem; padding: .7rem .9rem; border: 1.5px solid var(--line); border-radius: 10px; cursor: pointer; }
+.upgrade-addon input{ width: 18px; height: 18px; margin: 0; accent-color: var(--orange); }
+.upgrade-addon .ua-name{ flex: 1; font-weight: 600; font-size: .92rem; }
+.upgrade-addon .ua-price{ font-weight: 700; color: var(--orange); }
+.os-line-credit span:last-child{ color: #7DD3A0; }
