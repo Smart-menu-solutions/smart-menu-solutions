@@ -534,6 +534,7 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
   color: var(--grey);
   white-space: nowrap;
 }
+.grid-4 > .price-card .price small{ display: block; }
 .price-card ul{
   list-style: none; margin: 1em 0 1.4em; padding: 0;
   display: flex; flex-direction: column; gap: .6em;
