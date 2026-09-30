@@ -787,6 +787,8 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .plan-option .p-price{ display: block; font-weight: 700; font-size: 1.15rem; color: var(--orange); margin-top: .2em; }
 /* Smart Discovery spans the whole row above the three plans. */
 .plan-option--discovery{ grid-column: 1 / -1; }
+/* !important: two later .plan-option label blocks force the grey border with !important. */
+.plan-option.plan-option--discovery label{ border-color: var(--orange) !important; }
 .plan-option .p-discovery-note{ display: block; font-size: .8rem; color: var(--grey); margin-top: .25em; }
 .plan-option .plan-badge{
   display: inline-block; margin-bottom: .45rem; padding: .22rem .5rem;
