@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
       logoLabel: '{n} / LOGO (OPTIONAL)',
       logoTitle: 'Logo hochladen (PNG oder JPG)',
       tablesLabel: '{n} / TISCHE',
-      tablesHint: 'Für Smart ServiceHub™: Wie viele Tische hat Ihr Lokal, und wie sind sie nummeriert? Jeder Tisch bekommt seinen eigenen QR-Code zum Bestellen.',
+      tablesHint: 'Für Smart ServiceHub™: Wie sind Ihre Tische nummeriert? Jeder Tisch bekommt seinen eigenen QR-Code zum Bestellen.',
       notLogo: 'Das Logo muss ein PNG- oder JPG-Bild sein.',
       pdfTitle: 'Speisekarte als PDF hochladen',
       zipTitle: 'Fotos als ZIP-Datei hochladen',
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
       logoLabel: '{n} / LOGO (OPTIONAL)',
       logoTitle: 'Upload your logo (PNG or JPG)',
       tablesLabel: '{n} / TABLES',
-      tablesHint: 'For Smart ServiceHub™: how many tables does your venue have, and how are they numbered? Each table gets its own QR code for ordering.',
+      tablesHint: 'For Smart ServiceHub™: how are your tables numbered? Each table gets its own QR code for ordering.',
       notLogo: 'The logo must be a PNG or JPG image.',
       pdfTitle: 'Upload your menu as a PDF',
       zipTitle: 'Upload your photos as a ZIP file',
@@ -208,11 +208,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // The order row is created by Stripe's webhook, which can lag a few seconds
   // behind the redirect - order-upload answers 409 + retry until it's there.
   function complete(attempt) {
-    var tablesInput = document.getElementById('tablesCount');
-    var tables = status && status.hubAddon && tablesInput && tablesInput.value ? parseInt(tablesInput.value, 10) : null;
     var numbersInput = document.getElementById('tableNumbers');
     var tableNumbers = status && status.hubAddon && numbersInput ? numbersInput.value.trim() : '';
-    return call({ action: 'complete', tables: tables, tableNumbers: tableNumbers }).catch(function (error) {
+    return call({ action: 'complete', tableNumbers: tableNumbers }).catch(function (error) {
       if (error.retry && attempt < 10) {
         return new Promise(function (resolve) { setTimeout(resolve, 3000); }).then(function () { return complete(attempt + 1); });
       }

@@ -1519,6 +1519,5 @@ button.compare-photo:hover .shot-zoom-badge, button.compare-photo:focus-visible 
 
 /* upload.html: number of tables for Smart ServiceHub. */
 .tables-hint{ font-size: .88rem; color: var(--grey); margin: 0 0 .6rem; }
-.tables-input{ width: 140px; padding: .7rem .9rem; border: 1.5px solid var(--line); border-radius: 10px; font: inherit; font-size: 1rem; }
 .tables-numbers-label{ display: block; margin: .9rem 0 .35rem; font-weight: 700; font-size: .9rem; }
 .tables-numbers-input{ width: 100%; padding: .7rem .9rem; border: 1.5px solid var(--line); border-radius: 10px; font: inherit; font-size: 1rem; }
