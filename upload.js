@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var supabasePublishableKey = 'sb_publishable_m7GxKtc8I3F8ASzuMaJvZg_8CQuKToA';
   var endpoint = supabaseUrl + '/functions/v1/order-upload';
   var MAX_BYTES = 50 * 1024 * 1024;
-  var MAGIC = { pdf: [0x25, 0x50, 0x44, 0x46, 0x2d], zip: [0x50, 0x4b, 0x03, 0x04] };
+  // Accepted first bytes per file kind (the logo may be PNG or JPEG).
+  var MAGICS = { pdf: [[0x25, 0x50, 0x44, 0x46, 0x2d]], zip: [[0x50, 0x4b, 0x03, 0x04]], logo: [[0x89, 0x50, 0x4e, 0x47], [0xff, 0xd8, 0xff]] };
 
   var lang = root.getAttribute('data-lang') === 'en' ? 'en' : 'de';
   var TEXT = {
@@ -23,6 +24,12 @@ document.addEventListener('DOMContentLoaded', function () {
       pdfLabel: '01 / SPEISEKARTE (PDF)',
       pdfLabelOptional: '01 / NEUE SPEISEKARTE (PDF, OPTIONAL)',
       zipLabel: '02 / FOTOS (ZIP)',
+      zipLabelOptional: '02 / FOTOS (ZIP, OPTIONAL)',
+      logoLabel: '{n} / LOGO (OPTIONAL)',
+      logoTitle: 'Logo hochladen (PNG oder JPG)',
+      tablesLabel: '{n} / ANZAHL TISCHE',
+      tablesHint: 'Für Smart ServiceHub™: Wie viele Tische hat Ihr Lokal? Jeder Tisch bekommt seinen eigenen QR-Code zum Bestellen.',
+      notLogo: 'Das Logo muss ein PNG- oder JPG-Bild sein.',
       pdfTitle: 'Speisekarte als PDF hochladen',
       zipTitle: 'Fotos als ZIP-Datei hochladen',
       dropSub: 'Hier klicken oder Datei hierher ziehen',
@@ -47,6 +54,12 @@ document.addEventListener('DOMContentLoaded', function () {
       pdfLabel: '01 / MENU (PDF)',
       pdfLabelOptional: '01 / NEW MENU (PDF, OPTIONAL)',
       zipLabel: '02 / PHOTOS (ZIP)',
+      zipLabelOptional: '02 / PHOTOS (ZIP, OPTIONAL)',
+      logoLabel: '{n} / LOGO (OPTIONAL)',
+      logoTitle: 'Upload your logo (PNG or JPG)',
+      tablesLabel: '{n} / NUMBER OF TABLES',
+      tablesHint: 'For Smart ServiceHub™: how many tables does your venue have? Each table gets its own QR code for ordering.',
+      notLogo: 'The logo must be a PNG or JPG image.',
       pdfTitle: 'Upload your menu as a PDF',
       zipTitle: 'Upload your photos as a ZIP file',
       dropSub: 'Click here or drag the file here',
@@ -80,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var done = document.getElementById('uploadDone');
   var submitButton = document.getElementById('uploadSubmit');
   var status = null;
-  var chosen = { pdf: null, zip: null };
+  var chosen = { pdf: null, zip: null, logo: null };
 
   function show(element) { [loading, errorBox, form, done].forEach(function (el) { el.hidden = el !== element; }); }
   function fail(message) { errorBox.querySelector('p').textContent = message; show(errorBox); }
@@ -111,8 +124,17 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('uploadTitle').textContent = (renewal ? TEXT.thanksRenewal : TEXT.thanksInitial).replace('{name}', name);
     document.getElementById('uploadIntro').textContent = renewal ? TEXT.introRenewal : TEXT.introInitial;
     setupDropzone('pdf', renewal ? TEXT.pdfLabelOptional : TEXT.pdfLabel, TEXT.pdfTitle, data.files.pdf);
-    if (data.photoAddon) setupDropzone('zip', TEXT.zipLabel, TEXT.zipTitle, data.files.zip);
+    if (data.photoAddon) setupDropzone('zip', data.zipRequired ? TEXT.zipLabel : TEXT.zipLabelOptional, TEXT.zipTitle, data.files.zip);
     document.getElementById('zipSection').hidden = !data.photoAddon;
+    var step = data.photoAddon ? 3 : 2;
+    var stepLabel = function (text) { return text.replace('{n}', ('0' + step++).slice(-2)); };
+    setupDropzone('logo', stepLabel(TEXT.logoLabel), TEXT.logoTitle, data.files.logo);
+    var tablesSection = document.getElementById('tablesSection');
+    tablesSection.hidden = !data.hubAddon;
+    if (data.hubAddon) {
+      tablesSection.querySelector('.order-step-label').textContent = stepLabel(TEXT.tablesLabel);
+      tablesSection.querySelector('.tables-hint').textContent = TEXT.tablesHint;
+    }
     submitButton.querySelector('span').textContent = renewal ? TEXT.submitRenewal : TEXT.submit;
     show(form);
   }).catch(function (error) { fail(error.message); });
@@ -162,15 +184,21 @@ document.addEventListener('DOMContentLoaded', function () {
     if (file.size > MAX_BYTES) return Promise.resolve(TEXT.tooBig);
     return file.slice(0, 8).arrayBuffer().then(function (buffer) {
       var bytes = new Uint8Array(buffer);
-      var ok = MAGIC[kind].every(function (byte, i) { return bytes[i] === byte; });
-      return ok ? null : (kind === 'pdf' ? TEXT.notPdf : TEXT.notZip);
+      var ok = MAGICS[kind].some(function (magic) { return magic.every(function (byte, i) { return bytes[i] === byte; }); });
+      return ok ? null : ({ pdf: TEXT.notPdf, zip: TEXT.notZip, logo: TEXT.notLogo })[kind];
     });
   }
 
   function upload(kind) {
     var file = chosen[kind];
     if (!file) return Promise.resolve();
-    return call({ action: 'sign', kind: kind }).then(function (signed) {
+    // A logo's real type is known from its first bytes (checkFile), its name may lie.
+    var logoType = kind === 'logo' ? (file.type === 'image/jpeg' ? 'image/jpeg' : 'image/png') : undefined;
+    return (kind === 'logo' ? file.slice(0, 1).arrayBuffer().then(function (buffer) {
+      logoType = new Uint8Array(buffer)[0] === 0xff ? 'image/jpeg' : 'image/png';
+    }) : Promise.resolve()).then(function () {
+      return call({ action: 'sign', kind: kind, contentType: logoType });
+    }).then(function (signed) {
       return supabaseClient.storage.from('menu-pdfs').uploadToSignedUrl(signed.path, signed.token, file, { contentType: signed.contentType, upsert: true });
     }).then(function (result) {
       if (result && result.error) throw new Error(TEXT.failed);
@@ -180,7 +208,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // The order row is created by Stripe's webhook, which can lag a few seconds
   // behind the redirect - order-upload answers 409 + retry until it's there.
   function complete(attempt) {
-    return call({ action: 'complete' }).catch(function (error) {
+    var tablesInput = document.getElementById('tablesCount');
+    var tables = status && status.hubAddon && tablesInput && tablesInput.value ? parseInt(tablesInput.value, 10) : null;
+    return call({ action: 'complete', tables: tables }).catch(function (error) {
       if (error.retry && attempt < 10) {
         return new Promise(function (resolve) { setTimeout(resolve, 3000); }).then(function () { return complete(attempt + 1); });
       }
@@ -196,11 +226,12 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (status.type !== 'renewal' && !chosen.pdf && !status.files.pdf) { alert(TEXT.needPdf); return; }
-    if (status.photoAddon && !chosen.zip && !status.files.zip) { alert(TEXT.needZip); return; }
+    if (status.zipRequired && !chosen.zip && !status.files.zip) { alert(TEXT.needZip); return; }
 
     setBusy(true, TEXT.uploading);
     upload('pdf')
       .then(function () { return upload('zip'); })
+      .then(function () { return upload('logo'); })
       .then(function () { setBusy(true, TEXT.checking); return complete(0); })
       .then(function () { show(done); window.scrollTo(0, 0); })
       .catch(function (error) { alert(error.message || TEXT.failed); setBusy(false); });

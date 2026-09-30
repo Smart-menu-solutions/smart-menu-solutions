@@ -1495,3 +1495,7 @@ button.compare-photo:hover .shot-zoom-badge, button.compare-photo:focus-visible 
 .upgrade-addon .ua-name{ flex: 1; font-weight: 600; font-size: .92rem; }
 .upgrade-addon .ua-price{ font-weight: 700; color: var(--orange); }
 .os-line-credit span:last-child{ color: #7DD3A0; }
+
+/* upload.html: number of tables for Smart ServiceHub. */
+.tables-hint{ font-size: .88rem; color: var(--grey); margin: 0 0 .6rem; }
+.tables-input{ width: 140px; padding: .7rem .9rem; border: 1.5px solid var(--line); border-radius: 10px; font: inherit; font-size: 1rem; }
