@@ -8,7 +8,7 @@
 <title>Upload your menu | Smart Menu Solutions</title>
 <meta name="description" content="Upload your menu and photos after payment.">
 <link rel="icon" type="image/png" href="assets/images/logo.png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
-<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-09-30p">
+<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-09-30q">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -102,7 +102,10 @@
           <div class="order-section" id="tablesSection" hidden>
             <div class="order-step-label"></div>
             <p class="tables-hint"></p>
-            <input type="number" id="tablesCount" min="1" max="500" step="1" inputmode="numeric" placeholder="e.g. 12" class="tables-input">
+            <label class="tables-numbers-label" for="tablesCount">Number of tables</label>
+            <input type="number" id="tablesCount" min="1" max="500" step="1" inputmode="numeric" placeholder="e.g. 10" class="tables-input">
+            <label class="tables-numbers-label" for="tableNumbers">Table numbers</label>
+            <input type="text" id="tableNumbers" maxlength="300" placeholder="e.g. 1–8, 12, 14, Terrace 1" class="tables-numbers-input">
           </div>
 
           <button type="submit" class="order-submit" id="uploadSubmit">
@@ -162,6 +165,6 @@
 
 <script src="script.js?v=2026-09-30b"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="upload.js?v=2026-09-30a"></script>
+<script src="upload.js?v=2026-09-30b"></script>
 </body>
 </html>
