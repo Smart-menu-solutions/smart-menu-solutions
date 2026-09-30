@@ -12,7 +12,7 @@
 <link rel="alternate" hreflang="de" href="https://smartmenusolutions.com/de/order-info.html">
 <link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/order-info.html">
 <link rel="icon" type="image/png" href="assets/images/logo.png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
-<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-09-30c">
+<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-09-30d">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -94,6 +94,15 @@
             <div class="order-section">
               <div class="order-step-label" data-i18n="step_plan_label">02 / Select your plan</div>
               <div class="plan-grid">
+                <div class="plan-option plan-option--discovery">
+                  <input type="radio" id="planDiscovery" name="Selected Plan" value="Smart Discovery (EUR 2.99, VAT incl. 7 days, one-off)"
+                    data-code="discovery" data-name="Smart Discovery" data-price="2.99" data-updates="0">
+                  <label for="planDiscovery">
+                    <span class="p-name">Smart Discovery</span>
+                    <span class="p-price">€2.99</span>
+                    <span class="p-discovery-note">7 days from receiving your QR code · no add-ons</span>
+                  </label>
+                </div>
                 <div class="plan-option">
                   <input type="radio" id="planStart" name="Selected Plan" value="Smart Start (EUR 119, VAT incl. 1-Year Subscription)"
                     data-code="start" data-name="Smart Start" data-price="119" data-updates="1" data-photo-price="10" data-sfm-price="5" data-analytics-price="5" data-hub-price="89">
@@ -215,6 +224,7 @@
 
           <div class="os-line os-line-updates"><span data-i18n="summary_updates_label">Menu updates</span><span id="sumUpdates">3 / month</span></div>
           <div class="os-line os-line-billing"><span data-i18n="summary_billing_label">Billing Cycle 1-Year Subscription</span><span data-i18n="included">Included</span></div>
+          <div class="os-line os-line-discovery" id="osLineDiscovery" style="display:none"><span>Duration: 7 days from receiving your QR code, one-off</span><span>Included</span></div>
           <div class="os-line os-line-photo" id="osLinePhoto" style="display:none"><span data-i18n="addon_photo_summary">Smart DishPhoto™ (optional)</span><span id="sumPhotoPrice">+€30.00</span></div>
           <div class="os-line os-line-sfm" id="osLineSfm" style="display:none"><span data-i18n="addon_sfm_summary">Smart FoodMatch™ (optional)</span><span id="sumSfmPrice">+€5.00</span></div>
           <div class="os-line os-line-analytics" id="osLineAnalytics" style="display:none"><span data-i18n="addon_analytics_summary">Smart WeeklyReport™ (optional)</span><span id="sumAnalyticsPrice">+€5.00</span></div>
@@ -272,7 +282,7 @@
   </div>
 </footer>
 
-<script src="script.js?v=2026-09-30a"></script>
-<script src="order-form.js?v=2026-09-25b"></script>
+<script src="script.js?v=2026-09-30b"></script>
+<script src="order-form.js?v=2026-09-30a"></script>
 </body>
 </html>

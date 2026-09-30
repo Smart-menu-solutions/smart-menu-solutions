@@ -279,14 +279,6 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .hero-actions{ margin-top: 1.2rem; display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
 .hero-actions .btn--outline, .hero-actions .btn--outline:visited{ color: #fff; border-color: rgba(255,255,255,.75); }
 .hero-actions .btn--outline:hover{ color: #fff; border-color: var(--orange); }
-.hero-trial{ margin: .9rem 0 0; font-size: .95rem; color: #EDEBE7; }
-.hero-trial a, .hero-trial a:visited{ color: #fff; font-weight: 700; }
-.hero-trial a:hover{ color: var(--orange); }
-/* Discovery Pass teaser above the plan cards (pricing-plans.html). */
-.discovery-banner{ display: flex; align-items: center; justify-content: space-between; gap: .6rem 1.2rem; flex-wrap: wrap; max-width: 920px; margin: 0 auto 2.2rem; padding: 1rem 1.4rem; border: 2px dashed var(--orange); border-radius: 14px; background: #FFF5EE; color: var(--ink); text-decoration: none; }
-.discovery-banner:visited{ color: var(--ink); }
-.discovery-banner:hover{ background: #FFEBDD; color: var(--ink); }
-.discovery-banner__cta{ color: var(--orange); font-weight: 700; white-space: nowrap; }
 
 .page-hero{
   border-bottom: var(--border);
@@ -793,6 +785,9 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .plan-option input:checked + label{ border-color: var(--orange); background: var(--orange-tint); }
 .plan-option .p-name{ display: block; font-weight: 700; font-size: .95rem; }
 .plan-option .p-price{ display: block; font-weight: 700; font-size: 1.15rem; color: var(--orange); margin-top: .2em; }
+/* Smart Discovery spans the whole row above the three plans. */
+.plan-option--discovery{ grid-column: 1 / -1; }
+.plan-option .p-discovery-note{ display: block; font-size: .8rem; color: var(--grey); margin-top: .25em; }
 .plan-option .plan-badge{
   display: inline-block; margin-bottom: .45rem; padding: .22rem .5rem;
   border-radius: 999px; background: var(--orange); color: #fff;

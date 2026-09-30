@@ -124,6 +124,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var updates = input.getAttribute('data-updates');
     sumPlanName.textContent = name;
     sumUpdates.textContent = updates + t(' / month', ' / Monat');
+    // Smart Discovery (the €2.99 pass) has no monthly updates and no yearly
+    // billing - its own duration line replaces those two.
+    var isDiscovery = input.getAttribute('data-code') === 'discovery';
+    ['.os-line-updates', '.os-line-billing'].forEach(function (selector) {
+      var line = document.querySelector(selector);
+      if (line) line.style.display = isDiscovery ? 'none' : '';
+    });
+    var discoveryLine = document.getElementById('osLineDiscovery');
+    if (discoveryLine) discoveryLine.style.display = isDiscovery ? '' : 'none';
     updateTotal();
   }
 
@@ -230,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Pre-select a plan from ?plan=start|pro|premium
   var params = new URLSearchParams(window.location.search);
   var planParam = params.get('plan');
-  var map = { start: 'planStart', pro: 'planPro', premium: 'planPremium' };
+  var map = { discovery: 'planDiscovery', start: 'planStart', pro: 'planPro', premium: 'planPremium' };
   var preselectId = map[planParam] || 'planPro';
   var preselect = document.getElementById(preselectId);
   if (preselect) {
