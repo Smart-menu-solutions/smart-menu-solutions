@@ -708,6 +708,8 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 }
 .footer-industries a{ text-decoration: none; color: #C9C5BE; }
 .footer-industries a:hover{ color: var(--orange); }
+/* Customer login, moved here from the main nav - sits at the right end of the row. */
+.footer-industries .footer-builder{ margin-left: auto; }
 
 /* Guides (guides.html overview + one page per article) */
 .guide-meta{ color: var(--grey); font-size: .92rem; margin-bottom: 1.6rem; }
