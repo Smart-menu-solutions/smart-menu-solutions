@@ -786,8 +786,23 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .plan-option input:checked + label{ border-color: var(--orange); background: var(--orange-tint); }
 .plan-option .p-name{ display: block; font-weight: 700; font-size: .95rem; }
 .plan-option .p-price{ display: block; font-weight: 700; font-size: 1.15rem; color: var(--orange); margin-top: .2em; }
-/* Smart Discovery is the first of four plan tiles, 2 x 2 - four in a row are too narrow for the add-on prices in this form (the later .plan-grid blocks force 3 columns with !important). */
+/* Smart Discovery is the first of four plan tiles: 4 in a row on wide screens, else 2 x 2 (the later .plan-grid blocks force 3 columns with !important). */
 .plan-grid:has(.plan-option--discovery){ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+/* Four tiles in a row where there's room: the form gets more of the width
+   (summary narrower), otherwise the add-on prices get cut off. */
+@media (min-width: 1100px){
+  .order-layout:has(.plan-option--discovery){ grid-template-columns: 1.75fr .85fr !important; }
+  .plan-grid:has(.plan-option--discovery){ grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+  .plan-grid:has(.plan-option--discovery) > .plan-option, .plan-grid:has(.plan-option--discovery) > .plan-option > label{ min-width: 0; }
+  .plan-grid:has(.plan-option--discovery) :is(.p-photo-toggle, .p-sfm-toggle, .p-analytics-toggle, .p-hub-toggle){ grid-template-columns: 13px minmax(0, 1fr) auto; column-gap: .3rem; font-size: .66rem; }
+  .plan-grid:has(.plan-option--discovery) :is(.photo-addon-mini-mark, .sfm-addon-mini-mark, .analytics-addon-mini-mark, .hub-addon-mini-mark){ width: 13px; height: 13px; }
+}
+@media (min-width: 760px) and (max-width: 900px){
+  .plan-grid:has(.plan-option--discovery){ grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+  .plan-grid:has(.plan-option--discovery) > .plan-option, .plan-grid:has(.plan-option--discovery) > .plan-option > label{ min-width: 0; }
+  .plan-grid:has(.plan-option--discovery) :is(.p-photo-toggle, .p-sfm-toggle, .p-analytics-toggle, .p-hub-toggle){ grid-template-columns: 13px minmax(0, 1fr) auto; column-gap: .3rem; font-size: .66rem; }
+  .plan-grid:has(.plan-option--discovery) :is(.photo-addon-mini-mark, .sfm-addon-mini-mark, .analytics-addon-mini-mark, .hub-addon-mini-mark){ width: 13px; height: 13px; }
+}
 .plan-option--discovery .plan-badge{ white-space: nowrap; }
 /* All four tiles the same size: equal rows, each tile stretched to fill its cell. */
 .plan-grid:has(.plan-option--discovery){ grid-auto-rows: 1fr !important; }
