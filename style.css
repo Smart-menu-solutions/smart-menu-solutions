@@ -804,6 +804,12 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
   .plan-grid:has(.plan-option--discovery) :is(.photo-addon-mini-mark, .sfm-addon-mini-mark, .analytics-addon-mini-mark, .hub-addon-mini-mark){ width: 13px; height: 13px; }
 }
 .plan-option--discovery .plan-badge{ white-space: nowrap; }
+/* Names and prices on one line across all four tiles: the "Zum Testen" /
+   "Am beliebtesten" pills sit on the tile's top edge (like the pricing page)
+   instead of pushing their tile's name down. */
+.plan-grid:has(.plan-option--discovery){ padding-top: .7rem; }
+.plan-grid:has(.plan-option--discovery) > .plan-option > label{ position: relative; }
+.plan-grid:has(.plan-option--discovery) .plan-badge{ position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); margin: 0; white-space: nowrap; }
 /* All four tiles the same size: equal rows, each tile stretched to fill its cell. */
 .plan-grid:has(.plan-option--discovery){ grid-auto-rows: 1fr !important; }
 .plan-grid:has(.plan-option--discovery) > .plan-option{ display: flex !important; }
