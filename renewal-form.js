@@ -71,6 +71,16 @@ document.addEventListener('DOMContentLoaded', function () {
         planInput.checked = true;
         applyPlan(planInput);
       }
+      // Upgrading from the Discovery Pass: the renewal function applies a
+      // €2.99 Stripe coupon, which Stripe shows on its own page - say so here
+      // too, so the full plan price above doesn't look like the pass was lost.
+      if (data.plan === 'discovery') {
+        var credit = document.createElement('p');
+        credit.className = 'renewal-discovery-credit';
+        credit.style.cssText = 'margin:.8rem 0;font-weight:600;color:#F66A09';
+        credit.textContent = t('Your Discovery Pass (€2.99) is credited – it is deducted on the next page.', 'Ihr Discovery Pass (2,99 €) wird angerechnet – der Betrag wird auf der nächsten Seite abgezogen.');
+        payButton.parentNode.insertBefore(credit, payButton);
+      }
       layout.style.display = '';
     })
     .catch(function () {
