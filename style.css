@@ -786,8 +786,17 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 .plan-option input:checked + label{ border-color: var(--orange); background: var(--orange-tint); }
 .plan-option .p-name{ display: block; font-weight: 700; font-size: .95rem; }
 .plan-option .p-price{ display: block; font-weight: 700; font-size: 1.15rem; color: var(--orange); margin-top: .2em; }
-/* Smart Discovery spans the whole row above the three plans. */
-.plan-option--discovery{ grid-column: 1 / -1; }
+/* Smart Discovery is the first of four plan tiles, 2 x 2 - four in a row are too narrow for the add-on prices in this form (the later .plan-grid blocks force 3 columns with !important). */
+.plan-grid:has(.plan-option--discovery){ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+.plan-option--discovery .plan-badge{ white-space: nowrap; }
+/* All four tiles the same size: equal rows, each tile stretched to fill its cell. */
+.plan-grid:has(.plan-option--discovery){ grid-auto-rows: 1fr !important; }
+.plan-grid:has(.plan-option--discovery) > .plan-option{ display: flex !important; }
+.plan-grid:has(.plan-option--discovery) > .plan-option > label{ flex: 1 1 auto; }
+.plan-option .p-discovery-inc{ display: flex; justify-content: space-between; gap: .4rem; font-size: .72rem; font-weight: 500; color: var(--grey); text-align: left; padding: .55em .2em; border-top: 1px solid var(--line); }
+.plan-option .p-discovery-note{ margin-bottom: .4em; }
+.plan-option .p-discovery-inc b{ color: var(--orange); font-weight: 700; }
+@media (max-width: 480px){ .plan-grid:has(.plan-option--discovery){ grid-template-columns: 1fr !important; } }
 /* !important: two later .plan-option label blocks force the grey border with !important. */
 .plan-option.plan-option--discovery label{ border-color: var(--orange) !important; }
 .plan-option .p-discovery-note{ display: block; font-size: .8rem; color: var(--grey); margin-top: .25em; }
