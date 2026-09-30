@@ -131,8 +131,9 @@ document.addEventListener('DOMContentLoaded', function () {
       var line = document.querySelector(selector);
       if (line) line.style.display = isDiscovery ? 'none' : '';
     });
-    var discoveryLine = document.getElementById('osLineDiscovery');
-    if (discoveryLine) discoveryLine.style.display = isDiscovery ? '' : 'none';
+    document.querySelectorAll('.os-line-discovery').forEach(function (line) {
+      line.style.display = isDiscovery ? '' : 'none';
+    });
     updateTotal();
   }
 
