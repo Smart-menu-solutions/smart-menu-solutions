@@ -276,7 +276,9 @@ body{ padding-top: var(--header-h, 69px); }
    English version and still fits on one line. */
 html[lang="de"] .hero-inner{ max-width: 1000px; }
 .hero-lede{ font-size: 1.12rem; max-width: 52ch; color: #EDEBE7; }
-.hero-actions{ margin-top: 1.2rem; }
+.hero-actions{ margin-top: 1.2rem; display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+.hero-actions .btn--outline, .hero-actions .btn--outline:visited{ color: #fff; border-color: rgba(255,255,255,.75); }
+.hero-actions .btn--outline:hover{ color: #fff; border-color: var(--orange); }
 
 .page-hero{
   border-bottom: var(--border);
