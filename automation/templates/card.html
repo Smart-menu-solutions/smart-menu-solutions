@@ -7,28 +7,27 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700&family=Open+Sans:wght@400;700&display=swap">
 <style>
   :root{
-    --ink:#262421; --paper:#f4efe6; --orange:#f66a09; --orange-dark:#d85d06; --cream:#fff1e4;
+    --ink:#ffffff; --orange:#ff7a1a; --line:rgba(255,255,255,.4);
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
     width:1080px; height:1080px; overflow:hidden;
-    background:var(--paper);
+    background:#141210 url('__BG_PATH__') center/cover no-repeat;
     font-family:'Open Sans',system-ui,sans-serif;
     color:var(--ink);
     position:relative;
   }
   .texture{
     position:absolute; inset:0;
-    background:repeating-linear-gradient(115deg, rgba(0,0,0,.02) 0 2px, transparent 2px 6px);
+    background:linear-gradient(180deg, rgba(20,18,16,.80), rgba(20,18,16,.88));
   }
   .frame{
     position:absolute; inset:40px;
-    border:3px solid var(--ink);
+    border:3px solid rgba(255,255,255,.35);
     border-radius:28px;
     display:flex; flex-direction:column;
     padding:64px 68px 56px;
-    background:var(--paper);
   }
   .brand-row{
     display:flex; align-items:center; gap:16px;
@@ -55,7 +54,7 @@
   .spacer{ flex:1 }
   .cta-row{
     display:flex; align-items:center; justify-content:space-between;
-    border-top:2px solid var(--ink);
+    border-top:2px solid var(--line);
     padding-top:28px;
   }
   .cta{ font-weight:700; font-size:28px; max-width:640px }

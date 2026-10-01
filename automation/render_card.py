@@ -19,7 +19,8 @@ from playwright.sync_api import sync_playwright
 AUTOMATION_DIR = Path(__file__).resolve().parent
 TEMPLATE_PATH = AUTOMATION_DIR / "templates" / "card.html"
 CALENDAR_PATH = AUTOMATION_DIR / "content_calendar.csv"
-LOGO_PATH = AUTOMATION_DIR / "assets" / "logo.png"
+LOGO_PATH = AUTOMATION_DIR / "assets" / "logo-white.png"
+BACKGROUND_PATH = AUTOMATION_DIR / "assets" / "background.jpg"
 
 
 def load_day_row(day_number: int) -> dict:
@@ -46,6 +47,7 @@ def build_html(row: dict) -> str:
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
     replacements = {
         "__LOGO_PATH__": LOGO_PATH.as_uri(),
+        "__BG_PATH__": BACKGROUND_PATH.as_uri(),
         "__CATEGORY__": html.escape(row["Kategorie"]),
         "__HOOK__": html.escape(row["Hook"]),
         "__CTA__": html.escape(row["CTA"]),
