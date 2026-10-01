@@ -29,7 +29,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // The add-on is charged to the saved card straight away (no Stripe page in
+  // between), so the customer confirms the amount first.
+  var addonsByKey = {};
+
+  function confirmCharge(addon) {
+    if (!addon) return true;
+    var recurring = addon.billing === 'recurring';
+    return window.confirm(t(
+      'Add ' + addon.label + '? Your saved card will be charged now: ' + addon.priceLabel + (recurring ? ', pro-rated for the rest of your plan year.' : '.'),
+      addon.label + ' hinzufügen? Ihre hinterlegte Karte wird jetzt belastet: ' + addon.priceLabel + (recurring ? ', anteilig für den Rest Ihres Abo-Jahres.' : '.')
+    ));
+  }
+
   function renderAddons(addons) {
+    addonsByKey = {};
+    addons.forEach(function (addon) { addonsByKey[addon.key] = addon; });
     list.innerHTML = addons.map(function (addon) {
       if (addon.active) {
         return '<div class="addon-row"><span class="addon-name">' + escapeHtml(addon.label) + '</span><span class="addon-active-badge">' + t('Active', 'Aktiv') + '</span></div>';
@@ -51,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function addAddon(button) {
     var addonKey = button.dataset.addon;
+    if (!confirmCharge(addonsByKey[addonKey])) return;
     var errorEl = list.querySelector('[data-addon-error="' + addonKey + '"]');
     if (errorEl) errorEl.textContent = '';
     button.disabled = true;
