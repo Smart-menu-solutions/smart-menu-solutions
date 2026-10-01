@@ -548,6 +548,8 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
   font-weight: 500; font-size: .96rem;
 }
 .price-card li svg{ flex: 0 0 auto; margin-top: 3px; color: var(--orange); }
+/* Four plans side by side leave ~180px per button - keep "Choose Smart Discovery" on one line */
+@media (min-width: 1101px){ .grid-4 > .price-card .btn{ white-space: nowrap; padding-left: .5em; padding-right: .5em; font-size: .88rem; } }
 .price-card .badge{
   position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
   background: var(--orange); color: #fff;
