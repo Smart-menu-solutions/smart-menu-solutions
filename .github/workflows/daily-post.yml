@@ -1,0 +1,109 @@
+name: Daily social post
+
+on:
+  schedule:
+    # 09:00 UTC daily (~11:00/12:00 Greece time depending on DST)
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+    inputs:
+      day:
+        description: "Force a specific day number instead of using today's date (optional)"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Install dependencies
+        working-directory: automation
+        run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Determine day
+        working-directory: automation
+        id: day
+        run: |
+          if [ -n "${{ inputs.day }}" ]; then
+            echo "n=${{ inputs.day }}" >> "$GITHUB_OUTPUT"
+          else
+            DAY=$(python get_day_number.py)
+            echo "n=$DAY" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Render card
+        working-directory: automation
+        run: python render_card.py "${{ steps.day.outputs.n }}" "output/day-${{ steps.day.outputs.n }}.png"
+
+      - name: Read caption
+        working-directory: automation
+        id: caption
+        run: |
+          CAPTION=$(python -c "
+          import csv
+          with open('content_calendar.csv', newline='', encoding='utf-8-sig') as f:
+              for row in csv.DictReader(f):
+                  if int(row['Tag']) == ${{ steps.day.outputs.n }}:
+                      print(row['Hook'] + ' ' + row['CTA'])
+                      break
+          ")
+          echo "text=$CAPTION" >> "$GITHUB_OUTPUT"
+
+      # --- TikTok ---
+      - name: Make video for TikTok
+        working-directory: automation
+        run: python make_video.py "output/day-${{ steps.day.outputs.n }}.png" "output/day-${{ steps.day.outputs.n }}.mp4"
+
+      - name: Post to TikTok
+        working-directory: automation
+        continue-on-error: true
+        env:
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+        run: python post_tiktok.py "output/day-${{ steps.day.outputs.n }}.mp4" "${{ steps.caption.outputs.text }}"
+
+      # --- Instagram ---
+      - name: Convert to JPEG for Instagram
+        working-directory: automation
+        run: python to_jpeg.py "output/day-${{ steps.day.outputs.n }}.png" "output/day-${{ steps.day.outputs.n }}.jpg"
+
+      - name: Commit and push image (so it has a public URL)
+        working-directory: automation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "output/day-${{ steps.day.outputs.n }}.jpg"
+          git commit -m "chore: daily post image for day ${{ steps.day.outputs.n }}"
+          git push
+
+      - name: Post to Instagram
+        working-directory: automation
+        continue-on-error: true
+        env:
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+        run: |
+          IMAGE_URL="https://raw.githubusercontent.com/Smart-menu-solutions/smart-menu-solutions/main/automation/output/day-${{ steps.day.outputs.n }}.jpg"
+          python post_instagram.py "$IMAGE_URL" "${{ steps.caption.outputs.text }}"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: daily-post-day-${{ steps.day.outputs.n }}
+          path: |
+            automation/output/day-${{ steps.day.outputs.n }}.png
+            automation/output/day-${{ steps.day.outputs.n }}.mp4
+            automation/output/day-${{ steps.day.outputs.n }}.jpg
