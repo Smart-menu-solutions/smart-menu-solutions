@@ -39,8 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // These are the messages this form still shows via alert()/plain text
   // instead of data-i18n, so they follow the same localStorage language
   // switch as the rest of the page instead of always being English.
-  function t(en, de) {
-    return localStorage.getItem('selectedLang') === 'de' ? de : en;
+  function t(en, de, it) {
+    var lang = localStorage.getItem('selectedLang');
+    if (lang === 'de') return de;
+    if (lang === 'it' && it) return it;
+    return en;
   }
 
   function eur(n) {
@@ -123,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var name = input.getAttribute('data-name');
     var updates = input.getAttribute('data-updates');
     sumPlanName.textContent = name;
-    sumUpdates.textContent = updates + t(' / month', ' / Monat');
+    sumUpdates.textContent = updates + t(' / month', ' / Monat', ' / mese');
     // Smart Discovery (the €2.99 pass) has no monthly updates and no yearly
     // billing - its own duration line replaces those two.
     var isDiscovery = input.getAttribute('data-code') === 'discovery';
@@ -273,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
 
     var selectedPlan = form.querySelector('input[name="Selected Plan"]:checked');
-    setBusy(t('Opening secure checkout…', 'Sichere Bezahlung wird geöffnet…'));
+    setBusy(t('Opening secure checkout…', 'Sichere Bezahlung wird geöffnet…', 'Apertura del pagamento sicuro…'));
 
     fetch(checkoutEndpoint, {
       method: 'POST',

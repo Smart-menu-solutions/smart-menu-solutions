@@ -1,4 +1,4 @@
-// upload.html / de/upload.html - the upload step after payment. Stripe
+// upload.html / de/upload.html / it/upload.html - the upload step after payment. Stripe
 // Checkout redirects here with ?session_id=..., the confirmation email links
 // here with ?token=... . Everything is checked server-side by the
 // order-upload Edge Function (paid order only, fixed paths, real file
@@ -14,7 +14,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // Accepted first bytes per file kind (the logo may be PNG or JPEG).
   var MAGICS = { pdf: [[0x25, 0x50, 0x44, 0x46, 0x2d]], zip: [[0x50, 0x4b, 0x03, 0x04]], logo: [[0x89, 0x50, 0x4e, 0x47], [0xff, 0xd8, 0xff]] };
 
-  var lang = root.getAttribute('data-lang') === 'en' ? 'en' : 'de';
+  var lang = root.getAttribute('data-lang');
+  if (lang !== 'en' && lang !== 'it') lang = 'de';
+  // order-upload only knows 'de' and 'en' (its messages and emails), so the
+  // Italian page asks it for English.
+  var serverLang = lang === 'it' ? 'en' : lang;
   var TEXT = {
     de: {
       thanksInitial: 'Vielen Dank für Ihre Bestellung{name}!',
@@ -75,6 +79,36 @@ document.addEventListener('DOMContentLoaded', function () {
       needZip: 'Please also choose your photos (ZIP).',
       failed: 'Something went wrong. Please try again.',
       missingLink: 'This link is incomplete. Please use the link from your confirmation email.'
+    },
+    it: {
+      thanksInitial: 'Grazie per il vostro ordine{name}!',
+      thanksRenewal: 'Grazie per il rinnovo{name}!',
+      introInitial: 'Abbiamo ricevuto il vostro pagamento. Caricate ora il vostro menu, così possiamo iniziare a prepararlo.',
+      introRenewal: 'Abbiamo ricevuto il vostro pagamento. Se il vostro menu è cambiato, caricate qui la nuova versione. Altrimenti cliccate semplicemente su "Fatto".',
+      pdfLabel: '01 / MENU (PDF)',
+      pdfLabelOptional: '01 / NUOVO MENU (PDF, OPZIONALE)',
+      zipLabel: '02 / FOTO (ZIP)',
+      zipLabelOptional: '02 / FOTO (ZIP, OPZIONALE)',
+      logoLabel: '{n} / LOGO (OPZIONALE)',
+      logoTitle: 'Caricate il vostro logo (PNG o JPG)',
+      tablesLabel: '{n} / TAVOLI',
+      tablesHint: 'Per Smart ServiceHub™: come sono numerati i vostri tavoli? Ogni tavolo riceve il proprio QR code per ordinare.',
+      notLogo: 'Il logo deve essere un\'immagine PNG o JPG.',
+      pdfTitle: 'Caricate il vostro menu in PDF',
+      zipTitle: 'Caricate le vostre foto come file ZIP',
+      dropSub: 'Cliccate qui o trascinate qui il file',
+      already: 'Già caricato. Un nuovo file lo sostituisce.',
+      submit: 'Invia i file',
+      submitRenewal: 'Fatto',
+      uploading: 'Caricamento in corso …',
+      checking: 'Verifica in corso …',
+      notPdf: 'Questo non è un file PDF valido. Scegliete il vostro menu in formato PDF.',
+      notZip: 'Questo non è un file ZIP valido. Mettete le vostre foto in un file ZIP.',
+      tooBig: 'Il file supera i 50 MB. Riducetene le dimensioni o scriveteci.',
+      needPdf: 'Scegliete prima il vostro menu (PDF).',
+      needZip: 'Scegliete anche le vostre foto (ZIP).',
+      failed: 'Purtroppo qualcosa non ha funzionato. Riprovate.',
+      missingLink: 'Questo link è incompleto. Usate il link della vostra e-mail di conferma.'
     }
   }[lang];
 
@@ -102,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', apikey: supabasePublishableKey },
-      body: JSON.stringify(Object.assign({ lang: lang }, credentials, body))
+      body: JSON.stringify(Object.assign({ lang: serverLang }, credentials, body))
     }).catch(function () {
       throw new Error(TEXT.failed); // offline / network error - not the browser's own English text
     }).then(function (response) {

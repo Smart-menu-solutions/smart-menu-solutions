@@ -1,6 +1,6 @@
-// Smart Discovery order form (discovery.html + de/discovery.html): contact
-// details only - plan and price are fixed server-side in
-// create-checkout-session (plan "discovery", €2.99 one-off).
+// Smart Discovery order form (discovery.html + de/discovery.html +
+// it/discovery.html): contact details only - plan and price are fixed
+// server-side in create-checkout-session (plan "discovery", €2.99 one-off).
 document.addEventListener('DOMContentLoaded', function () {
   var form = document.getElementById('discoveryForm');
   if (!form) return;
@@ -9,13 +9,15 @@ document.addEventListener('DOMContentLoaded', function () {
   var supabasePublishableKey = 'sb_publishable_m7GxKtc8I3F8ASzuMaJvZg_8CQuKToA';
   var checkoutEndpoint = supabaseUrl + '/functions/v1/create-checkout-session';
   var payButton = document.getElementById('payButton');
-  var isDe = document.documentElement.lang === 'de';
+  var pageLang = document.documentElement.lang;
+  var isDe = pageLang === 'de';
+  var isIt = pageLang === 'it';
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var original = payButton.innerHTML;
     payButton.disabled = true;
-    payButton.textContent = isDe ? 'Sichere Bezahlung wird geöffnet…' : 'Opening secure checkout…';
+    payButton.textContent = isDe ? 'Sichere Bezahlung wird geöffnet…' : isIt ? 'Apertura del pagamento sicuro…' : 'Opening secure checkout…';
 
     fetch(checkoutEndpoint, {
       method: 'POST',
@@ -27,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
         email: document.getElementById('email').value.trim(),
         companyName: document.getElementById('companyName').value.trim(),
         phone: document.getElementById('phone').value.trim(),
+        // Emails exist in German and English only, so Italian customers get
+        // the English ones.
         lang: isDe ? 'de' : 'en'
       })
     })

@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>/* Stripe and the EN confirmation email land here; Italian visitors get the Italian upload page (the backend only knows de/en). */try{if(localStorage.getItem('selectedLang')==='it'){location.replace('it/upload.html'+location.search);}}catch(e){}</script>
 <script>try{localStorage.setItem('selectedLang','en');}catch(e){}</script>
 <meta name="robots" content="noindex, nofollow">
 <title>Upload your menu | Smart Menu Solutions</title>
 <meta name="description" content="Upload your menu and photos after payment.">
 <link rel="icon" type="image/png" href="assets/images/logo.png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
-<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-10-01a">
+<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-10-05a">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -36,6 +37,7 @@
         <div class="lang-switcher">
           <a class="flag-btn" href="de/upload.html" title="Deutsch">DE</a>
           <a class="flag-btn active" href="upload.html" title="English" aria-current="page" onclick="try{localStorage.setItem('selectedLang','en');}catch(e){}">EN</a>
+          <a class="flag-btn" href="it/upload.html" title="Italiano">IT</a>
         </div>
       </div>
     </nav>
@@ -163,6 +165,6 @@
 
 <script src="script.js?v=2026-10-02a"></script>
 <script src="assets/vendor/supabase.js?v=2.117.2"></script>
-<script src="upload.js?v=2026-09-30c"></script>
+<script src="upload.js?v=2026-10-05a"></script>
 </body>
 </html>

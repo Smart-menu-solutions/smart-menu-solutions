@@ -35,7 +35,7 @@
 </style>
 </head>
 <body>
-<header class="site-header"><a class="brand" href="index.html"><img src="assets/images/logo.png" alt=""><span><span class="n-smart">Smart</span> Menu Solutions</span></a><div class="lang-switcher"><button class="lang-btn" type="button" data-lang="de">DE</button><button class="lang-btn active" type="button" data-lang="en">EN</button></div></header>
+<header class="site-header"><a class="brand" href="index.html"><img src="assets/images/logo.png" alt=""><span><span class="n-smart">Smart</span> Menu Solutions</span></a><div class="lang-switcher"><button class="lang-btn" type="button" data-lang="de">DE</button><button class="lang-btn active" type="button" data-lang="en">EN</button><button class="lang-btn" type="button" data-lang="it">IT</button></div></header>
 <main>
   <div class="check" aria-hidden="true">✓</div>
   <div class="status" id="thankStatus">Message received</div>
@@ -52,9 +52,11 @@
 <script>
   var thankYouCopy = {
     en: { status: 'Message received', title: 'Thank <span class="accent">you!</span>', sub: 'Your request has been sent successfully.', heading: "We've received your details", text: 'Thank you for your interest in Smart Menu Solutions. Our team will review your request and get back to you shortly, usually within 24 hours.', home: 'Return to homepage' },
-    de: { status: 'Nachricht erhalten', title: 'Vielen <span class="accent">Dank!</span>', sub: 'Ihre Anfrage wurde erfolgreich übermittelt.', heading: 'Wir haben Ihre Daten erhalten', text: 'Vielen Dank für Ihr Interesse an Smart Menu Solutions. Unser Team prüft Ihre Anfrage und meldet sich in Kürze, normalerweise innerhalb von 24 Stunden.', home: 'Zur Startseite' }
+    de: { status: 'Nachricht erhalten', title: 'Vielen <span class="accent">Dank!</span>', sub: 'Ihre Anfrage wurde erfolgreich übermittelt.', heading: 'Wir haben Ihre Daten erhalten', text: 'Vielen Dank für Ihr Interesse an Smart Menu Solutions. Unser Team prüft Ihre Anfrage und meldet sich in Kürze, normalerweise innerhalb von 24 Stunden.', home: 'Zur Startseite' },
+    it: { status: 'Messaggio ricevuto', title: '<span class="accent">Grazie!</span>', sub: 'La vostra richiesta è stata inviata con successo.', heading: 'Abbiamo ricevuto i vostri dati', text: 'Grazie per il vostro interesse per Smart Menu Solutions. Il nostro team esaminerà la vostra richiesta e vi risponderà a breve, di solito entro 24 ore.', home: 'Torna alla home' }
   };
   function setThankLanguage(lang) {
+    if (!thankYouCopy[lang]) lang = 'en';
     var copy = thankYouCopy[lang];
     document.documentElement.lang = lang;
     document.getElementById('thankStatus').textContent = copy.status;
@@ -63,7 +65,7 @@
     document.getElementById('thankHeading').textContent = copy.heading;
     document.getElementById('thankText').textContent = copy.text;
     document.getElementById('homeLink').textContent = copy.home;
-    document.getElementById('homeLink').setAttribute('href', lang === 'de' ? 'de/index.html' : 'index.html');
+    document.getElementById('homeLink').setAttribute('href', lang === 'en' ? 'index.html' : lang + '/index.html');
     document.querySelectorAll('[data-lang]').forEach(function (button) { button.classList.toggle('active', button.getAttribute('data-lang') === lang); });
     localStorage.setItem('selectedLang', lang);
   }

@@ -1299,6 +1299,17 @@ html.is-embedded .page-hero{ padding-top: 1.6rem; padding-bottom: 1.2rem; }
   .main-nav{inset:55px 0 auto 0}
 }
 
+/* Three language buttons (DE/EN/IT) next to the brand and the menu toggle
+   still have to fit on 320px phones. */
+@media (max-width: 360px){
+  .header-inner{gap:.25rem}
+  .header-inner .brand img{height:28px;width:28px}
+  .header-inner .brand-text{font-size:.74rem}
+  .nav-toggle{width:34px;height:34px;flex:0 0 34px}
+  .nav-lang-container .lang-switcher{gap:2px!important}
+  .flag-btn,.nav-lang-container .lang-btn{min-width:26px!important;width:26px;height:26px!important}
+}
+
 /* Legal and informational content */
 .prose a{ text-decoration:none; color:var(--orange); }
 .prose a:visited{ color:var(--orange); }
