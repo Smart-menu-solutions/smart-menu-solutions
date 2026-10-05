@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>try{localStorage.setItem('selectedLang',new URLSearchParams(location.search).get('lang')==='de'?'de':'en');}catch(e){}</script>
+<script>/* ?lang= wins; without it the page is English, except for visitors who chose Italian on the site (the report emails only know de/en). */try{var l=new URLSearchParams(location.search).get('lang');if(l!=='de'&&l!=='en'&&l!=='it')l=localStorage.getItem('selectedLang')==='it'?'it':'en';localStorage.setItem('selectedLang',l);}catch(e){}</script>
 <script>if(new URLSearchParams(location.search).get('embed')==='1')document.documentElement.classList.add('is-embedded');</script>
 <meta name="robots" content="noindex, nofollow">
 <title>Your Smart WeeklyReport™ | Smart Menu Solutions</title>
@@ -72,6 +72,7 @@
           <div class="lang-switcher" id="statsLangSwitcher">
             <button type="button" class="flag-btn" data-lang="de">DE</button>
             <button type="button" class="flag-btn" data-lang="en">EN</button>
+            <button type="button" class="flag-btn" data-lang="it">IT</button>
           </div>
         </div>
 
@@ -137,7 +138,7 @@
   </div>
 </footer>
 
-<script src="script.js?v=2026-10-02a"></script>
-<script src="stats.js?v=5"></script>
+<script src="script.js?v=2026-10-05b"></script>
+<script src="stats.js?v=2026-10-05b"></script>
 </body>
 </html>

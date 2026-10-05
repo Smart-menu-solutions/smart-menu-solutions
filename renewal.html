@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<script>try{var l=new URLSearchParams(location.search).get('lang');if(l==='de'||l==='en')localStorage.setItem('selectedLang',l);}catch(e){}</script>
+<script>/* Renewal emails only know de/en, so Italian customers get lang=en: keep Italian for visitors who chose it on the site. */try{var l=new URLSearchParams(location.search).get('lang');if(l==='de'||l==='it'||(l==='en'&&localStorage.getItem('selectedLang')!=='it'))localStorage.setItem('selectedLang',l);}catch(e){}</script>
 <title>Renew Your Subscription | Smart Menu Solutions</title>
 <meta name="description" content="Renew your Smart Menu Solutions subscription — confirm your plan and continue for another year.">
 <link rel="icon" type="image/png" href="assets/images/logo.png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
@@ -187,7 +187,7 @@
   </div>
 </footer>
 
-<script src="script.js?v=2026-10-02a"></script>
-<script src="renewal-form.js?v=2026-09-30b"></script>
+<script src="script.js?v=2026-10-05b"></script>
+<script src="renewal-form.js?v=2026-10-05b"></script>
 </body>
 </html>

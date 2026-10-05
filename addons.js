@@ -19,8 +19,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // Same rationale as order-form.js/renewal-form.js/stats.js: the handful
   // of messages this page shows via plain text follow the page's
   // localStorage language switch instead of always being English.
-  function t(en, de) {
-    return localStorage.getItem('selectedLang') === 'de' ? de : en;
+  function t(en, de, it) {
+    var lang = localStorage.getItem('selectedLang');
+    if (lang === 'de') return de;
+    if (lang === 'it' && it) return it;
+    return en;
   }
 
   function escapeHtml(value) {
@@ -38,7 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var recurring = addon.billing === 'recurring';
     return window.confirm(t(
       'Add ' + addon.label + '? Your saved card will be charged now: ' + addon.priceLabel + (recurring ? ', pro-rated for the rest of your plan year.' : '.'),
-      addon.label + ' hinzufügen? Ihre hinterlegte Karte wird jetzt belastet: ' + addon.priceLabel + (recurring ? ', anteilig für den Rest Ihres Abo-Jahres.' : '.')
+      addon.label + ' hinzufügen? Ihre hinterlegte Karte wird jetzt belastet: ' + addon.priceLabel + (recurring ? ', anteilig für den Rest Ihres Abo-Jahres.' : '.'),
+      'Aggiungere ' + addon.label + '? La vostra carta salvata verrà addebitata subito: ' + addon.priceLabel + (recurring ? ', in proporzione al resto del vostro anno di abbonamento.' : '.')
     ));
   }
 
@@ -47,14 +51,14 @@ document.addEventListener('DOMContentLoaded', function () {
     addons.forEach(function (addon) { addonsByKey[addon.key] = addon; });
     list.innerHTML = addons.map(function (addon) {
       if (addon.active) {
-        return '<div class="addon-row"><span class="addon-name">' + escapeHtml(addon.label) + '</span><span class="addon-active-badge">' + t('Active', 'Aktiv') + '</span></div>';
+        return '<div class="addon-row"><span class="addon-name">' + escapeHtml(addon.label) + '</span><span class="addon-active-badge">' + t('Active', 'Aktiv', 'Attivo') + '</span></div>';
       }
       var prorateHint = addon.billing === 'recurring'
-        ? '<span class="addon-prorate-hint">' + t('adjusted to your pro-rated amount at checkout', 'wird beim Bezahlen auf den anteiligen Betrag angepasst') + '</span>'
+        ? '<span class="addon-prorate-hint">' + t('adjusted to your pro-rated amount at checkout', 'wird beim Bezahlen auf den anteiligen Betrag angepasst', 'adeguato all\'importo proporzionale al momento del pagamento') + '</span>'
         : '';
       return '<div class="addon-row">' +
         '<span class="addon-name">' + escapeHtml(addon.label) + '<span class="addon-price">' + escapeHtml(addon.priceLabel) + '</span>' + prorateHint + '</span>' +
-        '<button type="button" class="button-add-addon" data-addon="' + escapeHtml(addon.key) + '">' + t('Add', 'Hinzufügen') + '</button>' +
+        '<button type="button" class="button-add-addon" data-addon="' + escapeHtml(addon.key) + '">' + t('Add', 'Hinzufügen', 'Aggiungi') + '</button>' +
         '<span class="addon-error" data-addon-error="' + escapeHtml(addon.key) + '"></span>' +
         '</div>';
     }).join('');
@@ -70,20 +74,20 @@ document.addEventListener('DOMContentLoaded', function () {
     var errorEl = list.querySelector('[data-addon-error="' + addonKey + '"]');
     if (errorEl) errorEl.textContent = '';
     button.disabled = true;
-    button.textContent = t('Adding…', 'Wird hinzugefügt…');
+    button.textContent = t('Adding…', 'Wird hinzugefügt…', 'Aggiunta in corso…');
 
     fetch(addonsEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token: token, addon: addonKey })
     })
-      .then(function (response) { return response.json().then(function (data) { if (!response.ok) throw new Error(data.error || t('Could not add this add-on.', 'Konnte nicht hinzugefügt werden.')); return data; }); })
+      .then(function (response) { return response.json().then(function (data) { if (!response.ok) throw new Error(data.error || t('Could not add this add-on.', 'Konnte nicht hinzugefügt werden.', 'Impossibile aggiungere questo add-on.')); return data; }); })
       .then(function () {
         loadAddons();
       })
       .catch(function (error) {
         button.disabled = false;
-        button.textContent = t('Add', 'Hinzufügen');
+        button.textContent = t('Add', 'Hinzufügen', 'Aggiungi');
         if (errorEl) errorEl.textContent = error.message;
       });
   }

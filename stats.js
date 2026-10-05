@@ -18,8 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // Same rationale as order-form.js/renewal-form.js: the handful of
   // messages this page shows via plain text follow the page's localStorage
   // language switch instead of always being English.
-  function t(en, de) {
-    return localStorage.getItem('selectedLang') === 'de' ? de : en;
+  function t(en, de, it) {
+    var lang = localStorage.getItem('selectedLang');
+    if (lang === 'de') return de;
+    if (lang === 'it' && it) return it;
+    return en;
   }
 
   function escapeHtml(value) {
@@ -62,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function renderDonutCard(container, items, unitLabel) {
     if (!items || !items.length) {
-      container.innerHTML = '<p class="stats-bars-empty">' + t('No visits recorded yet this week.', 'Diese Woche noch keine Aufrufe erfasst.') + '</p>';
+      container.innerHTML = '<p class="stats-bars-empty">' + t('No visits recorded yet this week.', 'Diese Woche noch keine Aufrufe erfasst.', 'Nessuna visita registrata questa settimana.') + '</p>';
       return;
     }
     var segments = items.map(function (item, index) {
@@ -77,10 +80,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // change, only re-fetches and re-renders.
   function courseLabels() {
     return {
-      starter: t('Starters', 'Vorspeisen'),
-      main: t('Main courses', 'Hauptgerichte'),
-      dessert: t('Desserts', 'Desserts'),
-      drink: t('Drinks', 'Getränke')
+      starter: t('Starters', 'Vorspeisen', 'Antipasti'),
+      main: t('Main courses', 'Hauptgerichte', 'Piatti principali'),
+      dessert: t('Desserts', 'Desserts', 'Dolci'),
+      drink: t('Drinks', 'Getränke', 'Bevande')
     };
   }
 
@@ -95,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function renderSfmCard(container, items, totalCompletions) {
     if (!items || !items.length) {
-      container.innerHTML = '<p class="stats-bars-empty">' + t('No recommendations given out yet this week.', 'Diese Woche noch keine Empfehlungen ausgegeben.') + '</p>';
+      container.innerHTML = '<p class="stats-bars-empty">' + t('No recommendations given out yet this week.', 'Diese Woche noch keine Empfehlungen ausgegeben.', 'Nessun consiglio dato questa settimana.') + '</p>';
       return;
     }
     // The ring's segments are still sized by each course's top-dish count
@@ -107,15 +110,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var segments = items.map(function (item, index) {
       return { count: item.count, color: RING_COLORS[index] || RING_COLORS[RING_COLORS.length - 1] };
     });
-    container.innerHTML = '<div class="donut-row"><div class="ring-wrap">' + ringSvg(totalCompletions, t('quizzes', 'Durchläufe'), segments) + '</div><div class="sfm-legend">' + sfmLegendHtml(items) + '</div></div>';
+    container.innerHTML = '<div class="donut-row"><div class="ring-wrap">' + ringSvg(totalCompletions, t('quizzes', 'Durchläufe', 'quiz'), segments) + '</div><div class="sfm-legend">' + sfmLegendHtml(items) + '</div></div>';
   }
 
   function renderTrend(current, previous) {
-    if (!previous) return current > 0 ? t('New this week', 'Neu diese Woche') : '';
+    if (!previous) return current > 0 ? t('New this week', 'Neu diese Woche', 'Nuovo questa settimana') : '';
     var change = Math.round(((current - previous) / previous) * 100);
-    if (change > 0) return '▲ ' + change + '% ' + t('more than last week', 'mehr als letzte Woche');
-    if (change < 0) return '▼ ' + Math.abs(change) + '% ' + t('less than last week', 'weniger als letzte Woche');
-    return t('Same as last week', 'Gleich wie letzte Woche');
+    if (change > 0) return '▲ ' + change + '% ' + t('more than last week', 'mehr als letzte Woche', 'in più rispetto alla settimana scorsa');
+    if (change < 0) return '▼ ' + Math.abs(change) + '% ' + t('less than last week', 'weniger als letzte Woche', 'in meno rispetto alla settimana scorsa');
+    return t('Same as last week', 'Gleich wie letzte Woche', 'Come la settimana scorsa');
   }
 
   var langSwitcher = document.getElementById('statsLangSwitcher');
@@ -136,16 +139,16 @@ document.addEventListener('DOMContentLoaded', function () {
           pausedBox.style.display = '';
           return;
         }
-        document.getElementById('statsMenuName').textContent = data.menuName || t('Your menu', 'Deine Speisekarte');
+        document.getElementById('statsMenuName').textContent = data.menuName || t('Your menu', 'Deine Speisekarte', 'Il vostro menu');
         document.getElementById('statsRange').textContent = data.rangeStart + ' – ' + data.rangeEnd;
 
         var current = data.totalVisits || 0;
         var previous = data.previousWeekVisits || 0;
         var visitSegments = [
-          { label: t('This week', 'Diese Woche'), count: current, color: '#f66a09' },
-          { label: t('Last week', 'Letzte Woche'), count: previous, color: '#f0e4d6' }
+          { label: t('This week', 'Diese Woche', 'Questa settimana'), count: current, color: '#f66a09' },
+          { label: t('Last week', 'Letzte Woche', 'Settimana scorsa'), count: previous, color: '#f0e4d6' }
         ];
-        document.getElementById('statsVisitsRing').innerHTML = ringSvg(current, t('visits', 'Besuche'), visitSegments);
+        document.getElementById('statsVisitsRing').innerHTML = ringSvg(current, t('visits', 'Besuche', 'visite'), visitSegments);
         document.getElementById('statsVisitsLegend').innerHTML = legendHtml(visitSegments);
 
         var trendEl = document.getElementById('statsTrend');
@@ -154,8 +157,8 @@ document.addEventListener('DOMContentLoaded', function () {
         trendEl.classList.toggle('down', trendText.indexOf('▼') === 0);
         trendEl.style.display = trendText ? '' : 'none';
 
-        renderDonutCard(document.getElementById('statsCategoryDonut'), data.topCategories, t('views', 'Aufrufe'));
-        renderDonutCard(document.getElementById('statsDishDonut'), data.topDishes, t('views', 'Aufrufe'));
+        renderDonutCard(document.getElementById('statsCategoryDonut'), data.topCategories, t('views', 'Aufrufe', 'visualizzazioni'));
+        renderDonutCard(document.getElementById('statsDishDonut'), data.topDishes, t('views', 'Aufrufe', 'visualizzazioni'));
 
         var sfmCard = document.getElementById('statsSfmCard');
         if (data.sfmEnabled) {
@@ -189,7 +192,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  var initialLang = localStorage.getItem('selectedLang') === 'de' ? 'de' : 'en';
+  // get-stats only knows en/de for dish and category names and falls back to
+  // English for 'it', which is fine: the page texts around them are Italian.
+  var storedLang = localStorage.getItem('selectedLang');
+  var initialLang = storedLang === 'de' || storedLang === 'it' ? storedLang : 'en';
   setActiveLangButton(initialLang);
   loadStats(initialLang);
 });

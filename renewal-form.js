@@ -19,8 +19,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // Same rationale as order-form.js: the handful of messages this form still
   // shows via alert()/plain text follow the page's localStorage language
   // switch instead of always being English.
-  function t(en, de) {
-    return localStorage.getItem('selectedLang') === 'de' ? de : en;
+  function t(en, de, it) {
+    var lang = localStorage.getItem('selectedLang');
+    if (lang === 'de') return de;
+    if (lang === 'it' && it) return it;
+    return en;
   }
 
   var planInputs = Array.prototype.slice.call(form.querySelectorAll('input[name="Selected Plan"]'));
@@ -80,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function applyPlan(input) {
     if (!input) return;
     sumPlanName.textContent = input.getAttribute('data-name');
-    sumUpdates.textContent = input.getAttribute('data-updates') + t(' / month', ' / Monat');
+    sumUpdates.textContent = input.getAttribute('data-updates') + t(' / month', ' / Monat', ' / mese');
     hiddenPlanName.value = input.getAttribute('data-name');
     updateTotal();
   }
@@ -90,16 +93,16 @@ document.addEventListener('DOMContentLoaded', function () {
   function applyUpgradeTexts() {
     if (!isUpgrade) return;
     var set = function (selector, html) { var el = document.querySelector(selector); if (el) el.innerHTML = html; };
-    set('.page-hero h1', t('Upgrade from <span class="accent">Smart Discovery</span>', 'Upgrade von <span class="accent">Smart Discovery</span>'));
-    set('.page-hero p', t('Keep your digital menu: choose a plan and the add-ons you want to keep. Your €2.99 is credited.', 'Behalten Sie Ihre digitale Speisekarte: Wählen Sie einen Tarif und die Zusatzmodule, die Sie behalten möchten. Ihre 2,99 € werden angerechnet.'));
-    set('.order-card > h2', t('Upgrade your menu', 'Speisekarte upgraden'));
-    set('.os-label', t('Upgrade summary', 'Upgrade-Übersicht'));
-    set('#payButton span', t('Upgrade now', 'Jetzt upgraden'));
-    set('#upgradeAddonsLabel', t('03 / Add-ons', '03 / Zusatzmodule'));
-    set('#upgradeAddonsHint', t('You tried all add-ons in Smart Discovery – they are pre-selected. Untick what you don\'t need.', 'In Smart Discovery haben Sie alle Zusatzmodule getestet – sie sind vorausgewählt. Entfernen Sie den Haken bei allem, was Sie nicht brauchen.'));
-    set('#upLineCredit span', t('Smart Discovery credit', 'Smart Discovery angerechnet'));
+    set('.page-hero h1', t('Upgrade from <span class="accent">Smart Discovery</span>', 'Upgrade von <span class="accent">Smart Discovery</span>', 'Upgrade da <span class="accent">Smart Discovery</span>'));
+    set('.page-hero p', t('Keep your digital menu: choose a plan and the add-ons you want to keep. Your €2.99 is credited.', 'Behalten Sie Ihre digitale Speisekarte: Wählen Sie einen Tarif und die Zusatzmodule, die Sie behalten möchten. Ihre 2,99 € werden angerechnet.', 'Mantenete il vostro menu digitale: scegliete un piano e gli add-on che volete tenere. I vostri 2,99 € vengono scalati.'));
+    set('.order-card > h2', t('Upgrade your menu', 'Speisekarte upgraden', 'Fate l\'upgrade del vostro menu'));
+    set('.os-label', t('Upgrade summary', 'Upgrade-Übersicht', 'Riepilogo dell\'upgrade'));
+    set('#payButton span', t('Upgrade now', 'Jetzt upgraden', 'Fai l\'upgrade ora'));
+    set('#upgradeAddonsLabel', t('03 / Add-ons', '03 / Zusatzmodule', '03 / Add-on'));
+    set('#upgradeAddonsHint', t('You tried all add-ons in Smart Discovery – they are pre-selected. Untick what you don\'t need.', 'In Smart Discovery haben Sie alle Zusatzmodule getestet – sie sind vorausgewählt. Entfernen Sie den Haken bei allem, was Sie nicht brauchen.', 'In Smart Discovery avete provato tutti gli add-on: sono preselezionati. Togliete la spunta da ciò che non vi serve.'));
+    set('#upLineCredit span', t('Smart Discovery credit', 'Smart Discovery angerechnet', 'Credito Smart Discovery'));
     var note = document.querySelector('.os-note span[data-i18n]');
-    if (note) note.textContent = t('Your menu stays online and continues on the new plan as soon as payment succeeds.', 'Ihre Speisekarte bleibt online und läuft nach der Zahlung im neuen Tarif weiter.');
+    if (note) note.textContent = t('Your menu stays online and continues on the new plan as soon as payment succeeds.', 'Ihre Speisekarte bleibt online und läuft nach der Zahlung im neuen Tarif weiter.', 'Il vostro menu resta online e continua con il nuovo piano appena il pagamento va a buon fine.');
   }
 
   planInputs.forEach(function (input) {
@@ -161,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
     var selectedPlan = currentPlan();
     if (!selectedPlan) {
-      alert(t('Please choose a plan.', 'Bitte wählen Sie einen Plan.'));
+      alert(t('Please choose a plan.', 'Bitte wählen Sie einen Plan.', 'Scegliete un piano.'));
       return;
     }
 
@@ -183,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    setBusy(t('Opening secure checkout…', 'Sichere Bezahlung wird geöffnet…'));
+    setBusy(t('Opening secure checkout…', 'Sichere Bezahlung wird geöffnet…', 'Apertura del pagamento sicuro…'));
     fetch(renewalEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', apikey: supabasePublishableKey },

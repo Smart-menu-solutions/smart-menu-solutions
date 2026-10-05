@@ -910,6 +910,94 @@ Object.assign(translations.de, {
   privacy_contact_p: 'Wenn Sie Fragen oder Bedenken zu dieser Datenschutzerklärung haben, kontaktieren Sie uns bitte unter <a href="mailto:info@smartmenusolutions.com">info@smartmenusolutions.com</a>. Wir helfen Ihnen gerne weiter.'
 });
 
+// Italian for the shared root pages only (see dictionaryFor): renewal.html,
+// addons.html, stats.html, cancel.html, success.html and the nav/footer they
+// share. Everything else in Italian is static HTML under it/.
+translations.it = {
+  skip_link: 'Vai al contenuto principale',
+  home: 'Home',
+  services: 'I nostri servizi',
+  pricing: 'Prezzi',
+  faq: 'FAQ',
+  order: 'Ordina',
+  contact: 'Contatti',
+  get_started: 'Inizia',
+  privacy_policy: 'Privacy',
+  refund_policy: 'Politica di rimborso',
+  imprint: 'Note legali',
+  footer_terms: 'Termini di servizio',
+  footer_cookies: 'Cookie policy',
+  footer_disclaimer: 'Esclusione di responsabilità',
+  footer_copyright: '© 2026 Smart Menu Solutions',
+  footer_powered: 'Realizzato da Smart Menu Solutions',
+  contact_support: "Contatta l'assistenza",
+  return_home: 'Torna alla home',
+
+  renewal_hero_title: 'Rinnovate il vostro <span class="accent">abbonamento</span>',
+  renewal_hero_desc: 'Confermate i vostri dati e scegliete il piano per continuare per un altro anno. Se il vostro menu è cambiato, potete caricare quello nuovo subito dopo il pagamento.',
+  renewal_error_desc: 'Questo link di rinnovo non è valido o è scaduto. Contattateci, vi aiuteremo.',
+  renewal_form_title: "Rinnova l'abbonamento",
+  step_contact_label: '01 / DATI DI CONTATTO',
+  label_firstname: 'Nome',
+  placeholder_firstname: 'Nome',
+  label_lastname: 'Cognome',
+  placeholder_lastname: 'Cognome',
+  label_email: 'Indirizzo e-mail',
+  placeholder_email: 'vostra@azienda.it',
+  label_company: "Nome dell'attività <span style=\"font-weight:400\">(opzionale)</span>",
+  label_phone: 'Numero di telefono <span style="font-weight:400">(opzionale)</span>',
+  placeholder_phone: '+39 333 1234567',
+  renewal_step_plan_label: '02 / Confermate o cambiate il piano',
+  renewal_step_upload_label: '03 / Caricate il vostro menu attuale',
+  renewal_label_upload_title: 'Caricate il PDF del menu (nuovo o invariato)',
+  label_upload_sub: 'Cliccate qui o trascinate qui un file PDF',
+  badge_popular: 'Il più richiesto',
+  consent_policies: 'Accetto l\'<a href="it/privacy-policy.html" target="_blank" rel="noopener">informativa sulla privacy</a> e i <a href="it/terms-of-service.html" target="_blank" rel="noopener">termini di servizio</a>.',
+  renewal_submit_btn: 'Rinnova ora',
+  renewal_summary_header: 'Riepilogo del rinnovo',
+  feat_unique_qr: 'QR code unico',
+  included: 'Incluso',
+  summary_updates_label: 'Aggiornamenti del menu',
+  summary_billing_label: 'Periodo di fatturazione: abbonamento di 1 anno',
+  total_due: 'Totale<br><span style="text-transform:none;font-weight:400;letter-spacing:0;font-size:.82em">IVA inclusa</span>',
+  what_happens_next: 'Cosa succede dopo?',
+  renewal_what_happens_next_desc: 'Il vostro abbonamento viene rinnovato per un altro anno appena il pagamento va a buon fine.',
+
+  addons_hero_title: 'Gestite i vostri <span class="accent">add-on</span>',
+  addons_hero_desc: "Aggiungete una funzione in qualsiasi momento: pagate solo l'importo proporzionale per il resto dell'anno di abbonamento in corso.",
+  addons_error_desc: 'Questo link non è valido o è scaduto. Contattateci, vi aiuteremo.',
+  addons_locked_desc: 'Il vostro abbonamento al momento non è attivo, quindi non è possibile aggiungere add-on. Usate il link di rinnovo della vostra e-mail oppure contattateci.',
+  addons_loading: 'Caricamento dei vostri add-on…',
+  addons_list_title: 'Add-on disponibili',
+  addon_prorate_note: "Aggiungendo una funzione pagate solo l'importo proporzionale per il resto dell'anno di abbonamento in corso, non un anno intero. Dal rinnovo successivo è inclusa automaticamente.",
+
+  stats_hero_title: 'Il traffico <span class="accent">settimanale</span> del vostro menu',
+  stats_hero_desc: 'Quanti ospiti hanno scansionato il vostro menu con QR code e quali categorie e piatti hanno guardato di più.',
+  stats_error_desc: 'Questo link non è valido o è scaduto. Contattateci, vi aiuteremo.',
+  stats_paused_desc: "L'add-on Smart WeeklyReport™ non fa più parte del vostro piano attivo, quindi qui non ci sono novità da mostrare.",
+  stats_paused_cta: 'Volete riattivarlo? Contattateci',
+  stats_loading: 'Caricamento delle vostre statistiche…',
+  stats_visits_label: 'Visite di questa settimana',
+  stats_top_categories: 'Categorie più viste',
+  stats_top_dishes: 'Piatti più visti',
+  stats_sfm_title: 'Smart FoodMatch™',
+  stats_sfm_subhead: 'Consigli più frequenti',
+
+  cancel_title: 'Pagamento <span class="accent">annullato</span>',
+  cancel_desc: 'Nessun pagamento è stato effettuato.',
+  cancel_safe_heading: 'I vostri dati sono al sicuro',
+  cancel_safe_desc: "Potete tornare alla pagina d'ordine e riprovare, oppure contattare il nostro team per ricevere aiuto.",
+  cancel_try_again: 'Riprova',
+
+  success_title: 'Ordine <span class="accent">ricevuto</span>',
+  success_desc: 'Grazie. Vi contatteremo con i passi successivi.',
+  success_next_heading: 'Cosa succede dopo?',
+  success_next_desc: 'Controlliamo i vostri dati e il vostro menu, confermiamo il pacchetto scelto e iniziamo la configurazione quando tutte le informazioni necessarie sono complete.',
+
+  notfound_desc: 'Questa pagina non è stata trovata.',
+  notfound_help: 'Usate la home page o contattate la nostra assistenza se avete seguito un link non funzionante.'
+};
+
 function applyMobileRefundHeading() {
   var isMobile = window.matchMedia('(max-width: 480px)').matches;
   document.querySelectorAll('[data-i18n="refund_hero_title"], [data-i18n="privacy_page_title"]').forEach(function (title) {
@@ -920,18 +1008,27 @@ function applyMobileRefundHeading() {
   });
 }
 
+// The it/ pages are fully translated static HTML. translations.it only covers
+// the shared root pages that switch language in place (renewal, add-ons,
+// stats, cancel), so it must never rewrite an it/ page.
+function dictionaryFor(lang) {
+  if (lang === 'it' && /\/it\//.test(window.location.pathname)) return null;
+  return translations[lang] || null;
+}
+
 function switchLanguage(lang) {
   localStorage.setItem('selectedLang', lang);
   document.documentElement.lang = lang;
   wirePageTranslations();
+  var dict = dictionaryFor(lang);
   var elements = document.querySelectorAll('[data-i18n]');
   elements.forEach(function (el) {
     var key = el.getAttribute('data-i18n');
-    if (translations[lang] && translations[lang][key]) {
-      if (translations[lang][key].includes('<')) {
-        el.innerHTML = translations[lang][key];
+    if (dict && dict[key]) {
+      if (dict[key].includes('<')) {
+        el.innerHTML = dict[key];
       } else {
-        el.textContent = translations[lang][key];
+        el.textContent = dict[key];
       }
     }
   });
@@ -940,8 +1037,8 @@ function switchLanguage(lang) {
   var placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
   placeholderElements.forEach(function (el) {
     var pKey = el.getAttribute('data-i18n-placeholder');
-    if (translations[lang] && translations[lang][pKey]) {
-      el.setAttribute('placeholder', translations[lang][pKey]);
+    if (dict && dict[pKey]) {
+      el.setAttribute('placeholder', dict[pKey]);
     }
   });
 
@@ -955,11 +1052,11 @@ function setupLanguageControls() {
     if (!container) {
       container = document.createElement('div');
       container.className = 'nav-lang-container';
-      container.innerHTML = '<div class="lang-switcher"><button class="lang-btn" type="button" data-language="de" title="Deutsch">DE</button><button class="lang-btn" type="button" data-language="en" title="English">EN</button></div>';
+      container.innerHTML = '<div class="lang-switcher"><button class="lang-btn" type="button" data-language="de" title="Deutsch">DE</button><button class="lang-btn" type="button" data-language="en" title="English">EN</button><button class="lang-btn" type="button" data-language="it" title="Italiano">IT</button></div>';
       nav.appendChild(container);
     }
     container.querySelectorAll('button').forEach(function (button, index) {
-      var language = index === 0 ? 'de' : 'en';
+      var language = ['de', 'en', 'it'][index] || 'en';
       button.className = 'lang-btn';
       button.textContent = language.toUpperCase();
       button.removeAttribute('onclick');
@@ -1065,10 +1162,11 @@ function applyPageTranslations(lang) {
   document.querySelectorAll('[data-language]').forEach(function (button) {
     button.classList.toggle('active', button.getAttribute('data-language') === lang);
   });
+  var dict = dictionaryFor(lang);
   document.querySelectorAll('.faq-item summary[data-i18n]').forEach(function (summary) {
     var plus = summary.querySelector('.plus');
     var key = summary.getAttribute('data-i18n');
-    if (plus && translations[lang] && translations[lang][key]) summary.firstChild.nodeValue = translations[lang][key];
+    if (plus && dict && dict[key]) summary.firstChild.nodeValue = dict[key];
   });
 
 }

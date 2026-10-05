@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>try{localStorage.setItem('selectedLang','en');}catch(e){}</script>
+<script>/* English by default; visitors who chose Italian on the site keep it (the add-on emails only know de/en). */try{if(localStorage.getItem('selectedLang')!=='it')localStorage.setItem('selectedLang','en');}catch(e){}</script>
 <meta name="robots" content="noindex, nofollow">
 <title>Manage Your Add-ons | Smart Menu Solutions</title>
 <meta name="description" content="Add Smart FoodMatch™ or Smart WeeklyReport™ to your Smart Menu Solutions plan anytime - billed pro-rated for the rest of your current year.">
@@ -104,7 +104,7 @@
   </div>
 </footer>
 
-<script src="script.js?v=2026-10-02a"></script>
-<script src="addons.js?v=3"></script>
+<script src="script.js?v=2026-10-05b"></script>
+<script src="addons.js?v=2026-10-05b"></script>
 </body>
 </html>
