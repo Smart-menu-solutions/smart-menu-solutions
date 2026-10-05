@@ -16,9 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var lang = root.getAttribute('data-lang');
   if (lang !== 'en' && lang !== 'it') lang = 'de';
-  // order-upload only knows 'de' and 'en' (its messages and emails), so the
-  // Italian page asks it for English.
-  var serverLang = lang === 'it' ? 'en' : lang;
+  var serverLang = lang;
   var TEXT = {
     de: {
       thanksInitial: 'Vielen Dank für Ihre Bestellung{name}!',

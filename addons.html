@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>/* English by default; visitors who chose Italian on the site keep it (the add-on emails only know de/en). */try{if(localStorage.getItem('selectedLang')!=='it')localStorage.setItem('selectedLang','en');}catch(e){}</script>
+<script>/* ?lang= from the order email wins; without it English, except for visitors who chose Italian on the site. */try{var l=new URLSearchParams(location.search).get('lang');if(l!=='de'&&l!=='en'&&l!=='it')l=localStorage.getItem('selectedLang')==='it'?'it':'en';localStorage.setItem('selectedLang',l);}catch(e){}</script>
 <meta name="robots" content="noindex, nofollow">
 <title>Manage Your Add-ons | Smart Menu Solutions</title>
 <meta name="description" content="Add Smart FoodMatch™ or Smart WeeklyReport™ to your Smart Menu Solutions plan anytime - billed pro-rated for the rest of your current year.">

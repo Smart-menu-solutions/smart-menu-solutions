@@ -29,9 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
         email: document.getElementById('email').value.trim(),
         companyName: document.getElementById('companyName').value.trim(),
         phone: document.getElementById('phone').value.trim(),
-        // Emails exist in German and English only, so Italian customers get
-        // the English ones.
-        lang: isDe ? 'de' : 'en'
+        // Decides the language of every email for this pass (de/en/it).
+        lang: isDe ? 'de' : isIt ? 'it' : 'en'
       })
     })
       .then(function (response) { return response.json().then(function (data) { if (!response.ok) throw new Error(data.error || 'Checkout could not be started.'); return data; }); })

@@ -292,7 +292,8 @@ document.addEventListener('DOMContentLoaded', function () {
         smartFoodMatchAddon: isSfmAddonChecked(),
         analyticsReportsAddon: isAnalyticsAddonChecked(),
         smartServiceHubAddon: isHubAddonChecked(),
-        lang: localStorage.getItem('selectedLang') === 'de' ? 'de' : 'en'
+        // Decides the language of every email for this order (de/en/it).
+        lang: ['de', 'it'].indexOf(localStorage.getItem('selectedLang')) !== -1 ? localStorage.getItem('selectedLang') : 'en'
       })
     })
       .then(function (response) { return response.json().then(function (data) { if (!response.ok) throw new Error(data.error || 'Checkout could not be started.'); return data; }); })

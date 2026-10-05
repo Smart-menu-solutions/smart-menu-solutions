@@ -176,7 +176,8 @@ document.addEventListener('DOMContentLoaded', function () {
       email: document.getElementById('email').value.trim(),
       companyName: document.getElementById('companyName').value.trim(),
       phone: document.getElementById('phone').value.trim(),
-      lang: localStorage.getItem('selectedLang') === 'de' ? 'de' : 'en'
+      // Becomes the subscription's language for every later email (de/en/it).
+      lang: ['de', 'it'].indexOf(localStorage.getItem('selectedLang')) !== -1 ? localStorage.getItem('selectedLang') : 'en'
     };
     // Only honoured by the renewal function for a Smart Discovery upgrade.
     if (isUpgrade) {

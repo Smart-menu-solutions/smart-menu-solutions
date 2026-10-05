@@ -192,8 +192,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // get-stats only knows en/de for dish and category names and falls back to
-  // English for 'it', which is fine: the page texts around them are Italian.
+  // get-stats translates dish and category names into de/en/it when the menu
+  // has that translation, otherwise it shows the menu's own names.
   var storedLang = localStorage.getItem('selectedLang');
   var initialLang = storedLang === 'de' || storedLang === 'it' ? storedLang : 'en';
   setActiveLangButton(initialLang);
