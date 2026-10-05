@@ -97,7 +97,10 @@ document.addEventListener('DOMContentLoaded', function () {
     set('.page-hero p', t('Keep your digital menu: choose a plan and the add-ons you want to keep. Your €2.99 is credited.', 'Behalten Sie Ihre digitale Speisekarte: Wählen Sie einen Tarif und die Zusatzmodule, die Sie behalten möchten. Ihre 2,99 € werden angerechnet.', 'Mantenete il vostro menu digitale: scegliete un piano e gli add-on che volete tenere. I vostri 2,99 € vengono scalati.'));
     set('.order-card > h2', t('Upgrade your menu', 'Speisekarte upgraden', 'Fate l\'upgrade del vostro menu'));
     set('.os-label', t('Upgrade summary', 'Upgrade-Übersicht', 'Riepilogo dell\'upgrade'));
-    set('#payButton span', t('Upgrade now', 'Jetzt upgraden', 'Fai l\'upgrade ora'));
+    // script.js translates #payButton as a whole (renewal_submit_btn), which
+    // drops its inner span - so the label goes onto whatever holds it now.
+    var payLabel = document.querySelector('#payButton span') || payButton;
+    payLabel.textContent = t('Upgrade now', 'Jetzt upgraden', 'Fai l\'upgrade ora');
     set('#upgradeAddonsLabel', t('03 / Add-ons', '03 / Zusatzmodule', '03 / Add-on'));
     set('#upgradeAddonsHint', t('You tried all add-ons in Smart Discovery – they are pre-selected. Untick what you don\'t need.', 'In Smart Discovery haben Sie alle Zusatzmodule getestet – sie sind vorausgewählt. Entfernen Sie den Haken bei allem, was Sie nicht brauchen.', 'In Smart Discovery avete provato tutti gli add-on: sono preselezionati. Togliete la spunta da ciò che non vi serve.'));
     set('#upLineCredit span', t('Smart Discovery credit', 'Smart Discovery angerechnet', 'Credito Smart Discovery'));
