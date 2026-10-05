@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
       zipLabelOptional: '02 / FOTOS (ZIP, OPTIONAL)',
       logoLabel: '{n} / LOGO (OPTIONAL)',
       logoTitle: 'Logo hochladen (PNG oder JPG)',
-      tablesLabel: '{n} / TISCHE',
-      tablesHint: 'Für Smart ServiceHub™: Wie sind Ihre Tische nummeriert? Jeder Tisch bekommt seinen eigenen QR-Code zum Bestellen.',
+      tablesLabel: '{n} / TISCHE (OPTIONAL)',
+      tablesHint: 'Für Smart ServiceHub™: Wie sind Ihre Tische nummeriert? Jeder Tisch bekommt seinen eigenen QR-Code zum Bestellen. Sie können das auch später eintragen – sobald Ihre Speisekarte eingerichtet ist, schicken wir Ihnen einen Link für Tische und Kassennummern.',
       notLogo: 'Das Logo muss ein PNG- oder JPG-Bild sein.',
       pdfTitle: 'Speisekarte als PDF hochladen',
       zipTitle: 'Fotos als ZIP-Datei hochladen',
@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', function () {
       zipLabelOptional: '02 / PHOTOS (ZIP, OPTIONAL)',
       logoLabel: '{n} / LOGO (OPTIONAL)',
       logoTitle: 'Upload your logo (PNG or JPG)',
-      tablesLabel: '{n} / TABLES',
-      tablesHint: 'For Smart ServiceHub™: how are your tables numbered? Each table gets its own QR code for ordering.',
+      tablesLabel: '{n} / TABLES (OPTIONAL)',
+      tablesHint: 'For Smart ServiceHub™: how are your tables numbered? Each table gets its own QR code for ordering. You can also do this later - once your menu is set up, we send you a link for your tables and till numbers.',
       notLogo: 'The logo must be a PNG or JPG image.',
       pdfTitle: 'Upload your menu as a PDF',
       zipTitle: 'Upload your photos as a ZIP file',
@@ -89,8 +89,8 @@ document.addEventListener('DOMContentLoaded', function () {
       zipLabelOptional: '02 / FOTO (ZIP, OPZIONALE)',
       logoLabel: '{n} / LOGO (OPZIONALE)',
       logoTitle: 'Caricate il vostro logo (PNG o JPG)',
-      tablesLabel: '{n} / TAVOLI',
-      tablesHint: 'Per Smart ServiceHub™: come sono numerati i vostri tavoli? Ogni tavolo riceve il proprio QR code per ordinare.',
+      tablesLabel: '{n} / TAVOLI (FACOLTATIVO)',
+      tablesHint: 'Per Smart ServiceHub™: come sono numerati i vostri tavoli? Ogni tavolo riceve il proprio QR code per ordinare. Potete farlo anche più tardi: quando il vostro menu è pronto, vi inviamo un link per tavoli e numeri di cassa.',
       notLogo: 'Il logo deve essere un\'immagine PNG o JPG.',
       pdfTitle: 'Caricate il vostro menu in PDF',
       zipTitle: 'Caricate le vostre foto come file ZIP',
@@ -151,7 +151,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   call({ action: 'status' }).then(function (data) {
     status = data;
-    var name = data.firstName ? ', ' + data.firstName : '';
+    var fullName = [data.firstName, data.lastName].filter(Boolean).join(' ');
+    var name = fullName ? ', ' + fullName : '';
     var renewal = data.type === 'renewal';
     document.getElementById('uploadTitle').textContent = (renewal ? TEXT.thanksRenewal : TEXT.thanksInitial).replace('{name}', name);
     document.getElementById('uploadIntro').textContent = renewal ? TEXT.introRenewal : TEXT.introInitial;
@@ -166,6 +167,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (data.hubAddon) {
       tablesSection.querySelector('.order-step-label').textContent = stepLabel(TEXT.tablesLabel);
       tablesSection.querySelector('.tables-hint').textContent = TEXT.tablesHint;
+      // What was typed on an earlier upload comes back filled in.
+      if (data.tableNumbers) document.getElementById('tableNumbers').value = data.tableNumbers;
     }
     submitButton.querySelector('span').textContent = renewal ? TEXT.submitRenewal : TEXT.submit;
     show(form);
