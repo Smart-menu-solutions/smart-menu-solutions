@@ -1,0 +1,18 @@
+{
+  "name": "Smart Menu Solutions",
+  "short_name": "Smart Menu",
+  "description": "Digitale QR-Speisekarten für Restaurants, Bars, Cafés und Hotels.",
+  "id": "/de/",
+  "start_url": "/de/",
+  "scope": "/",
+  "lang": "de",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#f66a09",
+  "icons": [
+    { "src": "../assets/images/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "../assets/images/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "../assets/images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "../assets/images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
