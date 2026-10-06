@@ -23,7 +23,7 @@
 <link rel="alternate" hreflang="it" href="https://smartmenusolutions.com/it/">
 <link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/">
 <link rel="icon" type="image/png" href="../assets/images/logo.png"><link rel="manifest" href="../site.webmanifest"><link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
-<link rel="stylesheet" href="../assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="../style.css?v=2026-10-06c">
+<link rel="stylesheet" href="../assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="../style.css?v=2026-10-06d">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -390,6 +390,7 @@
               <div><h3>Ihre Speisekarte auf dem Startbildschirm Ihrer Gäste</h3><p>Stammgäste speichern Ihre Speisekarte mit einem Tipp und blättern darin wie in einer App – auch bei schwachem WLAN. Das gilt für die Speisekarte: Bestellt wird am Tisch (mit Smart ServiceHub™) weiterhin über den QR-Code auf dem Tisch.</p></div>
             </li>
           </ul>
+          <button type="button" class="btn btn--outline app-steps-open" data-app-steps>So kommen Sie zur App – in 3 Schritten</button>
           <p class="app-note">In jedem Paket enthalten. Die Push-Benachrichtigungen gehören zu Smart ServiceHub™.</p>
         </div>
         <div class="app-showcase-visual">
@@ -398,6 +399,63 @@
       </div>
     </div>
   </section>
+
+  <div class="steps-overlay" id="appStepsOverlay" hidden>
+    <div class="steps-box" role="dialog" aria-modal="true" aria-labelledby="appStepsTitle">
+      <button type="button" class="steps-close" aria-label="Schließen">✕</button>
+      <p class="steps-eyebrow">SmartPilot · Smart ServiceHub™</p>
+      <h3 id="appStepsTitle">In 3 Schritten zu Ihrer App</h3>
+      <div class="arc-wrap">
+        <svg class="arc-svg" viewBox="0 0 390 420" aria-hidden="true">
+          <g stroke-width="10" stroke-linejoin="round">
+            <path d="M 218.0,6.9 A 230 230 0 0 1 321.7,120.1 L 248.1,151.4 A 150 150 0 0 0 180.4,77.6 Z" fill="#F66A09" stroke="#F66A09"/>
+            <path d="M 330.0,142.8 A 230 230 0 0 1 330.0,277.2 L 253.4,253.9 A 150 150 0 0 0 253.4,166.1 Z" fill="#262421" stroke="#262421"/>
+            <path d="M 321.7,299.9 A 230 230 0 0 1 218.0,413.1 L 180.4,342.4 A 150 150 0 0 0 248.1,268.6 Z" fill="#2F9E5B" stroke="#2F9E5B"/>
+          </g>
+          <g fill="#ffffff" text-anchor="middle" font-weight="700">
+            <text x="250.1" y="74" font-size="11" letter-spacing="1.5">SCHRITT</text>
+            <text x="250.1" y="104" font-size="32">01</text>
+            <text x="296" y="202" font-size="11" letter-spacing="1.5">SCHRITT</text>
+            <text x="296" y="232" font-size="32">02</text>
+            <text x="250.1" y="331" font-size="11" letter-spacing="1.5">SCHRITT</text>
+            <text x="250.1" y="361" font-size="32">03</text>
+          </g>
+          <g stroke-width="2">
+            <line x1="306" y1="81.6" x2="378" y2="81.6" stroke="#F66A09"/>
+            <line x1="346" y1="210" x2="378" y2="210" stroke="#262421"/>
+            <line x1="306" y1="338.4" x2="378" y2="338.4" stroke="#2F9E5B"/>
+          </g>
+          <circle cx="382" cy="81.6" r="5" fill="#F66A09"/>
+          <circle cx="382" cy="210" r="5" fill="#262421"/>
+          <circle cx="382" cy="338.4" r="5" fill="#2F9E5B"/>
+          <text x="110" y="206" text-anchor="middle" font-size="24" font-weight="700" fill="#262421">SmartPilot</text>
+          <text x="110" y="230" text-anchor="middle" font-size="14" fill="#737373">in 3 Schritten</text>
+        </svg>
+        <ol class="arc-list">
+          <li><span class="num">01</span><div><h4>Link oder QR-Code erhalten</h4><p>Sobald Ihre Speisekarte eingerichtet ist, bekommen Sie von uns Ihren SmartPilot-Link und einen QR-Code. Mit Smart ServiceHub™ bekommt Ihr Team eigene Codes für Küche, Bar, Kasse und Service.</p></div></li>
+          <li><span class="num">02</span><div><h4>Auf den Startbildschirm legen</h4><p>QR-Code mit der Handy-Kamera scannen. Android: „Installieren“ tippen. iPhone: Teilen → „Zum Home-Bildschirm“. Fertig – ohne App Store, ohne Download.</p></div></li>
+          <li><span class="num">03</span><div><h4>Loslegen</h4><p>SmartPilot öffnen und alles im Blick haben. Ihr Team tippt einmal auf „Benachrichtigungen aktivieren“ – dann kommt jede Bestellung aufs Handy.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function () {
+    var overlay = document.getElementById('appStepsOverlay');
+    var opener = document.querySelector('[data-app-steps]');
+    if (!overlay || !opener) return;
+    function close() { overlay.hidden = true; document.body.style.overflow = ''; opener.focus(); }
+    opener.addEventListener('click', function () {
+      overlay.hidden = false;
+      document.body.style.overflow = 'hidden';
+      overlay.querySelector('.steps-close').focus();
+    });
+    overlay.addEventListener('click', function (event) {
+      if (event.target === overlay || event.target.closest('.steps-close')) close();
+    });
+    document.addEventListener('keydown', function (event) { if (event.key === 'Escape' && !overlay.hidden) close(); });
+  })();
+  </script>
 
   <section class="section section--alt">
     <div class="container">

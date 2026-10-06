@@ -1558,6 +1558,38 @@ button.compare-photo:hover .shot-zoom-badge, button.compare-photo:focus-visible 
 .app-checks{ list-style: none; margin: 1.3rem 0 0; padding: 0; display: grid; gap: .6rem; }
 .app-checks li{ display: flex; gap: .6rem; align-items: flex-start; }
 .app-checks svg{ flex: 0 0 auto; margin-top: .22em; color: var(--orange); }
+/* Home "Your own app": the "in 3 steps" popup - an arc of three segments
+   (orange / dark / green) with the steps beside it; a plain numbered list on
+   phones. Segment centres sit 128.4px apart, so the list rows are 128px. */
+.app-steps-open{ margin-top: 1.4rem; }
+.steps-overlay{ position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 20px; overflow-y: auto; background: rgba(20,18,16,.62); }
+.steps-overlay[hidden]{ display: none; }
+.steps-box{ position: relative; width: 100%; max-width: 900px; padding: 2.2rem 2.4rem 2rem; border-radius: 22px; background: #fff; box-shadow: 0 30px 80px -30px rgba(0,0,0,.55); }
+.steps-close{ position: absolute; top: 14px; right: 14px; width: 40px; height: 40px; border: 0; border-radius: 50%; background: #f2f1ef; color: #262421; font-size: 18px; cursor: pointer; }
+.steps-close:hover{ background: #e9e7e3; }
+.steps-eyebrow{ margin: 0; color: var(--orange); font-weight: 700; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; }
+.steps-box h3{ margin: .3rem 0 1.1rem; font-size: clamp(1.4rem, 3vw, 1.9rem); }
+.arc-wrap{ display: grid; grid-template-columns: 390px minmax(0, 1fr); gap: 1rem; align-items: start; }
+.arc-svg{ display: block; width: 390px; height: 420px; font-family: inherit; }
+.arc-list{ list-style: none; margin: 0; padding: 18px 0 0; }
+.arc-list li{ display: flex; align-items: center; height: 128px; }
+.arc-list .num{ display: none; }
+.arc-list h4{ margin: 0 0 .25rem; font-size: 1.1rem; }
+.arc-list p{ margin: 0; max-width: none; font-size: .9rem; line-height: 1.45; color: var(--grey); }
+.arc-list li:nth-child(1) h4, .arc-list li:nth-child(1) .num{ color: #F66A09; }
+.arc-list li:nth-child(2) h4, .arc-list li:nth-child(2) .num{ color: #262421; }
+.arc-list li:nth-child(3) h4, .arc-list li:nth-child(3) .num{ color: #2F9E5B; }
+@media (max-width: 760px){
+  .steps-box{ padding: 1.6rem 1.2rem 1.4rem; }
+  .arc-wrap{ grid-template-columns: 1fr; }
+  .arc-svg{ display: none; }
+  .arc-list{ display: grid; gap: 1.1rem; padding: 0; }
+  .arc-list li{ display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: .8rem; align-items: start; height: auto; }
+  .arc-list .num{ display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; color: #fff !important; font-weight: 700; }
+  .arc-list li:nth-child(1) .num{ background: #F66A09; }
+  .arc-list li:nth-child(2) .num{ background: #262421; }
+  .arc-list li:nth-child(3) .num{ background: #2F9E5B; }
+}
 @media (max-width: 860px){
   .app-showcase{ grid-template-columns: 1fr; gap: 1.5rem; }
   .app-showcase-visual{ order: -1; width: 100%; max-width: 440px; margin: 0 auto; }
