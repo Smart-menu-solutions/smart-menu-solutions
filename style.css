@@ -1540,3 +1540,19 @@ button.compare-photo:hover .shot-zoom-badge, button.compare-photo:focus-visible 
 .tables-hint{ font-size: .88rem; color: var(--grey); margin: 0 0 .6rem; }
 .tables-numbers-label{ display: block; margin: .9rem 0 .35rem; font-weight: 700; font-size: .9rem; }
 .tables-numbers-input{ width: 100%; padding: .7rem .9rem; border: 1.5px solid var(--line); border-radius: 10px; font: inherit; font-size: 1rem; }
+
+/* Home: "Your own app" - the owner app, staff push notifications and the
+   menu on the guests' home screen. Image: app-showcase-<lang>.jpg. */
+.app-showcase{ display: grid; grid-template-columns: 1.05fr .95fr; gap: var(--space-4); align-items: center; }
+.app-showcase-visual img{ display: block; width: 100%; height: auto; }
+.app-kicker{ display: inline-block; margin-bottom: .8em; padding: .3em .9em; border-radius: 999px; background: var(--orange); color: #fff; font-weight: 700; font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; }
+.app-points{ list-style: none; margin: 1.6rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 1.15rem; }
+.app-points li{ display: flex; gap: .9rem; align-items: flex-start; }
+.app-point-icon{ flex: 0 0 auto; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: #FFF1E4; color: var(--orange); }
+.app-points h3{ margin: 0 0 .2em; font-size: 1.05rem; }
+.app-points p{ margin: 0; font-size: .92rem; }
+.app-note{ margin: 1.5rem 0 0; font-size: .85rem; color: var(--grey); }
+@media (max-width: 860px){
+  .app-showcase{ grid-template-columns: 1fr; gap: 1.5rem; }
+  .app-showcase-visual{ order: -1; width: 100%; max-width: 440px; margin: 0 auto; }
+}
