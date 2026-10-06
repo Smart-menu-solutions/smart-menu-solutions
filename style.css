@@ -357,6 +357,12 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 }
 .compare-photo--demo svg{ color: var(--orange); flex-shrink: 0; }
 .compare-photo--demo:hover .demo-pill{ background: #34302b; }
+/* On phones the photo strip is only ~90px tall - a full-size pill (longest
+   in IT: "Vedi un esempio dal vivo") covered the whole report photo. */
+@media (max-width: 600px){
+  .compare-photo--demo .demo-pill{ gap: .35em; padding: .32em .75em; font-size: .72rem; box-shadow: 0 6px 14px -6px rgba(0,0,0,.55); }
+  .compare-photo--demo svg{ width: 14px; height: 14px; }
+}
 
 .stats-demo-overlay{
   position: fixed; inset: 0; z-index: 400; background: rgba(20,18,16,.75);
