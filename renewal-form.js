@@ -84,6 +84,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!input) return;
     sumPlanName.textContent = input.getAttribute('data-name');
     sumUpdates.textContent = input.getAttribute('data-updates') + t(' / month', ' / Monat', ' / mese');
+    // JS-managed like the line above (this page switches language in place).
+    var appLine = document.getElementById('upLineApp');
+    if (appLine) appLine.textContent = t('SmartPilot app for Android & iPhone', 'App „SmartPilot“ für Android & iPhone', 'App “SmartPilot” per Android e iPhone');
     hiddenPlanName.value = input.getAttribute('data-name');
     updateTotal();
   }

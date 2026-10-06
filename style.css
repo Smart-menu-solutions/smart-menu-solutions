@@ -1552,6 +1552,12 @@ button.compare-photo:hover .shot-zoom-badge, button.compare-photo:focus-visible 
 .app-points h3{ margin: 0 0 .2em; font-size: 1.05rem; }
 .app-points p{ margin: 0; font-size: .92rem; }
 .app-note{ margin: 1.5rem 0 0; font-size: .85rem; color: var(--grey); }
+/* our-services: the same block with the image first and a check list. */
+.app-showcase--flip{ grid-template-columns: .95fr 1.05fr; }
+.app-showcase--flip .app-showcase-visual{ order: -1; }
+.app-checks{ list-style: none; margin: 1.3rem 0 0; padding: 0; display: grid; gap: .6rem; }
+.app-checks li{ display: flex; gap: .6rem; align-items: flex-start; }
+.app-checks svg{ flex: 0 0 auto; margin-top: .22em; color: var(--orange); }
 @media (max-width: 860px){
   .app-showcase{ grid-template-columns: 1fr; gap: 1.5rem; }
   .app-showcase-visual{ order: -1; width: 100%; max-width: 440px; margin: 0 auto; }
