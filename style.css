@@ -1594,3 +1594,74 @@ button.compare-photo:hover .shot-zoom-badge, button.compare-photo:focus-visible 
   .app-showcase{ grid-template-columns: 1fr; gap: 1.5rem; }
   .app-showcase-visual{ order: -1; width: 100%; max-width: 440px; margin: 0 auto; }
 }
+
+/* ============================================================
+   Home: QR menu & ordering system (2026-10-07) - hero price line,
+   "How an order works" in five steps, the live demo, "Why us"
+   ============================================================ */
+/* In-page links (#live-demo) stop below the fixed header. */
+html{ scroll-padding-top: calc(var(--header-h, 69px) + 12px); }
+
+.hero h1.hero-title{ margin-bottom: 1.1em; }
+.hero-price{ margin: .3rem auto 0; max-width: none; color: #fff; font-size: .95rem; font-weight: 600; }
+.hero-price span{ white-space: nowrap; } .hero-lede, .hero-price{ text-shadow: 0 1px 14px rgba(0,0,0,.6); }
+/* Narrower screens: the hero grows with its text instead of cutting it off
+   at the photo's height - the photo becomes the background. */
+@media (max-width: 900px){
+  .hero-banner{ position: absolute; inset: 0; }
+  .hero-banner img{ height: 100%; min-height: 0; }
+  .hero-inner{ position: relative; padding: 72px 20px 56px; justify-content: center; }
+}
+
+/* "How an order works": guest steps (portrait shots) and team steps (screens). */
+.flow-group{ margin: 0 auto 1rem; max-width: none; text-align: center; color: var(--orange); font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+.flow{ list-style: none; margin: 0 auto; padding: 0; display: grid; gap: 1.4rem; max-width: 1040px; }
+.flow--guest{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.flow--team{ grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 0; }
+.flow--guest + .flow-group{ margin-top: 2.6rem; }
+.flow-step{ display: flex; flex-direction: column; background: var(--paper); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; }
+.flow-shot{ position: relative; display: block; width: 100%; margin: 0; padding: 0; border: 0; border-bottom: var(--border); background: #f4f3f1; aspect-ratio: 800 / 1131; overflow: hidden; cursor: zoom-in; font: inherit; }
+.flow--team .flow-shot{ aspect-ratio: 16 / 10; }
+.flow-shot img{ width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.flow-shot:hover .shot-zoom-badge, .flow-shot:focus-visible .shot-zoom-badge{ background: var(--orange); }
+.flow-body{ padding: 1rem 1.15rem 1.2rem; }
+.flow-meta{ display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem; }
+.flow-num{ flex: 0 0 auto; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--orange); color: #fff; font-weight: 700; font-size: .95rem; }
+.flow-badge{ font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: .28em .85em; border-radius: 999px; background: var(--bg-alt); color: var(--grey); border: var(--border); }
+.flow-badge--hub{ background: var(--orange-tint); color: var(--orange-dark); border-color: transparent; }
+.flow-step h3{ margin: 0 0 .3em; font-size: 1.08rem; }
+.flow-step p{ margin: 0; font-size: .92rem; }
+.flow-note{ margin: 1.8rem auto 0; max-width: none; text-align: center; color: var(--ink); font-size: .98rem; }
+.flow-note strong{ color: var(--orange); white-space: nowrap; }
+/* Phones: the three guest steps side by side to swipe, the team steps stacked. */
+@media (max-width: 640px){
+  .flow--guest{ display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1rem; padding-bottom: .6rem; }
+  .flow--guest .flow-step{ flex: 0 0 80%; scroll-snap-align: center; }
+  .flow--team{ grid-template-columns: 1fr; }
+}
+
+/* Live demo: order at table 12 of El Greco, watch kitchen and bar. */
+.demo-box{ display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: var(--space-4); align-items: center; max-width: 1040px; margin: 0 auto; padding: 2rem 2.2rem; background: var(--paper); border: 1px solid var(--orange); border-radius: 20px; box-shadow: 0 18px 36px -18px rgba(246,106,9,.45); }
+.demo-box h2{ margin-bottom: .45em; } .demo-box h2 .accent{ color: var(--orange); }
+.demo-steps{ list-style: none; counter-reset: demo; margin: 1.1rem 0 1.4rem; padding: 0; display: grid; gap: .7rem; }
+.demo-steps li{ counter-increment: demo; display: flex; gap: .7rem; align-items: flex-start; color: var(--grey); font-size: .95rem; }
+.demo-steps li::before{ content: counter(demo); flex: 0 0 auto; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--orange-tint); color: var(--orange-dark); font-weight: 700; font-size: .85rem; }
+.demo-actions{ display: flex; flex-wrap: wrap; gap: .6rem; }
+.demo-note{ margin: 1rem 0 0; font-size: .82rem; }
+.demo-qr{ text-align: center; }
+.demo-qr img{ width: 100%; max-width: 230px; height: auto; margin: 0 auto; border-radius: 12px; border: var(--border); box-shadow: var(--shadow-sm); }
+.demo-qr p{ margin: .7rem auto 0; font-size: .85rem; }
+@media (max-width: 860px){
+  .demo-box{ grid-template-columns: 1fr; gap: 1.4rem; padding: 1.5rem 1.2rem; }
+}
+/* On a phone there is nothing to scan - the buttons do it. */
+@media (max-width: 640px){ .demo-qr{ display: none; } }
+
+/* "Why Smart Menu Solutions": six honest points, no figures we can't back. */
+.trust-grid{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; max-width: 1060px; margin: 0 auto; }
+.trust-item{ padding: 1.2rem 1.25rem; background: var(--paper); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.trust-icon{ display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: .7rem; border-radius: 12px; background: var(--orange-tint); color: var(--orange); }
+.trust-item h3{ margin: 0 0 .3em; font-size: 1.05rem; }
+.trust-item p{ margin: 0; font-size: .92rem; }
+@media (max-width: 860px){ .trust-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px){ .trust-grid{ grid-template-columns: 1fr; } }
