@@ -24,7 +24,7 @@
 <link rel="alternate" hreflang="it" href="https://smartmenusolutions.com/it/">
 <link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/">
 <link rel="icon" type="image/png" href="assets/images/favicon.png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
-<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-10-07a">
+<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-10-07c">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -97,7 +97,7 @@
       <img src="assets/images/home-hero.jpg" alt="QR code menu and ordering system on a smartphone in a restaurant" width="1927" height="816">
     </div>
     <div class="hero-inner">
-      <p class="hero-slogan" data-i18n="index_hero_slogan">Scan|View|Enjoy</p>
+      <p class="hero-slogan">Scan|Order|Enjoy</p>
       <h1 class="hero-title">QR Menu &amp; Ordering System for Restaurants, Bars &amp; Cafés</h1>
 
       <p class="hero-lede">
@@ -117,7 +117,7 @@
     <div class="container">
       <div class="section-head">
         <h2>How an <span class="accent">order</span> works</h2>
-        <p>From the QR code on the table to the plate – in five steps. Steps 1 and 2 are your digital menu; from step 3 on, the ordering system Smart ServiceHub™ takes over.</p>
+        <p>From the QR code on the table to the bill – in six steps, without a notepad and without running back and forth. Steps 1 and 2 are your digital menu; from step 3 on, the ordering system Smart ServiceHub™ takes over.</p>
       </div>
       <p class="flow-group">At the table – your guest</p>
       <ol class="flow flow--guest">
@@ -146,7 +146,7 @@
           </div>
         </li>
       </ol>
-      <p class="flow-group">In the kitchen, at the bar, at the till</p>
+      <p class="flow-group">In the kitchen, at the bar, in service and at the till</p>
       <ol class="flow flow--team">
         <li class="flow-step">
           <button type="button" class="flow-shot shot-zoom" data-shot="assets/images/servicehub-kitchen-en.jpg?v=8" aria-label="Enlarge: kitchen screen"><img src="assets/images/servicehub-kitchen-en-card.jpg?v=8" alt="Kitchen screen: table 12 with 2 grilled rump steaks (medium) and 1 bruschetta" width="800" height="500" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
@@ -154,20 +154,44 @@
             <div class="flow-meta"><span class="flow-num">4</span><span class="flow-badge flow-badge--hub">Ordering</span></div>
             <h3>Kitchen and bar see it instantly</h3>
             <p>The kitchen only sees the food, the bar only the drinks – sorted by table, with every note. If you like, a push notification goes to the phone as well.</p>
+            <button type="button" class="flow-more shot-zoom" data-shot="assets/images/servicehub-bar-en.jpg?v=8" data-alt="Bar screen: the drinks of every table">See the bar screen ⤢</button>
+          </div>
+        </li>
+        <li class="flow-step">
+          <button type="button" class="flow-shot shot-zoom" data-shot="assets/images/servicehub-waiter-en.jpg?v=8" aria-label="Enlarge: Service Hub screen"><img src="assets/images/servicehub-waiter-en-card.jpg?v=8" alt="Service Hub screen: every table in green, orange or red, with live activity" width="800" height="500" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
+          <div class="flow-body">
+            <div class="flow-meta"><span class="flow-num">5</span><span class="flow-badge flow-badge--hub">Ordering</span></div>
+            <h3>Service brings it to the table</h3>
+            <p>The Service Hub shows every table at a glance: green = free, orange = active, red = wants to pay. When a dish is ready, the bell appears – and your team serves it.</p>
           </div>
         </li>
         <li class="flow-step">
           <button type="button" class="flow-shot shot-zoom" data-shot="assets/images/servicehub-cashier-en.jpg?v=8" aria-label="Enlarge: cashier screen"><img src="assets/images/servicehub-cashier-en-card.jpg?v=8" alt="Cashier screen: table 12 asks for the bill, €68.50 with till numbers" width="800" height="500" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
           <div class="flow-body">
-            <div class="flow-meta"><span class="flow-num">5</span><span class="flow-badge flow-badge--hub">Ordering</span></div>
-            <h3>Serve and get paid</h3>
-            <p>Your team ticks off what’s ready and serves it. When the guest taps “Request bill”, the bill is already put together at the till – you key it into your own till as usual.</p>
+            <div class="flow-meta"><span class="flow-num">6</span><span class="flow-badge flow-badge--hub">Ordering</span></div>
+            <h3>Get paid</h3>
+            <p>When the guest taps “Request bill”, the bill is already put together at the till – with your till numbers if you like. You key it into your own till as usual.</p>
           </div>
         </li>
       </ol>
       <p class="flow-note">Menu only: <strong>from €119 a year</strong> · With the ordering system: <strong>+ €89 a year</strong></p>
     </div>
   </section>
+
+  <div class="shot-overlay" id="shotOverlay" hidden>
+    <button type="button" class="shot-close" aria-label="Close">✕</button>
+    <img id="shotOverlayImg" alt="">
+  </div>
+  <script>
+  (function () {
+    var overlay = document.getElementById('shotOverlay'), big = document.getElementById('shotOverlayImg');
+    document.querySelectorAll('.shot-zoom').forEach(function (button) {
+      button.addEventListener('click', function () { big.src = button.getAttribute('data-shot'); big.alt = button.getAttribute('data-alt') || button.querySelector('img').alt; overlay.hidden = false; });
+    });
+    overlay.addEventListener('click', function (event) { if (event.target !== big) overlay.hidden = true; });
+    document.addEventListener('keydown', function (event) { if (event.key === 'Escape') overlay.hidden = true; });
+  })();
+  </script>
 
   <section class="section section--alt" id="live-demo">
     <div class="container">
@@ -187,6 +211,10 @@
             <a class="btn btn--outline" href="https://smart-menu-solutions.github.io/smart-menu-builder/menu.html?client=el-greco&amp;table=12&amp;k=8c5e0cd1-2ad1-4a64-988b-0fbca34a9d13&amp;lang=en" target="_blank" rel="noopener">Order as a guest</a>
           </div>
           <p class="demo-note">A demo restaurant: nothing is charged, and all orders are deleted every night.</p>
+          <div class="demo-next">
+            <p><strong>Like it?</strong> Try your own menu for 7 days – with all add-ons, for €2.99.</p>
+            <a class="btn" href="discovery.html">Try it first for €2.99</a>
+          </div>
         </div>
         <div class="demo-qr">
           <img src="assets/images/menu-ready-el-greco-en.png?v=table-secret-2" alt="QR code for table 12 of the demo restaurant El Greco" width="400" height="400" loading="lazy">
@@ -202,7 +230,7 @@
         <h2 data-i18n="compare_title">From paper menu <span class="accent">to digital experience</span></h2>
         <p data-i18n="compare_desc">See the difference a QR menu makes for your restaurant, bar, café or hotel.</p>
       </div>
-      <div class="compare-grid">
+      <div class="compare-grid compare-grid--3">
         <div class="compare-card">
           <span class="compare-tag" data-i18n="compare_before_tag">Before</span>
           <div class="compare-photo">
@@ -234,22 +262,6 @@
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </div>
         <div class="compare-card compare-card--after">
-          <span class="compare-tag compare-tag--after" data-i18n="compare_ready_tag">Ready to go</span>
-          <div class="compare-photo compare-photo--qr">
-            <a href="https://smart-menu-solutions.github.io/smart-menu-builder/menu.html?client=el-greco&amp;table=12&amp;k=8c5e0cd1-2ad1-4a64-988b-0fbca34a9d13&amp;lang=en" target="_blank" rel="noopener" aria-label="Open the live demo menu"><img class="compare-photo__qr" src="assets/images/menu-ready-el-greco-en.png?v=table-secret-2" alt="QR code linking to a real live Smart Menu Solutions digital menu" loading="lazy"></a>
-          </div>
-          <h3 data-i18n="compare_ready_title">Your menu, live and ready</h3>
-          <ul class="compare-list">
-            <li data-i18n="compare_ready_li1">Every dish with its own photo</li>
-            <li data-i18n="compare_ready_li2">Send us a change, we update your menu</li>
-            <li data-i18n="compare_ready_li3">Share the link or QR code today</li>
-            <li><strong data-i18n="compare_ready_li4">Scan or tap the code above to see it live</strong></li>
-          </ul>
-        </div>
-        <div class="compare-arrow" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-        <div class="compare-card compare-card--after">
           <span class="compare-tag compare-tag--after" data-i18n="compare_new_tag">Smart WeeklyReport™</span>
           <div class="compare-photo">
             <img class="compare-photo__report" src="assets/images/Report_backround.png" alt="Printed sales report with a donut chart and a table of figures">
@@ -267,28 +279,6 @@
             <li><strong data-i18n="compare_new_li3">Click above to see a live example</strong></li>
           </ul>
         </div>
-        <div class="compare-arrow" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-        <div class="compare-card compare-card--after">
-          <span class="compare-tag compare-tag--after" data-i18n="compare_hub_tag">Smart ServiceHub™</span>
-          <div class="compare-photo">
-            <img src="assets/images/service-smart-servicehub.png" alt="Server taking an order on a notepad at a café table">
-            <button type="button" class="compare-photo--demo" id="hubDemoOpen" aria-haspopup="dialog">
-              <span class="demo-pill">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
-                <span data-i18n="compare_hub_cta">See how it works</span>
-              </span>
-            </button>
-          </div>
-          <h3 data-i18n="compare_hub_title">Live table service</h3>
-          <ul class="compare-list">
-            <li data-i18n="compare_hub_li1">Guests order, staff stay in sync</li>
-            <li data-i18n="compare_hub_li2">Live dashboards for kitchen, bar, service and cashier</li>
-            <li data-i18n="compare_hub_li3">Ask for the bill with one tap</li>
-            <li data-i18n="compare_hub_li4">No app to install — works on any phone or tablet</li>
-          </ul>
-        </div>
       </div>
     </div>
   </section>
@@ -300,134 +290,12 @@
     </div>
   </div>
 
-  <div class="stats-demo-overlay" id="hubDemoOverlay" hidden>
-    <div class="hub-demo-box" role="dialog" aria-modal="true" aria-label="Smart ServiceHub™ - how it works">
-      <button type="button" class="stats-demo-close" id="hubDemoClose" aria-label="Close">✕</button>
-      <div class="hub-flow">
-        <h3 data-i18n="hub_flow_title">How Smart ServiceHub™ works</h3>
-        <div class="hub-flow-node hub-flow-guest"><span data-i18n="hub_flow_guest">Guest</span></div>
-        <div class="hub-flow-arrow" aria-hidden="true"></div>
-        <div class="hub-flow-step">
-          <span class="hub-flow-icon" aria-hidden="true">📱</span>
-          <div><h4 data-i18n="hub_flow_step1_title">Scan the QR code</h4><p data-i18n="hub_flow_step1_desc">Guest scans the code at their table</p></div>
-        </div>
-        <div class="hub-flow-arrow" aria-hidden="true"></div>
-        <div class="hub-flow-step">
-          <span class="hub-flow-icon" aria-hidden="true">🍽️</span>
-          <div><h4 data-i18n="hub_flow_step2_title">Digital menu opens</h4><p data-i18n="hub_flow_step2_desc">Instantly, on their own phone - no app needed</p></div>
-        </div>
-        <div class="hub-flow-arrow" aria-hidden="true"></div>
-        <div class="hub-flow-step">
-          <span class="hub-flow-icon" aria-hidden="true">🛒</span>
-          <div><h4 data-i18n="hub_flow_step3_title">Places the order</h4><p data-i18n="hub_flow_step3_desc">A few taps, right from the table</p></div>
-        </div>
-        <div class="hub-flow-arrow" aria-hidden="true"></div>
-        <div class="hub-flow-step">
-          <span class="hub-flow-icon" aria-hidden="true">⚡</span>
-          <div><h4 data-i18n="hub_flow_step4_title">Instant transmission</h4><p data-i18n="hub_flow_step4_desc">Goes straight to cashier, kitchen, bar &amp; waiter</p></div>
-        </div>
-        <div class="hub-flow-arrow" aria-hidden="true"></div>
-        <div class="hub-flow-step">
-          <span class="hub-flow-icon" aria-hidden="true">👨‍🍳</span>
-          <div><h4 data-i18n="hub_flow_step5_title">Service &amp; preparation</h4><p data-i18n="hub_flow_step5_desc">Every station stays perfectly in sync</p></div>
-        </div>
-        <div class="hub-flow-arrow" aria-hidden="true"></div>
-        <div class="hub-flow-step">
-          <span class="hub-flow-icon" aria-hidden="true">➕</span>
-          <div><h4 data-i18n="hub_flow_step6_title">Reorder in 1 click</h4><p data-i18n="hub_flow_step6_desc">No waiting to flag down a waiter</p></div>
-        </div>
-        <p class="hub-flow-outcome" data-i18n="hub_flow_outcome">😊 Guests order, staff stay in sync</p>
-      </div>
-    </div>
-  </div>
-
-  <section class="section section--servicehub" id="servicehub-showcase">
-    <div class="container">
-      <div class="section-head">
-        <h2>From notepad <span class="accent">to Smart ServiceHub™</span></h2>
-        <p>Guests order from their own phone – every order lands instantly on the right screen in kitchen, bar, service and cashier. No paper, no running back and forth.</p>
-      </div>
-      <div class="compare-grid">
-        <div class="compare-card">
-          <span class="compare-tag">Before</span>
-          <div class="compare-photo compare-photo--shot"><img src="assets/images/servicehub-before-notepad.jpg" alt="Waiter writing an order on a paper notepad" loading="lazy"></div>
-          <h3>Orders on paper</h3>
-          <ul class="compare-list">
-            <li>Handwritten notes, hard to read</li>
-            <li>Every order walked to kitchen and bar</li>
-            <li>Bills added up by hand</li>
-          </ul>
-        </div>
-        <div class="compare-arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        <div class="compare-card compare-card--after">
-          <span class="compare-tag compare-tag--after">Service Hub</span>
-          <button type="button" class="compare-photo compare-photo--shot shot-zoom" data-shot="assets/images/servicehub-waiter-en.jpg?v=8" aria-label="Enlarge screenshot: Service Hub"><img src="assets/images/servicehub-waiter-en-card.jpg?v=8" alt="Service Hub screen with all tables in green, orange and red" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
-          <h3>All tables at a glance</h3>
-          <ul class="compare-list">
-            <li>Green = free, orange = active, red = wants to pay</li>
-            <li>Activate a table with one tap</li>
-            <li>Live activity and today’s order summary</li>
-          </ul>
-        </div>
-        <div class="compare-arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        <div class="compare-card compare-card--after">
-          <span class="compare-tag compare-tag--after">Kitchen</span>
-          <button type="button" class="compare-photo compare-photo--shot shot-zoom" data-shot="assets/images/servicehub-kitchen-en.jpg?v=8" aria-label="Enlarge screenshot: Kitchen"><img src="assets/images/servicehub-kitchen-en-card.jpg?v=8" alt="Kitchen screen with open dishes per table" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
-          <h3>Only what the kitchen cooks</h3>
-          <ul class="compare-list">
-            <li>Dishes arrive automatically, sorted by table</li>
-            <li>Tap a line when it’s ready</li>
-            <li>Guest notes like “no onions” included</li>
-          </ul>
-        </div>
-        <div class="compare-arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        <div class="compare-card compare-card--after">
-          <span class="compare-tag compare-tag--after">Bar</span>
-          <button type="button" class="compare-photo compare-photo--shot shot-zoom" data-shot="assets/images/servicehub-bar-en.jpg?v=8" aria-label="Enlarge screenshot: Bar"><img src="assets/images/servicehub-bar-en-card.jpg?v=8" alt="Bar screen with open drinks per table" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
-          <h3>Drinks straight to the bar</h3>
-          <ul class="compare-list">
-            <li>Only drinks, sorted by table</li>
-            <li>Mark a whole table done in one tap</li>
-            <li>Add drinks for guests ordering at the bar</li>
-          </ul>
-        </div>
-        <div class="compare-arrow" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        <div class="compare-card compare-card--after">
-          <span class="compare-tag compare-tag--after">Cashier</span>
-          <button type="button" class="compare-photo compare-photo--shot shot-zoom" data-shot="assets/images/servicehub-cashier-en.jpg?v=8" aria-label="Enlarge screenshot: Cashier"><img src="assets/images/servicehub-cashier-en-card.jpg?v=8" alt="Cashier screen with prices and totals per table" loading="lazy"><span class="shot-zoom-badge" aria-hidden="true">⤢</span></button>
-          <h3>Pay and close in seconds</h3>
-          <ul class="compare-list">
-            <li>Bill requests on top, marked 💳</li>
-            <li>Every item with price and total</li>
-            <li>Close the table – it’s free again instantly</li>
-            <li>Till numbers ready to type into your own till</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="shot-overlay" id="shotOverlay" hidden>
-    <button type="button" class="shot-close" aria-label="Close">✕</button>
-    <img id="shotOverlayImg" alt="">
-  </div>
-  <script>
-  (function () {
-    var overlay = document.getElementById('shotOverlay'), big = document.getElementById('shotOverlayImg');
-    document.querySelectorAll('.shot-zoom').forEach(function (button) {
-      button.addEventListener('click', function () { big.src = button.getAttribute('data-shot'); big.alt = button.querySelector('img').alt; overlay.hidden = false; });
-    });
-    overlay.addEventListener('click', function (event) { if (event.target !== big) overlay.hidden = true; });
-    document.addEventListener('keydown', function (event) { if (event.key === 'Escape') overlay.hidden = true; });
-  })();
-  </script>
-
   <section class="section" id="your-app">
     <div class="container">
       <div class="app-showcase">
         <div class="app-showcase-copy">
           <span class="app-kicker">New</span>
-          <h2>Your own app&nbsp;– <span class="accent">no App Store</span></h2>
+          <h2><span class="app-title-brand">Smart<span class="accent">Pilot</span></span> Your own app&nbsp;– <span class="accent">no App Store</span></h2>
           <p>Every Smart Menu now comes with apps for the phone. They install straight from the browser on Android and iPhone – no download, no extra cost.</p>
           <ul class="app-points">
             <li>
@@ -443,7 +311,7 @@
               <div><h3>Your menu on your guests’ home screen</h3><p>Regulars save your menu with one tap and browse it like an app – even on weak Wi-Fi. This is for viewing the menu: ordering at the table (with Smart ServiceHub™) still works via the QR code on the table.</p></div>
             </li>
           </ul>
-          <button type="button" class="btn btn--outline app-steps-open" data-app-steps>How to get the app – in 3 steps</button>
+          <button type="button" class="btn app-steps-open" data-app-steps>How it works</button>
           <p class="app-note">Included in every plan. Push notifications come with Smart ServiceHub™.</p>
         </div>
         <div class="app-showcase-visual">
@@ -536,7 +404,7 @@
   <section class="section" id="why-us">
     <div class="container">
       <div class="section-head">
-        <h2>Why <span class="accent">Smart Menu Solutions</span></h2>
+        <h2>Why Smart <span class="accent">Menu Solutions</span></h2>
         <p>What you can count on.</p>
       </div>
       <div class="trust-grid">
