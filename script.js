@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
   syncHeaderHeight();
   setupLanguageControls();
   ensureLegalLinks();
-  ensureFooterPowered();
   ensureFooterSocial();
   document.querySelectorAll('form[action*="formsubmit.co"]').forEach(function (form) {
     var isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
@@ -137,7 +136,6 @@ var translations = {
     'refund_policy': 'Refund Policy',
     'imprint': 'Imprint',
     'footer_copyright': '© 2026 Smart Menu Solutions',
-    'footer_powered': 'Powered by Smart Menu Solutions',
 
     // --- Index / Startseite ---
     'index_hero_slogan': 'Scan|View|Enjoy', 'index_hero_title': 'Digital QR Menus for Restaurants, Bars & Cafés',
@@ -440,7 +438,6 @@ var translations = {
     'refund_policy': 'Rückerstattungsrichtlinie',
     'imprint': 'Impressum',
     'footer_copyright': '© 2026 Smart Menu Solutions',
-    'footer_powered': 'Bereitgestellt von Smart Menu Solutions',
 
     // --- Index / Startseite ---
     'index_hero_slogan': 'Scannen|Ansehen|Genießen', 'index_hero_title': 'Digitale QR-Speisekarten für Restaurants, Bars & Cafés',
@@ -929,7 +926,6 @@ translations.it = {
   footer_cookies: 'Cookie policy',
   footer_disclaimer: 'Esclusione di responsabilità',
   footer_copyright: '© 2026 Smart Menu Solutions',
-  footer_powered: 'Realizzato da Smart Menu Solutions',
   contact_support: "Contatta l'assistenza",
   return_home: 'Torna alla home',
 
@@ -1091,8 +1087,7 @@ var globalTranslationSelectors = {
   '.footer-legal a[href="cookie-policy.html"]': 'footer_cookies',
   '.footer-legal a[href="disclaimer.html"]': 'footer_disclaimer',
   '.footer-legal a[href="imprint.html"]': 'imprint',
-  '.footer-bottom > span:first-of-type': 'footer_copyright',
-  '.footer-bottom > span.footer-powered': 'footer_powered'
+  '.footer-bottom > span:first-of-type': 'footer_copyright'
 };
 
   var pageTranslationSelectors = {
@@ -1128,17 +1123,6 @@ function ensureLegalLinks() {
     if (!legal.querySelector('a[href="imprint.html"]')) legal.insertAdjacentHTML('beforeend', '<li><a href="imprint.html" data-i18n="imprint">Imprint</a></li>');
     var emailLink = legal.querySelector('a[href^="mailto:"]');
     if (emailLink) legal.appendChild(emailLink.parentElement);
-  });
-}
-
-function ensureFooterPowered() {
-  document.querySelectorAll('.footer-bottom').forEach(function (bottom) {
-    if (bottom.querySelector('.footer-powered')) return;
-    var span = document.createElement('span');
-    span.className = 'footer-powered';
-    span.textContent = 'Powered by Smart Menu Solutions';
-    var legal = bottom.querySelector('.footer-legal');
-    if (legal) bottom.insertBefore(span, legal); else bottom.appendChild(span);
   });
 }
 
