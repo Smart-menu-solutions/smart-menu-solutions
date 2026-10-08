@@ -234,8 +234,8 @@ var translations = {
     'cta_band_btn': 'View pricing plans',
 
     // --- Pricing Plans Seite ---
-    'pricing_page_title': '<span class="accent">Beyond</span> the ordinary',
-    'pricing_page_desc': "This is where our journey begins. Get to know our business and what we do, and how we're committed to quality and great service. Join us as we grow and succeed together.",
+    'pricing_page_title': 'Clear <span class="accent">pricing</span>',
+    'pricing_page_desc': 'One yearly price per plan, VAT included and no setup fee. Not sure yet? Try your own menu for 7 days with Smart Discovery for €2.99 – credited when you upgrade.',
     'pricing_section_heading': 'Choose your plan',
     'pricing_section_sub': 'We offer a range of specialised plans tailored to meet your individual needs.',
     
@@ -536,8 +536,8 @@ var translations = {
     'cta_band_btn': 'Tarife ansehen',
 
     // --- Pricing Plans Seite ---
-    'pricing_page_title': '<span class="accent">Mehr als</span> gewöhnlich',
-    'pricing_page_desc': 'Hier beginnt unsere Reise. Lernen Sie unser Unternehmen kennen und erfahren Sie, was wir tun und wie wir uns für Qualität und hervorragenden Service einsetzen.',
+    'pricing_page_title': 'Klare <span class="accent">Preise</span>',
+    'pricing_page_desc': 'Ein Jahrespreis pro Tarif, inklusive MwSt. und ohne Einrichtungsgebühr. Noch unsicher? Testen Sie Ihre eigene Speisekarte 7 Tage lang mit Smart Discovery für 2,99 € – der Betrag wird beim Upgrade angerechnet.',
     'pricing_section_heading': 'Wählen Sie Ihren Tarif',
     'pricing_section_sub': 'Wir bieten eine Reihe spezieller Tarife an, die auf Ihre individuellen Bedürfnisse zugeschnitten sind.',
     
