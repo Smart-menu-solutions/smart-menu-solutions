@@ -1694,6 +1694,17 @@ html{ scroll-padding-top: calc(var(--header-h, 69px) + 12px); }
 }
 /* On a phone there is nothing to scan - the buttons do it. */
 @media (max-width: 640px){ .demo-qr{ display: none; } }
+/* Website installed as an app: the demo (menu, kitchen, bar on github.io)
+   opens in this full-screen frame instead of the browser's in-app tab with
+   its toolbar and white line. Orange bar = the app's status bar colour. */
+.app-viewer{ position: fixed; inset: 0; z-index: 1100; display: flex; flex-direction: column; background: #fff; }
+.app-viewer[hidden]{ display: none; }
+.app-viewer-bar{ display: flex; align-items: center; gap: 10px; flex-shrink: 0; padding: calc(8px + env(safe-area-inset-top)) 8px 8px 16px; background: var(--orange); color: #fff; }
+.app-viewer-bar b{ flex: 1; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.app-viewer-bar button{ width: 40px; height: 40px; border: 0; border-radius: 50%; background: none; color: #fff; font-size: 26px; line-height: 1; cursor: pointer; }
+.app-viewer-bar button:active{ background: rgba(255,255,255,.18); }
+.app-viewer iframe{ flex: 1; width: 100%; border: 0; display: block; }
+body.app-viewing{ overflow: hidden; }
 
 /* "Why Smart Menu Solutions": six honest points, no figures we can't back. */
 .trust-grid{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; max-width: 1060px; margin: 0 auto; }
