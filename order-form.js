@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // the site); the no-break space keeps the € next to the amount.
   function eur(n) {
     var amount = parseFloat(n).toFixed(2);
-    var local = amount.replace('.', ',') + ' €';
+    var local = amount.replace('.', ',') + String.fromCharCode(160) + '€';
     return t('€' + amount, local, local);
   }
 

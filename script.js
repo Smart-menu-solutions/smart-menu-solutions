@@ -298,7 +298,7 @@ var translations = {
 
     // --- FAQ Seite ---
     'faq_hero_title': '<span class="accent">FAQ</span>',
-    'faq_hero_desc': "Our journey began with a simple idea: to digitalise restaurants with a modern, eye-catching brand. Here's what people usually ask us before getting started.",
+    'faq_hero_desc': 'Answers to the questions restaurant owners ask us most – about setup, apps, menu updates and the 7-day test.',
     'faq_q1': 'Do I need technical skills?',
     'faq_a1': 'No. We handle the entire setup for you.',
     'faq_q2': 'How do I get started?',
@@ -315,10 +315,10 @@ var translations = {
     'faq_a7': "You go straight to the upload page for your menu. The link is also in your confirmation email if you'd rather upload later. We then review your menu and contact you with the next steps.",
     'faq_q8': 'Can I try a digital menu before subscribing?',
     'faq_a8': 'Yes. With <a href="discovery.html">Smart Discovery</a> you get your own QR menu with up to 10 dishes for 7 days for €2.99, no subscription. The 7 days start once you have received your QR code. You see how many guests open your menu, and the €2.99 is credited if you upgrade to a yearly plan.',
-    'faq_beyond_accent': 'Beyond',
-    'faq_beyond_title': 'the ordinary',
-    'faq_beyond_desc': "Get to know our business and how we're committed to quality and great service. We're glad you're here to be part of our story.",
-    'faq_beyond_btn': "Let's get started",
+    'faq_cta_title': 'Still have <span class="accent">questions</span>?',
+    'faq_cta_desc': "Write to us and we'll get back to you personally. Or try your own menu for 7 days with Smart Discovery for €2.99 first.",
+    'faq_cta_contact': 'Contact us',
+    'faq_cta_try': 'Try it now',
 
     // --- Order / Order Info Seite ---
     'order_overview_title': 'Your order at a glance',
@@ -600,7 +600,7 @@ var translations = {
 
     // --- FAQ Seite ---
     'faq_hero_title': '<span class="accent">FAQ</span>',
-    'faq_hero_desc': 'Unsere Reise begann mit einer einfachen Idee: Restaurants mit einer modernen, auffälligen Marke zu digitalisieren. Hier ist, was uns Kunden meistens fragen, bevor sie starten.',
+    'faq_hero_desc': 'Antworten auf die Fragen, die uns Gastronomen am häufigsten stellen – zu Einrichtung, Apps, Änderungen an der Speisekarte und dem 7-Tage-Test.',
     'faq_q1': 'Brauche ich technische Vorkenntnisse?',
     'faq_a1': 'Nein. Wir übernehmen die komplette Einrichtung für Sie.',
     'faq_q2': 'Wie fange ich an?',
@@ -617,10 +617,10 @@ var translations = {
     'faq_a7': 'Sie kommen direkt zur Upload-Seite für Ihre Speisekarte. Den Link finden Sie auch in Ihrer Bestätigungs-E-Mail, falls Sie lieber später hochladen möchten. Danach prüfen wir Ihre Speisekarte und melden uns mit den nächsten Schritten.',
     'faq_q8': 'Kann ich eine digitale Speisekarte vorher testen?',
     'faq_a8': 'Ja. Mit <a href="discovery.html">Smart Discovery</a> erhalten Sie für 2,99 € Ihre eigene QR-Speisekarte mit bis zu 10 Gerichten für 7 Tage, ohne Abo. Die 7 Tage beginnen, sobald Sie Ihren QR-Code erhalten haben. Sie sehen, wie viele Gäste Ihre Karte öffnen, und die 2,99 € werden bei einem Upgrade auf einen Jahrestarif angerechnet.',
-    'faq_beyond_accent': 'Mehr als',
-    'faq_beyond_title': 'gewöhnlich',
-    'faq_beyond_desc': 'Lernen Sie unser Unternehmen kennen und erfahren Sie, wie wir uns für Qualität und exzellenten Service einsetzen.',
-    'faq_beyond_btn': 'Jetzt starten',
+    'faq_cta_title': 'Noch <span class="accent">Fragen</span>?',
+    'faq_cta_desc': 'Schreiben Sie uns, wir melden uns persönlich bei Ihnen. Oder testen Sie Ihre eigene Speisekarte erst 7 Tage lang mit Smart Discovery für 2,99 €.',
+    'faq_cta_contact': 'Kontakt aufnehmen',
+    'faq_cta_try': 'Jetzt testen',
 
     // --- Order / Order Info Seite ---
     'order_overview_title': 'Ihre Bestellung auf einen Blick',
@@ -1103,7 +1103,7 @@ var globalTranslationSelectors = {
     '.page-hero h1': 'pricing_page_title', '.page-hero p': 'pricing_page_desc', '#pricing-section-head h2': 'pricing_section_heading', '#pricing-section-head p': 'pricing_section_sub', '#plans-grid .price-card:nth-child(2) h3': 'plan_start_title', '#plans-grid .price-card:nth-child(2) > p:nth-of-type(2)': 'plan_start_desc', '#plans-grid .price-card:nth-child(3) h3': 'plan_pro_title', '#plans-grid .price-card:nth-child(3) > p:nth-of-type(2)': 'plan_pro_desc', '#plans-grid .price-card:nth-child(4) h3': 'plan_premium_title', '#plans-grid .price-card:nth-child(4) > p:nth-of-type(2)': 'plan_premium_desc', '#plans-grid .price-card:nth-child(2) .price small': 'vat_incl', '#plans-grid .price-card:nth-child(3) .price small': 'vat_incl', '#plans-grid .price-card:nth-child(4) .price small': 'vat_incl', '#plans-grid .price-card:nth-child(3) .badge': 'badge_popular', '#plans-grid .price-card:nth-child(2) li:nth-child(1) span': 'feat_qr', '#plans-grid .price-card:nth-child(3) li:nth-child(1) span': 'feat_qr', '#plans-grid .price-card:nth-child(4) li:nth-child(1) span': 'feat_qr', '#plans-grid .price-card:nth-child(2) li:nth-child(2) span': 'feat_start_items', '#plans-grid .price-card:nth-child(3) li:nth-child(2) span': 'feat_pro_items', '#plans-grid .price-card:nth-child(4) li:nth-child(2) span': 'feat_premium_items', '#plans-grid .price-card:nth-child(2) li:nth-child(3) span': 'feat_mobile', '#plans-grid .price-card:nth-child(3) li:nth-child(3) span': 'feat_mobile', '#plans-grid .price-card:nth-child(4) li:nth-child(3) span': 'feat_mobile', '#plans-grid .price-card:nth-child(2) li:nth-child(4) span': 'feat_unique_qr', '#plans-grid .price-card:nth-child(3) li:nth-child(4) span': 'feat_unique_qr', '#plans-grid .price-card:nth-child(4) li:nth-child(4) span': 'feat_unique_qr', '#plans-grid .price-card:nth-child(2) li:nth-child(5) span': 'feat_dish_photo_start', '#plans-grid .price-card:nth-child(3) li:nth-child(5) span': 'feat_dish_photo_pro', '#plans-grid .price-card:nth-child(4) li:nth-child(5) span': 'feat_dish_photo_premium', '#plans-grid .price-card:nth-child(2) li:nth-child(6) span': 'feat_start_updates', '#plans-grid .price-card:nth-child(3) li:nth-child(6) span': 'feat_pro_updates', '#plans-grid .price-card:nth-child(4) li:nth-child(6) span': 'feat_premium_updates', '#plans-grid .price-card:nth-child(2) li:nth-child(7) span': 'feat_start_lang', '#plans-grid .price-card:nth-child(2) li:nth-child(8) span': 'feat_billing_year', '#plans-grid .price-card:nth-child(3) li:nth-child(7) span': 'feat_pro_lang', '#plans-grid .price-card:nth-child(3) li:nth-child(8) span': 'feat_billing_year', '#plans-grid .price-card:nth-child(4) li:nth-child(7) span': 'feat_premium_lang', '#plans-grid .price-card:nth-child(4) li:nth-child(8) span': 'feat_billing_year', '#plans-grid .price-card:nth-child(2) .btn': 'btn_choose_start', '#plans-grid .price-card:nth-child(3) .btn': 'btn_choose_pro', '#plans-grid .price-card:nth-child(4) .btn': 'btn_choose_premium'
   },
   'faq.html': {
-    '.page-hero h1': 'faq_hero_title', '.page-hero p': 'faq_hero_desc', '.faq-item:nth-child(1) summary': 'faq_q1', '.faq-item:nth-child(1) .faq-a': 'faq_a1', '.faq-item:nth-child(2) summary': 'faq_q2', '.faq-item:nth-child(2) .faq-a': 'faq_a2', '.faq-item:nth-child(3) summary': 'faq_q3', '.faq-item:nth-child(3) .faq-a': 'faq_a3', '.faq-item:nth-child(4) summary': 'faq_q4', '.faq-item:nth-child(4) .faq-a': 'faq_a4', '.faq-item:nth-child(5) summary': 'faq_q5', '.faq-item:nth-child(5) .faq-a': 'faq_a5', '.faq-item:nth-child(6) summary': 'faq_q6', '.faq-item:nth-child(6) .faq-a': 'faq_a6', '.faq-item:nth-child(7) summary': 'faq_q7', '.faq-item:nth-child(7) .faq-a': 'faq_a7', '.faq-item:nth-child(8) summary': 'faq_q8', '.faq-item:nth-child(8) .faq-a': 'faq_a8', '.section--alt p': 'faq_beyond_desc', '.section--alt a': 'faq_beyond_btn'
+    '.page-hero h1': 'faq_hero_title', '.page-hero p': 'faq_hero_desc', '.faq-item:nth-child(1) summary': 'faq_q1', '.faq-item:nth-child(1) .faq-a': 'faq_a1', '.faq-item:nth-child(2) summary': 'faq_q2', '.faq-item:nth-child(2) .faq-a': 'faq_a2', '.faq-item:nth-child(3) summary': 'faq_q3', '.faq-item:nth-child(3) .faq-a': 'faq_a3', '.faq-item:nth-child(4) summary': 'faq_q4', '.faq-item:nth-child(4) .faq-a': 'faq_a4', '.faq-item:nth-child(5) summary': 'faq_q5', '.faq-item:nth-child(5) .faq-a': 'faq_a5', '.faq-item:nth-child(6) summary': 'faq_q6', '.faq-item:nth-child(6) .faq-a': 'faq_a6', '.faq-item:nth-child(7) summary': 'faq_q7', '.faq-item:nth-child(7) .faq-a': 'faq_a7', '.faq-item:nth-child(8) summary': 'faq_q8', '.faq-item:nth-child(8) .faq-a': 'faq_a8', '.section--alt h2': 'faq_cta_title', '.section--alt p': 'faq_cta_desc', '.section--alt .cta-actions a:first-child': 'faq_cta_contact', '.section--alt .cta-actions a:last-child': 'faq_cta_try'
   },
   'order.html': {
     '.page-hero h1': 'order_overview_title', '.page-hero p': 'order_overview_desc', '.section-head h2': 'order_steps_heading', '.section-head p': 'order_steps_sub', '.step:nth-child(1) h3': 'step1_title', '.step:nth-child(1) p': 'step1_desc', '.step:nth-child(2) h3': 'step2_title', '.step:nth-child(2) p': 'step2_desc', '.step:nth-child(3) h3': 'step3_title', '.step:nth-child(3) p': 'step3_desc', '.step:nth-child(4) h3': 'step4_title', '.step:nth-child(4) p': 'step4_desc', '.step:nth-child(5) h3': 'step5_title', '.step:nth-child(5) p': 'step5_desc', '.step:nth-child(6) h3': 'step6_title', '.step:nth-child(6) p': 'step6_desc', '.step:nth-child(7) h3': 'step7_title', '.step:nth-child(7) p': 'step7_desc', '.section > .container > div[style] a': 'order_cta_btn'
