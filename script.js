@@ -1021,7 +1021,10 @@ function switchLanguage(lang) {
   elements.forEach(function (el) {
     var key = el.getAttribute('data-i18n');
     if (dict && dict[key]) {
-      if (dict[key].includes('<')) {
+      if (el.querySelector('.plus') && el.firstChild && el.firstChild.nodeType === 3) {
+        // FAQ-Frage: nur den Text ersetzen, das "+" dahinter bleibt stehen
+        el.firstChild.nodeValue = dict[key];
+      } else if (dict[key].includes('<')) {
         el.innerHTML = dict[key];
       } else {
         el.textContent = dict[key];
@@ -1146,12 +1149,5 @@ function applyPageTranslations(lang) {
   document.querySelectorAll('[data-language]').forEach(function (button) {
     button.classList.toggle('active', button.getAttribute('data-language') === lang);
   });
-  var dict = dictionaryFor(lang);
-  document.querySelectorAll('.faq-item summary[data-i18n]').forEach(function (summary) {
-    var plus = summary.querySelector('.plus');
-    var key = summary.getAttribute('data-i18n');
-    if (plus && dict && dict[key]) summary.firstChild.nodeValue = dict[key];
-  });
-
 }
 

@@ -46,8 +46,12 @@ document.addEventListener('DOMContentLoaded', function () {
     return en;
   }
 
+  // "€129.00" in English, "129,00 €" in German and Italian (like the rest of
+  // the site); the no-break space keeps the € next to the amount.
   function eur(n) {
-    return '€' + parseFloat(n).toFixed(2);
+    var amount = parseFloat(n).toFixed(2);
+    var local = amount.replace('.', ',') + ' €';
+    return t('€' + amount, local, local);
   }
 
   function currentPlanInput() {
