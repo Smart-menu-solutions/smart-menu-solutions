@@ -1655,6 +1655,9 @@ html{ scroll-padding-top: calc(var(--header-h, 69px) + 12px); }
 /* Live demo: the next step right below it - Smart Discovery for 2.99. */
 .demo-next{ display: flex; flex-wrap: wrap; align-items: center; gap: .7rem 1rem; margin-top: 1.3rem; padding-top: 1.2rem; border-top: 1px dashed var(--line); }
 .demo-next p{ flex: 1 1 260px; margin: 0; color: var(--ink); font-size: .95rem; }
+/* "Like it?" on its own line above the offer (user, 2026-10-08). */
+.demo-next p strong{ display: block; margin-bottom: .15rem; font-size: 1.02rem; }
+.demo-next .nowrap{ white-space: nowrap; }
 /* Before/after with three cards (paper menu, QR menu, weekly report). */
 .compare-grid--3{ grid-template-columns: 1fr auto 1fr auto 1fr; max-width: 1100px; }
 @media (max-width: 780px){ .compare-grid--3{ grid-template-columns: 1fr; } }
