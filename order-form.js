@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
     sumPlanName.textContent = name;
     sumUpdates.textContent = updates + t(' / month', ' / Monat', ' / mese');
     // Smart Discovery (the €2.99 pass) has no monthly updates and no yearly
-    // billing - its own duration line replaces those two. The SmartPilot app
+    // billing - its own duration line replaces those two. The SmartPilot™ app
     // is included in every plan, Smart Discovery too.
     var isDiscovery = input.getAttribute('data-code') === 'discovery';
     ['.os-line-updates', '.os-line-billing'].forEach(function (selector) {

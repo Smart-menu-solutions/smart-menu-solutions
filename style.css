@@ -1605,6 +1605,13 @@ button.compare-photo:hover .shot-zoom-badge, button.compare-photo:focus-visible 
   .arc-list li:nth-child(2) .num{ background: #262421; }
   .arc-list li:nth-child(3) .num{ background: #2F9E5B; }
 }
+/* Home: SmartPilot™ inside the dark "From paper menu" section, below the
+   three cards (user, 2026-10-08) - white text, no "New" pill; the phone
+   picture is a PNG with a transparent background (app-showcase-<lang>.png). */
+#before-after{ padding-bottom: var(--space-5); }
+.app-showcase--dark{ max-width: 1100px; margin: var(--space-5) auto 0; }
+.app-showcase--dark h2, .app-showcase--dark h3, .app-showcase--dark p{ color: #fff; }
+.app-showcase--dark .app-point-icon{ background: rgba(246,106,9,.16); }
 @media (max-width: 860px){
   .app-showcase{ grid-template-columns: 1fr; gap: 1.5rem; }
   .app-showcase-visual{ order: -1; width: 100%; max-width: 440px; margin: 0 auto; }

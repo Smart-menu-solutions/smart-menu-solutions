@@ -23,7 +23,7 @@
 <link rel="alternate" hreflang="it" href="https://smartmenusolutions.com/it/">
 <link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/">
 <link rel="icon" type="image/png" href="../assets/images/favicon.png"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
-<link rel="stylesheet" href="../assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="../style.css?v=2026-10-08c">
+<link rel="stylesheet" href="../assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="../style.css?v=2026-10-08d">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -222,7 +222,7 @@
   })();
   // Installed as an app (home screen), a demo link would leave the app for the
   // browser's in-app tab with its own toolbar and a white line - the demo opens
-  // inside the app instead, like "Apri il menu" in SmartPilot. Back closes it.
+  // inside the app instead, like "Apri il menu" in SmartPilot™. Back closes it.
   // ?app=1 forces this in a normal browser for testing.
   (function () {
     var installed = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true || /[?&]app=1(&|$)/.test(location.search);
@@ -301,27 +301,14 @@
           </ul>
         </div>
       </div>
-    </div>
-  </section>
-
-  <div class="stats-demo-overlay" id="statsDemoOverlay" hidden>
-    <div class="stats-demo-box" role="dialog" aria-modal="true" aria-label="Smart WeeklyReport™ esempio dal vivo">
-      <button type="button" class="stats-demo-close" id="statsDemoClose" aria-label="Chiudi">✕</button>
-      <iframe id="statsDemoFrame" title="Smart WeeklyReport™ esempio dal vivo" loading="lazy"></iframe>
-    </div>
-  </div>
-
-  <section class="section" id="la-vostra-app">
-    <div class="container">
-      <div class="app-showcase">
+      <div class="app-showcase app-showcase--dark" id="la-vostra-app">
         <div class="app-showcase-copy">
-          <span class="app-kicker">Novità</span>
-          <h2><span class="app-title-brand">Smart<span class="accent">Pilot</span></span> La vostra app&nbsp;– <span class="accent">senza App Store</span></h2>
+          <h2><span class="app-title-brand">Smart<span class="accent">Pilot</span>™</span> La vostra app&nbsp;– <span class="accent">senza App Store</span></h2>
           <p>Ogni Smart Menu ora include delle app per lo smartphone. Si installano direttamente dal browser, su Android e iPhone: niente download, nessun costo aggiuntivo.</p>
           <ul class="app-points">
             <li>
               <span class="app-point-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span>
-              <div><h3>“SmartPilot” per i titolari</h3><p>Menu, QR code, segnatavolo e il vostro piano in un unico posto, con Smart WeeklyReport™ anche le visite al menu e i piatti più visti. Volete cambiare qualcosa? Inviateci la modifica direttamente dall’app, ci pensiamo noi.</p></div>
+              <div><h3>“SmartPilot™” per i titolari</h3><p>Menu, QR code, segnatavolo e il vostro piano in un unico posto, con Smart WeeklyReport™ anche le visite al menu e i piatti più visti. Volete cambiare qualcosa? Inviateci la modifica direttamente dall’app, ci pensiamo noi.</p></div>
             </li>
             <li>
               <span class="app-point-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16v-5a6 6 0 1 0-12 0v5l-2 2h16z"/><path d="M10 21h4"/></svg></span>
@@ -336,16 +323,23 @@
           <p class="app-note">Incluso in ogni piano. Le notifiche push fanno parte di Smart ServiceHub™.</p>
         </div>
         <div class="app-showcase-visual">
-          <img src="../assets/images/app-showcase-it.jpg?v=2" alt="L’app “SmartPilot” sullo smartphone, con una notifica push per un nuovo ordine" width="640" height="630" loading="lazy">
+          <img src="../assets/images/app-showcase-it.png?v=3" alt="L’app “SmartPilot™” sullo smartphone, con una notifica push per un nuovo ordine" width="640" height="630" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
+  <div class="stats-demo-overlay" id="statsDemoOverlay" hidden>
+    <div class="stats-demo-box" role="dialog" aria-modal="true" aria-label="Smart WeeklyReport™ esempio dal vivo">
+      <button type="button" class="stats-demo-close" id="statsDemoClose" aria-label="Chiudi">✕</button>
+      <iframe id="statsDemoFrame" title="Smart WeeklyReport™ esempio dal vivo" loading="lazy"></iframe>
+    </div>
+  </div>
+
   <div class="steps-overlay" id="appStepsOverlay" hidden>
     <div class="steps-box" role="dialog" aria-modal="true" aria-labelledby="appStepsTitle">
       <button type="button" class="steps-close" aria-label="Chiudi">✕</button>
-      <p class="steps-eyebrow">SmartPilot · Smart ServiceHub™</p>
+      <p class="steps-eyebrow">SmartPilot™ · Smart ServiceHub™</p>
       <h3 id="appStepsTitle">La vostra app in 3 passi</h3>
       <div class="arc-wrap">
         <svg class="arc-svg" viewBox="0 0 390 420" aria-hidden="true">
@@ -370,13 +364,13 @@
           <circle cx="382" cy="81.6" r="5" fill="#F66A09"/>
           <circle cx="382" cy="210" r="5" fill="#262421"/>
           <circle cx="382" cy="338.4" r="5" fill="#2F9E5B"/>
-          <text x="110" y="206" text-anchor="middle" font-size="24" font-weight="700" fill="#262421">SmartPilot</text>
+          <text x="110" y="206" text-anchor="middle" font-size="24" font-weight="700" fill="#262421">SmartPilot™</text>
           <text x="110" y="230" text-anchor="middle" font-size="14" fill="#737373">in 3 passi</text>
         </svg>
         <ol class="arc-list">
-          <li><span class="num">01</span><div><h4>Ricevete link o QR code</h4><p>Appena il vostro menu è pronto, vi inviamo il link di SmartPilot e un QR code. Con Smart ServiceHub™ il vostro staff riceve i propri codici per cucina, bar, cassa e sala.</p></div></li>
+          <li><span class="num">01</span><div><h4>Ricevete link o QR code</h4><p>Appena il vostro menu è pronto, vi inviamo il link di SmartPilot™ e un QR code. Con Smart ServiceHub™ il vostro staff riceve i propri codici per cucina, bar, cassa e sala.</p></div></li>
           <li><span class="num">02</span><div><h4>Aggiungetela alla schermata Home</h4><p>Scansionate il QR code con la fotocamera. Android: toccate «Installa». iPhone: Condividi → «Aggiungi alla schermata Home». Fatto: niente App Store, niente download.</p></div></li>
-          <li><span class="num">03</span><div><h4>Iniziate</h4><p>Aprite SmartPilot e tenete tutto sotto controllo. Lo staff tocca una volta «Attiva notifiche»: da quel momento ogni ordine arriva sul telefono.</p></div></li>
+          <li><span class="num">03</span><div><h4>Iniziate</h4><p>Aprite SmartPilot™ e tenete tutto sotto controllo. Lo staff tocca una volta «Attiva notifiche»: da quel momento ogni ordine arriva sul telefono.</p></div></li>
         </ol>
       </div>
     </div>
