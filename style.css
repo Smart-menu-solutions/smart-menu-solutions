@@ -1659,6 +1659,8 @@ html{ scroll-padding-top: calc(var(--header-h, 69px) + 12px); }
 .flow-more{ margin: .7rem 0 0; padding: 0; border: 0; background: none; color: var(--orange); font: inherit; font-weight: 700; font-size: .88rem; cursor: zoom-in; }
 .flow-more:hover, .flow-more:focus-visible{ text-decoration: underline; }
 @media (max-width: 860px){ .flow--team{ grid-template-columns: 1fr; max-width: 560px; } }
+/* Home final call to action: full order and the 2.99 test side by side. */
+.cta-actions{ display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
 /* Live demo: the next step right below it - Smart Discovery for 2.99. */
 .demo-next{ display: flex; flex-wrap: wrap; align-items: center; gap: .7rem 1rem; margin-top: 1.3rem; padding-top: 1.2rem; border-top: 1px dashed var(--line); }
 .demo-next p{ flex: 1 1 260px; margin: 0; color: var(--ink); font-size: .95rem; }
