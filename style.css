@@ -271,11 +271,8 @@ body{ padding-top: var(--header-h, 69px); }
 }
 /* "Scan|Order|Enjoy": "Order" in white, the rest orange (user, 2026-10-08 -
    black was asked for first but was hard to read on the dark photo).
-   "Scan" in the dark text colour only on wide screens (user: "nur hier"),
-   where the light table card and the pale blur sit behind it - below 1000px
-   it lands on the dark brick wall and disappears, so it stays orange there. */
+   A dark "Scan" was tried as well and dropped - "Scan" stays orange. */
 .hero .hero-slogan .slogan-order{ color: #fff; }
-@media (min-width: 1000px){ .hero .hero-slogan .slogan-scan{ color: var(--ink); } }
 .hero h1.hero-title{ font-size: calc(clamp(2.3rem, 5vw, 3.4rem) * .5); margin: .6em 0 1.8em; }
 /* German "Scannen|Ansehen|Genießen" is noticeably longer than the
    English "Scan|View|Enjoy" - widen the hero text zone on German pages
