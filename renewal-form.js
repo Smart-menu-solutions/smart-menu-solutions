@@ -119,6 +119,31 @@ document.addEventListener('DOMContentLoaded', function () {
     if (box) box.addEventListener('change', updateTotal);
   });
 
+  // A running plan with a Stripe subscription renews by itself (see the
+  // renewal function) - paying here would start a second subscription next to
+  // it, so the page only says there's nothing to do.
+  var autoRenewData = null;
+  function showAutoRenews(data) {
+    autoRenewData = data;
+    var parts = String(data.periodEnd || '').slice(0, 10).split('-');
+    var de = localStorage.getItem('selectedLang') === 'de';
+    var date = parts.length === 3 ? (de ? parts[2] + '.' + parts[1] + '.' + parts[0] : parts[2] + '/' + parts[1] + '/' + parts[0]) : '';
+    document.getElementById('renewalActiveText').textContent = t(
+      'Your subscription is active and renews automatically' + (date ? ' on ' + date : '') + ' – there is nothing you need to do. Would you like a bigger plan? Use the "Upgrade" button in your SmartPilot™ app, or write to us.',
+      'Ihr Abo ist aktiv und verlängert sich' + (date ? ' am ' + date : '') + ' automatisch – Sie müssen nichts tun. Sie möchten einen größeren Tarif? Nutzen Sie den Knopf „Upgrade“ in Ihrer App SmartPilot™ oder schreiben Sie uns.',
+      'Il vostro abbonamento è attivo e si rinnova automaticamente' + (date ? ' il ' + date : '') + ': non dovete fare nulla. Volete un piano più grande? Usate il pulsante "Upgrade" nella vostra app SmartPilot™ oppure scriveteci.'
+    );
+    document.getElementById('renewalActiveContact').textContent = t('Contact us', 'Kontakt aufnehmen', 'Contattateci');
+    // The hero says "renew" (script.js sets it on load and language switch).
+    var title = document.querySelector('.page-hero h1');
+    if (title) title.innerHTML = t('Your subscription is <span class="accent">active</span>', 'Ihr Abo ist <span class="accent">aktiv</span>', 'Il vostro abbonamento è <span class="accent">attivo</span>');
+    var intro = document.querySelector('.page-hero p');
+    if (intro) intro.textContent = t("There's nothing to renew right now.", 'Gerade gibt es nichts zu verlängern.', 'Al momento non c’è nulla da rinnovare.');
+    errorBox.style.display = 'none';
+    layout.style.display = 'none';
+    document.getElementById('renewalActive').style.display = '';
+  }
+
   // See order-form.js: the summary's "N / month" text is JS-managed, not
   // data-i18n, so it needs to be refreshed when the language changes too.
   document.querySelectorAll('.lang-btn, .flag-btn').forEach(function (button) {
@@ -126,12 +151,17 @@ document.addEventListener('DOMContentLoaded', function () {
       var current = currentPlan();
       if (current) applyPlan(current);
       applyUpgradeTexts();
+      if (autoRenewData) showAutoRenews(autoRenewData);
     });
   });
 
   fetch(renewalEndpoint + '?token=' + encodeURIComponent(token))
     .then(function (response) { return response.json().then(function (data) { if (!response.ok) throw new Error(data.error || 'This renewal link is not valid.'); return data; }); })
     .then(function (data) {
+      if (data.autoRenews) {
+        showAutoRenews(data);
+        return;
+      }
       document.getElementById('firstName').value = data.firstName || '';
       document.getElementById('lastName').value = data.lastName || '';
       document.getElementById('email').value = data.email || '';
