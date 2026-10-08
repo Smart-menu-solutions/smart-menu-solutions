@@ -269,6 +269,9 @@ body{ padding-top: var(--header-h, 69px); }
   font-size: clamp(2.3rem, 5vw, 3.4rem); font-weight: 600; line-height: 1.18;
   color: var(--orange); margin: 0; text-wrap: balance;
 }
+/* "Scan|Order|Enjoy": "Order" in white, the rest orange (user, 2026-10-08 -
+   black was asked for first but was hard to read on the dark photo). */
+.hero .hero-slogan .slogan-order{ color: #fff; }
 .hero h1.hero-title{ font-size: calc(clamp(2.3rem, 5vw, 3.4rem) * .5); margin: .6em 0 1.8em; }
 /* German "Scannen|Ansehen|Genießen" is noticeably longer than the
    English "Scan|View|Enjoy" - widen the hero text zone on German pages
