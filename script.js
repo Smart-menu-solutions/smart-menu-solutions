@@ -1052,11 +1052,11 @@ function setupLanguageControls() {
     if (!container) {
       container = document.createElement('div');
       container.className = 'nav-lang-container';
-      container.innerHTML = '<div class="lang-switcher"><button class="lang-btn" type="button" data-language="de" title="Deutsch">DE</button><button class="lang-btn" type="button" data-language="en" title="English">EN</button><button class="lang-btn" type="button" data-language="it" title="Italiano">IT</button></div>';
+      container.innerHTML = '<div class="lang-switcher"><button class="lang-btn" type="button" data-language="en" title="English">EN</button><button class="lang-btn" type="button" data-language="de" title="Deutsch">DE</button><button class="lang-btn" type="button" data-language="it" title="Italiano">IT</button></div>';
       nav.appendChild(container);
     }
     container.querySelectorAll('button').forEach(function (button, index) {
-      var language = ['de', 'en', 'it'][index] || 'en';
+      var language = ['en', 'de', 'it'][index] || 'en';
       button.className = 'lang-btn';
       button.textContent = language.toUpperCase();
       button.removeAttribute('onclick');
