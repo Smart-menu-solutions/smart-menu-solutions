@@ -1499,11 +1499,22 @@ html.is-embedded .page-hero{ padding-top: 1.6rem; padding-bottom: 1.2rem; }
   .order-layout { grid-template-columns: 1fr !important; }
   .order-card, .order-summary { width: 100%; min-width: 0; }
   .order-summary { overflow: hidden; }
-  /* .os-total already wraps (flex-wrap: wrap) so long labels drop the value
-     to its own line instead of overflowing - .os-line never got the same
-     treatment, so a long label (esp. German) pushed its value past the
-     card edge, where the overflow:hidden above silently clipped it. */
-  .os-line { flex-direction: column; align-items: flex-start; gap: .2rem; }
+  /* A long label (esp. German) used to push its value past the card edge,
+     where the overflow:hidden above clipped it. The label now wraps in its
+     own column and the value (✓, "Inklusive", a price) stays on the right -
+     dropping every value to its own line looked broken on phones. */
+  .os-line { align-items: baseline; gap: .8rem; }
+  .os-line span:first-child { flex: 1 1 auto; min-width: 0; overflow-wrap: break-word; }
+  .os-line span:last-child { flex: 0 0 auto; white-space: nowrap; text-align: right; }
+}
+/* Phones: page gutter + form card + step box padding squeezed the
+   "How it works" texts of the order forms to 2-3 words a line. */
+@media (max-width: 600px){
+  .order-card{ padding: 1.4rem 1.15rem; }
+  .order-summary{ padding: 1.5rem 1.25rem; }
+  .step{ grid-template-columns: 36px minmax(0, 1fr); gap: .8rem; padding: .95rem 1rem; }
+  .step-num{ width: 36px; height: 36px; font-size: 1rem; }
+  .order-card .step{ padding: 0; border: 0; background: none; }
 }
 /* Smart ServiceHub showcase on the homepage (#servicehub-showcase): the
    same compare cards as #before-after, on the warm cream of the Service
@@ -1647,15 +1658,28 @@ html{ scroll-padding-top: calc(var(--header-h, 69px) + 12px); }
 /* Before/after with three cards (paper menu, QR menu, weekly report). */
 .compare-grid--3{ grid-template-columns: 1fr auto 1fr auto 1fr; max-width: 1100px; }
 @media (max-width: 780px){ .compare-grid--3{ grid-template-columns: 1fr; } }
-/* Phones: the three guest steps side by side to swipe, the team steps stacked. */
+/* Phones: the three guest steps stacked, each with the picture on the left
+   and the text beside it (a swipe row cut the next card off at the edge).
+   The picture is an inset thumbnail at its own aspect ratio - stretched to
+   the text height it got cropped. The team steps stack with the screen on top. */
 @media (max-width: 640px){
-  .flow--guest{ display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1rem; padding-bottom: .6rem; }
-  .flow--guest .flow-step{ flex: 0 0 80%; scroll-snap-align: center; }
+  .flow--guest{ grid-template-columns: 1fr; gap: 1rem; }
+  .flow--guest .flow-step{ flex-direction: row; align-items: center; gap: .9rem; padding: .75rem; }
+  .flow--guest .flow-shot{ flex: 0 0 40%; border: var(--border); border-radius: 10px; }
+  .flow--guest .flow-num{ width: 26px; height: 26px; font-size: .85rem; }
+  /* min-width 0: a long badge ("BESTELLSYSTEM") must not widen the text
+     column past the card edge on 360px phones - it wraps below the number. */
+  .flow--guest .flow-body{ flex: 1 1 auto; min-width: 0; padding: 0; }
+  .flow--guest .flow-meta{ flex-wrap: wrap; gap: .4rem .5rem; }
+  .flow--guest .flow-badge{ font-size: .62rem; letter-spacing: .04em; padding: .26em .7em; }
+  .flow--guest .flow-step h3{ font-size: 1rem; }
+  .flow--guest .flow-step p{ font-size: .86rem; line-height: 1.5; }
   .flow--team{ grid-template-columns: 1fr; }
 }
 
-/* Live demo: order at table 12 of El Greco, watch kitchen and bar. */
-.demo-box{ display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: var(--space-4); align-items: center; max-width: 1040px; margin: 0 auto; padding: 2rem 2.2rem; background: var(--paper); border: 1px solid var(--orange); border-radius: 20px; box-shadow: 0 18px 36px -18px rgba(246,106,9,.45); }
+/* Live demo: order at table 12 of El Greco, watch kitchen and bar. It sits
+   right below the six steps in the same section, without a box of its own. */
+.demo-box{ display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: var(--space-4); align-items: center; max-width: 1040px; margin: var(--space-4) auto 0; }
 .demo-box h2{ margin-bottom: .45em; } .demo-box h2 .accent{ color: var(--orange); }
 .demo-steps{ list-style: none; counter-reset: demo; margin: 1.1rem 0 1.4rem; padding: 0; display: grid; gap: .7rem; }
 .demo-steps li{ counter-increment: demo; display: flex; gap: .7rem; align-items: flex-start; color: var(--grey); font-size: .95rem; }
@@ -1666,7 +1690,7 @@ html{ scroll-padding-top: calc(var(--header-h, 69px) + 12px); }
 .demo-qr img{ width: 100%; max-width: 230px; height: auto; margin: 0 auto; border-radius: 12px; border: var(--border); box-shadow: var(--shadow-sm); }
 .demo-qr p{ margin: .7rem auto 0; font-size: .85rem; }
 @media (max-width: 860px){
-  .demo-box{ grid-template-columns: 1fr; gap: 1.4rem; padding: 1.5rem 1.2rem; }
+  .demo-box{ grid-template-columns: 1fr; gap: 1.4rem; }
 }
 /* On a phone there is nothing to scan - the buttons do it. */
 @media (max-width: 640px){ .demo-qr{ display: none; } }
