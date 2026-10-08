@@ -1618,6 +1618,15 @@ button.compare-photo:hover .shot-zoom-badge, button.compare-photo:focus-visible 
 @media (max-width: 860px){
   .app-showcase{ grid-template-columns: 1fr; gap: 1.5rem; }
   .app-showcase-visual{ order: -1; width: 100%; max-width: 440px; margin: 0 auto; }
+  /* SmartPilot™ on phones: heading, then the picture, then the text (user's
+     mockup, 2026-10-08). The copy's children join the grid so the picture can
+     sit between them; margins replace the gap because grid margins don't collapse. */
+  .app-showcase--dark{ gap: 0; }
+  .app-showcase--dark .app-showcase-copy{ display: contents; }
+  .app-showcase--dark .app-showcase-copy > h2{ order: -2; }
+  .app-showcase--dark .app-showcase-visual{ margin: .4rem auto 1.5rem; }
+  .app-showcase--dark .app-showcase-copy > p:first-of-type{ margin-bottom: 0; }
+  .app-showcase--dark .app-steps-open{ justify-self: start; }
 }
 
 /* ============================================================
@@ -1639,7 +1648,7 @@ html{ scroll-padding-top: calc(var(--header-h, 69px) + 12px); }
 }
 
 /* "How an order works": guest steps (portrait shots) and team steps (screens). */
-.flow-group{ margin: 0 auto 1rem; max-width: none; text-align: center; color: var(--orange); font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+.flow-group{ margin: 0 auto 1rem; max-width: none; text-align: center; color: var(--ink); font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
 .flow{ list-style: none; margin: 0 auto; padding: 0; display: grid; gap: 1.4rem; max-width: 1040px; }
 .flow--guest{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .flow--team{ grid-template-columns: repeat(3, minmax(0, 1fr)); margin-bottom: 0; }
