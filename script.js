@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   wireStatsDemoModal();
   wireHubDemoModal();
+  wireSavingsCalculator();
 });
 
 // Homepage "Weekly Analytics Report" card - opens the real, live El Greco
@@ -1173,4 +1174,36 @@ function whatsAppFooterLink() {
   link.setAttribute('aria-label', t[0]);
   link.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path fill="currentColor" stroke="none" transform="translate(7 6.5) scale(.42)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
   return link;
+}
+
+// Pricing page savings calculator: copies x cost per copy x reprints per year,
+// compared with Smart Start. All visible text lives in the page's own HTML
+// (EN, DE, IT); the two result sentences come from data-text-save /
+// data-text-less on the container. No-ops on every other page.
+function wireSavingsCalculator() {
+  var box = document.getElementById('savings-calculator');
+  if (!box) return;
+  var plan = Number(box.getAttribute('data-plan-price')) || 119;
+  var lang = (document.documentElement.lang || 'en').slice(0, 2);
+  var inputs = ['sc-copies', 'sc-cost', 'sc-runs'].map(function (id) { return document.getElementById(id); });
+  function read(input, max) {
+    var n = parseFloat(String(input.value).replace(/\s/g, '').replace(',', '.'));
+    return isFinite(n) && n > 0 ? Math.min(n, max) : 0;
+  }
+  function euro(n) {
+    return '€' + Math.round(n).toLocaleString(lang === 'en' ? 'en-GB' : lang);
+  }
+  function update() {
+    var print = read(inputs[0], 10000) * read(inputs[1], 1000) * read(inputs[2], 365);
+    var top = Math.max(print, plan) || 1;
+    box.querySelector('[data-out="print"]').textContent = euro(print);
+    box.querySelector('[data-bar="print"]').style.width = (print / top * 100) + '%';
+    box.querySelector('[data-bar="plan"]').style.width = (plan / top * 100) + '%';
+    var total = box.querySelector('[data-out="total"]');
+    var saves = print > plan;
+    total.textContent = saves ? box.getAttribute('data-text-save').replace('{save}', euro(print - plan)) : box.getAttribute('data-text-less');
+    total.classList.toggle('savings-total--less', !saves);
+  }
+  inputs.forEach(function (input) { input.addEventListener('input', update); });
+  update();
 }

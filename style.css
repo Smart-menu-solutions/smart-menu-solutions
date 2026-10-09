@@ -1763,3 +1763,26 @@ body.app-viewing{ overflow: hidden; }
 .trust-item p{ margin: 0; font-size: .92rem; }
 @media (max-width: 860px){ .trust-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px){ .trust-grid{ grid-template-columns: 1fr; } }
+
+/* Pricing page savings calculator (reprinting vs Smart Start). */
+.savings-calc{ max-width: 920px; margin: 2.8rem auto 0; }
+.savings-head{ text-align: center; max-width: 640px; margin: 0 auto 1.4rem; }
+.savings-head h2 .accent{ color: var(--orange); }
+.savings-body{ display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.6rem; align-items: start; }
+.savings-inputs .field:last-child{ margin-bottom: 0; }
+.savings-inputs input{ font-size: 1.05rem; font-weight: 600; }
+.savings-result{ padding: 1.2rem 1.25rem; background: var(--bg-alt); border: var(--border); border-radius: var(--radius); }
+.savings-row{ display: flex; justify-content: space-between; align-items: baseline; gap: .8rem; font-size: .94rem; }
+.savings-row b{ font-size: 1.25rem; white-space: nowrap; }
+.savings-bar{ height: 10px; margin: .4rem 0 1rem; background: var(--line); border-radius: 99px; overflow: hidden; }
+.savings-bar i{ display: block; height: 100%; width: 0; background: var(--grey); border-radius: 99px; transition: width .25s ease; }
+.savings-bar--plan i{ background: var(--orange); }
+.savings-total{ margin: .2rem 0 .5rem; font-weight: 700; font-size: 1.1rem; color: var(--orange-dark); }
+.savings-total--less{ font-weight: 600; font-size: .98rem; color: var(--ink); }
+.savings-note{ margin: 0 0 1rem; font-size: .85rem; color: var(--grey); }
+@media (max-width: 760px){ .savings-body{ grid-template-columns: 1fr; } }
+@media (max-width: 480px){
+  .savings-calc{ padding: 1.25rem .9rem; }
+  .savings-result{ padding: 1rem .85rem; }
+  .savings-result .btn{ padding-left: .8em; padding-right: .8em; text-align: center; white-space: nowrap; }
+}

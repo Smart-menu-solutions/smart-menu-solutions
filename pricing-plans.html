@@ -13,7 +13,7 @@
 <link rel="alternate" hreflang="it" href="https://smartmenusolutions.com/it/pricing-plans.html">
 <link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/pricing-plans.html">
 <link rel="icon" type="image/png" href="assets/images/favicon.png"><link rel="manifest" href="site.webmanifest?v=2"><link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
-<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-10-09h">
+<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-10-09i">
 <meta property="og:image" content="https://smartmenusolutions.com/assets/images/home-hero.jpg"><meta property="og:image:width" content="1927"><meta property="og:image:height" content="816"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://smartmenusolutions.com/assets/images/home-hero.jpg">
 </head>
 <body>
@@ -143,6 +143,40 @@
 
       </div>
 
+      <div class="savings-calc panel" id="savings-calculator" data-plan-price="119" data-text-save="You save {save} a year compared with reprinting." data-text-less="With these numbers, printing costs less than Smart Start. The difference: your menu is up to date after every change, without a reprint.">
+        <div class="savings-head">
+          <h2>What does <span class="accent">reprinting</span> cost you?</h2>
+          <p>Enter your own numbers. The calculator compares one year of reprinted menus with Smart Start.</p>
+        </div>
+        <div class="savings-body">
+          <div class="savings-inputs">
+            <div class="field">
+              <label for="sc-copies">Menus on your tables and counter</label>
+              <input id="sc-copies" type="text" inputmode="numeric" value="20" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="sc-cost">Cost per printed menu (€)</label>
+              <input id="sc-cost" type="text" inputmode="decimal" value="6" autocomplete="off">
+              <p class="field-hint">Printing, laminating or a new insert for the folder.</p>
+            </div>
+            <div class="field">
+              <label for="sc-runs">Reprints per year</label>
+              <input id="sc-runs" type="text" inputmode="numeric" value="4" autocomplete="off">
+              <p class="field-hint">New prices, seasonal dishes, sold-out items, typos.</p>
+            </div>
+          </div>
+          <div class="savings-result" aria-live="polite">
+            <div class="savings-row"><span>Reprinting per year</span><b data-out="print">€480</b></div>
+            <div class="savings-bar"><i data-bar="print"></i></div>
+            <div class="savings-row"><span>Smart Start per year, VAT incl.</span><b>€119</b></div>
+            <div class="savings-bar savings-bar--plan"><i data-bar="plan"></i></div>
+            <p class="savings-total" data-out="total">You save €361 a year compared with reprinting.</p>
+            <p class="savings-note">Smart Start includes one menu update every month. You send us the change, we update your menu.</p>
+            <a class="btn btn--block" href="order-info.html?plan=start">Choose Smart Start</a>
+          </div>
+        </div>
+      </div>
+
       <div class="section-head" style="margin-top:2.8rem">
         <h2 data-i18n="addons_pricing_heading">Add-ons</h2>
         <p data-i18n="addons_pricing_sub">Boost any plan with these optional extras.</p>
@@ -249,6 +283,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=2026-10-09h"></script>
+<script src="script.js?v=2026-10-09i"></script>
 </body>
 </html>

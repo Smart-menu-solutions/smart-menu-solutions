@@ -13,7 +13,7 @@
 <link rel="alternate" hreflang="it" href="https://smartmenusolutions.com/it/pricing-plans.html">
 <link rel="alternate" hreflang="x-default" href="https://smartmenusolutions.com/pricing-plans.html">
 <link rel="icon" type="image/png" href="../assets/images/favicon.png"><link rel="manifest" href="site.webmanifest?v=2"><link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
-<link rel="stylesheet" href="../assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="../style.css?v=2026-10-09h">
+<link rel="stylesheet" href="../assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="../style.css?v=2026-10-09i">
 <meta property="og:image" content="https://smartmenusolutions.com/assets/images/home-hero.jpg"><meta property="og:image:width" content="1927"><meta property="og:image:height" content="816"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://smartmenusolutions.com/assets/images/home-hero.jpg">
 </head>
 <body>
@@ -141,6 +141,40 @@
 
       </div>
 
+      <div class="savings-calc panel" id="savings-calculator" data-plan-price="119" data-text-save="Risparmiate {save} all'anno rispetto alla ristampa." data-text-less="Con questi numeri la stampa costa meno di Smart Start. La differenza: il vostro menu è aggiornato dopo ogni modifica, senza ristampa.">
+        <div class="savings-head">
+          <h2>Quanto vi costa <span class="accent">ristampare</span>?</h2>
+          <p>Inserite i vostri numeri. Il calcolatore confronta un anno di menu ristampati con Smart Start.</p>
+        </div>
+        <div class="savings-body">
+          <div class="savings-inputs">
+            <div class="field">
+              <label for="sc-copies">Menu sui tavoli e al banco</label>
+              <input id="sc-copies" type="text" inputmode="numeric" value="20" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="sc-cost">Costo per menu stampato (€)</label>
+              <input id="sc-cost" type="text" inputmode="decimal" value="6" autocomplete="off">
+              <p class="field-hint">Stampa, plastificazione o un nuovo inserto per la cartella.</p>
+            </div>
+            <div class="field">
+              <label for="sc-runs">Ristampe all'anno</label>
+              <input id="sc-runs" type="text" inputmode="numeric" value="4" autocomplete="off">
+              <p class="field-hint">Nuovi prezzi, piatti di stagione, piatti esauriti, errori di battitura.</p>
+            </div>
+          </div>
+          <div class="savings-result" aria-live="polite">
+            <div class="savings-row"><span>Ristampa all'anno</span><b data-out="print">€480</b></div>
+            <div class="savings-bar"><i data-bar="print"></i></div>
+            <div class="savings-row"><span>Smart Start all'anno, IVA inclusa</span><b>€119</b></div>
+            <div class="savings-bar savings-bar--plan"><i data-bar="plan"></i></div>
+            <p class="savings-total" data-out="total">Risparmiate €361 all'anno rispetto alla ristampa.</p>
+            <p class="savings-note">Smart Start include un aggiornamento del menu al mese. Voi ci inviate la modifica, noi aggiorniamo il vostro menu.</p>
+            <a class="btn btn--block" href="order-info.html?plan=start">Scegli Smart Start</a>
+          </div>
+        </div>
+      </div>
+
       <div class="section-head" style="margin-top:2.8rem">
         <h2>Add-on</h2>
         <p>Ampliate ogni piano con questi extra opzionali.</p>
@@ -247,6 +281,6 @@
   </div>
 </footer>
 
-<script src="../script.js?v=2026-10-09h"></script>
+<script src="../script.js?v=2026-10-09i"></script>
 </body>
 </html>
