@@ -1153,3 +1153,29 @@ function applyPageTranslations(lang) {
   });
 }
 
+
+// WhatsApp button, bottom right on every page: opens a chat with us and a first
+// line in the page's language. A plain link - nothing is loaded from WhatsApp
+// until it is tapped (privacy policy section 12).
+(function () {
+  function addWhatsAppButton() {
+    if (document.querySelector('.wa-float') || /tiktok-callback/.test(location.pathname)) return;
+    var texts = {
+      en: ['Chat with us on WhatsApp', "Hello, I'm interested in a QR menu for my business."],
+      de: ['Schreiben Sie uns auf WhatsApp', 'Hallo, ich interessiere mich für eine QR-Speisekarte für meinen Betrieb.'],
+      it: ['Scriveteci su WhatsApp', 'Buongiorno, vorrei informazioni su un menu QR per il mio locale.']
+    };
+    var t = texts[(document.documentElement.lang || 'en').slice(0, 2)] || texts.en;
+    var link = document.createElement('a');
+    link.className = 'wa-float';
+    link.href = 'https://wa.me/4915757933765?text=' + encodeURIComponent(t[1]);
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.title = t[0];
+    link.setAttribute('aria-label', t[0]);
+    link.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path fill="currentColor" stroke="none" transform="translate(7 6.5) scale(.42)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
+    document.body.appendChild(link);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addWhatsAppButton);
+  else addWhatsAppButton();
+})();
