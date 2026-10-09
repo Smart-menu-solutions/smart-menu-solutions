@@ -1133,6 +1133,7 @@ function ensureLegalLinks() {
 
 function ensureFooterSocial() {
   document.querySelectorAll('.footer-social').forEach(function (social) {
+    if (!social.querySelector('a[href*="wa.me"]')) social.appendChild(whatsAppFooterLink());
     if (social.querySelector('a[href*="tiktok.com"]')) return;
     social.insertAdjacentHTML('beforeend', '<a href="https://www.tiktok.com/@smartmenusolutions" aria-label="Smart Menu Solutions on TikTok" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>');
   });
@@ -1154,28 +1155,22 @@ function applyPageTranslations(lang) {
 }
 
 
-// WhatsApp button, bottom right on every page: opens a chat with us and a first
-// line in the page's language. A plain link - nothing is loaded from WhatsApp
-// until it is tapped (privacy policy section 12).
-(function () {
-  function addWhatsAppButton() {
-    if (document.querySelector('.wa-float') || /tiktok-callback/.test(location.pathname)) return;
-    var texts = {
-      en: ['Chat with us on WhatsApp', "Hello, I'm interested in a QR menu for my business."],
-      de: ['Schreiben Sie uns auf WhatsApp', 'Hallo, ich interessiere mich für eine QR-Speisekarte für meinen Betrieb.'],
-      it: ['Scriveteci su WhatsApp', 'Buongiorno, vorrei informazioni su un menu QR per il mio locale.']
-    };
-    var t = texts[(document.documentElement.lang || 'en').slice(0, 2)] || texts.en;
-    var link = document.createElement('a');
-    link.className = 'wa-float';
-    link.href = 'https://wa.me/4915757933765?text=' + encodeURIComponent(t[1]);
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.title = t[0];
-    link.setAttribute('aria-label', t[0]);
-    link.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path fill="currentColor" stroke="none" transform="translate(7 6.5) scale(.42)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
-    document.body.appendChild(link);
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addWhatsAppButton);
-  else addWhatsAppButton();
-})();
+// WhatsApp icon in the footer next to Instagram and TikTok (the contact page has
+// its own line): opens a chat with us and a first line in the page's language.
+// A plain link - nothing is loaded from WhatsApp until it is tapped (privacy
+// policy section 12). The floating button was dropped (user, 2026-10-09).
+function whatsAppFooterLink() {
+  var texts = {
+    en: ['Smart Menu Solutions on WhatsApp', "Hello, I'm interested in a QR menu for my business."],
+    de: ['Smart Menu Solutions auf WhatsApp', 'Hallo, ich interessiere mich für eine QR-Speisekarte für meinen Betrieb.'],
+    it: ['Smart Menu Solutions su WhatsApp', 'Buongiorno, vorrei informazioni su un menu QR per il mio locale.']
+  };
+  var t = texts[(document.documentElement.lang || 'en').slice(0, 2)] || texts.en;
+  var link = document.createElement('a');
+  link.href = 'https://wa.me/4915757933765?text=' + encodeURIComponent(t[1]);
+  link.target = '_blank';
+  link.rel = 'noopener';
+  link.setAttribute('aria-label', t[0]);
+  link.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path fill="currentColor" stroke="none" transform="translate(7 6.5) scale(.42)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
+  return link;
+}
