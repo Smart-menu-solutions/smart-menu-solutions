@@ -1666,6 +1666,10 @@ html{ scroll-padding-top: calc(var(--header-h, 69px) + 12px); }
   .hero--home .hero-banner img{ object-position: 50% 100%; }
   .hero--home .hero-inner{ justify-content: flex-start; padding-top: 44px; }
   .hero--home::after{ background: linear-gradient(to bottom, rgba(15,13,11,.78) 0%, rgba(15,13,11,.66) 50%, rgba(15,13,11,.22) 70%, rgba(15,13,11,.08) 100%); }
+  /* Our Services: lighter at the bottom too - on a dark bottom edge Android draws
+     its gesture bar white, which the user saw as a thin white line (the home
+     page's light table makes it dark). Text stays on the darker middle. */
+  .hero:not(.hero--home)::after{ background: linear-gradient(to bottom, rgba(15,13,11,.62) 0%, rgba(15,13,11,.66) 45%, rgba(15,13,11,.4) 75%, rgba(15,13,11,.06) 100%); }
 }
 
 /* "How an order works": guest steps (portrait shots) and team steps (screens). */
