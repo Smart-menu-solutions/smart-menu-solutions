@@ -490,7 +490,7 @@ var translations = {
     'compare_ready_li4': 'Code oben scannen oder antippen und live ansehen',
     'compare_new_tag': 'Smart WeeklyReport™',
     'compare_new_cta': 'Live-Beispiel ansehen',
-    'compare_new_title': 'Wöchentlicher Analyse-Bericht',
+    'compare_new_title': 'Wöchentliche Auswertung',
     'compare_new_li1': 'Sehen Sie Ihre meistgesehenen Gerichte & Kategorien',
     'compare_new_li2': 'Jeden Montag direkt in Ihr Postfach',
     'compare_new_li3': 'Klicken Sie oben für ein Live-Beispiel',
