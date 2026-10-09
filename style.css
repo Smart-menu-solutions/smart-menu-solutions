@@ -487,6 +487,9 @@ html[lang="de"] .hero-inner{ max-width: 1000px; }
 }
 .service-card .card-copy{ padding: 1.5rem 1.4rem; color: #fff; text-align: left; }
 .service-card h3{ color: #fff; margin-bottom: .35em; }
+/* Phones: the product names ("Smart WeeklyReport™", ...) stay on one line even on
+   narrow or zoomed phones (user) - the size follows the screen width. */
+@media (max-width: 480px){ .service-card h3{ font-size: min(1.25rem, 5.3vw); white-space: nowrap; } }
 .service-card p{ color: #E7E4DF; margin: 0; max-width: none; }
 .service-card p.card-lead{ color: #fff; font-weight: 600; margin-bottom: .45em; }
 /* Add-on row on our-services (4 cards): taller, so more of the photo shows above the text */
