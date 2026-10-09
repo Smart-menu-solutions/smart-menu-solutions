@@ -1655,12 +1655,13 @@ html{ scroll-padding-top: calc(var(--header-h, 69px) + 12px); }
    shows under it (user). It uses a portrait version of the photo
    (hero-el-greco-<lang>-mobile.jpg, built from the wide one): table card and
    phone sharp at the bottom, the blurred cafe continues upwards behind the
-   text - so the text sits at the top and only the top is darkened (homepage
+   text (+130px of mirrored table at the very bottom for the hidden +48px) - so the text sits at the top and only the top is darkened (homepage
    only, .hero--home; Our Services keeps its text in the middle). */
 @media (max-width: 480px){
-  /* +6px: on Android the exact screen height rounded a hairline short and a thin
-     white line of the next section showed under the photo (user). */
-  .hero{ display: flex; min-height: calc(100vh - var(--header-h, 69px) + 6px); min-height: calc(100svh - var(--header-h, 69px) + 6px); }
+  /* +48px: Android draws the page behind its navigation bar at the very bottom,
+     which 100svh leaves out - a thin white line of the next section showed
+     there under the photo (user; +6px was not enough). */
+  .hero{ display: flex; min-height: calc(100vh - var(--header-h, 69px) + 48px); min-height: calc(100svh - var(--header-h, 69px) + 48px); }
   .hero-inner{ flex: 1; width: 100%; }
   .hero--home .hero-banner img{ object-position: 50% 100%; }
   .hero--home .hero-inner{ justify-content: flex-start; padding-top: 44px; }
