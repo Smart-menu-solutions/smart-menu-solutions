@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 Disallow: /login.html
-Sitemap: https://smart-menu-solutions.github.io/smart-menu-solutions/sitemap.xml
+Sitemap: https://smartmenusolutions.com/sitemap.xml
