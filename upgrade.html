@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>/* ?lang= from the order email wins; without it English, except for visitors who chose Italian on the site. */try{var l=new URLSearchParams(location.search).get('lang');if(l!=='de'&&l!=='en'&&l!=='it')l=localStorage.getItem('selectedLang')==='it'?'it':'en';localStorage.setItem('selectedLang',l);}catch(e){}</script>
+<meta name="robots" content="noindex, nofollow">
+<title>Upgrade Your Plan | Smart Menu Solutions</title>
+<meta name="description" content="Move to a bigger Smart Menu Solutions plan anytime - you only pay the difference for the rest of your current plan year.">
+<link rel="icon" type="image/png" href="assets/images/favicon.png"><link rel="manifest" href="site.webmanifest?v=2"><link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png"><meta name="theme-color" content="#f66a09">
+<link rel="stylesheet" href="assets/fonts/fonts-opensans.css"><link rel="stylesheet" href="style.css?v=2026-10-09i">
+<style>
+  /* upgrade.html only: one card per higher plan */
+  .upgrade-current{ margin: 0 0 1.2rem; }
+  .upgrade-options{ display: grid; gap: 1rem; }
+  .upgrade-option{ padding: 1.2rem 1.25rem; border: 1px solid #e7e5e1; border-radius: 14px; background: #fff; }
+  .upgrade-option-head{ display: flex; justify-content: space-between; align-items: baseline; gap: .8rem; flex-wrap: wrap; }
+  .upgrade-option-head h3{ margin: 0; font-size: 1.15rem; }
+  .upgrade-option-yearly{ color: var(--grey); font-size: .92rem; white-space: nowrap; }
+  .upgrade-option-list{ margin: .7rem 0 .9rem; padding-left: 1.1rem; color: var(--grey); font-size: .95rem; }
+  .upgrade-option-due{ margin: 0 0 .9rem; }
+  .upgrade-option-due span{ color: var(--grey); font-size: .9rem; }
+  .upgrade-option-btn{ width: 100%; justify-content: center; }
+  .upgrade-option-error{ margin: .6rem 0 0; color: #c0392b; font-size: .92rem; }
+  .upgrade-option-error:empty{ display: none; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/images/logo.png" alt="" width="42" height="42">
+      <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav class="main-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html" data-i18n="home">Home</a></li>
+        <li><a href="our-services.html" data-i18n="services">Our Services</a></li>
+        <li><a href="pricing-plans.html" data-i18n="pricing">Pricing Plans</a></li>
+        <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
+        <li><a href="order.html" data-i18n="order">Order</a></li>
+        <li><a href="contact.html" data-i18n="contact">Contact</a></li>
+      </ul>
+      <a class="btn nav-cta" href="order-info.html" data-i18n="get_started">Get started</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <section class="page-hero">
+    <div class="container">
+      <h1 id="upgradeTitle">Upgrade your <span class="accent">plan</span></h1>
+      <p id="upgradeIntro">Move to a bigger plan anytime – you only pay the difference for the rest of your current plan year.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:640px">
+
+      <div id="upgradeError" class="order-card" style="display:none">
+        <p id="upgradeErrorText">This link is invalid or has expired. Please contact us so we can help.</p>
+        <p><a class="btn" href="mailto:info@smartmenusolutions.com" id="upgradeContact">Contact support</a></p>
+      </div>
+
+      <div id="upgradeLoading" class="order-card">
+        <p id="upgradeLoadingText">Loading your plan…</p>
+      </div>
+
+      <div id="upgradeLayout" class="order-card" style="display:none">
+        <p class="upgrade-current" id="upgradeCurrent"></p>
+        <div id="upgradeOptions" class="upgrade-options"></div>
+        <p class="addons-note" id="upgradeNote"></p>
+      </div>
+
+      <div id="upgradeDone" class="order-card" style="display:none">
+        <h2 id="upgradeDoneTitle"></h2>
+        <p id="upgradeDoneText"></p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <a class="footer-brand" href="index.html">
+        <img src="assets/images/logo-white.png" alt="" width="32" height="32">
+        <span class="brand-text"><span class="n-smart">Smart</span> <span class="n-rest">Menu Solutions</span></span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="our-services.html" data-i18n="services">Services</a></li>
+        <li><a href="pricing-plans.html" data-i18n="pricing">Pricing</a></li>
+        <li><a href="faq.html" data-i18n="faq">FAQ</a></li>
+        <li><a href="contact.html" data-i18n="contact">Contact</a></li>
+        <li><a href="guides.html">Guides</a></li>
+      </ul>
+    </div>
+    <nav class="footer-industries" aria-label="Solutions by industry"><a href="restaurants.html">Restaurants</a><a href="bars.html">Bars</a><a href="cafes.html">Cafés</a><a href="hotels.html">Hotels</a><a href="food-trucks.html">Food Trucks</a><a href="about.html">About us</a><a class="footer-builder" href="https://smart-menu-solutions.github.io/smart-menu-builder/login.html">Smart Builder</a></nav>
+    <div class="footer-bottom">
+      <span>© 2026 Smart Menu Solutions</span>
+      <ul class="footer-legal">
+        <li><a href="privacy-policy.html" data-i18n="privacy_policy">Privacy Policy</a></li>
+        <li><a href="terms-of-service.html">Terms of Service</a></li>
+        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="refund-policy.html" data-i18n="refund_policy">Refund Policy</a></li>
+        <li><a href="imprint.html" data-i18n="imprint">Imprint</a></li>
+        <li><a href="mailto:info@smartmenusolutions.com">info@smartmenusolutions.com</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js?v=2026-10-09i"></script>
+<script src="upgrade.js?v=2026-10-08a"></script>
+</body>
+</html>
